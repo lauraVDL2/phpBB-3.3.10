@@ -1,0 +1,15 @@
+:root {
+    --main_color_1: #ededed;
+    --main_color_2: #101010;
+    --main_color_3: #fcfcfc;
+    --secondary_color: #fcfcfc;
+    --secondary_color_2: #f22e2e;
+    --kiri: #7C8AB3;
+    --iwa: #73452B;
+    --suna: #E4C162;
+    --nukenin: #3A3630;
+    --main_police: poppins, sans-serif;
+    --main_police_2: montserrat, sans-serif;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --color_m_p: #f1ede4; /* Fond profil + messages */
+  }

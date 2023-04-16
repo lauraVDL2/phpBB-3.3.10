@@ -1,0 +1,204 @@
+@import url("var_root.css");
+
+#firstBlock {
+    display: grid;
+    position: relative;
+    grid-template-rows: 170px 420px;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+#rowGuide {
+    background-color: var(--main_color_2);
+    border-radius: 30px;
+}
+
+#rowGuide legend {
+    margin: auto;
+}
+
+#rowGuide img {
+    width: 50px;
+}
+
+#rowGuide .forumTitle {
+    color: #fcfcfc;
+    font-family: var(--main_police);
+    font-size: 3.5rem;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#rowGuide .forumDescr {
+    color: var(--secondary_color_2);
+    font-family: var(--main_police);
+    margin-left: 20px;
+    font-size: 1.25rem;
+}
+
+#carte {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#carte a, #carte img {
+    height: 100%;
+    width: 170px;
+}
+
+#carte > div {
+    font-weight: bold;
+    color: var(--main_color_2);
+    font-size: 1.5rem;
+    font-family: var(--main_police);
+}
+
+.row2 {
+    background-color: var(--main_color_1);
+    border-radius: 30px;
+}
+
+.row2 .forumTitle, .rowRPG .forumTitle {
+    color: var(--main_color_2);
+    font-family: var(--main_police);
+    font-weight: bold;
+    font-size: 3.5rem;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.row2 .forumDescr {
+    color: var(--secondary_color_2);
+    font-family: var(--main_police);
+    margin-left: 20px;
+    font-size: 1.25rem;
+}
+
+.row2 .subForumsGrid {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 220px 220px;
+    grid-auto-rows: auto;
+    gap: 20px;
+    justify-content: center;
+}
+
+.row2 .subForumsGrid > a {
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+#imgDeco {
+    position: absolute;
+    top: -100px;
+    left: 360px;
+    width: 300px;
+}
+
+.textAlign {
+    margin: auto;
+    display: block;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.row2 .lastPost, .rowRPG .lastPost {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+    font-size: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.row2 .lastSubject, .rowRPG .lastPost {
+    color: black !important;
+    font-weight: bold;
+}
+
+.noPost {
+    text-align: center;
+    font-weight: normal;
+}
+
+.lastPost img {
+    width: 25px;
+    position: absolute;
+    top: 40%;
+    left: -13px;
+}
+
+.rowRPG {
+    width: 100%;
+    margin-top: 25px;
+    background-color: var(--main_color_1);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.imgRPG {
+    position: relative;
+}
+
+.imgRPG img {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-left: 10px solid var(--secondary_color_2);
+}
+
+.imgRPG .subForums {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    display: grid;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    grid-template-columns: 150px 150px 150px;
+    grid-auto-rows: auto;
+    align-items: end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rowRPG .forumDescr {
+    color: var(--main_color_2);
+    margin: 20px;
+    font-size: 1rem;
+    text-align: justify;
+    height: 150px;
+    overflow: auto;
+}
+
+.imgRPG .subForums a {
+    background-color: var(--main_color_3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: var(--main_color_2);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.imgRPG .subForums a:hover {
+    border: 5px solid var(--secondary_color_2);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

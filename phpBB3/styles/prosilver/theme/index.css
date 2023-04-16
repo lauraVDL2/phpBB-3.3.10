@@ -1,0 +1,24 @@
+@import url("var_root.css");
+
+body {
+    width: 100%;
+    background-image: url("https://zupimages.net/up/23/13/jf63.png");
+}
+
+#wrap {
+    width: 1024px;
+}
+
+#wrap, #phpbb {
+    background-color: transparent;
+    border: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: var(--main_color_3);
+}
