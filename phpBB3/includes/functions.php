@@ -89,7 +89,7 @@ function last_hours($db, $timestamp) {
 			]
 		],
 		'WHERE' => 'UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - '.$timestamp. ' <= s.session_last_visit AND s.session_user_id != '.ANONYMOUS,
-		'GROUP BY' => 'ut.user_id'
+		//'GROUP_BY' => 'ut.user_id'
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
@@ -98,6 +98,24 @@ function last_hours($db, $timestamp) {
 		$str .= '<a style="color:#'.$column['user_colour'].';">'.$column['name'].'</a> ';
 	}
 	return $str;
+}
+
+/**
+ * Level, experience, attributes and more
+ * @return array
+ */
+function character_informations($db, $user_id) {
+	$req = [
+		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total',
+		'FROM' => [
+			USERS_TABLE => 'ut'
+		],
+		'WHERE' => 'ut.user_id = '.$user_id,
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	$column = $db->sql_fetchrow($query);
+	return $column;
 }
 
 /**
@@ -4071,7 +4089,8 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$kiri = total_groups($db, KIRIGAKURE_ID);
 	$suna = total_groups($db, SUNAGAKURE_ID);
 	$nukenin = total_groups($db, NUKENIN_ID);
-	$total_final = $iwa + $kiri + $suna + $nukenin;
+	$total_final = max($iwa, $kiri, $suna, $nukenin);
+	$character_infos = character_informations($db, $user->data['user_id']);
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
@@ -4083,6 +4102,8 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'LAST_HOURS_USERS' => last_hours($db, 345600),
 		'LAST_USER_AVATAR' => last_user($db)['avatar'],
 		'LAST_USER_NAME' => last_user($db)['username'],
+		'MY_LEVEL' => $character_infos['level'],
+		'MY_EXPERIENCE' => $character_infos['experience'],
 		'IS_KIRI' => my_group($db, KIRIGAKURE_ID, $user->data['user_id']),
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],

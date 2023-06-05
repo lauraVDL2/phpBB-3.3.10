@@ -1750,7 +1750,41 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 	switch ($post_mode)
 	{
 		case 'post':
+			//Nouveau sujet : On regarde combien d'exp rapporte le forum
+			$req = [
+				'SELECT' => 'ft.forum_post_exp AS experience',
+				'FROM' => [
+					FORUMS_TABLE => 'ft',
+				],
+				'WHERE' => 'ft.forum_id = '. $data_ary['forum_id'],
+			];
+			$sql = $db->sql_build_query('SELECT', $req);
+			$query = $db->sql_query($sql);
+			$gainedExp = $db->sql_fetchrow($query)['experience'];
+			//S'il rapporte de l'expérience, on la donne au joueur (évite une requête inutile si 0)
+			if($gainedExp > 0) {
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$gainedExp.' WHERE user_id = '. $user->data['user_id'];
+				$db->sql_query($sql);
+			}
+
 		case 'reply':
+			//Réponse à un sujet : On regarde combien d'exp rapporte le forum
+			$req = [
+				'SELECT' => 'ft.forum_reply_exp AS experience',
+				'FROM' => [
+					FORUMS_TABLE => 'ft',
+				],
+				'WHERE' => 'ft.forum_id = '.$data_ary['forum_id'],
+			];
+			$sql = $db->sql_build_query('SELECT', $req);
+			$query = $db->sql_query($sql);
+			$gainedExp = $db->sql_fetchrow($query)['experience'];
+			//S'il rapporte de l'expérience, on la donne au joueur (évite une requête inutile si 0)
+			if($gainedExp > 0) {
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$gainedExp.' WHERE user_id = '. $user->data['user_id'];
+				$db->sql_query($sql);
+			}
+
 			$sql_data[POSTS_TABLE]['sql'] = array(
 				'forum_id'			=> $data_ary['forum_id'],
 				'poster_id'			=> (int) $user->data['user_id'],
