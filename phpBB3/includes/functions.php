@@ -24,6 +24,87 @@ const KIRIGAKURE_ID = 9;
 const SUNAGAKURE_ID = 10;
 const NUKENIN_ID = 11;
 
+$levels = [
+	1 => 5,
+	2 => 5,
+	3 => 5,
+	4 => 5,
+	5 => 5,
+	6 => 5,
+	7 => 5,
+	8 => 5,
+	9 => 5,
+	10 => 10,
+	11 => 10,
+	12 => 10,
+	13 => 10,
+	14 => 10,
+	15 => 10,
+	16 => 10,
+	17 => 10,
+	18 => 10,
+	19 => 10,
+	20 => 15,
+	21 => 15,
+	22 => 15,
+	23 => 15,
+	24 => 15,
+	25 => 15,
+	26 => 15,
+	27 => 15,
+	28 => 15,
+	29 => 15,
+	30 => 20,
+	31 => 20,
+	32 => 20,
+	33 => 20,
+	34 => 20,
+	35 => 20,
+	36 => 20,
+	37 => 20,
+	38 => 20,
+	39 => 20,
+	40 => 25,
+	41 => 25,
+	42 => 25,
+	43 => 25,
+	44 => 25,
+	45 => 25,
+	46 => 25,
+	47 => 25,
+	48 => 25,
+	49 => 25
+];
+
+function level_up() {
+	global $levels, $user, $db;
+	$req = [
+		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
+		'FROM' => [
+			USERS_TABLE => 'ut',
+		],
+		'WHERE' => 'ut.user_id = '.$user->data['user_id']
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	$column = $db->sql_fetchrow($query);
+	$exp_bar = $levels[$column['level']];
+	$current_exp = $column['experience'];
+	//Time to level up
+	if($current_exp >= $exp_bar) {
+		$sql = 'UPDATE '.USERS_TABLE.' SET user_level = user_level + 1 WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+		$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = 0 WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+		$difference = $current_exp - $exp_bar;
+		//If you gain more than 1 exp point in the leveling process, the bar will adjust
+		if($difference > 0) {
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$difference.' WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+		}
+	}
+}
+
 // Common global functions
 /**
 * Generates an alphanumeric random string of given length

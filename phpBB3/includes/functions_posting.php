@@ -1621,7 +1621,7 @@ function delete_post($forum_id, $topic_id, $post_id, &$data, $is_soft = false, $
 */
 function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data_ary, $update_message = true, $update_search_index = true)
 {
-	global $db, $auth, $user, $config, $phpEx, $phpbb_root_path, $phpbb_container, $phpbb_dispatcher, $phpbb_log, $request;
+	global $db, $auth, $user, $config, $phpEx, $phpbb_root_path, $phpbb_container, $phpbb_dispatcher, $phpbb_log, $request, $levels;
 
 	$poll = $poll_ary;
 	$data = $data_ary;
@@ -1765,6 +1765,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 			if($gainedExp > 0) {
 				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$gainedExp.' WHERE user_id = '. $user->data['user_id'];
 				$db->sql_query($sql);
+				level_up();
 			}
 
 		case 'reply':
@@ -1783,6 +1784,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 			if($gainedExp > 0) {
 				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$gainedExp.' WHERE user_id = '. $user->data['user_id'];
 				$db->sql_query($sql);
+				level_up();
 			}
 
 			$sql_data[POSTS_TABLE]['sql'] = array(
