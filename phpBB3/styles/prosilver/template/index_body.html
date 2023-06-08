@@ -10,8 +10,21 @@
 <!-- ENDIF -->
 <!-- EVENT index_body_markforums_after -->
 
+{% INCLUDEJS 'JnM.js' %}
+
 Niveau : {MY_LEVEL} <br />
-Expérience : {MY_EXPERIENCE}
+Expérience : {MY_EXPERIENCE}<br />
+Points d'attributs à dépenser : <span id="my_attributes_to_use">{ATTRIBUTES_TO_USE}</span><br />
+<form id="level_attributes" method="post" action="{{ U_ACTION }}" data-ajax="attributes_callback" data-refresh="true">
+Physique : <span id="my_strength">{MY_STRENGTH}</span> <input name="my_strength_button" class="my_attributes" id="my_strength_button" type="submit" value="Dépenser"><br />
+Sensorialité : <span id="my_sensoriality">{MY_SENSORIALITY}</span><input name="my_sensoriality_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
+Furtivité : <span id ="my_stealth">{MY_STEALTH}</span><input name="my_stealth_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
+Agilité : <span id="my_swiftness">{MY_SWIFTNESS}</span><input name="my_swiftness_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
+Ninjutsu : <span id="my_ninjutsu">{MY_NINJUTSU}</span><input name="my_ninjutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
+Taijutsu : <span id="my_taijutsu">{MY_TAIJUTSU}</span><input name="my_taijutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
+Genjutsu : <span id="my_genjutsu">{MY_GENJUTSU}</span><input name="my_genjutsu_button" class="my_attributes_button" type="submit" value="Dépenser">
+</form>
+
 
 <!-- INCLUDE forumlist_body.html -->
 

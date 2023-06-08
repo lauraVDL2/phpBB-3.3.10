@@ -295,6 +295,9 @@ function user_add($user_row, $cp_data = false, $notifications_data = null)
 
 	$user_id = $db->sql_nextid();
 
+	$sql = 'INSERT INTO '.ATTRIBUTES_TABLE.' SET user_id = '.$user_id;
+	$db->sql_query($sql);
+
 	// Insert Custom Profile Fields
 	if ($cp_data !== false && count($cp_data))
 	{

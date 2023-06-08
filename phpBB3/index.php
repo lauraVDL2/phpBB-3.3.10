@@ -28,6 +28,110 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
+if($request->is_ajax()) {
+	$json_response = new \phpbb\json_response;
+	$my_strength = $request->variable('my_strength_button', '');
+	$my_sensoriality = $request->variable('my_sensoriality_button', '');
+	$my_stealth = $request->variable('my_stealth_button', '');
+	$my_swiftness = $request->variable('my_swifness_button', '');
+	$my_ninjutsu = $request->variable('my_ninjutsu_button', '');
+	$my_taijutsu = $request->variable('my_taijutsu_button', '');
+	$my_genjutsu = $request->variable('my_genjutsu_button', '');
+	$attributes = character_attributes();
+	$informations = character_informations();
+	if($my_strength != '') {
+		if($attributes['strength'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET strength = strength + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'strength' => $attributes['strength'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_sensoriality != '') {
+		if($attributes['sensoriality'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET sensoriality = sensoriality + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'sensoriality' => $attributes['sensoriality'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_stealth != '') {
+		if($attributes['stealth'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET stealth = stealth + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'stealth' => $attributes['stealth'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_swiftness != '') {
+		if($attributes['swiftness'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET swiftness = swiftness + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'swiftness' => $attributes['swiftness'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_ninjutsu != '') {
+		if($attributes['ninjutsu'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET ninjutsu = ninjutsu + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'ninjutsu' => $attributes['ninjutsu'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_taijutsu != '') {
+		if($attributes['taijutsu'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET taijutsu = taijutsu + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'taijutsu' => $attributes['taijutsu'] + 1,
+				],
+			);
+		}
+	}
+	else if ($my_genjutsu != '') {
+		if($attributes['genjutsu'] < 8 && $informations['attributes_to_use'] > 0) {
+			$sql = 'UPDATE '.ATTRIBUTES_TABLE.' SET genjutsu = genjutsu + 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use - 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'attributes_to_use'	=> $informations['attributes_to_use'] - 1,
+				'genjutsu' => $attributes['genjutsu'] + 1,
+				],
+			);
+		}
+	}
+}
+
 // Mark notifications read
 if (($mark_notification = $request->variable('mark_notification', 0)))
 {

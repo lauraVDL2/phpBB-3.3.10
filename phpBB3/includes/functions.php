@@ -23,6 +23,7 @@ const IWAGAKURE_ID = 8;
 const KIRIGAKURE_ID = 9;
 const SUNAGAKURE_ID = 10;
 const NUKENIN_ID = 11;
+const MAX_LEVEL = 50;
 
 $levels = [
 	1 => 5,
@@ -76,33 +77,96 @@ $levels = [
 	49 => 25
 ];
 
+$attributes = [
+	1 => 0,
+	2 => 0,
+	3 => 0,
+	4 => 0,
+	5 => 2,
+	6 => 0,
+	7 => 0,
+	8 => 0,
+	9 => 0,
+	10 => 2,
+	11 => 0,
+	12 => 0,
+	13 => 0,
+	14 => 0,
+	15 => 2,
+	16 => 0,
+	17 => 0,
+	18 => 0,
+	19 => 0,
+	20 => 2,
+	21 => 0,
+	22 => 0,
+	23 => 0,
+	24 => 0,
+	25 => 2,
+	26 => 0,
+	27 => 0,
+	28 => 0,
+	29 => 0,
+	30 => 2,
+	31 => 0,
+	32 => 0,
+	33 => 0,
+	34 => 0,
+	35 => 2,
+	36 => 0,
+	37 => 0,
+	38 => 0,
+	39 => 0,
+	40 => 2,
+	41 => 0,
+	42 => 0,
+	43 => 0,
+	44 => 0,
+	45 => 2,
+	46 => 0,
+	47 => 0,
+	48 => 0,
+	49 => 0,
+	50 => 2
+];
+
 function level_up() {
-	global $levels, $user, $db;
-	$req = [
-		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
-		'FROM' => [
-			USERS_TABLE => 'ut',
-		],
-		'WHERE' => 'ut.user_id = '.$user->data['user_id']
-	];
-	$sql = $db->sql_build_query('SELECT', $req);
-	$query = $db->sql_query($sql);
-	$column = $db->sql_fetchrow($query);
-	$exp_bar = $levels[$column['level']];
-	$current_exp = $column['experience'];
-	//Time to level up
-	if($current_exp >= $exp_bar) {
-		$sql = 'UPDATE '.USERS_TABLE.' SET user_level = user_level + 1 WHERE user_id = '.$user->data['user_id'];
-		$db->sql_query($sql);
-		$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = 0 WHERE user_id = '.$user->data['user_id'];
-		$db->sql_query($sql);
-		$difference = $current_exp - $exp_bar;
-		//If you gain more than 1 exp point in the leveling process, the bar will adjust
-		if($difference > 0) {
-			$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$difference.' WHERE user_id = '.$user->data['user_id'];
+	global $levels, $user, $db, $attributes;
+	do {
+		$req = [
+			'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
+			'FROM' => [
+				USERS_TABLE => 'ut',
+			],
+			'WHERE' => 'ut.user_id = '.$user->data['user_id']
+		];
+		$sql = $db->sql_build_query('SELECT', $req);
+		$query = $db->sql_query($sql);
+		$column = $db->sql_fetchrow($query);
+		$exp_bar = $levels[$column['level']];
+		$current_exp = $column['experience'];
+		//Time to level up
+		if($current_exp >= $exp_bar) {
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_level = user_level + 1 WHERE user_id = '.$user->data['user_id'];
 			$db->sql_query($sql);
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = 0 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			$difference = $current_exp - $exp_bar;
+			//If you gain more than 1 exp point in the leveling process, the bar will adjust
+			if($difference > 0) {
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$difference.' WHERE user_id = '.$user->data['user_id'];
+				$db->sql_query($sql);
+			}
+			$current_level = $column['level'] + 1;
+			$current_exp_bar = $levels[$current_level];
+			$attributes_to_gain = $attributes[$current_level];
+			//Attributes gain case
+			if($attributes_to_gain > 0) {
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use + '.$attributes_to_gain.', user_attributes_total = user_attributes_total + '.$attributes_to_gain.' WHERE user_id = '.$user->data['user_id'];
+				$db->sql_query($sql);
+			}
 		}
-	}
+	} while ($difference >= $current_exp_bar && $current_level < 50); //Handle the case where your experience is enough to go through multiple levels
 }
 
 // Common global functions
@@ -185,13 +249,29 @@ function last_hours($db, $timestamp) {
  * Level, experience, attributes and more
  * @return array
  */
-function character_informations($db, $user_id) {
+function character_informations() {
+	global $db, $user;
 	$req = [
 		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total',
 		'FROM' => [
 			USERS_TABLE => 'ut'
 		],
-		'WHERE' => 'ut.user_id = '.$user_id,
+		'WHERE' => 'ut.user_id = '.$user->data['user_id'],
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	$column = $db->sql_fetchrow($query);
+	return $column;
+}
+
+function character_attributes() {
+	global $db, $user;
+	$req = [
+		'SELECT' => 'at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu',
+		'FROM' => [
+			ATTRIBUTES_TABLE => 'at'
+		],
+		'WHERE' => 'at.user_id = '.$user->data['user_id'],
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
@@ -4171,7 +4251,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$suna = total_groups($db, SUNAGAKURE_ID);
 	$nukenin = total_groups($db, NUKENIN_ID);
 	$total_final = max($iwa, $kiri, $suna, $nukenin);
-	$character_infos = character_informations($db, $user->data['user_id']);
+	$character_infos = character_informations();
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
@@ -4185,6 +4265,14 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'LAST_USER_NAME' => last_user($db)['username'],
 		'MY_LEVEL' => $character_infos['level'],
 		'MY_EXPERIENCE' => $character_infos['experience'],
+		'MY_STRENGTH' => character_attributes()['strength'],
+		'MY_SENSORIALITY' => character_attributes()['sensoriality'],
+		'MY_STEALTH' => character_attributes()['stealth'],
+		'MY_SWIFTNESS' => character_attributes()['swiftness'],
+		'MY_NINJUTSU' => character_attributes()['ninjutsu'],
+		'MY_TAIJUTSU' => character_attributes()['taijutsu'],
+		'MY_GENJUTSU' => character_attributes()['genjutsu'],
+		'ATTRIBUTES_TO_USE' => character_informations()['attributes_to_use'],
 		'IS_KIRI' => my_group($db, KIRIGAKURE_ID, $user->data['user_id']),
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
