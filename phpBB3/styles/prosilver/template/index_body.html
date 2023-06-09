@@ -12,18 +12,84 @@
 
 {% INCLUDEJS 'JnM.js' %}
 
-Niveau : {MY_LEVEL} <br />
-Expérience : {MY_EXPERIENCE}<br />
-Points d'attributs à dépenser : <span id="my_attributes_to_use">{ATTRIBUTES_TO_USE}</span><br />
-<form id="level_attributes" method="post" action="{{ U_ACTION }}" data-ajax="attributes_callback" data-refresh="true">
-Physique : <span id="my_strength">{MY_STRENGTH}</span> <input name="my_strength_button" class="my_attributes" id="my_strength_button" type="submit" value="Dépenser"><br />
-Sensorialité : <span id="my_sensoriality">{MY_SENSORIALITY}</span><input name="my_sensoriality_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
-Furtivité : <span id ="my_stealth">{MY_STEALTH}</span><input name="my_stealth_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
-Agilité : <span id="my_swiftness">{MY_SWIFTNESS}</span><input name="my_swiftness_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
-Ninjutsu : <span id="my_ninjutsu">{MY_NINJUTSU}</span><input name="my_ninjutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
-Taijutsu : <span id="my_taijutsu">{MY_TAIJUTSU}</span><input name="my_taijutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><br />
-Genjutsu : <span id="my_genjutsu">{MY_GENJUTSU}</span><input name="my_genjutsu_button" class="my_attributes_button" type="submit" value="Dépenser">
-</form>
+<div id="user_menu">
+	<div id="firstCUser">
+		<img src="./download/file.php?avatar={MY_AVATAR}" id="my_avatar">
+		<div id="first_infos_col">
+			<div>
+				<div id="my_username">{USERNAME}</div>
+				<div id="my_level">Niveau {MY_LEVEL}</div>
+				<div id="my_experience">Expérience</div>
+				<progress id="my_progress" value="{MY_EXPERIENCE}" max="{EXP_BAR}" title="{MY_EXPERIENCE}/{EXP_BAR}"></progress>
+				<div id="my_social">0 points de social</div>
+				<div id="my_fight">0 points de combat</div> 
+			</div>
+		</div>
+		<div id="second_infos_col">
+			<!-- IF !FIRST_ELEMENT -->
+			<form id="first_element_form" method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="first_element_callback" data-refresh="true">
+				<div>Sélectionnez une affinité élémentaire :</div>
+				<select id="first_element_select" name="felement">
+					<option value="Katon">Katon</option>
+					<option value="Fûton">Fûton</option>
+					<option value="Raiton">Raiton</option>
+					<option value="Doton">Doton</option>
+					<option value="Suiton">Suiton</option>
+				</select>
+				<input name="my_first_element_button" class="my_first_element_button" type="submit" value="Valider">
+			</form>
+			<!-- ELSE -->
+			<div class="my_elements">Première affinité : {FIRST_ELEMENT}</div>
+			<!-- ENDIF -->
+		</div>
+	</div>
+	<div id="info_attributes_use">Points d'attributs à dépenser : <span id="my_attributes_to_use">{ATTRIBUTES_TO_USE}</span></div>
+	<form id="level_attributes" method="post" action="{{ U_ACTION }}" data-ajax="attributes_callback" data-refresh="true">
+		<div id="my_attributes_interface">
+			<div>
+				<div>Physique</div>
+				<div id="my_strength">{MY_STRENGTH}</div>
+				<!-- IF MY_STRENGTH < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_strength_button" class="my_attributes" id="my_strength_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Sensorialité</div>
+				<div id="my_sensoriality">{MY_SENSORIALITY}</div>
+				<!-- IF MY_SENSORIALITY < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_sensoriality_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Furtivité</div>
+				<div id ="my_stealth">{MY_STEALTH}</div>
+				<!-- IF MY_STEALTH < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_stealth_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Agilité</div>
+				<div id="my_swiftness">{MY_SWIFTNESS}</div>
+				<!-- IF MY_SWIFTNESS < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_swiftness_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Ninjutsu</div>
+				<div id="my_ninjutsu">{MY_NINJUTSU}</div>
+				<!-- IF MY_NINJUTSU < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_ninjutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Taijutsu</div>
+				<div id="my_taijutsu">{MY_TAIJUTSU}</div>
+				<!-- IF MY_TAIJUTSU < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_taijutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+
+			<div>
+				<div>Genjutsu</div>
+				<div id="my_genjutsu">{MY_GENJUTSU}</div>
+				<!-- IF MY_GENJUTSU < 8 && ATTRIBUTES_TO_USE > 0 --><input name="my_genjutsu_button" class="my_attributes_button" type="submit" value="Dépenser"><!-- ENDIF -->
+			</div>
+		</div>
+	</form>
+</div>
 
 
 <!-- INCLUDE forumlist_body.html -->

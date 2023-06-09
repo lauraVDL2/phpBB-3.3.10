@@ -43,4 +43,9 @@ jQuery(function($) {
 			if(r.attributes_to_use == 0) $('.my_attributes_button').hide();
 		}
 	});
+	phpbb.addAjaxCallback('first_element_callback', function(r) {
+		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#first_element_select').val() + " ?")) {
+			location.reload();
+		}
+	});
 });

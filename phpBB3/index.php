@@ -28,8 +28,21 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
 
+$json_response = new \phpbb\json_response;
+
 if($request->is_ajax()) {
-	$json_response = new \phpbb\json_response;
+	$my_first_element = utf8_normalize_nfc($request->variable('felement', '', true));
+	if($my_first_element != '') {
+		$sql = 'UPDATE '.USERS_TABLE.' SET user_first_element = "'.$my_first_element.'" WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+		return $json_response->send([
+			'first_element'	=> $my_first_element,
+			],
+		);
+	}
+}
+
+if($request->is_ajax()) {
 	$my_strength = $request->variable('my_strength_button', '');
 	$my_sensoriality = $request->variable('my_sensoriality_button', '');
 	$my_stealth = $request->variable('my_stealth_button', '');

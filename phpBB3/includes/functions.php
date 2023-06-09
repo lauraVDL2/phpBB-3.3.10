@@ -252,7 +252,8 @@ function last_hours($db, $timestamp) {
 function character_informations() {
 	global $db, $user;
 	$req = [
-		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total',
+		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total, ut.username AS username,'.
+		' ut.user_avatar AS avatar, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element',
 		'FROM' => [
 			USERS_TABLE => 'ut'
 		],
@@ -4020,6 +4021,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 {
 	global $db, $config, $template, $SID, $_SID, $_EXTRA_URL, $user, $auth, $phpEx, $phpbb_root_path;
 	global $phpbb_dispatcher, $request, $phpbb_container, $phpbb_admin_path;
+	global $levels;
 
 	if (defined('HEADER_INC'))
 	{
@@ -4252,6 +4254,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$nukenin = total_groups($db, NUKENIN_ID);
 	$total_final = max($iwa, $kiri, $suna, $nukenin);
 	$character_infos = character_informations();
+	$exp_bar = $levels[character_informations()['level']];
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
@@ -4273,6 +4276,10 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'MY_TAIJUTSU' => character_attributes()['taijutsu'],
 		'MY_GENJUTSU' => character_attributes()['genjutsu'],
 		'ATTRIBUTES_TO_USE' => character_informations()['attributes_to_use'],
+		'MY_AVATAR' => character_informations()['avatar'],
+		'USERNAME' => character_informations()['username'],
+		'EXP_BAR' => $exp_bar,
+		'FIRST_ELEMENT' => character_informations()['first_element'],
 		'IS_KIRI' => my_group($db, KIRIGAKURE_ID, $user->data['user_id']),
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
