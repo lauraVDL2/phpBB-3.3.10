@@ -1,0 +1,13 @@
+@import url("var_root.css");
+
+.second_ft_select, .third_ft_select, #new_ft_tech {
+    display: none;
+}
+
+#ft_user h1 {
+    color: black;
+}
+
+body {
+    height: 100%;
+}

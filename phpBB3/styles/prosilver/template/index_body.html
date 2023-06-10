@@ -12,6 +12,8 @@
 
 {% INCLUDEJS 'JnM.js' %}
 
+<!-- IF !IS_ANONYMOUS -->
+<a href="./fiche_technique.php?uid={USER_ID}">Fiche Technique</a>
 <div id="user_menu">
 	<div id="firstCUser">
 		<img src="./download/file.php?avatar={MY_AVATAR}" id="my_avatar">
@@ -90,7 +92,7 @@
 		</div>
 	</form>
 </div>
-
+<!-- ENDIF -->
 
 <!-- INCLUDE forumlist_body.html -->
 

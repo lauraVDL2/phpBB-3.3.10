@@ -19,6 +19,8 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//error_reporting(E_ERROR | E_PARSE);
+
 const IWAGAKURE_ID = 8;
 const KIRIGAKURE_ID = 9;
 const SUNAGAKURE_ID = 10;
@@ -303,7 +305,8 @@ function total_groups($db, $group_id) {
  * Check the group of the connected user
  * @return string
  */
-function my_group($db, $group_id, $user_id) {
+function my_group($group_id) {
+	global $user, $db;
 	$req = [
 		'SELECT' => 'g.group_name AS my_group',
 		'FROM' => [
@@ -319,7 +322,7 @@ function my_group($db, $group_id, $user_id) {
 				'ON' => 'gt.user_id = ut.user_id',
 			]
 		],
-		'WHERE' => 'gt.group_id = '.$group_id.' AND ut.user_id = '.$user_id,
+		'WHERE' => 'gt.group_id = '.$group_id.' AND ut.user_id = '.$user->data['user_id'],
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
@@ -4266,6 +4269,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'LAST_HOURS_USERS' => last_hours($db, 345600),
 		'LAST_USER_AVATAR' => last_user($db)['avatar'],
 		'LAST_USER_NAME' => last_user($db)['username'],
+		'USER_ID' => $user->data['user_id'],
 		'MY_LEVEL' => $character_infos['level'],
 		'MY_EXPERIENCE' => $character_infos['experience'],
 		'MY_STRENGTH' => character_attributes()['strength'],
@@ -4280,7 +4284,8 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'USERNAME' => character_informations()['username'],
 		'EXP_BAR' => $exp_bar,
 		'FIRST_ELEMENT' => character_informations()['first_element'],
-		'IS_KIRI' => my_group($db, KIRIGAKURE_ID, $user->data['user_id']),
+		'IS_ANONYMOUS' => my_group(ANONYMOUS),
+		'IS_KIRI' => my_group(KIRIGAKURE_ID),
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
 		'PAGE_TITLE'					=> $page_title,

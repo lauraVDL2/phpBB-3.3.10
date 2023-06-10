@@ -15,3 +15,5 @@ $acm_type = 'phpbb\\cache\\driver\\file';
 @define('PHPBB_ENVIRONMENT', 'production');
 // @define('DEBUG_CONTAINER', true);
 @define('ATTRIBUTES_TABLE', $table_prefix.'attributes');
+@define('GAINED_TECHNIQUES_TABLE', $table_prefix.'gained_techniques');
+@define('USER_TECHNIQUES_TABLE', $table_prefix.'user_techniques');

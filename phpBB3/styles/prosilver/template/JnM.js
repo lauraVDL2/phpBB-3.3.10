@@ -44,7 +44,7 @@ jQuery(function($) {
 		}
 	});
 	phpbb.addAjaxCallback('first_element_callback', function(r) {
-		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#first_element_select').val() + " ?")) {
+		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#first_element_select').val() + " ? Vous ne pourrez pas le changer !")) {
 			location.reload();
 		}
 	});
