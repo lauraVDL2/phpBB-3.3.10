@@ -4,10 +4,171 @@
     display: none;
 }
 
+#ft_name {
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: auto;
+    font-family: var(--main_police_1);
+    color: var(--main_color_3);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+#ft_user select {
+    border: 1px dotted var(--main_color_2);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.ft_kiri {
+    background-color: var(--kiri);
+}
+
+#ft_name, #ft_user {
+    width: 70%;
+}
+
+#ft_user {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin: auto;
+    margin-bottom: 15px;
+    background-color: var(--main_color_1);
+    padding: 15px;
+    box-sizing: border-box;
+}
+
 #ft_user h1 {
-    color: black;
+    color: var(--main_color_2);
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.ft_ninjutsu {
+    background-color: var(--main_color_3);
+    width: 80%;
+    margin: 10px auto;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+.ft_ninjutsu .ft_technique_information {
+    background-color: #4570cc;
+}
+
+.ft_genjutsu .ft_technique_information {
+    background-color: #b256af;
+}
+
+.ft_taijutsu .ft_technique_information {
+    background-color: #b55454;
+}
+
+.ft_technique_description {
+    color: var(--main_color_2);
+}
+
+.ft_ninjutsu .ft_technique_information, .ft_taijutsu .ft_technique_information, .ft_genjutsu .ft_technique_information {
+    padding: 5px;
+    color: var(--main_color_1);
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.modify_ft_desc, #new_ft_technique {
+    width: 60%;
+    resize: none;
+    background-color: var(--main_color_3);
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: var(--main_color_2);
+    padding: 5px;
+    border: 1px dotted var(--main_color_2);
+}
+
+.modify_ft_name, #new_ft_name {
+    border: none;
+    background-color: var(--main_color_3);
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: var(--main_color_2);
+    padding: 5px;
+    border: 1px dotted var(--main_color_2);
+}
+
+.modify_ft_lb, .create_ft_lb {
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 60%;
+    color: var(--secondary_color_2);
+    font-size: 1rem;
+    border-bottom: 1px dotted var(--secondary_color_2);
+}
+
+.modify_ft_button, .validate_ft_button, .ft_delete_button, #create_technique {
+    font-size: 1rem;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#create_technique {
+    margin: auto;
+    display: block;
+}
+
+.modify_ft_button {
+    color: var(--main_color_3);
+    background-color: var(--main_color_2);
+}
+
+.ft_delete_button {
+    color: var(--main_color_3);
+    background-color: darkred;
+}
+
+.validate_ft_button, #create_technique {
+    color: var(--main_color_3);
+    background-color: green;
+}
+
+.modify_ft_infos {
+    text-align: center;
+    color: var(--main_color_2);
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 10px;
+}
+
+.md_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#ft_stat {
+    background-color: var(--main_color_2);
+    color: var(--main_color_1);
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
 }
 
 body {
-    height: 100%;
+    min-height: 100%;
 }

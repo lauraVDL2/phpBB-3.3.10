@@ -25,6 +25,7 @@ const IWAGAKURE_ID = 8;
 const KIRIGAKURE_ID = 9;
 const SUNAGAKURE_ID = 10;
 const NUKENIN_ID = 11;
+const ADMINISTRATOR_ID = 5;
 const MAX_LEVEL = 50;
 
 $levels = [

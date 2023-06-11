@@ -4,70 +4,123 @@
     <link href="./styles/prosilver/theme/stylesheet.css" rel="stylesheet">
 </head>
 <body>
-<fieldset id="ft_user">
-    <legend>Fiche technique de {FT_USERNAME}</legend>
-    <div>Vous pouvez créer {FT_TECHNIQUES_TO_USE} techniques dont : {FT_D_TECHNIQUES} D | {FT_C_TECHNIQUES} C | {FT_B_TECHNIQUES} B | {FT_A_TECHNIQUES} A | {FT_S_TECHNIQUES} S</div>
-    <!-- IF FT_TECHNIQUES_TO_USE > 0 -->
-    <form id="new_technique_form" method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="new_technique_callback" data-refresh="true">
+<div id="ft_name" class="<!-- IF FT_IS_KIRI -->ft_kiri<!-- ELSEIF FT_IS_IWA -->ft_iwa<!-- ELSEIF FT_IS_SUNA -->ft_suna<!-- ELSE -->ft_nuke<!-- ENDIF -->">Fiche technique de {FT_USERNAME}</div>
+<div id="ft_user">
+        <h1>Techniques de Ninjutsu</h1>
+        <!-- BEGIN Ninjutsu_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="validated_ft_id" value="{Ninjutsu_loop.FT_TECHNIQUE_ID}">
+            <input type="hidden" name="validated_ft_rank" value="{Ninjutsu.loop.FT_TECHNIQUE_RANK}">
+            <div class="ft_ninjutsu">
+                <div class="ft_technique_information">{Ninjutsu_loop.FT_TECHNIQUE_NAME} - {Ninjutsu_loop.FT_TECHNIQUE_SUBTYPE} - Rang {Ninjutsu_loop.FT_TECHNIQUE_RANK}</div>
+                <div class="ft_technique_description">{Ninjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+            </div>
+            <div class="md_buttons">
+                <!-- IF FT_IS_ADMIN --><input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique"><!-- ENDIF -->
+            </div>
+        </form>
+        <!-- END Ninjutsu_loop -->
+        <h1>Techniques de Taijutsu</h1>
+        <!-- BEGIN Taijutsu_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="validated_ft_id" value="{Taijutsu_loop.FT_TECHNIQUE_ID}">
+            <input type="hidden" name="validated_ft_rank" value="{Taijutsu.loop.FT_TECHNIQUE_RANK}">
+            <div class="ft_taijutsu">
+                <div class="ft_technique_information">{Taijutsu_loop.FT_TECHNIQUE_NAME} - {Taijutsu_loop.FT_TECHNIQUE_SUBTYPE} - Rang {Taijutsu_loop.FT_TECHNIQUE_RANK}</div>
+                <div class="ft_technique_description">{Taijutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+            </div>
+        </form>
+        <!-- END Taijutsu_loop -->
+        <h1>Techniques de Genjutsu</h1>
+        <!-- BEGIN Genjutsu_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="validated_ft_id" value="{Genjutsu_loop.FT_TECHNIQUE_ID}">
+            <input type="hidden" name="validated_ft_rank" value="{Genjutsu.loop.FT_TECHNIQUE_RANK}">
+            <div class="ft_genjutsu">
+                <div class="ft_technique_information">{Genjutsu_loop.FT_TECHNIQUE_NAME} - {Genjutsu_loop.FT_TECHNIQUE_SUBTYPE} - Rang {Genjutsu_loop.FT_TECHNIQUE_RANK}</div>
+                <div class="ft_technique_description">{Genjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+            </div>
+        </form>
+        <!-- END Genjutsu_loop -->
+        <h1>Techniques en cours de validation</h1>
+        <!-- BEGIN to_validate_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="modify_ft_id" value="{to_validate_loop.FT_TECHNIQUE_ID}">
+            <div class="modify_ft_lb">Nom de la technique</div>
+            <div class="modify_ft_infos">{to_validate_loop.FT_TECHNIQUE_SUBTYPE} - Rang {to_validate_loop.FT_TECHNIQUE_RANK}</div>
+            <input type="text" value="{to_validate_loop.FT_TECHNIQUE_NAME}" class="modify_ft_name" name="modify_ft_name">
+            <div class="modify_ft_lb">Description</div>
+            <textarea class="modify_ft_desc" name="modify_ft_description">{to_validate_loop.FT_TECHNIQUE_DESCRIPTION}</textarea>
+            <div class="md_buttons">
+                <input class="modify_ft_button" type="submit" name="modify_ft_button" value="Enregistrer les modifications">
+                <!-- IF FT_IS_ADMIN --><input class="validate_ft_button" type="submit" value="Valider la technique" name="ft_validate_button"><!-- ENDIF -->
+            </div>
+        </form>
+        <!-- END to_validate_loop -->
         <h1>Création de technique</h1>
-        <select id="first_ft_select" name="first_ft_select">
-            <option value=""></option>
-            <option value="Ninjutsu">Ninjutsu</option>
-            <option value="Taijutsu">Taijutsu</option>
-            <option value="Genjutsu">Genjutsu</option>
-        </select>
-        <select id="technique_nj_type" class="second_ft_select" name="technique_nj_type">
-            <option value=""></option>
-            <!-- IF FT_FIRST_ELEMENT == "Katon" || FT_SECOND_ELEMENT == "Katon" || FT_THIRD_ELEMENT == "Katon"--><option value="Katon">Katon</option><!-- ENDIF -->
-            <!-- IF FT_FIRST_ELEMENT == "Fûton" || FT_SECOND_ELEMENT == "Fûton" || FT_THIRD_ELEMENT == "Fûton"--><option value="Fûton">Fûton</option><!-- ENDIF -->
-            <!-- IF FT_FIRST_ELEMENT == "Raiton" || FT_SECOND_ELEMENT == "Raiton" || FT_THIRD_ELEMENT == "Raiton"--><option value="Raiton">Raiton</option><!-- ENDIF -->
-            <!-- IF FT_FIRST_ELEMENT == "Doton" || FT_SECOND_ELEMENT == "Doton" || FT_THIRD_ELEMENT == "Doton"--><option value="Doton">Doton</option><!-- ENDIF -->
-            <!-- IF FT_FIRST_ELEMENT == "Suiton" || FT_SECOND_ELEMENT == "Suiton" || FT_THIRD_ELEMENT == "Suiton"--><option value="Suiton">Suiton</option><!-- ENDIF -->
-        </select>
-        <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
-            <option value=""></option>
-            <option value="Gôken">Gôken</option>
-            <option value="Jûken">Jûken</option>
-            <option value="Bukijutsu">Bukijutsu</option>
-        </select>
-        <select id="technique_gj_type" class="second_ft_select" name="technique_gj_type">
-            <option value=""></option>
-            <option value="Concentration">Concentration</option>
-            <option value="Simple">Simple</option>
-            <option value="Continue">Continue</option>
-        </select>
-        <select id="technique_nj_rank" class="third_ft_select" name="technique_nj_rank">
-            <option value=""></option>
-            <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
-            <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
-            <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
-            <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
-            <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
-        </select>
-        <select id="technique_tj_rank" class="third_ft_select" name="technique_tj_rank">
-            <option value=""></option>
-            <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
-            <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
-            <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
-            <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
-            <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
-        </select>
-        <select id="technique_gj_rank" class="third_ft_select" name="technique_gj_rank">
-            <option value=""></option>
-            <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
-            <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
-            <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
-            <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
-            <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
-        </select>
-        <div id="new_ft_tech" name="new_ft_tech">
-            <input type="text" id="new_ft_name" name="new_ft_name">
-            <textarea id="new_ft_technique" name="new_ft_technique">Test</textarea>
-            <input type="submit" id="create_technique" value="Créer la technique">
-        </div>
-    </form>
+        <!-- IF FT_TECHNIQUES_TO_USE > 0 -->
+        <div id="ft_stat">Vous pouvez créer {FT_TECHNIQUES_TO_USE} techniques dont : {FT_D_TECHNIQUES} D | {FT_C_TECHNIQUES} C | {FT_B_TECHNIQUES} B | {FT_A_TECHNIQUES} A | {FT_S_TECHNIQUES} S</div>
+        <form id="new_technique_form" method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="new_technique_callback" data-refresh="true">
+            <select id="first_ft_select" name="first_ft_select">
+                <option value=""></option>
+                <option value="Ninjutsu">Ninjutsu</option>
+                <option value="Taijutsu">Taijutsu</option>
+                <option value="Genjutsu">Genjutsu</option>
+            </select>
+            <select id="technique_nj_type" class="second_ft_select" name="technique_nj_type">
+                <option value=""></option>
+                <!-- IF FT_FIRST_ELEMENT == "Katon" || FT_SECOND_ELEMENT == "Katon" || FT_THIRD_ELEMENT == "Katon"--><option value="Katon">Katon</option><!-- ENDIF -->
+                <!-- IF FT_FIRST_ELEMENT == "Fûton" || FT_SECOND_ELEMENT == "Fûton" || FT_THIRD_ELEMENT == "Fûton"--><option value="Fûton">Fûton</option><!-- ENDIF -->
+                <!-- IF FT_FIRST_ELEMENT == "Raiton" || FT_SECOND_ELEMENT == "Raiton" || FT_THIRD_ELEMENT == "Raiton"--><option value="Raiton">Raiton</option><!-- ENDIF -->
+                <!-- IF FT_FIRST_ELEMENT == "Doton" || FT_SECOND_ELEMENT == "Doton" || FT_THIRD_ELEMENT == "Doton"--><option value="Doton">Doton</option><!-- ENDIF -->
+                <!-- IF FT_FIRST_ELEMENT == "Suiton" || FT_SECOND_ELEMENT == "Suiton" || FT_THIRD_ELEMENT == "Suiton"--><option value="Suiton">Suiton</option><!-- ENDIF -->
+            </select>
+            <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
+                <option value=""></option>
+                <option value="Gôken">Gôken</option>
+                <option value="Jûken">Jûken</option>
+                <option value="Bukijutsu">Bukijutsu</option>
+            </select>
+            <select id="technique_gj_type" class="second_ft_select" name="technique_gj_type">
+                <option value=""></option>
+                <option value="Concentration">Concentration</option>
+                <option value="Simple">Simple</option>
+                <option value="Continue">Continue</option>
+            </select>
+            <select id="technique_nj_rank" class="third_ft_select" name="technique_nj_rank">
+                <option value=""></option>
+                <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
+                <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
+                <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
+                <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
+                <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
+            </select>
+            <select id="technique_tj_rank" class="third_ft_select" name="technique_tj_rank">
+                <option value=""></option>
+                <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
+                <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
+                <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
+                <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
+                <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
+            </select>
+            <select id="technique_gj_rank" class="third_ft_select" name="technique_gj_rank">
+                <option value=""></option>
+                <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
+                <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
+                <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
+                <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
+                <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
+            </select>
+            <div id="new_ft_tech" name="new_ft_tech">
+                <div class="create_ft_lb">Nom de la technique</div>
+                <input type="text" id="new_ft_name" name="new_ft_name">
+                <div class="create_ft_lb">Description de la technique</div>
+                <textarea id="new_ft_technique" name="new_ft_technique"></textarea>
+                <input type="submit" id="create_technique" value="Créer la technique">
+            </div>
+        </form>
     <!-- ENDIF -->
-</fieldset>
+</div>
 
 <!-- INCLUDE overall_footer.html -->
 </body>

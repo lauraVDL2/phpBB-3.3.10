@@ -95,12 +95,33 @@ jQuery(function($) {
         }
     });
 
+    //CREATE TECHNIQUE
     $('#new_ft_technique').val($('#new_ft_technique').html());
     phpbb.addAjaxCallback('new_technique_callback', function(r) {
-        if(window.confirm("Voulez-vous créer la technique " + $('#new_ft_name').val() + " ? Il vous faudra ensuite contacter un administrateur pour la valider !")) {
+        if(window.confirm("La technique " + $('#new_ft_name').val() + " va être créée, il vous faudra ensuite contacter un administrateur pour la valider !")) {
             if(r.is_ok) {
-                location.reload();
+                window.location.reload(true);
             }
          }
+    });
+
+    phpbb.addAjaxCallback('modify_ft_technique_callback', function(re) {
+        //MODIFY TECHNIQUE TO BE VALIDATED
+        if(re.my_action === "MODIFY") {
+            window.confirm("Votre technique a bien été mise à jour !");
+        }
+        //ADMINISTRATOR : VALIDATE TECHNIQUE
+        else if(re.my_action === "VALIDATE") {
+            window.confirm("La technique a été validée !");
+            window.location.reload(true);
+        }
+    });
+
+    phpbb.addAjaxCallback('delete_ft_technique_callback', function(re) {
+        //ADMINISTRATOR : DELETE VALIDATED TECHNIQUE
+        if(re.my_action === "DELETE_TECHNIQUE") {
+            window.confirm("La technique a été supprimée !");
+            window.location.reload(true);
+        }
     });
 })
