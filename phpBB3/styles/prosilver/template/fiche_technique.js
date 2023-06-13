@@ -3,6 +3,8 @@ jQuery(function($) {
     let second_selects = $('.second_ft_select');
     let third_selects = $('.third_ft_select');
     let ft_tech = $('#new_ft_tech');
+    let second_type_select = $('.second_type_select');
+    second_type_select.val("");
     first_select.val("");
     second_selects.val("");
     third_selects.val("");
@@ -13,6 +15,8 @@ jQuery(function($) {
             second_selects.hide();
             third_selects.hide();
             ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
             $('#technique_nj_type').show();
         }
         else if(first_select.val() === "Genjutsu") {
@@ -21,6 +25,8 @@ jQuery(function($) {
             second_selects.hide();
             third_selects.hide();
             ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
             $('#technique_gj_type').show();
         }
         else if(first_select.val() === "Taijutsu") {
@@ -29,6 +35,8 @@ jQuery(function($) {
             second_selects.hide();
             third_selects.hide();
             ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
             $('#technique_tj_type').show();
         }
         else {
@@ -37,17 +45,35 @@ jQuery(function($) {
             second_selects.hide();
             third_selects.hide();
             ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
         }
     });
     $('#technique_nj_type').on("change", () => {
-        if($('#technique_nj_type').val()) {
+        let nj_type = $('#technique_nj_type').val();
+        if(nj_type === "Irou Jutsu") {
+            second_type_select.val("");
+            second_type_select.hide();
+            $('#irou_jutsu_ft_type').show();
+            ft_tech.hide();
+        }
+        else if(nj_type === "Fuinjutsu") {
+            second_type_select.val("");
+            second_type_select.hide();
+            $('#fuinjutsu_ft_type').show();
+            ft_tech.hide();
+        }
+        else if(nj_type) {
             ft_tech.hide();
             $('#technique_nj_rank').show();
+            second_type_select.val("");
+            second_type_select.hide();
         }
         else {
             ft_tech.hide();
             third_selects.hide();
         }
+        third_selects.val("");
     });
     $('#technique_gj_type').on("change", () => {
         if($('#technique_gj_type').val()) {
@@ -59,9 +85,18 @@ jQuery(function($) {
             ft_technique.hide();
             third_selects.hide();
         }
+        third_selects.val("");
     });
     $('#technique_tj_type').on("change", () => {
-        if($('#technique_tj_type').val()) {
+        if($('#technique_tj_type').val() === "Bukijutsu") {
+            second_type_select.val("");
+            second_type_select.hide();
+            $('#buki_ft_type').show();
+            ft_tech.hide();
+        }
+        else if($('#technique_tj_type').val()) {
+            second_type_select.val("");
+            second_type_select.hide();
             ft_tech.hide();
             $('#technique_tj_rank').show();
         }
@@ -69,6 +104,7 @@ jQuery(function($) {
             ft_tech.hide();
             third_selects.hide();
         }
+        third_selects.val("");
     });
     $('#technique_nj_rank').on("change", () => {
         if($('#technique_nj_rank').val()) {
@@ -93,6 +129,42 @@ jQuery(function($) {
         else {
             ft_tech.hide();
         }
+    });
+
+
+    //Sous catégories
+    $('#buki_ft_type').on("change", () => {
+        if($('#buki_ft_type').val()) {
+            ft_tech.hide();
+            $('#technique_tj_rank').show();
+        }
+        else {
+            ft_tech.hide();
+            third_selects.hide();
+        }
+        third_selects.val("");
+    });
+    $('#irou_jutsu_ft_type').on("change", () => {
+        if($('#irou_jutsu_ft_type').val()) {
+            ft_tech.hide();
+            $('#technique_nj_rank').show();
+        }
+        else {
+            ft_tech.hide();
+            third_selects.hide();
+        }
+        third_selects.val("");
+    });
+    $('#fuinjutsu_ft_type').on("change", () => {
+        if($('#fuinjutsu_ft_type').val()) {
+            ft_tech.hide();
+            $('#technique_nj_rank').show();
+        }
+        else {
+            ft_tech.hide();
+            third_selects.hide();
+        }
+        third_selects.val("");
     });
 
     //CREATE TECHNIQUE
@@ -121,6 +193,11 @@ jQuery(function($) {
         //ADMINISTRATOR : DELETE VALIDATED TECHNIQUE
         if(re.my_action === "DELETE_TECHNIQUE") {
             window.confirm("La technique a été supprimée !");
+            window.location.reload(true);
+        }
+        //ADMINISTRATOR : CHANGE THE TECHNIQUE TO MODIFY MODE
+        else if(re.my_action === "MODIFY_TECHNIQUE") {
+            window.confirm("La technique repasse en modification !");
             window.location.reload(true);
         }
     });
