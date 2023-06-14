@@ -295,7 +295,14 @@ function user_add($user_row, $cp_data = false, $notifications_data = null)
 
 	$user_id = $db->sql_nextid();
 
-	$sql = 'INSERT INTO '.ATTRIBUTES_TABLE.' SET user_id = '.$user_id;
+	$sql = 'INSERT INTO '.ATTRIBUTES_TABLE.' '.$db->sql_build_array('INSERT', [
+		'user_id' => $user_id,
+	]);
+	$db->sql_query($sql);
+
+	$sql = 'INSERT INTO '.GAINED_TECHNIQUES_TABLE.' '.$db->sql_build_array('INSERT', [
+		'user_id' => $user_id,
+	]);
 	$db->sql_query($sql);
 
 	// Insert Custom Profile Fields

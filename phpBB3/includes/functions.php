@@ -133,15 +133,21 @@ $attributes = [
 	50 => 2
 ];
 
-function level_up() {
-	global $levels, $user, $db, $attributes;
+$d_techniques_levels = [5, 10];
+$c_techniques_levels = [15, 20];
+$b_techniques_levels = [25, 30];
+$a_techniques_levels = [35, 40];
+$s_techniques_levels = [45, 50];
+
+function level_up($user_id) {
+	global $levels, $db, $attributes;
 	do {
 		$req = [
 			'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
 			'FROM' => [
 				USERS_TABLE => 'ut',
 			],
-			'WHERE' => 'ut.user_id = '.$user->data['user_id']
+			'WHERE' => 'ut.user_id = '.$user_id
 		];
 		$sql = $db->sql_build_query('SELECT', $req);
 		$query = $db->sql_query($sql);
@@ -150,26 +156,54 @@ function level_up() {
 		$current_exp = $column['experience'];
 		//Time to level up
 		if($current_exp >= $exp_bar) {
-			$sql = 'UPDATE '.USERS_TABLE.' SET user_level = user_level + 1 WHERE user_id = '.$user->data['user_id'];
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_level = user_level + 1 WHERE user_id = '.$user_id;
 			$db->sql_query($sql);
-			$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = 0 WHERE user_id = '.$user->data['user_id'];
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = 0 WHERE user_id = '.$user_id;
 			$db->sql_query($sql);
 			$difference = $current_exp - $exp_bar;
 			//If you gain more than 1 exp point in the leveling process, the bar will adjust
 			if($difference > 0) {
-				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$difference.' WHERE user_id = '.$user->data['user_id'];
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$difference.' WHERE user_id = '.$user_id;
 				$db->sql_query($sql);
 			}
 			$current_level = $column['level'] + 1;
 			$current_exp_bar = $levels[$current_level];
 			$attributes_to_gain = $attributes[$current_level];
+			gain_technique($current_level, $user_id);
 			//Attributes gain case
 			if($attributes_to_gain > 0) {
-				$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use + '.$attributes_to_gain.', user_attributes_total = user_attributes_total + '.$attributes_to_gain.' WHERE user_id = '.$user->data['user_id'];
+				$sql = 'UPDATE '.USERS_TABLE.' SET user_attributes_to_use = user_attributes_to_use + '.$attributes_to_gain.', user_attributes_total = user_attributes_total + '.$attributes_to_gain.' WHERE user_id = '.$user_id;
 				$db->sql_query($sql);
 			}
 		}
 	} while ($difference >= $current_exp_bar && $current_level < 50); //Handle the case where your experience is enough to go through multiple levels
+}
+
+/**
+ * When you gain a technique while leveling up
+ */
+function gain_technique($current_level, $user_id) {
+	global $d_techniques_levels, $c_techniques_levels, $b_techniques_levels, $a_techniques_levels, $s_techniques_levels, $db;
+	if(in_array($current_level, $d_techniques_levels)) {
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET d_techniques = d_techniques + 1 WHERE user_id = '.$user_id;
+		$db->sql_query($sql);
+	}
+	else if(in_array($current_level, $c_techniques_levels)) {
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET c_techniques = c_techniques + 1 WHERE user_id = '.$user_id;
+		$db->sql_query($sql);
+	}
+	else if(in_array($current_level, $b_techniques_levels)) {
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET b_techniques = b_techniques + 1 WHERE user_id = '.$user_id;
+		$db->sql_query($sql);
+	}
+	else if(in_array($current_level, $a_techniques_levels)) {
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET a_techniques = a_techniques + 1 WHERE user_id = '.$user_id;
+		$db->sql_query($sql);
+	}
+	else if(in_array($current_level, $s_techniques_levels)) {
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET s_techniques = s_techniques + 1 WHERE user_id = '.$user_id;
+		$db->sql_query($sql);
+	}
 }
 
 // Common global functions
