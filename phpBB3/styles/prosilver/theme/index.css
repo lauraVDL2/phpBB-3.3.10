@@ -22,3 +22,18 @@ a:hover {
     text-decoration: none !important;
     color: var(--main_color_3);
 }
+
+[data-title]:hover:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+[data-title]:after {
+    content: attr(data-title);
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--main_color_2);
+    color: var(--main_color_1);
+    padding: 5px;
+    border-radius: 5px;
+}

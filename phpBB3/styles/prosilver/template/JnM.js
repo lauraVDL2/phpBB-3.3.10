@@ -45,7 +45,17 @@ jQuery(function($) {
 	});
 	phpbb.addAjaxCallback('first_element_callback', function(r) {
 		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#first_element_select').val() + " ? Vous ne pourrez pas le changer !")) {
-			location.reload();
+			window.location.reload(true);
+		}
+	});
+	phpbb.addAjaxCallback('second_element_callback', function(r) {
+		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#second_element_select').val() + " ? Vous ne pourrez pas le changer !")) {
+			window.location.reload(true);
+		}
+	});
+	phpbb.addAjaxCallback('third_element_callback', function(r) {
+		if(window.confirm("Êtes-vous sûr de choisir l\'élément " + $('#third_element_select').val() + " ? Vous ne pourrez pas le changer !")) {
+			window.location.reload(true);
 		}
 	});
 });

@@ -125,21 +125,8 @@
     text-align: center;
 }
 
-#my_social {
-    background-color: green;
-    border-radius: 15px;
-    padding: 5px;
-    text-align: center;
-    color: var(--secondary_color);
-    font-weight: bold;
-    font-size: 0.8rem;
-    font-family: var(--main_police_2);
-    margin: auto;
-    margin: 5px;
-}
-
-#my_fight {
-    background-color: darkred;
+#my_talent {
+    background-color: purple;
     border-radius: 15px;
     padding: 5px;
     text-align: center;

@@ -91,8 +91,9 @@
                     <!-- IF FT_FIRST_ELEMENT == "Raiton" || FT_SECOND_ELEMENT == "Raiton" || FT_THIRD_ELEMENT == "Raiton"--><option value="Raiton">Raiton</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELEMENT == "Doton" || FT_SECOND_ELEMENT == "Doton" || FT_THIRD_ELEMENT == "Doton"--><option value="Doton">Doton</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELEMENT == "Suiton" || FT_SECOND_ELEMENT == "Suiton" || FT_THIRD_ELEMENT == "Suiton"--><option value="Suiton">Suiton</option><!-- ENDIF -->
-                    <option value="Irou Jutsu">Irou Jutsu</option>
-                    <option value="Fuinjutsu">Fuinjutsu</option>
+                    <!-- IF FT_IROU_HEAL || FT_IROU_POISON --><option value="Irou Jutsu">Irou Jutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FUIN_SEAL --><option value="Fuinjutsu">Fuinjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_KUCHIYOSE --><option>Kuchiyose</option><!-- ENDIF -->
                 </select>
                 <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
                     <option value=""></option>
@@ -116,9 +117,8 @@
                 </select>
                 <select id="irou_jutsu_ft_type" class="second_type_select" name="irou_jutsu_ft_type">
                     <option value=""></option>
-                    <option value="Soins">Soins</option>
-                    <option value="Poisons">Poisons</option>
-                    <option value="Anatomie">Anatomie</option>
+                    <!-- IF FT_IROU_HEAL --><option value="Soins">Soins</option><!-- ENDIF -->
+                    <!-- IF FT_IROU_POISON --><option value="Poisons">Poisons</option><!-- ENDIF -->
                 </select>
                 <select id="fuinjutsu_ft_type" class="second_type_select" name="fuinjutsu_ft_type">
                     <option value=""></option>

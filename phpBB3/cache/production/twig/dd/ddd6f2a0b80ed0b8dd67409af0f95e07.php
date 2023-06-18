@@ -327,9 +327,22 @@ class __TwigTemplate_be9ea3027a22d8ec2da02b0f66e2321e extends \Twig\Template
                 echo "<option value=\"Suiton\">Suiton</option>";
             }
             // line 94
-            echo "                    <option value=\"Irou Jutsu\">Irou Jutsu</option>
-                    <option value=\"Fuinjutsu\">Fuinjutsu</option>
-                </select>
+            echo "                    ";
+            if ((($context["FT_IROU_HEAL"] ?? null) || ($context["FT_IROU_POISON"] ?? null))) {
+                echo "<option value=\"Irou Jutsu\">Irou Jutsu</option>";
+            }
+            // line 95
+            echo "                    ";
+            if (($context["FT_FUIN_SEAL"] ?? null)) {
+                echo "<option value=\"Fuinjutsu\">Fuinjutsu</option>";
+            }
+            // line 96
+            echo "                    ";
+            if (($context["FT_KUCHIYOSE"] ?? null)) {
+                echo "<option>Kuchiyose</option>";
+            }
+            // line 97
+            echo "                </select>
                 <select id=\"technique_tj_type\" class=\"second_ft_select\" name=\"technique_tj_type\">
                     <option value=\"\"></option>
                     <option value=\"Gôken\">Gôken</option>
@@ -352,10 +365,18 @@ class __TwigTemplate_be9ea3027a22d8ec2da02b0f66e2321e extends \Twig\Template
                 </select>
                 <select id=\"irou_jutsu_ft_type\" class=\"second_type_select\" name=\"irou_jutsu_ft_type\">
                     <option value=\"\"></option>
-                    <option value=\"Soins\">Soins</option>
-                    <option value=\"Poisons\">Poisons</option>
-                    <option value=\"Anatomie\">Anatomie</option>
-                </select>
+                    ";
+            // line 120
+            if (($context["FT_IROU_HEAL"] ?? null)) {
+                echo "<option value=\"Soins\">Soins</option>";
+            }
+            // line 121
+            echo "                    ";
+            if (($context["FT_IROU_POISON"] ?? null)) {
+                echo "<option value=\"Poisons\">Poisons</option>";
+            }
+            // line 122
+            echo "                </select>
                 <select id=\"fuinjutsu_ft_type\" class=\"second_type_select\" name=\"fuinjutsu_ft_type\">
                     <option value=\"\"></option>
                     <option value=\"Barrières\">Barrières</option>
@@ -491,7 +512,7 @@ class __TwigTemplate_be9ea3027a22d8ec2da02b0f66e2321e extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  479 => 165,  467 => 164,  463 => 162,  450 => 151,  445 => 150,  440 => 149,  435 => 148,  430 => 147,  426 => 146,  421 => 143,  416 => 142,  411 => 141,  406 => 140,  401 => 139,  397 => 138,  392 => 135,  387 => 134,  382 => 133,  377 => 132,  372 => 131,  368 => 130,  330 => 94,  325 => 93,  320 => 92,  315 => 91,  310 => 90,  306 => 89,  294 => 80,  279 => 78,  276 => 77,  274 => 76,  271 => 75,  263 => 72,  259 => 71,  253 => 68,  248 => 66,  238 => 65,  233 => 63,  228 => 62,  224 => 61,  221 => 60,  213 => 57,  208 => 54,  206 => 53,  200 => 50,  188 => 49,  183 => 47,  179 => 46,  174 => 45,  170 => 44,  167 => 43,  159 => 40,  154 => 37,  152 => 36,  146 => 33,  134 => 32,  129 => 30,  125 => 29,  120 => 28,  116 => 27,  113 => 26,  105 => 23,  100 => 20,  98 => 19,  92 => 16,  79 => 15,  74 => 13,  70 => 12,  65 => 11,  61 => 10,  45 => 7,  37 => 1,);
+        return array (  500 => 165,  488 => 164,  484 => 162,  471 => 151,  466 => 150,  461 => 149,  456 => 148,  451 => 147,  447 => 146,  442 => 143,  437 => 142,  432 => 141,  427 => 140,  422 => 139,  418 => 138,  413 => 135,  408 => 134,  403 => 133,  398 => 132,  393 => 131,  389 => 130,  379 => 122,  374 => 121,  370 => 120,  345 => 97,  340 => 96,  335 => 95,  330 => 94,  325 => 93,  320 => 92,  315 => 91,  310 => 90,  306 => 89,  294 => 80,  279 => 78,  276 => 77,  274 => 76,  271 => 75,  263 => 72,  259 => 71,  253 => 68,  248 => 66,  238 => 65,  233 => 63,  228 => 62,  224 => 61,  221 => 60,  213 => 57,  208 => 54,  206 => 53,  200 => 50,  188 => 49,  183 => 47,  179 => 46,  174 => 45,  170 => 44,  167 => 43,  159 => 40,  154 => 37,  152 => 36,  146 => 33,  134 => 32,  129 => 30,  125 => 29,  120 => 28,  116 => 27,  113 => 26,  105 => 23,  100 => 20,  98 => 19,  92 => 16,  79 => 15,  74 => 13,  70 => 12,  65 => 11,  61 => 10,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()

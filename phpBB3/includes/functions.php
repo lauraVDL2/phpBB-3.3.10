@@ -290,9 +290,16 @@ function character_informations() {
 	global $db, $user;
 	$req = [
 		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total, ut.username AS username,'.
-		' ut.user_avatar AS avatar, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element',
+		' ut.user_avatar AS avatar, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.talent_points AS talent_points,'.
+		' gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element',
 		'FROM' => [
 			USERS_TABLE => 'ut'
+		],
+		'LEFT_JOIN' => [
+			[
+				'FROM' => [ GAINED_TECHNIQUES_TABLE => 'gtt' ],
+				'ON' => 'ut.user_id = gtt.user_id'
+			]
 		],
 		'WHERE' => 'ut.user_id = '.$user->data['user_id'],
 	];
@@ -4314,11 +4321,16 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'MY_NINJUTSU' => character_attributes()['ninjutsu'],
 		'MY_TAIJUTSU' => character_attributes()['taijutsu'],
 		'MY_GENJUTSU' => character_attributes()['genjutsu'],
-		'ATTRIBUTES_TO_USE' => character_informations()['attributes_to_use'],
-		'MY_AVATAR' => character_informations()['avatar'],
-		'USERNAME' => character_informations()['username'],
+		'ATTRIBUTES_TO_USE' => $character_infos['attributes_to_use'],
+		'MY_AVATAR' => $character_infos['avatar'],
+		'USERNAME' => $character_infos['username'],
 		'EXP_BAR' => $exp_bar,
-		'FIRST_ELEMENT' => character_informations()['first_element'],
+		'FIRST_ELEMENT' => $character_infos['first_element'],
+		'SECOND_ELEMENT' => $character_infos['second_element'],
+		'THIRD_ELEMENT' => $character_infos['third_element'],
+		'IS_SECOND_ELEMENT' => $character_infos['is_second_element'],
+		'IS_THIRD_ELEMENT' => $character_infos['is_third_element'],
+		'TALENT_POINTS' => $character_infos['talent_points'],
 		'IS_ANONYMOUS' => my_group(ANONYMOUS),
 		'IS_KIRI' => my_group(KIRIGAKURE_ID),
 		'SITENAME'						=> $config['sitename'],

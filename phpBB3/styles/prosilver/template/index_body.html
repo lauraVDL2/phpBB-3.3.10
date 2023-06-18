@@ -23,8 +23,7 @@
 				<div id="my_level">Niveau {MY_LEVEL}</div>
 				<div id="my_experience">Expérience</div>
 				<progress id="my_progress" value="{MY_EXPERIENCE}" max="{EXP_BAR}" title="{MY_EXPERIENCE}/{EXP_BAR}"></progress>
-				<div id="my_social">0 points de social</div>
-				<div id="my_fight">0 points de combat</div> 
+				<div id="my_talent">{TALENT_POINTS} points de talent</div>
 			</div>
 		</div>
 		<div id="second_infos_col">
@@ -38,10 +37,42 @@
 					<option value="Doton">Doton</option>
 					<option value="Suiton">Suiton</option>
 				</select>
-				<input name="my_first_element_button" class="my_first_element_button" type="submit" value="Valider">
+				<input name="my_first_element_button" type="submit" value="Valider">
 			</form>
 			<!-- ELSE -->
 			<div class="my_elements">Première affinité : {FIRST_ELEMENT}</div>
+			<!-- ENDIF -->
+
+			<!-- IF !SECOND_ELEMENT && IS_SECOND_ELEMENT -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="second_element_callback" data-refresh="true">
+				<div>Sélectionnez une affinité élémentaire :</div>
+				<select id="second_element_select" name="selement">
+					<!-- IF FIRST_ELEMENT != "Katon" --><option value="Katon">Katon</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Fûton" --><option value="Fûton">Fûton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Raiton" --><option value="Raiton">Raiton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Doton" --><option value="Doton">Doton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Suiton" --><option value="Suiton">Suiton</option><!-- ENDIF -->
+					<input name="my_second_element_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ELSE -->
+			<div class="my_elements">Deuxième affinité : {SECOND_ELEMENT}</div>
+			<!-- ENDIF -->
+
+			<!-- IF !THIRD_ELEMENT && IS_THIRD_ELEMENT -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="third_element_callback" data-refresh="true">
+				<div>Sélectionnez une affinité élémentaire :</div>
+				<select id="third_element_select" name="telement">
+					<!-- IF FIRST_ELEMENT != "Katon" && SECOND_ELEMENT != "KATON" --><option value="Katon">Katon</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Fûton" && SECOND_ELEMENT != "Fûton" --><option value="Fûton">Fûton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Raiton" && SECOND_ELEMENT != "Raiton" --><option value="Raiton">Raiton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Doton" && SECOND_ELEMENT != "Doton" --><option value="Doton">Doton</option><!-- ENDIF -->
+					<!-- IF FIRST_ELEMENT != "Suiton" && SECOND_ELEMENT != "Suiton" --><option value="Suiton">Suiton</option><!-- ENDIF -->
+					<input name="my_third_element_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ELSE -->
+			<div class="my_elements">Deuxième affinité : {SECOND_ELEMENT}</div>
 			<!-- ENDIF -->
 		</div>
 	</div>

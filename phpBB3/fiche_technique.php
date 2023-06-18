@@ -165,7 +165,9 @@ function get_ft_user_infos() {
     $req = [
         'SELECT' => 'ut.username AS username, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element,'
         .' gtt.d_techniques AS d_techniques, gtt.c_techniques AS c_techniques, gtt.b_techniques AS b_techniques, gtt.a_techniques AS a_techniques, gtt.s_techniques AS s_techniques,'
-        .' at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu',
+        .' at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
+        .' gtt.first_elite AS first_elite, gtt.second_elite AS second_elite, gtt.is_kuchiyose AS kuchiyose, gtt.is_second_element AS second_element, gtt.is_third_element AS third_element, gtt.is_irou_heal AS irou_heal, gtt.is_fuin_seal AS fuin_seal, '
+        .' gtt.is_irou_poison AS irou_poison, gtt.is_fuin_barrer AS fuin_barrer',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -257,6 +259,11 @@ $template->assign_vars(array(
     'FT_NINJUTSU' => $ft_user_infos['ninjutsu'],
     'FT_TAIJUTSU' => $ft_user_infos['taijutsu'],
     'FT_GENJUTSU' => $ft_user_infos['genjutsu'],
+    'FT_KUCHIYOSE' => $ft_user_infos['kuchiyose'],
+    'FT_FUIN_SEAL' => $ft_user_infos['fuin_seal'],
+    'FT_FUIN_BARRER' => $ft_user_infos['fuin_barrer'],
+    'FT_IROU_HEAL' => $ft_user_infos['irou_heal'],
+    'FT_IROU_POISON' => $ft_user_infos['irou_poison'],
     'FT_IS_KIRI' => my_group(KIRIGAKURE_ID),
     'FT_IS_IWA' => my_group(IWAGAKURE_ID),
     'FT_IS_SUNA' => my_group(SUNAGAKURE_ID),

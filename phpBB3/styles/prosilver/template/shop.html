@@ -1,0 +1,123 @@
+<!-- INCLUDE overall_header.html -->
+{% INCLUDEJS 'shop.js' %}
+<h1 id="shop_h1">Boutique</h1>
+<div id="shop">
+    <div id="shopInfo">Vous avez {SP_TALENT_POINTS} points de talent à dépenser !</div>
+
+    <!-- IF !SP_FUIN_SEAL && SP_NINJUTSU >= 4 -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_fuin_seal_callback" data-refresh="true">
+            <input type="hidden" name="sp_price" value="75">
+            <h1>Spécialisation : Fuinjutsu (Sceaux)</h1>
+            Permet de maîtriser l'art des sceaux <em>(75 points de talent)</em>.
+                <input type="submit" name="sp_fuin_seal" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+        </form>
+    <!-- ENDIF -->
+
+    <!-- IF !SP_FUIN_BARRER && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_fuin_barrer_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Fuinjutsu (Barrières)</h1>
+        Permet de maîtriser l'art des barrières <em>(75 points de talent)</em>.
+            <input type="submit" name="sp_fuin_barrer" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+<!-- ENDIF -->
+
+    <!-- IF !SP_KUCHIYOSE && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_kuchiyose_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Kuchiyose</h1>
+        Permet de sceller un pacte pour une invocation. Attention, <strong>vous n'aurez le droit qu'à une seule espèce animale !</strong> <em>(75 points de talent)</em>
+            <input type="submit" name="sp_kuchiyose" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF !SP_IROU_HEAL && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_irou_heal_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Irou Jutsu (Soins)</h1>
+        Permet de maîtriser des techniques médicales <em>(75 points de talent)</em>.
+            <input type="submit" name="sp_irou_heal" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF !SP_IROU_POISON && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_irou_poison_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Irou Jutsu (Poisons)</h1>
+        Permet de maîtriser des techniques d'empoisonnement <em>(75 points de talent)</em>.
+            <input type="submit" name="sp_irou_poison" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_FIRST_ELEMENT && !SP_IS_SECOND_ELEMENT -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_element_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Deuxième affinité élémentaire</h1>
+        Acheter une deuxième affinité élémentaire. <em>(75 points de talent)</em>.
+        <input type="submit" name="sp_second_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_SECOND_ELEMENT && !SP_IS_THIRD_ELEMENT -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_element_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Troisième affinité élémentaire</h1>
+        Acheter une troisième affinité élémentaire. <em>(100 points de talent)</em>.
+        <input type="submit" name="sp_third_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_RP_RANK == "Genin" && SP_NINJUTSU >= 3 && SP_TAIJUTSU >= 3 && SP_GENJUTSU >= 3 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chunin_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="125">
+        <h1>Devenir Chûnin</h1>
+        Félicitations, vous avez suffisamment de points d'attribut pour devenir Chûnin ! <em>(125 points de talent)</em>
+        <input type="submit" name="sp_chunin" value="Acheter" <!-- IF SP_TALENT_POINTS < 125 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_RP_RANK == "Chûnin" && SP_NINJUTSU >= 4 && SP_TAIJUTSU >= 4 && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_jonin_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Devenir Jônin</h1>
+        Félicitations, vous avez suffisamment de points d'attribut pour devenir Jônin, ninja d'élite ! Vous pourrez prendre des Genin sous votre aile. <em>(150 points de talent)</em>
+        <input type="submit" name="sp_jonin" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_d_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="25">
+        <h1>Technique de rang D</h1>
+        Gagner une technique de rang D <em>(25 points de talent)</em>
+        <input type="submit" name="sp_d_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 25 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_c_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Technique de rang C</h1>
+        Gagner une technique de rang C <em>(50 points de talent)</em>
+        <input type="submit" name="sp_c_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_b_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_b_technique" value="75">
+        <h1>Technique de rang B</h1>
+        Gagner une technique de rang B <em>(75 points de talent)</em>
+        <input type="submit" name="sp_jonin" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_a_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Technique de rang A</h1>
+        Gagner une technique de rang A <em>(100 points de talent)</em>
+        <input type="submit" name="sp_a_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_s_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Technique de rang S</h1>
+        Gagner une technique de rang S <em>(150 points de talent)</em>
+        <input type="submit" name="sp_s_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+</div>
+<!-- INCLUDE overall_footer.html -->
