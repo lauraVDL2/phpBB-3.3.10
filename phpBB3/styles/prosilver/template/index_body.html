@@ -1,4 +1,5 @@
 <!-- INCLUDE overall_header.html -->
+<div class="wrap" id="wrap">
 <p class="{S_CONTENT_FLOW_END} responsive-center time<!-- IF S_USER_LOGGED_IN --> rightside<!-- ENDIF -->"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF --></p>
 <!-- IF S_USER_LOGGED_IN --><p class="responsive-center time">{CURRENT_TIME}</p><!-- ENDIF -->
 
@@ -55,7 +56,7 @@
 					<input name="my_second_element_button" type="submit" value="Valider">
 				</select>
 			</form>
-			<!-- ELSE -->
+			<!-- ELSE IF SECOND_ELEMENT -->
 			<div class="my_elements">Deuxième affinité : {SECOND_ELEMENT}</div>
 			<!-- ENDIF -->
 
@@ -71,8 +72,8 @@
 					<input name="my_third_element_button" type="submit" value="Valider">
 				</select>
 			</form>
-			<!-- ELSE -->
-			<div class="my_elements">Deuxième affinité : {SECOND_ELEMENT}</div>
+			<!-- ELSE IF THIRD_ELEMENT -->
+			<div class="my_elements">Troisième affinité : {THIRD_ELEMENT}</div>
 			<!-- ENDIF -->
 		</div>
 	</div>
@@ -246,5 +247,6 @@
 <!-- ENDIF -->
 
 <!-- EVENT index_body_stat_blocks_after -->
+</div>
 
 <!-- INCLUDE overall_footer.html -->

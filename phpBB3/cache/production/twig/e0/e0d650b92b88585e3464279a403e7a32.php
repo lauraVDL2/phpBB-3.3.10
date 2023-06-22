@@ -289,7 +289,7 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
         // line 77
         // line 78
         echo "
-<div id=\"wrap\" class=\"wrap\">
+<div >
 \t<a id=\"top\" class=\"top-anchor\" accesskey=\"t\"></a>
 \t<div id=\"page-header\">
 \t\t<div class=\"headerbar\" role=\"banner\">
