@@ -202,3 +202,35 @@ jQuery(function($) {
         }
     });
 })
+
+function copyNinjutsu(t) {
+    let ninjutsu = document.getElementsByClassName('ft_ninjutsu')[t];
+    let title = ninjutsu.getElementsByClassName('ft_technique_information')[0].innerHTML;
+    let description = ninjutsu.getElementsByClassName('ft_technique_description')[0].innerHTML;
+    let txt = "[ninjutsu][title_technique]"+ title +"[/title_technique][descr_t]" + description + "[/descr_t][/ninjutsu]";
+    navigator.clipboard.writeText(txt);
+}
+
+function copyTaijutsu(t) {
+    let taijutsu = document.getElementsByClassName('ft_taijutsu')[t];
+    let title = taijutsu.getElementsByClassName('ft_technique_information')[0].innerHTML;
+    let description = taijutsu.getElementsByClassName('ft_technique_description')[0].innerHTML;
+    let txt = "[taijutsu][title_technique]"+ title +"[/title_technique][descr_t]" + description + "[/descr_t][/taijutsu]";
+    navigator.clipboard.writeText(txt);
+}
+
+function copyGenjutsu(t) {
+    let genjutsu = document.getElementsByClassName('ft_ninjutsu')[t];
+    let title = genjutsu.getElementsByClassName('ft_technique_information')[0].innerHTML;
+    let description = genjutsu.getElementsByClassName('ft_technique_description')[0].innerHTML;
+    let txt = "[genjutsu][title_technique]"+ title +"[/title_technique][descr_t]" + description + "[/descr_t][/genjutsu]";
+    navigator.clipboard.writeText(txt);
+}
+
+function copyKG(t) {
+    let kg = document.getElementsByClassName('ft_kg')[t];
+    let title = kg.getElementsByClassName('ft_technique_information')[0].innerHTML;
+    let description = kg.getElementsByClassName('ft_technique_description')[0].innerHTML;
+    let txt = "[kg][title_technique]"+ title +"[/title_technique][descr_t]" + description + "[/descr_t][/kg]";
+    navigator.clipboard.writeText(txt);
+}

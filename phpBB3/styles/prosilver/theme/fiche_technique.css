@@ -122,7 +122,7 @@
     border-bottom: 1px dotted var(--secondary_color_2);
 }
 
-.modify_ft_button, .validate_ft_button, .ft_delete_button, #create_technique, .ft_md_button {
+.modify_ft_button, .validate_ft_button, .ft_delete_button, #create_technique, .ft_md_button, .ft_copy_button {
     font-size: 1rem;
     border: none;
     border-radius: 15px;
@@ -139,7 +139,7 @@
     display: block;
 }
 
-.modify_ft_button {
+.modify_ft_button, .ft_copy_button {
     color: var(--main_color_3);
     background-color: var(--main_color_2);
 }

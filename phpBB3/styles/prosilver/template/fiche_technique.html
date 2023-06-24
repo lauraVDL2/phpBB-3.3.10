@@ -20,6 +20,7 @@
                     <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
                     <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
                 <!-- ENDIF -->
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyNinjutsu({{ Ninjutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
         <!-- END Ninjutsu_loop -->
@@ -37,6 +38,7 @@
                     <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
                     <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
                 <!-- ENDIF -->
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyTaijutsu({{ Taijutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
         <!-- END Taijutsu_loop -->
@@ -54,6 +56,7 @@
                     <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
                     <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
                 <!-- ENDIF -->
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyGenjutsu({{ Genjutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
         <!-- END Genjutsu_loop -->
@@ -92,7 +95,7 @@
                     <!-- IF FT_FIRST_ELEMENT == "Doton" || FT_SECOND_ELEMENT == "Doton" || FT_THIRD_ELEMENT == "Doton"--><option value="Doton">Doton</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELEMENT == "Suiton" || FT_SECOND_ELEMENT == "Suiton" || FT_THIRD_ELEMENT == "Suiton"--><option value="Suiton">Suiton</option><!-- ENDIF -->
                     <!-- IF FT_IROU_HEAL || FT_IROU_POISON --><option value="Irou Jutsu">Irou Jutsu</option><!-- ENDIF -->
-                    <!-- IF FT_FUIN_SEAL --><option value="Fuinjutsu">Fuinjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FUIN_SEAL || FT_FUIN_BARRER --><option value="Fuinjutsu">Fuinjutsu</option><!-- ENDIF -->
                     <!-- IF FT_KUCHIYOSE --><option>Kuchiyose</option><!-- ENDIF -->
                 </select>
                 <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
@@ -122,8 +125,8 @@
                 </select>
                 <select id="fuinjutsu_ft_type" class="second_type_select" name="fuinjutsu_ft_type">
                     <option value=""></option>
-                    <option value="Barrières">Barrières</option>
-                    <option value="Sceaux">Sceaux</option>
+                    <!-- IF FT_FUIN_BARRER --><option value="Barrières">Barrières</option><!-- ENDIF -->
+                    <!-- IF FT_FUIN_SEAL --><option value="Sceaux">Sceaux</option><!-- ENDIF -->
                 </select>
                 <select id="technique_nj_rank" class="third_ft_select" name="technique_nj_rank">
                     <option value=""></option>

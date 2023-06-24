@@ -59,12 +59,12 @@
     font-family: var(--main_police_2);
     font-size: 1.2rem;
     color: var(--main_color_1);
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 #info_attributes_use {
     text-align: center;
-    color: var(--secondary_color_2);
+    color: #ff726f;
     font-weight: bold;
     font-size: 1rem;
     background-color: var(--main_color_2);
@@ -143,4 +143,20 @@
     font-size: 0.8rem;
     margin: 5px;
     font-weight: bold;
+}
+
+#um_links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#um_links a {
+    color: var(--main_color_1);
+    background-color: var(--main_color_2);
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 15px;
+    font-size: 1rem;
 }
