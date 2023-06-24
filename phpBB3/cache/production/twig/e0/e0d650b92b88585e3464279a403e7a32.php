@@ -292,133 +292,49 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 <div >
 \t<a id=\"top\" class=\"top-anchor\" accesskey=\"t\"></a>
 \t<div id=\"page-header\">
-\t\t<div class=\"headerbar\" role=\"banner\">
-\t\t";
-        // line 83
+\t\t<div id=\"banner\">
+\t\t\t<a href=\"./index.php\">
+\t\t\t\t<div id=\"main_title\">";
         // line 84
-        echo "\t\t\t<div class=\"inner\">
-
-\t\t\t<div id=\"site-description\" class=\"site-description\">
-\t\t<a id=\"logo\" class=\"logo\" href=\"";
-        // line 87
-        if (($context["U_SITE_HOME"] ?? null)) {
-            echo ($context["U_SITE_HOME"] ?? null);
-        } else {
-            echo ($context["U_INDEX"] ?? null);
-        }
-        echo "\" title=\"";
-        if (($context["U_SITE_HOME"] ?? null)) {
-            echo ($context["L_SITE_HOME"] ?? null);
-        } else {
-            echo ($context["L_INDEX"] ?? null);
-        }
-        echo "\">
-\t\t\t\t\t<span class=\"site_logo\"></span>
-\t\t\t\t</a>
-\t\t\t\t<h1>";
-        // line 90
         echo ($context["SITENAME"] ?? null);
-        echo "</h1>
-\t\t\t\t<p>";
-        // line 91
+        echo "</div>
+\t\t\t\t<div id=\"forum_descr\">";
+        // line 85
         echo ($context["SITE_DESCRIPTION"] ?? null);
-        echo "</p>
-\t\t\t\t<p class=\"skiplink\"><a href=\"#start_here\">";
-        // line 92
-        echo $this->extensions['phpbb\template\twig\extension']->lang("SKIP");
-        echo "</a></p>
-\t\t\t</div>
-
-\t\t\t";
-        // line 95
-        // line 96
-        echo "\t\t\t";
-        if ((($context["S_DISPLAY_SEARCH"] ?? null) &&  !($context["S_IN_SEARCH"] ?? null))) {
-            // line 97
-            echo "\t\t\t<div id=\"search-box\" class=\"search-box search-header\" role=\"search\">
-\t\t\t\t<form action=\"";
-            // line 98
-            echo ($context["U_SEARCH"] ?? null);
-            echo "\" method=\"get\" id=\"search\">
-\t\t\t\t<fieldset>
-\t\t\t\t\t<input name=\"keywords\" id=\"keywords\" type=\"search\" maxlength=\"128\" title=\"";
-            // line 100
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH_KEYWORDS");
-            echo "\" class=\"inputbox search tiny\" size=\"20\" value=\"";
-            echo ($context["SEARCH_WORDS"] ?? null);
-            echo "\" placeholder=\"";
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH_MINI");
-            echo "\" />
-\t\t\t\t\t<button class=\"button button-search\" type=\"submit\" title=\"";
-            // line 101
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH");
-            echo "\">
-\t\t\t\t\t\t<i class=\"icon fa-search fa-fw\" aria-hidden=\"true\"></i><span class=\"sr-only\">";
-            // line 102
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH");
-            echo "</span>
-\t\t\t\t\t</button>
-\t\t\t\t\t<a href=\"";
-            // line 104
-            echo ($context["U_SEARCH"] ?? null);
-            echo "\" class=\"button button-search-end\" title=\"";
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH_ADV");
-            echo "\">
-\t\t\t\t\t\t<i class=\"icon fa-cog fa-fw\" aria-hidden=\"true\"></i><span class=\"sr-only\">";
-            // line 105
-            echo $this->extensions['phpbb\template\twig\extension']->lang("SEARCH_ADV");
-            echo "</span>
-\t\t\t\t\t</a>
-\t\t\t\t\t";
-            // line 107
-            echo ($context["S_SEARCH_HIDDEN_FIELDS"] ?? null);
-            echo "
-\t\t\t\t</fieldset>
-\t\t\t\t</form>
-\t\t\t</div>
-\t\t\t";
-        }
-        // line 112
-        echo "\t\t\t";
-        // line 113
-        echo "
-\t\t\t</div>
-\t\t\t";
-        // line 115
-        // line 116
-        echo "\t\t</div>
-\t\t";
-        // line 117
-        // line 118
-        echo "\t\t";
-        $location = "navbar_header.html";
-        $namespace = false;
-        if (strpos($location, '@') === 0) {
-            $namespace = substr($location, 1, strpos($location, '/') - 1);
-            $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
-            $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
-        }
-        $this->loadTemplate("navbar_header.html", "overall_header.html", 118)->display($context);
-        if ($namespace) {
-            $this->env->setNamespaceLookUpOrder($previous_look_up_order);
-        }
-        // line 119
-        echo "\t</div>
+        echo "</div>
+\t\t\t</a>
+\t\t</div>
+\t\t<div>
+\t\t\t<fieldset id=\"contexte\">
+\t\t\t\t<legend>Contexte - Nom de l'arc</legend>
+\t\t\t\tL’odeur âcre du fer se déversant sur les sols jonchés de cadavres, telle une rivière maudite, n’était qu’un rappel tumultueux des affres de la guerre. Alors que la haine se répandait, le bonheur ne restait plus qu’une vaine étincelle au bout d’un couloir. La fondation des villages n’avait épargné personne, ce rêve de paix porté autrefois par un glorieux shinobi ne fut que les prémices de conflits plus grands, de conflits plus intenses.<br />
+\t\t\t\tArmes, poisons, techniques de destruction massive, personne ne recula, personne ne baissa les armes. Les morts s’enchaînaient et avec eux, les maladies se répandaient. L’ami de toujours devenu l’ennemi de demain, tandis que ceux que l’on ne soupçonnaient pas, devenaient des alliés de circonstances. 
+\t\t\t\t <a href=\"https://\">La suite ?</a>
+\t\t\t</fieldset>
+\t\t\t<fieldset id=\"news_pa\">
+\t\t\t\t<legend>Dernière news</legend>
+\t\t\t\t<div id=\"flex_news\">
+\t\t\t\t\t<div class=\"date_news\">00/00</div>
+\t\t\t\t\t<div class=\"content_news\">Un exemple de news ici !</div>
+\t\t\t\t</div>
+\t\t\t</fieldset>
+\t\t</div>
+\t</div>
 
 \t";
-        // line 121
-        // line 122
+        // line 105
+        // line 106
         echo "
 \t<a id=\"start_here\" class=\"anchor\"></a>
 \t<div id=\"page-body\" class=\"page-body\" role=\"main\">
 \t\t";
-        // line 125
+        // line 109
         if (((($context["S_BOARD_DISABLED"] ?? null) && ($context["S_USER_LOGGED_IN"] ?? null)) && (($context["U_MCP"] ?? null) || ($context["U_ACP"] ?? null)))) {
-            // line 126
+            // line 110
             echo "\t\t<div id=\"information\" class=\"rules\">
 \t\t\t<div class=\"inner\">
 \t\t\t\t<strong>";
-            // line 128
+            // line 112
             echo $this->extensions['phpbb\template\twig\extension']->lang("INFORMATION");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</strong> ";
@@ -428,10 +344,10 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 \t\t</div>
 \t\t";
         }
-        // line 132
+        // line 116
         echo "
 \t\t";
-        // line 133
+        // line 117
     }
 
     public function getTemplateName()
@@ -446,7 +362,7 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  435 => 133,  432 => 132,  422 => 128,  418 => 126,  416 => 125,  411 => 122,  410 => 121,  406 => 119,  393 => 118,  392 => 117,  389 => 116,  388 => 115,  384 => 113,  382 => 112,  374 => 107,  369 => 105,  363 => 104,  358 => 102,  354 => 101,  346 => 100,  341 => 98,  338 => 97,  335 => 96,  334 => 95,  328 => 92,  324 => 91,  320 => 90,  304 => 87,  299 => 84,  298 => 83,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
+        return array (  351 => 117,  348 => 116,  338 => 112,  334 => 110,  332 => 109,  327 => 106,  326 => 105,  303 => 85,  299 => 84,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

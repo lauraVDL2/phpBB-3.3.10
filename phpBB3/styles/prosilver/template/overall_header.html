@@ -79,43 +79,27 @@
 <div >
 	<a id="top" class="top-anchor" accesskey="t"></a>
 	<div id="page-header">
-		<div class="headerbar" role="banner">
-		<!-- EVENT overall_header_headerbar_before -->
-			<div class="inner">
-
-			<div id="site-description" class="site-description">
-		<a id="logo" class="logo" href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}">
-					<span class="site_logo"></span>
-				</a>
-				<h1>{SITENAME}</h1>
-				<p>{SITE_DESCRIPTION}</p>
-				<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
-			</div>
-
-			<!-- EVENT overall_header_searchbox_before -->
-			<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
-			<div id="search-box" class="search-box search-header" role="search">
-				<form action="{U_SEARCH}" method="get" id="search">
-				<fieldset>
-					<input name="keywords" id="keywords" type="search" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="inputbox search tiny" size="20" value="{SEARCH_WORDS}" placeholder="{L_SEARCH_MINI}" />
-					<button class="button button-search" type="submit" title="{L_SEARCH}">
-						<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH}</span>
-					</button>
-					<a href="{U_SEARCH}" class="button button-search-end" title="{L_SEARCH_ADV}">
-						<i class="icon fa-cog fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH_ADV}</span>
-					</a>
-					{S_SEARCH_HIDDEN_FIELDS}
-				</fieldset>
-				</form>
-			</div>
-			<!-- ENDIF -->
-			<!-- EVENT overall_header_searchbox_after -->
-
-			</div>
-			<!-- EVENT overall_header_headerbar_after -->
+		<div id="banner">
+			<a href="./index.php">
+				<div id="main_title">{SITENAME}</div>
+				<div id="forum_descr">{SITE_DESCRIPTION}</div>
+			</a>
 		</div>
-		<!-- EVENT overall_header_navbar_before -->
-		<!-- INCLUDE navbar_header.html -->
+		<div>
+			<fieldset id="contexte">
+				<legend>Contexte - Nom de l'arc</legend>
+				L’odeur âcre du fer se déversant sur les sols jonchés de cadavres, telle une rivière maudite, n’était qu’un rappel tumultueux des affres de la guerre. Alors que la haine se répandait, le bonheur ne restait plus qu’une vaine étincelle au bout d’un couloir. La fondation des villages n’avait épargné personne, ce rêve de paix porté autrefois par un glorieux shinobi ne fut que les prémices de conflits plus grands, de conflits plus intenses.<br />
+				Armes, poisons, techniques de destruction massive, personne ne recula, personne ne baissa les armes. Les morts s’enchaînaient et avec eux, les maladies se répandaient. L’ami de toujours devenu l’ennemi de demain, tandis que ceux que l’on ne soupçonnaient pas, devenaient des alliés de circonstances. 
+				 <a href="https://">La suite ?</a>
+			</fieldset>
+			<fieldset id="news_pa">
+				<legend>Dernière news</legend>
+				<div id="flex_news">
+					<div class="date_news">00/00</div>
+					<div class="content_news">Un exemple de news ici !</div>
+				</div>
+			</fieldset>
+		</div>
 	</div>
 
 	<!-- EVENT overall_header_page_body_before -->

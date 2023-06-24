@@ -5,6 +5,20 @@ body {
     background-image: url("https://zupimages.net/up/23/13/jf63.png");
 }
 
+:root, div, fieldset{
+    scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+    scrollbar-width: thin !important;
+  }
+  
+  ::-webkit-scrollbar{
+    width: 5px;
+    background-color: rgb(46,54,69);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(210,210,210); 
+  }
+
 #wrap {
     width: 1024px;
 }

@@ -1,0 +1,93 @@
+@import url("var_root.css");
+
+#phpbb {
+    margin: 0px;
+    padding: 0px;
+}
+
+#page-header {
+    background-image: url('https://zupimages.net/up/23/25/dp3u.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 600px;
+    background-color: #181818;
+    background-position: bottom left;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    align-items: center;
+}
+
+#banner {
+    text-align: center;
+}
+
+#main_title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: var(--main_police);
+    color: var(--main_color_1);
+}
+
+#forum_descr {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--secondary_color_2);
+    background-color: var(--main_color_1);
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#contexte, #news_pa {
+    border: none;
+    background-color: #101010;
+    border-radius: 30px;
+    width: 60%;
+    margin: 30px auto;
+    color: var(--main_color_1);
+    font-size: 1.2rem;
+    font-family: var(--main_police_2);
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: justify;
+    overflow: auto;
+}
+
+#contexte {
+    height: 250px;
+}
+
+#news_pa {
+    height: 130px;
+}
+
+#contexte legend, #news_pa legend {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+}
+
+#contexte a, #news_pa a {
+    color: var(--secondary_color_2);
+}
+
+#flex_news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date_news {
+    background-color: var(--secondary_color_2);
+    padding: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.content_news {
+    width: 80%;
+}
