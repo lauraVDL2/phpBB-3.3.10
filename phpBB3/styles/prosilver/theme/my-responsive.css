@@ -1,9 +1,57 @@
 @media(max-width: 1024px) {
-    body {
+    body, #wrap {
         width: 100%;
     }
 
+    #user_menu {
+        display: none;
+    }
+
+    /*Categories*/
+
     .category {
         width: 95%;
+    }
+
+    #firstBlock {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #carte, #imgDeco {
+        display: none;
+    }
+
+    #rowGuide, .row2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .textAlign {
+        text-align: center;
+    }
+
+    .row2 {
+        height: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .row2 .subForumsGrid {
+        display: none;
+    }
+
+    .row2 .forumDescr {
+        margin: 10px;
+    }
+
+    .rowRPG {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .rowRPG .imgRPG {
+        display: none;
     }
 }

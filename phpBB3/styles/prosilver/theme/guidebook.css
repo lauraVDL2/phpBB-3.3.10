@@ -1,0 +1,76 @@
+@import url("var_root.css");
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#nav_guidebook {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: var(--main_color_2);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#nav_guidebook h1 {
+    color: var(--secondary_color_2);
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.gb_link {
+    font-size: 1.2rem;
+    color: var(--main_color_1);
+    cursor: pointer;
+}
+
+.gb_link img {
+    width: 25px;
+}
+
+.gb_visible {
+    display: none;
+}
+
+.gb_title {
+    width: 60%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--main_color_2);
+    color: var(--main_color_1);
+    font-size: var(--main_police);
+    box-sizing: border-box;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.gb_content {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: auto;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--main_color_1);
+    color: var(--main_color_2);
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.gb_content h3 {
+    color: red;
+    text-align: justify;
+    font-size: 1.4rem;
+}
+
+.gb_content p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
