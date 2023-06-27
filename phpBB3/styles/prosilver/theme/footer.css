@@ -1,0 +1,72 @@
+@import url("var_root.css");
+
+#page-footer {
+    background-color: #181818;
+    padding-top: 10px;
+}
+
+#flex_footer {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 2fr;
+    margin: auto;
+    justify-content: center;
+    gap: 50px;
+}
+
+.f_lastpost {
+    background-color: #101010;
+    width: 100%;
+    border-radius: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 20px;
+}
+
+.f_lastmessage {
+    color: var(--main_color_1);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.f_time {
+    color: var(--main_color_3);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.f_username {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#connected_title, #connected_block {
+    width: 100%;
+}
+
+#f_hours {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+#connected_title {
+    color: var(--main_color_1);
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#connected_block {
+    border-radius: 20px;
+    height: 200px;
+    background-color: #101010;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: auto;
+    font-weight: bold;
+    text-align: justify;
+    font-size: 1rem;
+}

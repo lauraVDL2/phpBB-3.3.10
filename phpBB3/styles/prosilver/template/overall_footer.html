@@ -1,9 +1,25 @@
 		<!-- EVENT overall_footer_content_after -->
 	</div>
 
+
 <!-- EVENT overall_footer_page_body_after -->
 
 <div id="page-footer" class="page-footer" role="contentinfo">
+	<div id="flex_footer">
+		<div>
+		<!-- BEGIN lp_loop -->
+			<div class="f_lastpost">
+				<a class="f_lastmessage" href="./viewtopic.php?t={lp_loop.LP_TOPIC_ID}">{lp_loop.LP_SUBJECT}</a>
+				<div class="f_time">{lp_loop.LP_TIME}</div>
+				<div style="color:#{lp_loop.LP_COLOUR}" class="f_username">{lp_loop.LP_USERNAME}</div>
+			</div>
+		<!-- END lp_loop -->
+		</div>
+		<div id="f_hours">
+			<div id="connected_title">Connectés ces dernières <span style="color:red;">48</span> h</div>
+			<div id="connected_block">{LAST_HOURS_USERS}</div>
+		</div>
+	</div>
 	<!-- INCLUDE navbar_footer.html -->
 
 	<div class="copyright">

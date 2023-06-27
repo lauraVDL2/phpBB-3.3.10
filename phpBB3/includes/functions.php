@@ -141,6 +141,9 @@ $s_techniques_levels = [45, 50];
 
 function level_up($user_id) {
 	global $levels, $db, $attributes;
+	$difference = -1;
+	$current_level = 0;
+	$current_exp_bar = 0;
 	do {
 		$req = [
 			'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
@@ -203,6 +206,35 @@ function gain_technique($current_level, $user_id) {
 	else if(in_array($current_level, $s_techniques_levels)) {
 		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET s_techniques = s_techniques + 1 WHERE user_id = '.$user_id;
 		$db->sql_query($sql);
+	}
+}
+
+/** 
+ * Three last posts
+ */
+function last_posts() {
+	global $db, $template;
+	$req = [
+		'SELECT' => 'pt.post_subject AS post_subject, pt.topic_id AS topic_id, ut.username AS username, ut.user_colour AS user_colour, from_unixtime(pt.post_time, \'à %H:%i le %d-%m-%Y\') AS post_time',
+		'FROM' => [ POSTS_TABLE => 'pt' ],
+		'LEFT_JOIN' => [
+			[
+				'FROM' => [ USERS_TABLE => 'ut' ],
+				'ON' => 'pt.poster_id = ut.user_id',
+			],
+		],
+		'ORDER_BY' => 'pt.post_time DESC'
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query_limit($sql, 3);
+	while ($row = $db->sql_fetchrow($query)) {
+        $template->assign_block_vars('lp_loop', [
+			'LP_SUBJECT' => $row['post_subject'],
+			'LP_USERNAME' => $row['username'],
+			'LP_COLOUR' => $row['user_colour'],
+			'LP_TIME' => $row['post_time'],
+			'LP_TOPIC_ID' => $row['topic_id']
+		]);
 	}
 }
 
@@ -4300,6 +4332,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$total_final = max($iwa, $kiri, $suna, $nukenin);
 	$character_infos = character_informations();
 	$exp_bar = $levels[character_informations()['level']];
+	last_posts();
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
