@@ -54,4 +54,16 @@
     .rowRPG .imgRPG {
         display: none;
     }
+
+    /*FOOTER*/
+    #flex_footer {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    #lp_case, #f_groups {
+        display: none;
+    }
 }

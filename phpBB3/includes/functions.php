@@ -25,6 +25,8 @@ const IWAGAKURE_ID = 8;
 const KIRIGAKURE_ID = 9;
 const SUNAGAKURE_ID = 10;
 const NUKENIN_ID = 11;
+const KUMOGAKURE_ID = 12;
+const KONOHAGAKURE_ID = 13;
 const ADMINISTRATOR_ID = 5;
 const MAX_LEVEL = 50;
 
@@ -4329,7 +4331,9 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$kiri = total_groups($db, KIRIGAKURE_ID);
 	$suna = total_groups($db, SUNAGAKURE_ID);
 	$nukenin = total_groups($db, NUKENIN_ID);
-	$total_final = max($iwa, $kiri, $suna, $nukenin);
+	$kumo = total_groups($db, KUMOGAKURE_ID);
+	$konoha = total_groups($db, KONOHAGAKURE_ID);
+	$total_final = max($iwa, $kiri, $suna, $nukenin, $kumo, $konoha);
 	$character_infos = character_informations();
 	$exp_bar = $levels[character_informations()['level']];
 	last_posts();
@@ -4339,6 +4343,8 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'IWA_TOTAL' => $iwa,
 		'KIRI_TOTAL' => $kiri,
 		'SUNA_TOTAL' => $suna,
+		'KUMO_TOTAL' => $kumo,
+		'KONOHA_TOTAL' => $konoha,
 		'NUKENIN_TOTAL' => $nukenin,
 		'TOTAL_FINAL' => $total_final,
 		'LAST_HOURS_USERS' => last_hours($db, 345600),

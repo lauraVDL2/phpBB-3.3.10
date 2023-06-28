@@ -4,9 +4,11 @@
 
 <!-- EVENT overall_footer_page_body_after -->
 
+{% INCLUDEJS 'footer.js' %}
+
 <div id="page-footer" class="page-footer" role="contentinfo">
 	<div id="flex_footer">
-		<div>
+		<div id="lp_case">
 		<!-- BEGIN lp_loop -->
 			<div class="f_lastpost">
 				<a class="f_lastmessage" href="./viewtopic.php?t={lp_loop.LP_TOPIC_ID}">{lp_loop.LP_SUBJECT}</a>
@@ -18,6 +20,32 @@
 		<div id="f_hours">
 			<div id="connected_title">Connectés ces dernières <span style="color:red;">48</span> h</div>
 			<div id="connected_block">{LAST_HOURS_USERS}</div>
+		</div>
+		<div id="f_stats">
+			<div id="f_total_posts">{TOTAL_POSTS}</div>
+			<div id="f_members">{TOTAL_USERS}</div>
+			<div id="f_total_topics">{TOTAL_TOPICS}</div>
+		</div>
+		<div id="f_groups">
+			<div class="group_d" id="kiri_d">Kiri : {KIRI_TOTAL} ninjas</div>
+			<div class="group_d" id="iwa_d">Iwa : {IWA_TOTAL} ninjas</div>
+			<div class="group_d" id="suna_d">Suna : {SUNA_TOTAL} ninjas</div>
+			<div class="group_d" id="kumo_d">Kumo : {KUMO_TOTAL} ninjas</div>
+			<div class="group_d" id="konoha_d">Konoha : {KONOHA_TOTAL} ninjas</div>
+			<div class="group_d" id="nukenin_d">Nukenin : {NUKENIN_TOTAL} ninjas</div>
+			<div id="f_reverse">
+				<progress id="kiri_p" class="progress_p" value="{KIRI_TOTAL}" max="{TOTAL_FINAL}"></progress>
+
+				<progress id="iwa_p" class="progress_p" value="{IWA_TOTAL}" max="{TOTAL_FINAL}"></progress> 
+
+				<progress id="suna_p" class="progress_p" value="{SUNA_TOTAL}" max="{TOTAL_FINAL}"></progress>
+
+				<progress id="kumo_p" class="progress_p" value="{KUMO_TOTAL}" max="{TOTAL_FINAL}"></progress>
+
+				<progress id="konoha_p" class="progress_p" value="{KONOHA_TOTAL}" max="{TOTAL_FINAL}"></progress>
+
+				<progress id="nukenin_p" class="progress_p" value="{NUKENIN_TOTAL}" max="{TOTAL_FINAL}"></progress>
+			</div>
 		</div>
 	</div>
 	<!-- INCLUDE navbar_footer.html -->
