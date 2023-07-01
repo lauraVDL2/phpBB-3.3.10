@@ -20,7 +20,11 @@
 </div>
 <div id="user_menu">
 	<div id="firstCUser">
-		<img src="./download/file.php?avatar={MY_AVATAR}" id="my_avatar">
+		<!-- IF MY_AVATAR -->
+			<img src="./download/file.php?avatar={MY_AVATAR}" id="my_avatar">
+		<!-- ELSE -->
+			<img src="https://i.servimg.com/u/f33/16/35/67/99/defaul10.png" id="my_avatar">
+		<!-- ENDIF -->
 		<div id="first_infos_col">
 			<div>
 				<div id="my_username">{USERNAME}</div>
@@ -28,6 +32,9 @@
 				<div id="my_experience">Expérience</div>
 				<progress id="my_progress" value="{MY_EXPERIENCE}" max="{EXP_BAR}" title="{MY_EXPERIENCE}/{EXP_BAR}"></progress>
 				<div id="my_talent">{TALENT_POINTS} points de compétence</div>
+				<!-- IF IS_IWA || IS_KIRI || IS_SUNA || IS_KONOHA || IS_KUMO -->
+					<div id="my_influence">{INFLUENCE_POINTS} points d'influence</div>
+				<!-- ENDIF -->
 			</div>
 		</div>
 		<div id="second_infos_col">

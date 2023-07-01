@@ -125,8 +125,7 @@
     text-align: center;
 }
 
-#my_talent {
-    background-color: purple;
+#my_talent, #my_influence {
     border-radius: 15px;
     padding: 5px;
     text-align: center;
@@ -136,6 +135,14 @@
     font-family: var(--main_police_2);
     margin: auto;
     margin: 5px;
+}
+
+#my_talent {
+    background-color: purple;
+}
+
+#my_influence {
+    background-color: green;
 }
 
 .my_elements {

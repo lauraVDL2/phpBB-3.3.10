@@ -73,11 +73,28 @@
 
 </head>
 <body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}">
-
+	<div id="greyscreen"></div>
 <!-- EVENT overall_header_body_before -->
+
+{% INCLUDEJS 'header.js' %}
 
 <div >
 	<a id="top" class="top-anchor" accesskey="t"></a>
+	<div id="nav">
+		<img src="https://zupimages.net/up/23/26/tmpz.png" id="burger">
+	</div>
+	<div id="subnav">
+		<h1>Navigation</h1>
+		<a href="./index.php">Index</a>
+		<!-- IF IS_ANONYMOUS -->
+		<a href="./ucp.php?mode=login">Se connecter</a>
+		<a href="./ucp.php?mode=register&sid={SESSION_ID}">S'enregistrer</a>
+		<!-- ELSE -->
+		<a href="./ucp.php?sid={SESSION_ID}">Profil</a>
+		<a href="./ucp.php?mode=logout&sid={SESSION_ID}">Se déconnecter</a>
+		<!-- ENDIF -->
+		<a href="https://discord.gg/JvWTGSsQYh">Discord</a>
+	</div>
 	<div id="page-header">
 		<div id="banner">
 			<a href="./index.php">

@@ -206,3 +206,7 @@
 .rowRPG a {
     color: var(--main_color_2);
 }
+
+time {
+    font-weight: normal;
+}

@@ -20,7 +20,7 @@ $json_response = new \phpbb\json_response;
 $ft_user_id = $request->variable('uid', '');
 
 $is_user = ($ft_user_id == $user->data['user_id']);
-$is_admin = my_group(ADMINISTRATOR_ID);
+$is_admin = my_group(ADMINISTRATOR_ID, $user->data['user_id']);
 
 if(!$is_user && ! $is_admin) {
     echo 'Vous ne pouvez pas voir la FT d\'un autre joueur !';
@@ -264,10 +264,10 @@ $template->assign_vars(array(
     'FT_FUIN_BARRER' => $ft_user_infos['fuin_barrer'],
     'FT_IROU_HEAL' => $ft_user_infos['irou_heal'],
     'FT_IROU_POISON' => $ft_user_infos['irou_poison'],
-    'FT_IS_KIRI' => my_group(KIRIGAKURE_ID),
-    'FT_IS_IWA' => my_group(IWAGAKURE_ID),
-    'FT_IS_SUNA' => my_group(SUNAGAKURE_ID),
-    'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID),
+    'FT_IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),
+    'FT_IS_IWA' => my_group(IWAGAKURE_ID, $user->data['user_id']),
+    'FT_IS_SUNA' => my_group(SUNAGAKURE_ID, $user->data['user_id']),
+    'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
 ));
 
 // Output page

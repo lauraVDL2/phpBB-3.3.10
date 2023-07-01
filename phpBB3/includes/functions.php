@@ -11,6 +11,8 @@
 *
 */
 
+use phpbb\db\migration\data\vJnM\influence_points;
+
 /**
 * @ignore
 */
@@ -19,7 +21,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-//error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);
 
 const IWAGAKURE_ID = 8;
 const KIRIGAKURE_ID = 9;
@@ -292,9 +294,10 @@ function gen_rand_string_friendly($num_chars = 8)
 /** Find the last connected members 
  * @return string
 */
-function last_hours($db, $timestamp) {
+function last_hours($timestamp) {
+	global $db;
 	$req = [
-		'SELECT' => 'DISTINCT ut.username AS name, ut.user_id AS user_id, ut.user_colour AS user_colour',
+		'SELECT' => 'ut.username AS username, ut.user_id AS user_id, ut.user_colour AS user_colour',
 		'FROM' => [ 
 			USERS_TABLE => 'ut'
 		],
@@ -304,14 +307,14 @@ function last_hours($db, $timestamp) {
 				'ON' => 's.session_user_id = ut.user_id',
 			]
 		],
-		'WHERE' => 'UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - '.$timestamp. ' <= s.session_last_visit AND s.session_user_id != '.ANONYMOUS,
+		'WHERE' => 'UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - '.$timestamp. ' <= ut.user_lastvisit OR s.session_user_id <> '.ANONYMOUS,
 		//'GROUP_BY' => 'ut.user_id'
 	];
-	$sql = $db->sql_build_query('SELECT', $req);
+	$sql = $db->sql_build_query('SELECT_DISTINCT', $req);
 	$query = $db->sql_query($sql);
 	$str = '';
 	while($column = $db->sql_fetchrow($query)) {
-		$str .= '<a style="color:#'.$column['user_colour'].';">'.$column['name'].'</a> ';
+		$str .= '<a style="color:#'.$column['user_colour'].';">'.$column['username'].'</a> ';
 	}
 	return $str;
 }
@@ -381,7 +384,7 @@ function total_groups($db, $group_id) {
  * Check the group of the connected user
  * @return string
  */
-function my_group($group_id) {
+function my_group($group_id, $user_id) {
 	global $user, $db;
 	$req = [
 		'SELECT' => 'g.group_name AS my_group',
@@ -398,12 +401,40 @@ function my_group($group_id) {
 				'ON' => 'gt.user_id = ut.user_id',
 			]
 		],
-		'WHERE' => 'gt.group_id = '.$group_id.' AND ut.user_id = '.$user->data['user_id'],
+		'WHERE' => 'gt.group_id = '.$group_id.' AND ut.user_id = '.$user_id,
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
 	$column = $db->sql_fetchrow($query);
 	return $column['my_group'] ?? null;
+}
+
+/**
+ * Get the influence points of your group
+ * @return int
+ */
+function influence_points($group_id, $user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'g.group_influence_points AS influence_points',
+		'FROM' => [
+			USER_GROUP_TABLE => 'gt'
+		],
+		'LEFT_JOIN' => [ 
+			[
+				'FROM' => [ GROUPS_TABLE => 'g' ],
+				'ON' => 'gt.group_id = g.group_id',
+			],
+			[
+				'FROM' => [ USERS_TABLE => 'ut' ],
+				'ON' => 'gt.user_id = ut.user_id',
+			]
+		],
+		'WHERE' => 'gt.group_id = '.$group_id.' AND ut.user_id = '.$user_id,
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['influence_points'];
 }
 
 /** Informations of the last user registered
@@ -4336,6 +4367,24 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$total_final = max($iwa, $kiri, $suna, $nukenin, $kumo, $konoha);
 	$character_infos = character_informations();
 	$exp_bar = $levels[character_informations()['level']];
+	if(my_group(KIRIGAKURE_ID, $user->data['user_id'])) {
+		$influence_points = influence_points(KIRIGAKURE_ID, $user->data['user_id']);
+	}
+	else if(my_group(IWAGAKURE_ID, $user->data['user_id'])) {
+		$influence_points = influence_points(IWAGAKURE_ID, $user->data['user_id']);
+	}
+	else if(my_group(SUNAGAKURE_ID, $user->data['user_id'])) {
+		$influence_points = influence_points(SUNAGAKURE_ID, $user->data['user_id']);
+	}
+	else if(my_group(KUMOGAKURE_ID, $user->data['user_id'])) {
+		$influence_points = influence_points(KUMOGAKURE_ID, $user->data['user_id']);
+	}
+	else if(my_group(KONOHAGAKURE_ID, $user->data['user_id'])) {
+		$influence_points = influence_points(KONOHAGAKURE_ID, $user->data['user_id']);
+	}
+	else {
+		$influence_points = 0;
+	}
 	last_posts();
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
@@ -4347,7 +4396,8 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'KONOHA_TOTAL' => $konoha,
 		'NUKENIN_TOTAL' => $nukenin,
 		'TOTAL_FINAL' => $total_final,
-		'LAST_HOURS_USERS' => last_hours($db, 345600),
+		'SESSION_ID' => $user->session_id,
+		'LAST_HOURS_USERS' => last_hours(345600),
 		'LAST_USER_AVATAR' => last_user($db)['avatar'],
 		'LAST_USER_NAME' => last_user($db)['username'],
 		'USER_ID' => $user->data['user_id'],
@@ -4370,8 +4420,13 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'IS_SECOND_ELEMENT' => $character_infos['is_second_element'],
 		'IS_THIRD_ELEMENT' => $character_infos['is_third_element'],
 		'TALENT_POINTS' => $character_infos['talent_points'],
-		'IS_ANONYMOUS' => my_group(ANONYMOUS),
-		'IS_KIRI' => my_group(KIRIGAKURE_ID),
+		'IS_ANONYMOUS' => my_group(ANONYMOUS, $user->data['user_id']),
+		'IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),
+		'IS_IWA' => my_group(IWAGAKURE_ID, $user->data['user_id']),
+		'IS_SUNA' => my_group(SUNAGAKURE_ID, $user->data['user_id']),
+		'IS_KUMO' => my_group(KUMOGAKURE_ID, $user->data['user_id']),
+		'IS_KONOHA' => my_group(KONOHAGAKURE_ID, $user->data['user_id']),
+		'INFLUENCE_POINTS' => $influence_points,
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],
 		'PAGE_TITLE'					=> $page_title,

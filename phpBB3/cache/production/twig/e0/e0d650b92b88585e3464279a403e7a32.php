@@ -284,22 +284,69 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
         echo " ";
         echo ($context["BODY_CLASS"] ?? null);
         echo "\">
-
+\t<div id=\"greyscreen\"></div>
 ";
         // line 77
         // line 78
         echo "
+";
+        // line 79
+        $asset_file = "header.js";
+        $asset = new \phpbb\template\asset($asset_file, $this->env->get_path_helper(), $this->env->get_filesystem());
+        if (substr($asset_file, 0, 2) !== './' && $asset->is_relative()) {
+            $asset_path = $asset->get_path();            $local_file = $this->env->get_phpbb_root_path() . $asset_path;
+            if (!file_exists($local_file)) {
+                $local_file = $this->env->findTemplate($asset_path);
+                $asset->set_path($local_file, true);
+            }
+        }
+        
+        if ($asset->is_relative()) {
+            $asset->add_assets_version($this->env->get_phpbb_config()['assets_version']);
+        }
+        $this->env->get_assets_bag()->add_script($asset);        // line 80
+        echo "
 <div >
 \t<a id=\"top\" class=\"top-anchor\" accesskey=\"t\"></a>
+\t<div id=\"nav\">
+\t\t<img src=\"https://zupimages.net/up/23/26/tmpz.png\" id=\"burger\">
+\t</div>
+\t<div id=\"subnav\">
+\t\t<h1>Navigation</h1>
+\t\t<a href=\"./index.php\">Index</a>
+\t\t";
+        // line 89
+        if (($context["IS_ANONYMOUS"] ?? null)) {
+            // line 90
+            echo "\t\t<a href=\"./ucp.php?mode=login\">Se connecter</a>
+\t\t<a href=\"./ucp.php?mode=register&sid=";
+            // line 91
+            echo ($context["SESSION_ID"] ?? null);
+            echo "\">S'enregistrer</a>
+\t\t";
+        } else {
+            // line 93
+            echo "\t\t<a href=\"./ucp.php?sid=";
+            echo ($context["SESSION_ID"] ?? null);
+            echo "\">Profil</a>
+\t\t<a href=\"./ucp.php?mode=logout&sid=";
+            // line 94
+            echo ($context["SESSION_ID"] ?? null);
+            echo "\">Se déconnecter</a>
+\t\t";
+        }
+        // line 96
+        echo "\t\t<a href=\"https://discord.gg/JvWTGSsQYh\">Discord</a>
+\t</div>
 \t<div id=\"page-header\">
 \t\t<div id=\"banner\">
 \t\t\t<a href=\"./index.php\">
 \t\t\t\t<div id=\"main_title\">";
-        // line 84
+        // line 101
         echo ($context["SITENAME"] ?? null);
         echo "</div>
 \t\t\t\t<div id=\"forum_descr\">";
-        // line 85
+        // line 102
         echo ($context["SITE_DESCRIPTION"] ?? null);
         echo "</div>
 \t\t\t</a>
@@ -322,19 +369,19 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 \t</div>
 
 \t";
-        // line 105
-        // line 106
+        // line 122
+        // line 123
         echo "
 \t<a id=\"start_here\" class=\"anchor\"></a>
 \t<div id=\"page-body\" class=\"page-body\" role=\"main\">
 \t\t";
-        // line 109
+        // line 126
         if (((($context["S_BOARD_DISABLED"] ?? null) && ($context["S_USER_LOGGED_IN"] ?? null)) && (($context["U_MCP"] ?? null) || ($context["U_ACP"] ?? null)))) {
-            // line 110
+            // line 127
             echo "\t\t<div id=\"information\" class=\"rules\">
 \t\t\t<div class=\"inner\">
 \t\t\t\t<strong>";
-            // line 112
+            // line 129
             echo $this->extensions['phpbb\template\twig\extension']->lang("INFORMATION");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</strong> ";
@@ -344,10 +391,10 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 \t\t</div>
 \t\t";
         }
-        // line 116
+        // line 133
         echo "
 \t\t";
-        // line 117
+        // line 134
     }
 
     public function getTemplateName()
@@ -362,7 +409,7 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  351 => 117,  348 => 116,  338 => 112,  334 => 110,  332 => 109,  327 => 106,  326 => 105,  303 => 85,  299 => 84,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
+        return array (  398 => 134,  395 => 133,  385 => 129,  381 => 127,  379 => 126,  374 => 123,  373 => 122,  350 => 102,  346 => 101,  339 => 96,  334 => 94,  329 => 93,  324 => 91,  321 => 90,  319 => 89,  308 => 80,  294 => 79,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

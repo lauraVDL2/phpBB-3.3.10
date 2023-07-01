@@ -1,10 +1,5 @@
 <!-- INCLUDE overall_header.html -->
-<head>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script type="text/javascript" src="./styles/prosilver/template/fiche_technique.js"></script>
-    <link href="./styles/prosilver/theme/stylesheet.css" rel="stylesheet">
-</head>
-<body>
+{% INCLUDEJS 'fiche_technique.js' %}
 <div id="ft_name" class="<!-- IF FT_IS_KIRI -->ft_kiri<!-- ELSEIF FT_IS_IWA -->ft_iwa<!-- ELSEIF FT_IS_SUNA -->ft_suna<!-- ELSE -->ft_nuke<!-- ENDIF -->">Fiche technique de {FT_USERNAME}</div>
 <div id="ft_user">
         <h1>Techniques de Ninjutsu</h1>
@@ -166,4 +161,3 @@
 </div>
 
 <!-- INCLUDE overall_footer.html -->
-</body>

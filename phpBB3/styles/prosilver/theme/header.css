@@ -15,6 +15,7 @@
     display: grid;
     grid-template-columns: 2fr 3fr;
     align-items: center;
+    margin-top: 80px;
 }
 
 #banner {
@@ -90,4 +91,71 @@
 
 .content_news {
     width: 80%;
+}
+
+#nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: var(--main_color_1);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 7;
+}
+
+#burger {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#subnav {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: var(--main_color_1);
+    display: none;
+}
+
+#greyscreen {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    opacity: 0.5;
+    position: fixed;
+    display: none;
+    z-index: 8;
+}
+
+#subnav h1 {
+    all: unset;
+    color: var(--secondary_color_2);
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+#subnav a {
+    display: block;
+    font-size: 1.2rem;
+    margin: 5px auto;
+    color: var(--main_color_2);
+    text-align: center;
+    width: 80%;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: var(--main_color_3);
+    transition: 1s;
+}
+
+#subnav a:hover {
+    color: var(--main_color_3);
+    background-color: var(--main_color_2);
 }
