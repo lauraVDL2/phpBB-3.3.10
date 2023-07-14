@@ -310,34 +310,34 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 \t<a id=\"top\" class=\"top-anchor\" accesskey=\"t\"></a>
 \t<div id=\"nav\">
 \t\t<img src=\"https://zupimages.net/up/23/26/tmpz.png\" id=\"burger\">
+\t\t<a href=\"https://discord.gg/JvWTGSsQYh\"><img src=\"https://zupimages.net/up/20/14/hnvw.png\" id=\"discord\"></a>
 \t</div>
 \t<div id=\"subnav\">
 \t\t<h1>Navigation</h1>
 \t\t<a href=\"./index.php\">Index</a>
 \t\t";
-        // line 89
+        // line 90
         if (($context["IS_ANONYMOUS"] ?? null)) {
-            // line 90
+            // line 91
             echo "\t\t<a href=\"./ucp.php?mode=login\">Se connecter</a>
 \t\t<a href=\"./ucp.php?mode=register&sid=";
-            // line 91
+            // line 92
             echo ($context["SESSION_ID"] ?? null);
             echo "\">S'enregistrer</a>
 \t\t";
         } else {
-            // line 93
+            // line 94
             echo "\t\t<a href=\"./ucp.php?sid=";
             echo ($context["SESSION_ID"] ?? null);
             echo "\">Profil</a>
 \t\t<a href=\"./ucp.php?mode=logout&sid=";
-            // line 94
+            // line 95
             echo ($context["SESSION_ID"] ?? null);
             echo "\">Se déconnecter</a>
 \t\t";
         }
-        // line 96
-        echo "\t\t<a href=\"https://discord.gg/JvWTGSsQYh\">Discord</a>
-\t</div>
+        // line 97
+        echo "\t</div>
 \t<div id=\"page-header\">
 \t\t<div id=\"banner\">
 \t\t\t<a href=\"./index.php\">
@@ -409,7 +409,7 @@ class __TwigTemplate_2a0a1fd481804757c1227ad6d0bfc28b extends \Twig\Template
 
     public function getDebugInfo()
     {
-        return array (  398 => 134,  395 => 133,  385 => 129,  381 => 127,  379 => 126,  374 => 123,  373 => 122,  350 => 102,  346 => 101,  339 => 96,  334 => 94,  329 => 93,  324 => 91,  321 => 90,  319 => 89,  308 => 80,  294 => 79,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
+        return array (  398 => 134,  395 => 133,  385 => 129,  381 => 127,  379 => 126,  374 => 123,  373 => 122,  350 => 102,  346 => 101,  340 => 97,  335 => 95,  330 => 94,  325 => 92,  322 => 91,  320 => 90,  308 => 80,  294 => 79,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

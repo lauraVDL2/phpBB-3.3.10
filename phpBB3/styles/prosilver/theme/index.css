@@ -53,3 +53,23 @@ a:hover {
     padding: 5px;
     border-radius: 5px;
 }
+
+.inputbox, .inputbox:autofill {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 0 0 40px var(--main_color_1) inset !important;
+    border: 1px dotted var(--main_color_2) !important;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 5px;
+}
+
+.button2 {
+    all: unset !important;
+    border-radius: 15px !important;
+    background-color: green !important;
+    color: var(--main_color_1) !important;
+    box-sizing: border-box !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+}

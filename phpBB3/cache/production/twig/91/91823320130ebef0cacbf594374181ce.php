@@ -122,7 +122,7 @@ class __TwigTemplate_296d176f9d16f19d5100cee0e2299cc2 extends \Twig\Template
         // line 33
         echo "
 \t<div id=\"carte\">
-\t\t<a href=\"https://\">
+\t\t<a href=\"./map.php\">
 \t\t\t<img src=\"https://zupimages.net/up/23/13/wm3r.png\">
 \t\t</a>
 \t\t<div>
@@ -317,7 +317,7 @@ class __TwigTemplate_296d176f9d16f19d5100cee0e2299cc2 extends \Twig\Template
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['forumrow'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 108
-        echo "<img src=\"https://media.discordapp.net/attachments/1077571354552971265/1092073094170030160/5bbdb9bc7fb95-07b7ea147027f2ae3c847d5198bace1e.png?width=530&height=676\" id=\"imgDeco\">
+        echo "<img src=\"https://zupimages.net/up/23/27/6zgz.png\" id=\"imgDeco\">
 </div>
 
 ";

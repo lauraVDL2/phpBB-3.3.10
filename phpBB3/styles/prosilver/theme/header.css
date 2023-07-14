@@ -97,6 +97,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 80px;
     background-color: var(--main_color_1);
     position: fixed;
@@ -158,4 +159,9 @@
 #subnav a:hover {
     color: var(--main_color_3);
     background-color: var(--main_color_2);
+}
+
+#discord {
+    height: 64px;
+    margin-right: 10px;
 }
