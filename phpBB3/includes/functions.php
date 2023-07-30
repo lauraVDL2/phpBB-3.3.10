@@ -213,6 +213,35 @@ function gain_technique($current_level, $user_id) {
 	}
 }
 
+/**
+ * Get the current level
+ * @param int
+ * @return array
+ */
+function get_profile_informations($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.talent_points AS skillpoints',
+		'FROM' => [ USERS_TABLE => 'ut' ],
+		'WHERE' => 'ut.user_id = '.$user_id,
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query);
+}
+
+/**
+ * Give influence_points
+ * @param int $group_id
+ * @param int $influence_points
+ * @return void
+ */
+function give_influence($group_id, $influence_points) {
+	global $db;
+	$req = 'UPDATE '.GROUPS_TABLE.' SET group_influence_points = group_influence_points + '.$influence_points.' WHERE group_id = '.$group_id;
+	$db->sql_query($req);
+}
+
 /** 
  * Three last posts
  */

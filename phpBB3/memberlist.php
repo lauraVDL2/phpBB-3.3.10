@@ -876,6 +876,126 @@ switch ($mode)
 		$page_title = sprintf($user->lang['VIEWING_PROFILE'], $member['username']);
 		$template_html = 'memberlist_view.html';
 
+		$level = get_profile_informations($user_id)["level"];
+		$level_difference = 50 - (int)$level;
+
+		$skillpoints = get_profile_informations($user_id)["skillpoints"];
+
+		if(my_group(KIRIGAKURE_ID, $user_id)) {
+			$influence_points = influence_points(KIRIGAKURE_ID, $user_id);
+		}
+		else if(my_group(IWAGAKURE_ID, $user_id)) {
+			$influence_points = influence_points(IWAGAKURE_ID, $user_id);
+		}
+		else if(my_group(SUNAGAKURE_ID, $user_id)) {
+			$influence_points = influence_points(SUNAGAKURE_ID, $user_id);
+		}
+		else if(my_group(KUMOGAKURE_ID, $user_id)) {
+			$influence_points = influence_points(KUMOGAKURE_ID, $user_id);
+		}
+		else if(my_group(KONOHAGAKURE_ID, $user_id)) {
+			$influence_points = influence_points(KONOHAGAKURE_ID, $user_id);
+		}
+		else $influence_points = 0;
+
+		global $request;
+		global $db;
+		$json_response = new \phpbb\json_response;
+		if($request->is_ajax()) {
+			global $levels;
+			$gain_level_button = $request->variable('pf_gain_level_button', '');
+			$gain_exp_button = $request->variable('pf_gain_exp_button', '');
+			$pf_give_influence_button = $request->variable('pf_give_influence_button', '');
+			$pf_give_skillpoints_button = $request->variable('pf_give_skillpoints_button', '');
+			if($gain_level_button) {
+				$to_level = (int)$request->variable('pf_gain_level', 0) + (int)$level;
+				$experience = 0;
+				for($i = $level; $i < $to_level; $i++) $experience += $levels[$i];
+				if($experience > 0) {
+					$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$experience.' WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					level_up($user_id);
+					return $json_response->send([
+						'action' => 'PF_LEVEL_UP',
+						],
+					);
+				}
+			}
+			else if($gain_exp_button) {
+				$exp = $request->variable('pf_gain_exp', 0);
+				if($exp > 0) {
+					$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$exp.' WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					$exp_bar = $levels[$level];
+					$exp = get_profile_informations($user_id)["experience"];
+					if($exp >= $exp_bar) level_up($user_id);
+					return $json_response->send([
+						'action' => 'PF_EXPERIENCE',
+						],
+					);
+				}
+			}
+			else if($pf_give_influence_button) {
+				$influence_points = $request->variable('pf_give_influence', 0);
+				if($influence_points > 0) {
+					if(my_group(KIRIGAKURE_ID, $user_id)) {
+						give_influence(KIRIGAKURE_ID, $influence_points);
+						return $json_response->send([
+							'action' => 'PF_INFLUENCE',
+							],
+						);
+					}
+					else if(my_group(IWAGAKURE_ID, $user_id)) {
+						give_influence(IWAGAKURE_ID, $influence_points);
+						return $json_response->send([
+							'action' => 'PF_INFLUENCE',
+							],
+						);
+					}
+					else if(my_group(SUNAGAKURE_ID, $user_id)) {
+						give_influence(SUNAGAKURE_ID, $influence_points);
+						return $json_response->send([
+							'action' => 'PF_INFLUENCE',
+							],
+						);
+					}
+					else if(my_group(KUMOGAKURE_ID, $user_id)) {
+						give_influence(KUMOGAKURE_ID, $influence_points);
+						return $json_response->send([
+							'action' => 'PF_INFLUENCE',
+							],
+						);
+					}
+					else if(my_group(KONOHAGAKURE_ID, $user_id)) {
+						give_influence(KONOHAGAKURE_ID, $influence_points);
+						return $json_response->send([
+							'action' => 'PF_INFLUENCE',
+							],
+						);
+					}
+				}
+			}
+			else if($pf_give_skillpoints_button) {
+				$pf_give_skillpoints = $request->variable('pf_give_skillpoints', '');
+				if($pf_give_skillpoints > 0) {
+					$sql = 'UPDATE '.USERS_TABLE.' SET talent_points = talent_points + '.$pf_give_skillpoints.' WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action' => 'PF_SKILLPOINTS',
+						],
+					);
+				}
+			}
+		}
+
+		$template->assign_vars(array(
+			'IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
+			'PF_LEVEL' => $level,
+			'PF_LEVEL_DIFFERENCE' => $level_difference,
+			'PF_SKILLPOINTS' => $skillpoints,
+			'PF_INFLUENCE_POINTS' => $influence_points
+		));
+
 		$template->assign_block_vars('navlinks', array(
 			'BREADCRUMB_NAME'	=> $user->lang('MEMBERLIST'),
 			'U_BREADCRUMB'		=> append_sid("{$phpbb_root_path}memberlist.$phpEx"),

@@ -73,3 +73,8 @@ a:hover {
     padding: 8px !important;
     cursor: pointer !important;
 }
+
+.panel {
+    width: 100%;
+    background-color: var(--main_color_1);
+}
