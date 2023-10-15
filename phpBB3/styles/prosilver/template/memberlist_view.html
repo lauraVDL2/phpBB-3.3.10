@@ -144,6 +144,12 @@
 	<!-- INCLUDEJS profile_admin.js -->
 	<div class="pf_title">Administrateur</div>
 	<div class="pf_field">
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_rank_callback" data-refresh="true">
+			<h3>Changer le rang</h3>
+			<div>Rang actuel : {PF_RP_RANK}</div>
+			<input type="hidden" value="{PF_RP_RANK}" name="pf_current_rank">
+			<input type="submit" value="Passer au rang suivant" name="pf_gain_rank_button">
+		</form>
 		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_level_callback" data-refresh="true">
 			<h3>Donner des niveaux</h3>
 			<div>Personnage de niveau {PF_LEVEL} pouvant gagner {PF_LEVEL_DIFFERENCE} niveaux.</div>
@@ -167,6 +173,41 @@
 			<input type="number" name="pf_give_influence" min="1" id="pf_give_influence">
 			<input type="submit" value="Valider" name="pf_give_influence_button">
 		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_technique_callback" data-refresh="true">
+			<h3>Donner une technique</h3>
+			{PF_TECHNIQUES_INFO}
+			<select name="pf_technique_select">
+				<option value="D">D</option>
+				<option value="C">C</option>
+				<option value="B">B</option>
+				<option value="A">A</option>
+				<option value="S">S</option>
+			</select>
+			<input type="submit" value="Valider" name="pf_give_techniques_button">
+		</form>
+		<!-- IF !PF_IS_JINCHURIKI -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_jinchuriki_callback" data-refresh="true">
+			<h3>Donner un démon à queues</h3>
+			<select name="pf_jinchuriki_select">
+				<!-- IF !IS_CHUKAKU --><option value="Shukaku">Shukaku</option><!-- ENDIF -->
+				<!-- IF !IS_MATATABI --><option value="Matatabi">Matatabi</option><!-- ENDIF -->
+				<!-- IF !IS_ISOBU --><option value="Isobu">Isobu</option><!-- ENDIF -->
+				<!-- IF !IS_SON_GOKU --><option value="Son Gokû">Son Gokû</option><!-- ENDIF -->
+				<!-- IF !IS_KUKUO --><option value="Kukuô">Kukuô</option><!-- ENDIF -->
+				<!-- IF !IS_SAIKEN --><option value="Saiken">Saiken</option><!-- ENDIF -->
+				<!-- IF !IS_CHOMEI --><option value="Chômei">Chômei</option><!-- ENDIF -->
+				<!-- IF !IS_GUIKI --><option value="Gyûki">Gyûki</option><!-- ENDIF -->
+				<!-- IF !IS_KURAMA --><option value="Kurama">Kurama</option><!-- ENDIF -->
+			</select>
+			<input type="submit" value="Valider" name="pf_give_jinchuriki_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_jinchuriki_callback" data-refresh="true">
+			<h3>Retirer le démon queues</h3>
+			<div>Le personnage est propriétaire d'un démon à queues, vous pouvez le lui retirer, ce qui débloquera le démon pour un autre joueur.</div>
+			<input type="submit" value="Retirer le démon à queues" name="pf_erase_jinchuriki_button">
+		</form>
+		<!-- ENDIF -->
 	</div>
 	<!-- ENDIF -->
 

@@ -349,6 +349,67 @@ function last_hours($timestamp) {
 }
 
 /**
+ * Get user informations of the technique (admin interface of the profile)
+ * @param int user_id
+ * @return string
+ */
+function get_techniques_count($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'COUNT(ut.technique_rank) AS number_technique, ut.technique_rank AS rank_technique',
+		'FROM' => [ USER_TECHNIQUES_TABLE => 'ut' ],
+		'WHERE' => 'ut.user_id = '.$user_id,
+		'GROUP_BY' => 'ut.technique_rank',
+		'ORDER_BY' => 'ut.technique_rank ASC'
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	$str = '';
+	while($column = $db->sql_fetchrow($query)) {
+		$str .= '<div>'.$column['number_technique'].' techniques de rang '.$column['rank_technique'].' validées ou en cours de validation.</div>';
+	}
+	return $str;
+}
+
+/**
+ * See if we already have a owner to this tailed-beast
+ * @param string demon
+ * @return int
+ */
+function get_jinchuriki($demon) {
+	global $db;
+	$req = [
+		'SELECT' => 'COUNT(*) AS number_jin',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gt'
+		],
+		'WHERE' => 'gt.jinchuriki = "'.$demon.'"'
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['number_jin'];
+}
+
+/**
+ * Check if the user is already a jinchuriki
+ * @param int user_id
+ * @return string demon_name
+ */
+function is_jinchuriki($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'gt.jinchuriki AS demon',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gt'
+		],
+		'WHERE gt.user_id = '.$user_id
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['demon'] ?? null;
+}
+
+/**
  * Level, experience, attributes and more
  * @return array
  */
@@ -436,6 +497,20 @@ function my_group($group_id, $user_id) {
 	$query = $db->sql_query($sql);
 	$column = $db->sql_fetchrow($query);
 	return $column['my_group'] ?? null;
+}
+
+function get_rank($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'u.user_rp_rank AS rp_rank',
+		'FROM' => [
+			USERS_TABLE => 'u'
+		],
+		'WHERE' => 'u.user_id = '.$user_id,
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['rp_rank'];
 }
 
 /**

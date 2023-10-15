@@ -1,12 +1,5 @@
 @import url("var_root.css");
 
-body {
-    width: 100%;
-    font-size: 100%;
-    background-image: url("https://zupimages.net/up/23/13/jf63.png");
-    color: var(--main_color_2);
-}
-
 :root, div, fieldset{
     scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
     scrollbar-width: thin !important;
@@ -77,4 +70,13 @@ a:hover {
 .panel {
     width: 100%;
     background-color: var(--main_color_1);
+}
+
+body {
+    width: 100%;
+    font-size: 100%;
+    background: url('https://zupimages.net/up/23/13/jf63.png') !important;
+    color: var(--main_color_2);
+    background-size:cover;
+    background-attachment:fixed;
 }

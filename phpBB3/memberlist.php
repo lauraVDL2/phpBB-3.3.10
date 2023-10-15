@@ -907,6 +907,10 @@ switch ($mode)
 			$gain_exp_button = $request->variable('pf_gain_exp_button', '');
 			$pf_give_influence_button = $request->variable('pf_give_influence_button', '');
 			$pf_give_skillpoints_button = $request->variable('pf_give_skillpoints_button', '');
+			$pf_gain_rank_button = $request->variable('pf_gain_rank_button', '');
+			$pf_give_techniques_button = $request->variable('pf_give_techniques_button', '');
+			$pf_give_jinchuriki_button = $request->variable('pf_give_jinchuriki_button', '');
+			$pf_erase_jinchuriki_button = $request->variable('pf_erase_jinchuriki_button', '');
 			if($gain_level_button) {
 				$to_level = (int)$request->variable('pf_gain_level', 0) + (int)$level;
 				$experience = 0;
@@ -986,10 +990,106 @@ switch ($mode)
 					);
 				}
 			}
+			else if($pf_gain_rank_button) {
+				$pf_current_rank = utf8_normalize_nfc($request->variable('pf_current_rank', '', true));
+				if($pf_current_rank == 'Genin') {
+					$sql = 'UPDATE '.USERS_TABLE.' SET user_rp_rank = "Chûnin", user_attributes_to_use = user_attributes_to_use + 4, user_attributes_total = user_attributes_total + 4 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET c_techniques = c_techniques + 1, b_techniques = b_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'is_chunin',
+						],
+       				);
+				}
+				else if($pf_current_rank == 'Chûnin') {
+					$sql = 'UPDATE '.USERS_TABLE.' SET user_rp_rank = "Jônin", user_attributes_to_use = user_attributes_to_use + 4, user_attributes_total = user_attributes_total + 4 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET b_techniques = b_techniques + 1, a_techniques = a_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'is_jonin',
+						],
+					);
+				}
+			}
+			else if($pf_give_techniques_button) {
+				$pf_technique_rank = $request->variable('pf_technique_select', '', true);
+				if($pf_technique_rank == 'D') {
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET d_techniques = d_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'PF_D_TECHNIQUE',
+						],
+					);
+				}
+				else if($pf_technique_rank == 'C') {
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET c_techniques = c_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'PF_C_TECHNIQUE',
+						],
+					);
+				}
+				else if($pf_technique_rank == 'B') {
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET b_techniques = b_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'PF_B_TECHNIQUE',
+						],
+					);
+				}
+				else if($pf_technique_rank == 'A') {
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET a_techniques = a_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'PF_A_TECHNIQUE',
+						],
+					);
+				}
+				else if($pf_technique_rank == 'S') {
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET s_techniques = s_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'PF_S_TECHNIQUE',
+						],
+					);
+				}
+			}
+			else if($pf_give_jinchuriki_button) {
+				$demon = utf8_normalize_nfc($request->variable('pf_jinchuriki_select', '', true));
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET jinchuriki = "'.$demon.'" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_JINCHURIKI',
+					'demon' => $demon,
+					],
+				); 
+			}
+			else if($pf_erase_jinchuriki_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET jinchuriki = "" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_ERASE_JINCHURIKI',
+					],
+				); 
+			}
 		}
 
 		$template->assign_vars(array(
 			'IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
+			'IS_CHUKAKU' => get_jinchuriki('Shukaku'),
+			'IS_MATATABI' => get_jinchuriki('Matatabi'),
+			'IS_ISOBU' => get_jinchuriki('Isobu'),
+			'IS_SON_GOKU' => get_jinchuriki('Son Gokû'),
+			'IS_KUKUO' => get_jinchuriki('Kukuô'),
+			'IS_SAIKEN' => get_jinchuriki('Saiken'),
+			'IS_CHOMEI' => get_jinchuriki('Chômei'),
+			'IS_GYUKI' => get_jinchuriki('Gyûki'),
+			'IS_KURAMA' => get_jinchuriki('Kurama'),
+			'PF_IS_JINCHURIKI' => is_jinchuriki($user_id),
+			'PF_TECHNIQUES_INFO' => get_techniques_count($user_id),
+			'PF_RP_RANK' => get_rank($user_id),
 			'PF_LEVEL' => $level,
 			'PF_LEVEL_DIFFERENCE' => $level_difference,
 			'PF_SKILLPOINTS' => $skillpoints,
