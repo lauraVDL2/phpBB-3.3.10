@@ -1,0 +1,5 @@
+{
+    "fiveServer.php.executable": "/usr/bin/php",
+    "fiveServer.php.ini": "/etc/php/8.0/cli/php.ini",
+    "fiveServer.navigate": false,
+}

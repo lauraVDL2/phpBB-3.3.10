@@ -62,13 +62,73 @@ jQuery(function($) {
     });
     phpbb.addAjaxCallback('pf_give_jinchuriki_callback', function(re) {
         if(re.action === "PF_JINCHURIKI") {
-            window.confirm("Le personnage est devenu le propriétaire de " + re.demon + " !");
+            window.confirm(`Le personnage est devenu le propriétaire de ${re.demon} !`);
             window.location.reload(true);
         }
     });
     phpbb.addAjaxCallback('pf_erase_jinchuriki_callback', function(re) {
         if(re.action === "PF_ERASE_JINCHURIKI") {
             window.confirm("Le personnage n'est plus un jinchuriki, son démon est libre pour un autre joueur !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_overspecialization_callback', function(re) {
+        if(re.action === "PF_GIVE_OVERSPECIALIZATION") {
+            window.confirm("Le personnage est désormais surpécialisé !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_erase_overspecialization_callback', function(re) {
+        if(re.action === "PF_ERASE_OVERSPECIALIZATION") {
+            window.confirm("Le personnage n'est plus surspécialisé, il peut désormais dépenser des points dans d'autres domaines !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_first_kg_callback', function(re) {
+        if(re.action === "PF_GIVE_FIRST_KG") {
+            window.confirm(`Le personnage a reçu le Kekkei Genkai suivant : ${re.kg_type} !`);
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_second_kg_callback', function(re) {
+        if(re.action === "PF_GIVE_SECOND_KG") {
+            window.confirm(`Le personnage a reçu le Kekkei Genkai suivant : ${re.kg_type} !`);
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_erase_first_kg_callback', function(re) {
+        if(re.action === "PF_ERASE_FIRST_KG") {
+            window.confirm("Le Kekkei Genkai a été retiré !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_erase_second_kg_callback', function(re) {
+        if(re.action === "PF_ERASE_SECOND_KG") {
+            window.confirm("Le Kekkei Genkai a été retiré !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_first_hiden_callback', function(re) {
+        if(re.action === "PF_GIVE_FIRST_HIDEN") {
+            window.confirm(`Le personnage a reçu le Hiden suivant : ${re.hiden_type} !`);
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_second_hiden_callback', function(re) {
+        if(re.action === "PF_GIVE_SECOND_HIDEN") {
+            window.confirm(`Le personnage a reçu le Hiden suivant : ${re.hiden_type} !`);
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_erase_first_hiden_callback', function(re) {
+        if(re.action === "PF_ERASE_FIRST_HIDEN") {
+            window.confirm("Le Hiden a été retiré !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_erase_second_hiden_callback', function(re) {
+        if(re.action === "PF_ERASE_SECOND_HIDEN") {
+            window.confirm("Le Hiden a été retiré !");
             window.location.reload(true);
         }
     });

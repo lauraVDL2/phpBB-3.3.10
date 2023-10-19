@@ -911,6 +911,15 @@ switch ($mode)
 			$pf_give_techniques_button = $request->variable('pf_give_techniques_button', '');
 			$pf_give_jinchuriki_button = $request->variable('pf_give_jinchuriki_button', '');
 			$pf_erase_jinchuriki_button = $request->variable('pf_erase_jinchuriki_button', '');
+			$pf_give_overspecialization_button = $request->variable('pf_give_overspecialization_button', '');
+			$pf_erase_overspecialization_button = $request->variable('pf_erase_overspecialization_button', '');
+			$pf_give_first_kg_button = $request->variable('pf_give_first_kg_button', '');
+			$pf_give_second_kg_button = $request->variable('pf_give_second_kg_button', '');
+			$pf_erase_first_kg_button = $request->variable('pf_erase_first_kg_button', '');
+			$pf_erase_second_kg_button = $request->variable('pf_erase_second_kg_button', '');
+			$pf_give_first_hiden_button = $request->variable('pf_give_first_hiden_button', '');
+			$pf_give_second_hiden_button = $request->variable('pf_give_second_hiden_button', '');
+			$pf_erase_second_hiden_button = $request->variable('pf_erase_second_hiden_button', '');
 			if($gain_level_button) {
 				$to_level = (int)$request->variable('pf_gain_level', 0) + (int)$level;
 				$experience = 0;
@@ -1074,7 +1083,91 @@ switch ($mode)
 					],
 				); 
 			}
+			else if($pf_give_overspecialization_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET surspecialization = 1 WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_GIVE_OVERSPECIALIZATION',
+					],
+				); 
+			}
+			else if($pf_erase_overspecialization_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET surspecialization = 0 WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_ERASE_OVERSPECIALIZATION',
+					],
+				);
+			}
+			else if($pf_give_first_kg_button) {
+				$kekkei_genkai = utf8_normalize_nfc($request->variable('pf_first_kg_select', '', true));
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET first_kekkei_genkai = "'.$kekkei_genkai.'" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_GIVE_FIRST_KG',
+					'kg_type' => $kekkei_genkai
+					],
+				);
+			}
+			else if($pf_give_second_kg_button) {
+				$kekkei_genkai = utf8_normalize_nfc($request->variable('pf_second_kg_select', '', true));
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET second_kekkei_genkai = "'.$kekkei_genkai.'" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action'	=> 'PF_GIVE_SECOND_KG',
+					'kg_type' => $kekkei_genkai
+					],
+				);
+			}
+			else if($pf_erase_first_kg_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET first_kekkei_genkai = "" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_ERASE_FIRST_KG'
+				]);
+			}
+			else if($pf_erase_second_kg_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET second_kekkei_genkai = "" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_ERASE_SECOND_KG'
+				]);
+			}
+			else if($pf_give_first_hiden_button) {
+				$hiden = utf8_normalize_nfc($request->variable('pf_first_hiden_select', '', true));
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET first_hidden = "'.$hiden.'" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_GIVE_FIRST_HIDEN',
+					'hiden_type' => $hiden
+				]);
+			}
+			else if($pf_give_second_hiden_button) {
+				$hiden = utf8_normalize_nfc($request->variable('pf_second_hiden_select', '', true));
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET second_hidden = "'.$hiden.'" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_GIVE_SECOND_HIDEN',
+					'hiden_type' => $hiden
+				]);
+			}
+			else if($pf_erase_first_hiden_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET first_hidden = "" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_ERASE_FIRST_HIDEN'
+				]);
+			}
+			else if($pf_erase_second_hiden_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET second_hidden = "" WHERE user_id = '.$user_id;
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_ERASE_SECOND_HIDEN'
+				]);
+			}
 		}
+
+		$specials = get_specials($user_id);
 
 		$template->assign_vars(array(
 			'IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
@@ -1087,6 +1180,11 @@ switch ($mode)
 			'IS_CHOMEI' => get_jinchuriki('Chômei'),
 			'IS_GYUKI' => get_jinchuriki('Gyûki'),
 			'IS_KURAMA' => get_jinchuriki('Kurama'),
+			'PF_FIRST_KG' => $specials['first_kg'],
+			'PF_SECOND_KG' => $specials['second_kg'],
+			'PF_FIRST_HIDEN' => $specials['first_hiden'],
+			'PF_SECOND_HIDEN' => $specials['second_hiden'],
+			'PF_IS_OVERSPECIALIZED' => is_overspecialized($user_id),
 			'PF_IS_JINCHURIKI' => is_jinchuriki($user_id),
 			'PF_TECHNIQUES_INFO' => get_techniques_count($user_id),
 			'PF_RP_RANK' => get_rank($user_id),

@@ -28,12 +28,24 @@
     border: 1px dotted var(--main_color_2);
     margin-top: 10px;
     background-color: var(--main_color_3);
+    margin: 5px auto;
+    display: block;
 }
 
 .pf_field input[type=submit] {
     border: none;
     background-color: green;
     color: var(--main_color_1);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px;
+    margin: 15px auto;
+    display: block;
+}
+
+.pf_field select {
+    border: 1px dotted var(--main_color_2);
+    width: 18rem;
+    margin: 5px auto;
+    display: block;
+    text-align: center;
 }

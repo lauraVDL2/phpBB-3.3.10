@@ -11,8 +11,6 @@
 *
 */
 
-use phpbb\db\migration\data\vJnM\influence_points;
-
 /**
 * @ignore
 */
@@ -369,6 +367,44 @@ function get_techniques_count($user_id) {
 		$str .= '<div>'.$column['number_technique'].' techniques de rang '.$column['rank_technique'].' validées ou en cours de validation.</div>';
 	}
 	return $str;
+}
+
+/**
+ * Get Kekkei Genkai and Hiden informations from the character
+ * @param int user_id
+ * @return array
+ */
+function get_specials($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'gt.first_kekkei_genkai AS first_kg, gt.second_kekkei_genkai AS second_kg, gt.first_hidden AS first_hiden, gt.second_hidden AS second_hiden',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gt'
+		],
+		'WHERE' => 'user_id = '.$user_id
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query);
+}
+
+/**
+ * See if the character is overspecialized
+ * @param int user_id
+ * @return bool
+ */
+function is_overspecialized($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'gt.surspecialization AS overspecialized',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gt'
+		],
+		'WHERE' => 'gt.user_id = '.$user_id
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['overspecialized'];
 }
 
 /**
