@@ -40,11 +40,50 @@ $sort_dir	= $request->variable('sd', $default_sort_dir);
 /* @var $pagination \phpbb\pagination */
 $pagination = $phpbb_container->get('pagination');
 
+$json_response = new \phpbb\json_response;
+
 // Check if the user has actually sent a forum ID with his/her request
 // If not give them a nice error page.
 if (!$forum_id)
 {
 	trigger_error('NO_FORUM');
+}
+
+/**
+ * Get experience informations of the forum
+ * @param int forum_id
+ * @return array
+ */
+function getExpInfos($forum_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'ft.forum_post_exp AS post_exp, ft.forum_reply_exp AS reply_exp',
+		'FROM' => [
+			FORUMS_TABLE => 'ft'
+		],
+		'WHERE' => 'ft.forum_id = '.$forum_id
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query);
+}
+
+$forum_infos = getExpInfos($forum_id);
+global $user;
+
+if($request->is_ajax()) {
+	global $db;
+	$vf_modify_exp_button = $request->variable('vf_modify_exp_button', '');
+	if($vf_modify_exp_button) {
+		$post_exp = $request->variable('vf_exp_post', 0);
+		$reply_exp = $request->variable('vf_exp_reply', 0);
+		$sql = 'UPDATE '.FORUMS_TABLE. ' SET forum_post_exp = '.$post_exp.', forum_reply_exp = '.$reply_exp.' WHERE forum_id = '.$forum_id;
+		$db->sql_query($sql);
+		return $json_response->send([
+            'action'	=> 'MODIFY_EXP',
+            ],
+        );
+	}
 }
 
 $sql_from = FORUMS_TABLE . ' f';
@@ -382,6 +421,9 @@ if (!empty($_EXTRA_URL))
 }
 
 $template->assign_vars(array(
+	'EXP_POST' => $forum_infos['post_exp'],
+	'EXP_REPLY' => $forum_infos['reply_exp'],
+	'IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
 	'MODERATORS'	=> (!empty($moderators[$forum_id])) ? implode($user->lang['COMMA_SEPARATOR'], $moderators[$forum_id]) : '',
 
 	'POST_IMG'					=> ($forum_data['forum_status'] == ITEM_LOCKED) ? $user->img('button_topic_locked', $post_alt) : $user->img('button_topic_new', $post_alt),

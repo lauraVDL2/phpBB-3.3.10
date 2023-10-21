@@ -14,4 +14,8 @@
     --main_police_2: montserrat, sans-serif;
     --shadow: rgba(0, 0, 0, 0.1);
     --color_m_p: #f1ede4; /* Fond profil + messages */
+    --blue_button: blue;
+    --green_button: green;
+    --red_button: darkred;
+    --black_button: black;
   }

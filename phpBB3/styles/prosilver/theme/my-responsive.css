@@ -66,4 +66,9 @@
     #lp_case, #f_groups {
         display: none;
     }
+
+    .subforumGrid {
+        grid-template-rows: auto;
+        padding: 10px;
+    }
 }

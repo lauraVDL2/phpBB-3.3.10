@@ -1,0 +1,31 @@
+<div class="subforumGrid">
+<!-- BEGIN forumrow -->
+<fieldset class="subforumContent">
+    <legend>
+        <a href="{forumrow.U_VIEWFORUM}" class="forumTitle">{forumrow.FORUM_NAME}</a>
+    </legend>
+    <div class="forumDescr">{forumrow.FORUM_DESC}</div>
+    <div class="lastPost">
+        <!-- IF forumrow.LAST_POST_TIME_RFC3339 -->
+        <!-- IF forumrow.S_DISPLAY_SUBJECT -->
+            <!-- EVENT forumlist_body_last_post_title_prepend -->
+            <a href="{forumrow.U_LAST_POST}" title="{forumrow.LAST_POST_SUBJECT}" class="lastSubject">{forumrow.LAST_POST_SUBJECT_TRUNCATED}</a> <br />
+        <!-- ENDIF -->
+        <div><time datetime="{forumrow.LAST_POST_TIME_RFC3339}">{forumrow.LAST_POST_TIME}</time></div>
+            <!-- EVENT forumlist_body_last_poster_username_prepend -->{forumrow.LAST_POSTER_FULL}<!-- EVENT forumlist_body_last_poster_username_append -->
+        <!-- IF not S_IS_BOT -->
+            <a href="{forumrow.U_LAST_POST}" title="{L_VIEW_LATEST_POST}" class="lastPostLink">
+                <!-- IF forumrow.S_UNREAD_FORUM -->
+                    <img src="https://zupimages.net/up/23/14/rftn.png">
+                <!-- ELSE -->
+                    <img src="https://zupimages.net/up/23/13/vjii.png">
+                <!-- ENDIF -->
+            </a>
+        <!-- ENDIF -->
+    <!-- ELSE -->
+    <div class="noPost">Aucun dernier message !</div>
+    <!-- ENDIF -->
+    </div>
+</fieldset>
+<!-- END forumrow -->
+</div>

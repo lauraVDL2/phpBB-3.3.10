@@ -54,10 +54,11 @@
     margin: auto;
     display: block;
     border: none;
-    background-color: var(--main_color_2);
-    padding: 5px;
+    background-color: blue;
+    padding: 10px;
     font-family: var(--main_police_2);
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
     color: var(--main_color_1);
     border-radius: 15px;
 }

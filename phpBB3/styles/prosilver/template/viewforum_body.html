@@ -1,6 +1,7 @@
 <!-- INCLUDE overall_header.html -->
 <!-- EVENT viewforum_forum_title_before -->
-<h2 class="forum-title"><!-- EVENT viewforum_forum_name_prepend --><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
+<div class="wrap" id="wrap">
+<h2 class="forum-title"><!-- EVENT viewforum_forum_name_prepend --><a href="{U_VIEW_FORUM}" class="subforumName">{FORUM_NAME}</a><!-- EVENT viewforum_forum_name_append --></h2>
 <!-- EVENT viewforum_forum_title_after -->
 <!-- IF FORUM_DESC or MODERATORS or U_MCP -->
 <div>
@@ -31,7 +32,7 @@
 		<a href="{U_MARK_FORUMS}" class="mark-read rightside" data-ajax="mark_forums_read">{L_MARK_SUBFORUMS_READ}</a>
 	</div>
 <!-- ENDIF -->
-	<!-- INCLUDE forumlist_body.html -->
+	<!-- INCLUDE subforumlist_body.html -->
 <!-- ENDIF -->
 
 <!-- IF S_DISPLAY_POST_INFO or .pagination or TOTAL_POSTS or TOTAL_TOPICS -->
@@ -127,6 +128,25 @@
 
 <!-- ENDIF -->
 
+<!-- IF IS_ADMIN -->
+	<!-- INCLUDEJS viewforum_action.js -->
+	<fieldset class="adminExpForum">
+		<legend>Modifier l'expérience gagnée</legend>
+		<div>{EXP_POST} points d'expérience par nouveau sujet et {EXP_REPLY} points d'expérience par réponse.</div>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_exp_forum_callback" data-refresh="true">
+			<div>
+				<label>Expérience gagnée sur un nouveau sujet : </label>
+				<input type="number" value="{EXP_POST}" name="vf_exp_post">
+			</div>
+			<div>
+				<label>Expérience gagnée sur un nouveau post :</label>
+				<input type="number" value="{EXP_REPLY}" name="vf_exp_reply">
+			</div>
+			<input type="submit" value="Valider les modifications" name="vf_modify_exp_button">
+		</form>
+	</fieldset>
+<!-- ENDIF -->
+
 <!-- EVENT viewforum_body_topic_row_before -->
 
 <!-- BEGIN topicrow -->
@@ -138,112 +158,48 @@
 	<!-- ENDIF -->
 
 	<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
-		<div class="forumbg<!-- IF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) --> announcement<!-- ENDIF -->">
-		<div class="inner">
-		<ul class="topiclist">
-			<li class="header">
-				<dl class="row-item">
-					<dt<!-- IF S_DISPLAY_ACTIVE --> id="active_topics"<!-- ENDIF -->><div class="list-inner"><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></div></dt>
-					<dd class="posts">{L_REPLIES}</dd>
-					<dd class="views">{L_VIEWS}</dd>
-					<dd class="lastpost"><span>{L_LAST_POST}</span></dd>
-				</dl>
-			</li>
-		</ul>
-		<ul class="topiclist topics">
+		<div class="subjectsGrid">
+			<div>Sujets</div>
+			<div>{L_REPLIES}</div>
+			<div>{L_VIEWS}</div>
+			<div>{L_LAST_POST}</div>
 	<!-- ENDIF -->
 
-		<!-- EVENT viewforum_body_topicrow_row_before -->
-		<li class="row<!-- IF topicrow.S_ROW_COUNT is even --> bg1<!-- ELSE --> bg2<!-- ENDIF --><!-- IF topicrow.S_POST_GLOBAL --> global-announce<!-- ENDIF --><!-- IF topicrow.S_POST_ANNOUNCE --> announce<!-- ENDIF --><!-- IF topicrow.S_POST_STICKY --> sticky<!-- ENDIF --><!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
-			<!-- EVENT viewforum_body_topic_row_prepend -->
-			<dl class="row-item {topicrow.TOPIC_IMG_STYLE}">
-				<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url('{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}'); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
-					<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}" class="row-item-link"></a><!-- ENDIF -->
-					<div class="list-inner">
-						<!-- EVENT topiclist_row_prepend -->
-						<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT -->
-							<a class="unread" href="{topicrow.U_NEWEST_POST}">
-								<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i><span class="sr-only">{NEW_POST}</span>
-							</a>
+	<!-- EVENT viewforum_body_topicrow_row_before -->
+		<!-- EVENT viewforum_body_topic_row_prepend -->
+		<!-- EVENT topiclist_row_prepend -->
+			<div class="subjectsTitle">
+				<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT -->
+					<img src="https://zupimages.net/up/23/14/rftn.png">
+				<!-- ELSE -->
+					<img src="https://zupimages.net/up/23/13/vjii.png">
+				<!-- ENDIF -->
+				<!-- IF topicrow.U_VIEW_TOPIC --><a href="{topicrow.U_VIEW_TOPIC}" class="subjectsTopicTitle">{topicrow.TOPIC_TITLE}</a><!-- ELSE -->{topicrow.TOPIC_TITLE}<!-- ENDIF -->
+				<div>{topicrow.LAST_POST_TIME}</div>
+				<!-- IF .topicrow.pagination -->
+				<div class="pagination">
+					<span><i class="icon fa-clone fa-fw" aria-hidden="true"></i></span>
+					<ul>
+					<!-- BEGIN pagination -->
+						<!-- IF topicrow.pagination.S_IS_PREV -->
+						<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><li class="active"><span>{topicrow.pagination.PAGE_NUMBER}</span></li>
+						<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
+						<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
+						<!-- ELSE --><li><a class="button" href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a></li>
 						<!-- ENDIF -->
-						<!-- IF topicrow.U_VIEW_TOPIC --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a><!-- ELSE -->{topicrow.TOPIC_TITLE}<!-- ENDIF -->
-						<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
-							<a href="{topicrow.U_MCP_QUEUE}" title="<!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF -->">
-								<i class="icon fa-question fa-fw icon-blue" aria-hidden="true"></i><span class="sr-only"><!-- IF topicrow.S_TOPIC_UNAPPROVED -->{L_TOPIC_UNAPPROVED}<!-- ELSE -->{L_POSTS_UNAPPROVED}<!-- ENDIF --></span>
-							</a>
-						<!-- ENDIF -->
-						<!-- IF topicrow.S_TOPIC_DELETED -->
-							<a href="{topicrow.U_MCP_QUEUE}" title="{L_TOPIC_DELETED}">
-								<i class="icon fa-recycle fa-fw icon-green" aria-hidden="true"></i><span class="sr-only">{L_TOPIC_DELETED}</span>
-							</a>
-						<!-- ENDIF -->
-						<!-- IF topicrow.S_TOPIC_REPORTED -->
-							<a href="{topicrow.U_MCP_REPORT}" title="{L_TOPIC_REPORTED}">
-								<i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i><span class="sr-only">{L_TOPIC_REPORTED}</span>
-							</a>
-						<!-- ENDIF -->
-						<br />
-						<!-- EVENT topiclist_row_topic_title_after -->
+					<!-- END pagination -->
+					</ul>
+				</div>
+				<!-- ENDIF -->
 
-						<!-- IF not S_IS_BOT -->
-						<div class="responsive-show" style="display: none;">
-							{L_LAST_POST} {L_POST_BY_AUTHOR} <!-- EVENT viewforum_body_last_post_author_username_prepend -->{topicrow.LAST_POST_AUTHOR_FULL}<!-- EVENT viewforum_body_last_post_author_username_append --> &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}"><time datetime="{topicrow.LAST_POST_TIME_RFC3339}">{topicrow.LAST_POST_TIME}</time></a>
-							<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --><br />{L_POSTED} {L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
-						</div>
-							<!-- IF topicrow.REPLIES -->
-							<span class="responsive-show left-box" style="display: none;">{L_REPLIES}{L_COLON} <strong>{topicrow.REPLIES}</strong></span>
-							<!-- ENDIF -->
-						<!-- ENDIF -->
-
-						<div class="topic-poster responsive-hide left-box">
-							<!-- IF topicrow.S_HAS_POLL --><i class="icon fa-bar-chart fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="icon fa-paperclip fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-							{% EVENT topiclist_row_topic_by_author_before %}
-							{L_POST_BY_AUTHOR} <!-- EVENT viewforum_body_topic_author_username_prepend -->{topicrow.TOPIC_AUTHOR_FULL}<!-- EVENT viewforum_body_topic_author_username_append --> &raquo; <time datetime="{topicrow.FIRST_POST_TIME_RFC3339}">{topicrow.FIRST_POST_TIME}</time>
-							{% EVENT topiclist_row_topic_by_author_after %}
-							<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --> &raquo; {L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
-						</div>
-
-						<!-- IF .topicrow.pagination -->
-						<div class="pagination">
-							<span><i class="icon fa-clone fa-fw" aria-hidden="true"></i></span>
-							<ul>
-							<!-- BEGIN pagination -->
-								<!-- IF topicrow.pagination.S_IS_PREV -->
-								<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><li class="active"><span>{topicrow.pagination.PAGE_NUMBER}</span></li>
-								<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
-								<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
-								<!-- ELSE --><li><a class="button" href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a></li>
-								<!-- ENDIF -->
-							<!-- END pagination -->
-							</ul>
-						</div>
-						<!-- ENDIF -->
-
-						<!-- EVENT topiclist_row_append -->
-					</div>
-				</dt>
-				<dd class="posts">{topicrow.REPLIES} <dfn>{L_REPLIES}</dfn></dd>
-				<dd class="views">{topicrow.VIEWS} <dfn>{L_VIEWS}</dfn></dd>
-				<dd class="lastpost">
-					<span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} <!-- EVENT viewforum_body_last_post_author_username_prepend -->{topicrow.LAST_POST_AUTHOR_FULL}<!-- EVENT viewforum_body_last_post_author_username_append -->
-						<!-- IF not S_IS_BOT and topicrow.U_LAST_POST -->
-							<a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">
-								<i class="icon fa-external-link-square fa-fw icon-lightgray icon-md" aria-hidden="true"></i><span class="sr-only">{VIEW_LATEST_POST}</span>
-							</a>
-						<!-- ENDIF -->
-						<br /><time datetime="{topicrow.LAST_POST_TIME_RFC3339}">{topicrow.LAST_POST_TIME}</time>
-					</span>
-				</dd>
-			</dl>
-			<!-- EVENT viewforum_body_topic_row_append -->
-		</li>
-		<!-- EVENT viewforum_body_topic_row_after -->
-
+			</div>
+			<div>{topicrow.REPLIES}</div>
+			<div>{topicrow.VIEWS}</div>
+			<div>
+				{topicrow.LAST_POST_AUTHOR_FULL}
+			</div>
 	<!-- IF topicrow.S_LAST_ROW -->
-			</ul>
 		</div>
-	</div>
 	<!-- ENDIF -->
 
 <!-- BEGINELSE -->
