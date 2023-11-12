@@ -710,6 +710,8 @@ function user_delete($mode, $user_ids, $retain_username = true)
 	$db->sql_query($sql);
 	$sql = 'DELETE FROM '.GAINED_TECHNIQUES_TABLE.' WHERE user_id IN('.implode(',', $user_ids).')';
 	$db->sql_query($sql);
+	$sql = 'DELETE FROM '.ATTRIBUTES_TABLE.' WHERE user_id IN('.implode(',', $user_ids).')';
+	$db->sql_query($sql);
 	// Delete the miscellaneous (non-post) data for the user
 	foreach ($table_ary as $table)
 	{
