@@ -8,4 +8,18 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('modify_mission_callback', function(re) {
+        if(re.action === "MISSION_MODIFIED") {
+            window.confirm("La mission a bien été modifiée !");
+            window.location.reload(true);
+        }
+        else if(re.action === "MISSION_VALIDATED") {
+            window.confirm(`La mission ${re.title} a été validée !`);
+            window.location.reload(true);
+        }
+        else if(re.action === "MISSION_DELETED") {
+            window.confirm(`La mission ${re.title} a été supprimée !`);
+            window.location.reload(true);
+        }
+    });
 });

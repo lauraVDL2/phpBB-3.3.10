@@ -2,6 +2,66 @@
 {% INCLUDEJS 'missions_board.js' %}
 <div id="missions_board_title">Tableau des missions</div>
 <div id="missions_board_content">
+    <h1>Missions disponibles</h1>
+    <!-- BEGIN missions_to_subscribe -->
+    <h2>{missions_to_subscribe.MS_TITLE}</h2>
+    <div class="mission_infos">
+        <strong>Rang de la mission :</strong> {missions_to_subscribe.MS_RANK}
+    </div>
+    <div class="mission_infos">
+        <strong>Description :</strong> {missions_to_subscribe.MS_DESCRIPTION}
+    </div>
+    <div class="mission_infos">
+        <strong>Conditions de réussite :</strong> {missions_to_subscribe.MS_CONDITION}
+    </div>
+    <div class="mission_infos">
+        <strong>Récompenses potentielles :</strong> {missions_to_subscribe.MS_EARNING}
+    </div>
+    <div class="mission_infos">
+        <strong>Informations complémentaires :</strong> {missions_to_subscribe.MS_INFOS}
+    </div>
+    <div class="mission_infos">
+        <strong>Nombre de participants maximum :</strong> {missions_to_subscribe.MS_MAX_USERS}
+    </div>
+    <div class="mission_infos">
+        <strong>Groupes concernés :</strong> {missions_to_subscribe.MS_GROUPS}
+    </div>
+    <!-- END missions_to_subscribe -->
+
+    <!-- BEGIN missions_to_validate -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_mission_callback" data-refresh="true">
+        <input type="hidden" value="{missions_to_validate.MV_ID}" name="mission_id">
+        <h1>Valider les missions (Administrateur)</h1>
+        <h2>Titre de la mission</h2>
+        <input type="text" name="mission_title" value="{missions_to_validate.MV_TITLE}" required>
+        <h2>Description de la mission</h2>
+        <textarea name="mission_description" required>{missions_to_validate.MV_DESCRIPTION}</textarea>
+        <h2>Conditions de réussite</h2>
+        <textarea name="mission_conditions" required>{missions_to_validate.MV_CONDITION}</textarea>
+        <h2>Récompenses potentielles</h2>
+        <textarea name="mission_earnings" required>{missions_to_validate.MV_EARNING}</textarea>
+        <h2>Informations complémentaires</h2>
+        <textarea name="mission_infos" required>{missions_to_validate.MV_INFOS}</textarea>
+        <h2>Rang de la mission</h2>
+        <select name="mission_rank">
+            <option value="S" <!-- IF missions_to_validate.MV_RANK == "S" -->selected<!-- ENDIF -->>S</option>
+            <option value="A" <!-- IF missions_to_validate.MV_RANK == "A" -->selected<!-- ENDIF -->>A</option>
+            <option value="B" <!-- IF missions_to_validate.MV_RANK == "B" -->selected<!-- ENDIF -->>B</option>
+            <option value="C" <!-- IF missions_to_validate.MV_RANK == "C" -->selected<!-- ENDIF -->>C</option>
+            <option value="D" <!-- IF missions_to_validate.MV_RANK == "D" -->selected<!-- ENDIF -->>D</option>
+        </select>
+        <h2>Nombre de participants maximum</h2>
+        <input type="number" name="mission_max_users" min="1" value="{missions_to_validate.MV_MAX_USERS}" required>
+        <h2>Groupes concernés</h2>
+        <div style="text-align: center;">{missions_to_validate.MV_GROUPS}</div>
+        <div class="align_buttons">
+            <input type="submit" name="validate_mission_button" class="button_validate" value="Valider la mission">
+            <input type="submit" name="modify_mission_button" class="button_modify" value="Enregistrer les modifications">
+            <input type="submit" name="delete_mission_button" class="button_delete" value="Supprimer la mission">
+        </div>
+    </form>
+    <!-- END missions_to_validate -->
+
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="create_mission_callback" data-refresh="true">
         <h1>Créer une mission</h1>
         <h2>Titre de la mission</h2>
@@ -13,7 +73,7 @@
         <h2>Récompenses potentielles</h2>
         <textarea name="mission_earnings" required></textarea>
         <h2>Informations complémentaires</h2>
-        <div>Mettez ici des informations comme le lieu de la mission.</div>
+        <div style="text-align: center;">Mettez ici des informations comme le lieu de la mission.</div>
         <textarea name="mission_infos" required></textarea>
         <h2>Rang de la mission</h2>
         <select name="mission_rank">
@@ -26,25 +86,27 @@
         <h2>Nombre de participants maximum</h2>
         <input type="number" name="mission_max_users" min="1" required>
         <h2>Groupes concernés</h2>
-        <div>
-            <input type="checkbox" name="mission_iwa"> <label>Iwagakure</label>
+        <div id="disp">
+            <div>
+                <input type="checkbox" name="mission_iwa"> <label>Iwagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_suna"> <label>Sunagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_kiri"> <label>Kirigakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_kumo"> <label>Kumogakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_konoha"> <label>Konohagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_nuke"> <label>Nukenin</label>
+            </div>
         </div>
-        <div>
-            <input type="checkbox" name="mission_suna"> <label>Sunagakure</label>
-        </div>
-        <div>
-            <input type="checkbox" name="mission_kiri"> <label>Kirigakure</label>
-        </div>
-        <div>
-            <input type="checkbox" name="mission_kumo"> <label>Kumogakure</label>
-        </div>
-        <div>
-            <input type="checkbox" name="mission_konoha"> <label>Konohagakure</label>
-        </div>
-        <div>
-            <input type="checkbox" name="mission_nuke"> <label>Nukenin</label>
-        </div>
-        <input type="submit" name="create_mission_button" value="Créer la mission">
+        <input type="submit" name="create_mission_button" class="button_validate button_align" value="Créer la mission">
     </form>
 </div>
 <!-- INCLUDE overall_footer.html -->
