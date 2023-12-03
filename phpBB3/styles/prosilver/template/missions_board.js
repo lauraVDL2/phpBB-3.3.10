@@ -22,4 +22,18 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('subscribe_mission_callback', function(re) {
+        if(re.action === "MISSION_SUBSCRIBED") {
+            window.confirm("Vous êtes désormais inscrit à la mission !");
+            window.location.reload(true);
+        }
+        else if(re.action == "MISSION_SUB_FAIL") {
+            window.confirm("Vous êtes déjà inscrit à la mission !");
+            window.location.reload(true);
+        }
+        else if(re.action === "MISSION_UNSUBSCRIBED") {
+            window.confirm("Vous vous êtes désinscrit de la mission !");
+            window.location.reload(true);
+        }
+    });
 });

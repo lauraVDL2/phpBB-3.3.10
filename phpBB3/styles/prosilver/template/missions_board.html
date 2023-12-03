@@ -4,28 +4,41 @@
 <div id="missions_board_content">
     <h1>Missions disponibles</h1>
     <!-- BEGIN missions_to_subscribe -->
-    <h2>{missions_to_subscribe.MS_TITLE}</h2>
-    <div class="mission_infos">
-        <strong>Rang de la mission :</strong> {missions_to_subscribe.MS_RANK}
-    </div>
-    <div class="mission_infos">
-        <strong>Description :</strong> {missions_to_subscribe.MS_DESCRIPTION}
-    </div>
-    <div class="mission_infos">
-        <strong>Conditions de réussite :</strong> {missions_to_subscribe.MS_CONDITION}
-    </div>
-    <div class="mission_infos">
-        <strong>Récompenses potentielles :</strong> {missions_to_subscribe.MS_EARNING}
-    </div>
-    <div class="mission_infos">
-        <strong>Informations complémentaires :</strong> {missions_to_subscribe.MS_INFOS}
-    </div>
-    <div class="mission_infos">
-        <strong>Nombre de participants maximum :</strong> {missions_to_subscribe.MS_MAX_USERS}
-    </div>
-    <div class="mission_infos">
-        <strong>Groupes concernés :</strong> {missions_to_subscribe.MS_GROUPS}
-    </div>
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="subscribe_mission_callback" data-refresh="true">
+        <h2>{missions_to_subscribe.MS_TITLE}</h2>
+        <input type="hidden" value="{missions_to_subscribe.MS_ID}" name="mission_id">
+        <div class="mission_infos">
+            <strong>Rang de la mission :</strong> {missions_to_subscribe.MS_RANK}
+        </div>
+        <div class="mission_infos">
+            <strong>Description :</strong> {missions_to_subscribe.MS_DESCRIPTION}
+        </div>
+        <div class="mission_infos">
+            <strong>Conditions de réussite :</strong> {missions_to_subscribe.MS_CONDITION}
+        </div>
+        <div class="mission_infos">
+            <strong>Récompenses potentielles :</strong> {missions_to_subscribe.MS_EARNING}
+        </div>
+        <div class="mission_infos">
+            <strong>Informations complémentaires :</strong> {missions_to_subscribe.MS_INFOS}
+        </div>
+        <div class="mission_infos">
+            <strong>Nombre de participants maximum :</strong> {missions_to_subscribe.MS_MAX_USERS}
+        </div>
+        <div class="mission_infos">
+            <strong>Joueurs inscrits :</strong> {missions_to_subscribe.MS_PLAYERS}
+        </div>
+        <div class="mission_infos">
+            <strong>Groupes concernés :</strong> {missions_to_subscribe.MS_GROUPS}
+        </div>
+        <div class="align_buttons">
+            <!-- IF missions_to_subscribe.MS_CAN_SUBSCRIBE -->
+                <input type="submit" name="subscribe_mission_button" class="button_validate" value="S'inscrire à la mission">
+            <!-- ELSEIF missions_to_subscribe.MS_CAN_UNSUBSCRIBE -->
+                <input type="submit" name="unsubscribe_mission_button" class="button_delete" value="Se désinscrire de la mission">
+            <!-- ENDIF -->
+        </div>
+    </form>
     <!-- END missions_to_subscribe -->
 
     <!-- BEGIN missions_to_validate -->

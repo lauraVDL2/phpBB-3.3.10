@@ -17,11 +17,18 @@ extract($phpbb_dispatcher->trigger_event('core.index_modify_page_title', compact
 
 $json_response = new \phpbb\json_response;
 
+const MISSION_CREATED = 'CREATED';
+const MISSION_VALIDATED = 'VALIDATED';
+const MISSION_ONGOING = 'ONGOING';
+const MISSION_FINISHED = 'FINISHED';
+
 if($request->is_ajax()) {
     $new_mission = $request->variable('create_mission_button', '');
     $modify_mission = $request->variable('modify_mission_button', '');
     $validate_mission = $request->variable('validate_mission_button', '');
     $delete_mission = $request->variable('delete_mission_button', '');
+    $subscribe_mission = $request->variable('subscribe_mission_button', '');
+    $unsubscribe_mission = $request->variable('unsubscribe_mission_button', '');
     if($new_mission) {
         $kiri_mission = $request->variable('mission_kiri', '');
         $iwa_mission = $request->variable('mission_iwa', '');
@@ -51,9 +58,7 @@ if($request->is_ajax()) {
                 'mission_earning' => $mission_earnings,
                 'mission_infos' => $mission_infos,
                 'mission_max_users' => $mission_max_users,
-                'mission_validated' => 0,
-                'mission_ongoing' => 0,
-                'mission_finished' => 0
+                'mission_status' => MISSION_CREATED
 
             ]);
             $db->sql_query($sql);
@@ -138,7 +143,10 @@ if($request->is_ajax()) {
     }
     else if($validate_mission) {
         $mission_id = $request->variable('mission_id', '');
-        $sql = 'UPDATE '.MISSIONS_TABLE.' SET mission_validated = 1 WHERE mission_id = '.$mission_id;
+        $sql = 'UPDATE '.MISSIONS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+            'mission_id' => $mission_id,
+            'mission_status' => MISSION_VALIDATED
+        ]);
         $db->sql_query($sql);
         return $json_response->send([
             'action' => 'MISSION_VALIDATED',
@@ -154,6 +162,33 @@ if($request->is_ajax()) {
             'title' => utf8_normalize_nfc($request->variable('mission_title', '', true))
         ]);
     }
+    else if($subscribe_mission) {
+        $mission_id = $request->variable('mission_id', '');
+        $user_rank = get_rank($user->data['user_id']);
+        if(!basic_can_subscribe($mission_id)) {
+            return $json_response->send([
+                'action' => 'MISSION_SUB_FAIL'
+            ]);
+        }
+        $sql = 'INSERT INTO '.MISSION_USERS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'mission_id' => $mission_id,
+            'user_id' => $user->data['user_id'],
+            'user_rp_rank' => $user_rank,
+            'username' => $user->data['username']
+        ]);
+        $db->sql_query($sql);
+        return $json_response->send([
+            'action' => 'MISSION_SUBSCRIBED'
+        ]);
+    }
+    else if($unsubscribe_mission) {
+        $mission_id = $request->variable('mission_id', 0);
+        $sql = 'DELETE FROM '.MISSION_USERS_TABLE.' WHERE mission_id = '.$mission_id.' AND user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        return $json_response->send([
+            'action' => 'MISSION_UNSUBSCRIBED'
+        ]);
+    }
 }
 
 function get_missions_to_subscribe() {
@@ -163,12 +198,13 @@ function get_missions_to_subscribe() {
         'FROM' => [
             MISSIONS_TABLE => 'mt'
         ],
-        'WHERE' => 'mt.mission_ongoing = 0 AND mt.mission_validated = 1 AND mt.mission_finished = 0'
+        'WHERE' => 'mt.mission_status = "'.MISSION_VALIDATED.'"'
     ];
     $sql = $db->sql_build_query('SELECT', $req);
     $query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
         $mission_id = $row['mission_id'];
+        $max_users = $row['mission_max_users'];
         $groups = get_groups_to_validate($mission_id);
         if(check_group($mission_id)) {
             $template->assign_block_vars('missions_to_subscribe', [
@@ -180,7 +216,10 @@ function get_missions_to_subscribe() {
                 'MS_CONDITION' => $row['mission_condition'],
                 'MS_EARNING' => $row['mission_earning'],
                 'MS_INFOS' => $row['mission_infos'],
-                'MS_MAX_USERS' => $row['mission_max_users']
+                'MS_MAX_USERS' => $max_users,
+                'MS_PLAYERS' => get_player_names($mission_id),
+                'MS_CAN_SUBSCRIBE' => basic_can_subscribe($mission_id) && check_number_of_players($mission_id, $max_users),
+                'MS_CAN_UNSUBSCRIBE' => !basic_can_subscribe($mission_id)
             ]);
         }
     }
@@ -194,7 +233,7 @@ function get_missions_to_validate() {
             'FROM' => [
                 MISSIONS_TABLE => 'mt'
             ],
-            'WHERE' => 'mt.mission_validated = 0 AND mt.mission_finished = 0 AND mt.mission_ongoing = 0'
+            'WHERE' => 'mt.mission_status = "'.MISSION_CREATED.'"'
         ];
         $sql = $db->sql_build_query('SELECT', $req);
         $query = $db->sql_query($sql);
@@ -239,6 +278,78 @@ function get_groups_to_validate($mission_id) {
     return implode(', ', $groups);
 }
 
+/**
+ * Get the players who are subscribed to the mission
+ * @param int mission_id
+ * @return string players
+ */
+function get_player_names($mission_id) {
+    global $db;
+    $req = [
+        'SELECT' => 'mut.username AS username',
+        'FROM' => [
+            MISSION_USERS_TABLE => 'mut'
+        ],
+        'WHERE' => 'mut.mission_id = '.$mission_id
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    $players = array();
+    while($row = $db->sql_fetchrow($query)) {
+        array_push($players, $row['username']);
+    }
+    return implode(', ', $players);
+}
+
+/**
+ * Check if the player isn't already subscribed in the mission
+ * @param int mission_id
+ * @return bool
+ */
+function basic_can_subscribe($mission_id) {
+    global $db, $user;
+    $req = [
+        'SELECT' => 'mut.user_id AS user_id',
+        'FROM' => [
+            MISSION_USERS_TABLE => 'mut'
+        ],
+        'WHERE' => 'mut.mission_id = '.$mission_id
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    $result = array();
+    while($row = $db->sql_fetchrow($query)) {
+        array_push($result, $row['user_id']);
+    }
+    return !(in_array($user->data['user_id'], $result));
+}
+
+/**
+ * Check if the maximum number of player isn't reach
+ * @param int mission_id
+ * @param int max
+ * @return bool
+ */
+function check_number_of_players($mission_id, $max) {
+    global $db;
+    $req = [
+        'SELECT' => 'COUNT(*) AS number',
+        'FROM' => [
+            MISSION_USERS_TABLE => 'mut'
+        ],
+        'WHERE' => 'mut.mission_id = '.$mission_id
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    $number = $db->sql_fetchrow($query)['number'];
+    return $number < $max;
+}
+
+/**
+ * See if you have the permissions to see the mission
+ * @param int mission_id
+ * @return bool
+ */
 function check_group($mission_id) {
     global $db, $user;
     $req = [
