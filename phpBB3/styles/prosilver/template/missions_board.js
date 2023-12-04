@@ -24,7 +24,7 @@ jQuery(function($) {
     });
     phpbb.addAjaxCallback('subscribe_mission_callback', function(re) {
         if(re.action === "MISSION_SUBSCRIBED") {
-            window.confirm("Vous êtes désormais inscrit à la mission !");
+            window.confirm(`Vous êtes désormais inscrit à la mission ${re.title} !`);
             window.location.reload(true);
         }
         else if(re.action == "MISSION_SUB_FAIL") {
@@ -32,7 +32,17 @@ jQuery(function($) {
             window.location.reload(true);
         }
         else if(re.action === "MISSION_UNSUBSCRIBED") {
-            window.confirm("Vous vous êtes désinscrit de la mission !");
+            window.confirm(`Vous vous êtes désinscrit de la mission ${re.title} !`);
+            window.location.reload(true);
+        }
+        else if(re.action === "MISSION_ONGOING") {
+            window.confirm(`La mission ${re.title} est passée au statut en cours !`);
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('ongoing_mission_callback', function(re) {
+        if(re.action === "MISSION_FINISHED") {
+            window.confirm(`La mission ${re.title} est marquée comme terminée !`);
             window.location.reload(true);
         }
     });

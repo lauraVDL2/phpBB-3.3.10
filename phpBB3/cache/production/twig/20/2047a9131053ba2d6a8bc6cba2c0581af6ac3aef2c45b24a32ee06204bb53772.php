@@ -62,176 +62,295 @@ class __TwigTemplate_0d0dbcda55c8ef17b3088c5737449be3ecacb0cd4fe99af5f133ffd4188
         $this->env->get_assets_bag()->add_script($asset);        // line 3
         echo "<div id=\"missions_board_title\">Tableau des missions</div>
 <div id=\"missions_board_content\">
-    <h1>Missions disponibles</h1>
+    <h1>Missions en cours</h1>
     ";
         // line 6
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "missions_to_subscribe", [], "any", false, false, false, 6));
-        foreach ($context['_seq'] as $context["_key"] => $context["missions_to_subscribe"]) {
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "ongoing_missions", [], "any", false, false, false, 6));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["ongoing_missions"]) {
             // line 7
+            echo "        <form method=\"post\" action=\"";
+            echo ($context["U_ACTION"] ?? null);
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"ongoing_mission_callback\" data-refresh=\"true\">
+            <h2>";
+            // line 8
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_TITLE", [], "any", false, false, false, 8);
+            echo "</h2>
+            <input type=\"hidden\" value=\"";
+            // line 9
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_ID", [], "any", false, false, false, 9);
+            echo "\" name=\"mission_id\">
+            <input type=\"hidden\" name=\"mission_title\" value=\"";
+            // line 10
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_TITLE", [], "any", false, false, false, 10);
+            echo "\">
+            <div class=\"mission_infos\">
+                <strong>Rang de la mission :</strong> ";
+            // line 12
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_RANK", [], "any", false, false, false, 12);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Description :</strong> ";
+            // line 15
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_DESCRIPTION", [], "any", false, false, false, 15);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Conditions de réussite :</strong> ";
+            // line 18
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_CONDITION", [], "any", false, false, false, 18);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Récompenses potentielles :</strong> ";
+            // line 21
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_EARNING", [], "any", false, false, false, 21);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Informations complémentaires :</strong> ";
+            // line 24
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_INFOS", [], "any", false, false, false, 24);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Nombre de participants maximum :</strong> ";
+            // line 27
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_MAX_USERS", [], "any", false, false, false, 27);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Joueurs inscrits :</strong> ";
+            // line 30
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_PLAYERS", [], "any", false, false, false, 30);
+            echo "
+            </div>
+            <div class=\"mission_infos\">
+                <strong>Groupes concernés :</strong> ";
+            // line 33
+            echo twig_get_attribute($this->env, $this->source, $context["ongoing_missions"], "OM_GROUPS", [], "any", false, false, false, 33);
+            echo "
+            </div>
+            <div class=\"align_buttons\">
+                ";
+            // line 36
+            if (($context["MISSION_IS_ADMIN"] ?? null)) {
+                // line 37
+                echo "                    <input type=\"submit\" name=\"finish_mission_button\" class=\"button_validate\" value=\"Marquer comme terminée\">
+                ";
+            }
+            // line 39
+            echo "            </div>
+        </form>
+    ";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 42
+            echo "    <div style=\"text-align: center;\">Aucune mission pour le moment !</div>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ongoing_missions'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 44
+        echo "    <h1>Missions disponibles</h1>
+    ";
+        // line 45
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "missions_to_subscribe", [], "any", false, false, false, 45));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["missions_to_subscribe"]) {
+            // line 46
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"subscribe_mission_callback\" data-refresh=\"true\">
         <h2>";
-            // line 8
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_TITLE", [], "any", false, false, false, 8);
+            // line 47
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_TITLE", [], "any", false, false, false, 47);
             echo "</h2>
         <input type=\"hidden\" value=\"";
-            // line 9
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_ID", [], "any", false, false, false, 9);
+            // line 48
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_ID", [], "any", false, false, false, 48);
             echo "\" name=\"mission_id\">
+        <input type=\"hidden\" name=\"mission_title\" value=\"";
+            // line 49
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_TITLE", [], "any", false, false, false, 49);
+            echo "\">
         <div class=\"mission_infos\">
             <strong>Rang de la mission :</strong> ";
-            // line 11
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_RANK", [], "any", false, false, false, 11);
+            // line 51
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_RANK", [], "any", false, false, false, 51);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Description :</strong> ";
-            // line 14
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_DESCRIPTION", [], "any", false, false, false, 14);
+            // line 54
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_DESCRIPTION", [], "any", false, false, false, 54);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Conditions de réussite :</strong> ";
-            // line 17
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_CONDITION", [], "any", false, false, false, 17);
+            // line 57
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_CONDITION", [], "any", false, false, false, 57);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Récompenses potentielles :</strong> ";
-            // line 20
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_EARNING", [], "any", false, false, false, 20);
+            // line 60
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_EARNING", [], "any", false, false, false, 60);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Informations complémentaires :</strong> ";
-            // line 23
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_INFOS", [], "any", false, false, false, 23);
+            // line 63
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_INFOS", [], "any", false, false, false, 63);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Nombre de participants maximum :</strong> ";
-            // line 26
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_MAX_USERS", [], "any", false, false, false, 26);
+            // line 66
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_MAX_USERS", [], "any", false, false, false, 66);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Joueurs inscrits :</strong> ";
-            // line 29
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_PLAYERS", [], "any", false, false, false, 29);
+            // line 69
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_PLAYERS", [], "any", false, false, false, 69);
             echo "
         </div>
         <div class=\"mission_infos\">
             <strong>Groupes concernés :</strong> ";
-            // line 32
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_GROUPS", [], "any", false, false, false, 32);
+            // line 72
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_GROUPS", [], "any", false, false, false, 72);
             echo "
         </div>
         <div class=\"align_buttons\">
             ";
-            // line 35
-            if (twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_CAN_SUBSCRIBE", [], "any", false, false, false, 35)) {
-                // line 36
+            // line 75
+            if (twig_get_attribute($this->env, $this->source, $context["missions_to_subscribe"], "MS_CAN_SUBSCRIBE", [], "any", false, false, false, 75)) {
+                // line 76
                 echo "                <input type=\"submit\" name=\"subscribe_mission_button\" class=\"button_validate\" value=\"S'inscrire à la mission\">
             ";
-            } elseif (twig_get_attribute($this->env, $this->source,             // line 37
-$context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false, false, 37)) {
-                // line 38
+            } elseif (twig_get_attribute($this->env, $this->source,             // line 77
+$context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false, false, 77)) {
+                // line 78
                 echo "                <input type=\"submit\" name=\"unsubscribe_mission_button\" class=\"button_delete\" value=\"Se désinscrire de la mission\">
             ";
             }
-            // line 40
+            // line 80
+            echo "            ";
+            if (($context["MISSION_IS_ADMIN"] ?? null)) {
+                // line 81
+                echo "                <input type=\"submit\" name=\"ongoing_mission_button\" class=\"button_validate\" value=\"Fermer le inscriptions (passer à En cours)\">
+            ";
+            }
+            // line 83
             echo "        </div>
     </form>
+    ";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 86
+            echo "    <div style=\"text-align: center;\">Aucune mission pour le moment !</div>
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['missions_to_subscribe'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 88
         echo "
     ";
-        // line 44
+        // line 89
+        if (($context["MISSION_IS_ADMIN"] ?? null)) {
+            // line 90
+            echo "    <h1>Valider les missions (Administrateur)</h1>
+    ";
+        }
+        // line 92
+        echo "    ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "missions_to_validate", [], "any", false, false, false, 44));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "missions_to_validate", [], "any", false, false, false, 92));
+        $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["missions_to_validate"]) {
-            // line 45
+            // line 93
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"modify_mission_callback\" data-refresh=\"true\">
         <input type=\"hidden\" value=\"";
-            // line 46
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_ID", [], "any", false, false, false, 46);
+            // line 94
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_ID", [], "any", false, false, false, 94);
             echo "\" name=\"mission_id\">
-        <h1>Valider les missions (Administrateur)</h1>
         <h2>Titre de la mission</h2>
         <input type=\"text\" name=\"mission_title\" value=\"";
-            // line 49
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_TITLE", [], "any", false, false, false, 49);
+            // line 96
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_TITLE", [], "any", false, false, false, 96);
             echo "\" required>
         <h2>Description de la mission</h2>
         <textarea name=\"mission_description\" required>";
-            // line 51
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_DESCRIPTION", [], "any", false, false, false, 51);
+            // line 98
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_DESCRIPTION", [], "any", false, false, false, 98);
             echo "</textarea>
         <h2>Conditions de réussite</h2>
         <textarea name=\"mission_conditions\" required>";
-            // line 53
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_CONDITION", [], "any", false, false, false, 53);
+            // line 100
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_CONDITION", [], "any", false, false, false, 100);
             echo "</textarea>
         <h2>Récompenses potentielles</h2>
         <textarea name=\"mission_earnings\" required>";
-            // line 55
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_EARNING", [], "any", false, false, false, 55);
+            // line 102
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_EARNING", [], "any", false, false, false, 102);
             echo "</textarea>
         <h2>Informations complémentaires</h2>
         <textarea name=\"mission_infos\" required>";
-            // line 57
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_INFOS", [], "any", false, false, false, 57);
+            // line 104
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_INFOS", [], "any", false, false, false, 104);
             echo "</textarea>
         <h2>Rang de la mission</h2>
         <select name=\"mission_rank\">
             <option value=\"S\" ";
-            // line 60
-            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 60) == "S")) {
+            // line 107
+            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 107) == "S")) {
                 echo "selected";
             }
             echo ">S</option>
             <option value=\"A\" ";
-            // line 61
-            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 61) == "A")) {
+            // line 108
+            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 108) == "A")) {
                 echo "selected";
             }
             echo ">A</option>
             <option value=\"B\" ";
-            // line 62
-            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 62) == "B")) {
+            // line 109
+            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 109) == "B")) {
                 echo "selected";
             }
             echo ">B</option>
             <option value=\"C\" ";
-            // line 63
-            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 63) == "C")) {
+            // line 110
+            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 110) == "C")) {
                 echo "selected";
             }
             echo ">C</option>
             <option value=\"D\" ";
-            // line 64
-            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 64) == "D")) {
+            // line 111
+            if ((twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_RANK", [], "any", false, false, false, 111) == "D")) {
                 echo "selected";
             }
             echo ">D</option>
         </select>
         <h2>Nombre de participants maximum</h2>
         <input type=\"number\" name=\"mission_max_users\" min=\"1\" value=\"";
-            // line 67
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_MAX_USERS", [], "any", false, false, false, 67);
+            // line 114
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_MAX_USERS", [], "any", false, false, false, 114);
             echo "\" required>
         <h2>Groupes concernés</h2>
         <div style=\"text-align: center;\">";
-            // line 69
-            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_GROUPS", [], "any", false, false, false, 69);
+            // line 116
+            echo twig_get_attribute($this->env, $this->source, $context["missions_to_validate"], "MV_GROUPS", [], "any", false, false, false, 116);
             echo "</div>
         <div class=\"align_buttons\">
             <input type=\"submit\" name=\"validate_mission_button\" class=\"button_validate\" value=\"Valider la mission\">
@@ -240,14 +359,20 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
         </div>
     </form>
     ";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 124
+            echo "    <div style=\"text-align: center;\">Aucune mission pour le moment !</div>
+    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['missions_to_validate'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 126
         echo "
     <form method=\"post\" action=\"";
-        // line 78
+        // line 127
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"create_mission_callback\" data-refresh=\"true\">
         <h1>Créer une mission</h1>
@@ -297,7 +422,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
     </form>
 </div>
 ";
-        // line 125
+        // line 174
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -305,7 +430,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "missions_board.html", 125)->display($context);
+        $this->loadTemplate("overall_footer.html", "missions_board.html", 174)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -323,7 +448,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
 
     public function getDebugInfo()
     {
-        return array (  301 => 125,  251 => 78,  248 => 77,  234 => 69,  229 => 67,  221 => 64,  215 => 63,  209 => 62,  203 => 61,  197 => 60,  191 => 57,  186 => 55,  181 => 53,  176 => 51,  171 => 49,  165 => 46,  160 => 45,  156 => 44,  153 => 43,  145 => 40,  141 => 38,  139 => 37,  136 => 36,  134 => 35,  128 => 32,  122 => 29,  116 => 26,  110 => 23,  104 => 20,  98 => 17,  92 => 14,  86 => 11,  81 => 9,  77 => 8,  72 => 7,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
+        return array (  426 => 174,  376 => 127,  373 => 126,  366 => 124,  353 => 116,  348 => 114,  340 => 111,  334 => 110,  328 => 109,  322 => 108,  316 => 107,  310 => 104,  305 => 102,  300 => 100,  295 => 98,  290 => 96,  285 => 94,  280 => 93,  274 => 92,  270 => 90,  268 => 89,  265 => 88,  258 => 86,  251 => 83,  247 => 81,  244 => 80,  240 => 78,  238 => 77,  235 => 76,  233 => 75,  227 => 72,  221 => 69,  215 => 66,  209 => 63,  203 => 60,  197 => 57,  191 => 54,  185 => 51,  180 => 49,  176 => 48,  172 => 47,  167 => 46,  162 => 45,  159 => 44,  152 => 42,  145 => 39,  141 => 37,  139 => 36,  133 => 33,  127 => 30,  121 => 27,  115 => 24,  109 => 21,  103 => 18,  97 => 15,  91 => 12,  86 => 10,  82 => 9,  78 => 8,  73 => 7,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

@@ -29,6 +29,8 @@ if($request->is_ajax()) {
     $delete_mission = $request->variable('delete_mission_button', '');
     $subscribe_mission = $request->variable('subscribe_mission_button', '');
     $unsubscribe_mission = $request->variable('unsubscribe_mission_button', '');
+    $ongoing_mission = $request->variable('ongoing_mission_button', '');
+    $finish_mission = $request->variable('finish_mission_button', '');
     if($new_mission) {
         $kiri_mission = $request->variable('mission_kiri', '');
         $iwa_mission = $request->variable('mission_iwa', '');
@@ -144,9 +146,8 @@ if($request->is_ajax()) {
     else if($validate_mission) {
         $mission_id = $request->variable('mission_id', '');
         $sql = 'UPDATE '.MISSIONS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
-            'mission_id' => $mission_id,
             'mission_status' => MISSION_VALIDATED
-        ]);
+        ])." WHERE mission_id = $mission_id";
         $db->sql_query($sql);
         return $json_response->send([
             'action' => 'MISSION_VALIDATED',
@@ -178,7 +179,8 @@ if($request->is_ajax()) {
         ]);
         $db->sql_query($sql);
         return $json_response->send([
-            'action' => 'MISSION_SUBSCRIBED'
+            'action' => 'MISSION_SUBSCRIBED',
+            'title' => utf8_normalize_nfc($request->variable('mission_title', '', true))
         ]);
     }
     else if($unsubscribe_mission) {
@@ -186,11 +188,70 @@ if($request->is_ajax()) {
         $sql = 'DELETE FROM '.MISSION_USERS_TABLE.' WHERE mission_id = '.$mission_id.' AND user_id = '.$user->data['user_id'];
         $db->sql_query($sql);
         return $json_response->send([
-            'action' => 'MISSION_UNSUBSCRIBED'
+            'action' => 'MISSION_UNSUBSCRIBED',
+            'title' => utf8_normalize_nfc($request->variable('mission_title', '', true))
+        ]);
+    }
+    else if($ongoing_mission) {
+        $mission_id = $request->variable('mission_id', 0);
+        $sql = 'UPDATE '.MISSIONS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+            'mission_status' => MISSION_ONGOING
+        ])." WHERE mission_id = $mission_id";
+        $db->sql_query($sql);
+        return $json_response->send([
+            'action' => 'MISSION_ONGOING',
+            'title' => utf8_normalize_nfc($request->variable('mission_title', '', true))
+        ]);
+    }
+    else if($finish_mission) {
+        $mission_id = $request->variable('mission_id', 0);
+        $sql = 'UPDATE '.MISSIONS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+            'mission_status' => MISSION_FINISHED
+        ])." WHERE mission_id = $mission_id";
+        $db->sql_query($sql);
+        return $json_response->send([
+            'action' => 'MISSION_FINISHED',
+            'title' => utf8_normalize_nfc($request->variable('mission_title', '', true))
         ]);
     }
 }
 
+function get_ongoing_missions() {
+    global $db, $template;
+    $req = [
+        'SELECT' => 'mt.mission_id AS mission_id, mt.mission_rank AS mission_rank, mt.mission_title AS mission_title, mt.mission_description AS mission_description, mt.mission_condition AS mission_condition, mt.mission_earning AS mission_earning, mt.mission_infos AS mission_infos, mt.mission_max_users AS mission_max_users',
+        'FROM' => [
+            MISSIONS_TABLE => 'mt'
+        ],
+        'WHERE' => $db->sql_build_array('SELECT', [
+            'mt.mission_status' => MISSION_ONGOING
+        ])
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+    $query = $db->sql_query($sql);
+    while ($row = $db->sql_fetchrow($query)) {
+        $mission_id = $row['mission_id'];
+        $groups = get_groups($mission_id);
+        if(check_group($mission_id)) {
+            $template->assign_block_vars('ongoing_missions', [
+                'OM_ID' => $mission_id,
+                'OM_GROUPS' => $groups,
+                'OM_RANK' => $row['mission_rank'],
+                'OM_TITLE' => $row['mission_title'],
+                'OM_DESCRIPTION' => $row['mission_description'],
+                'OM_CONDITION' => $row['mission_condition'],
+                'OM_EARNING' => $row['mission_earning'],
+                'OM_INFOS' => $row['mission_infos'],
+                'OM_MAX_USERS' => $row['mission_max_users'],
+                'OM_PLAYERS' => get_player_names($mission_id),
+            ]);
+        }
+    }
+}
+
+/**
+ * Get VALIDATED missions
+ */
 function get_missions_to_subscribe() {
     global $db, $template;
     $req = [
@@ -198,14 +259,16 @@ function get_missions_to_subscribe() {
         'FROM' => [
             MISSIONS_TABLE => 'mt'
         ],
-        'WHERE' => 'mt.mission_status = "'.MISSION_VALIDATED.'"'
+        'WHERE' => $db->sql_build_array('SELECT', [
+            'mt.mission_status' => MISSION_VALIDATED
+        ])
     ];
     $sql = $db->sql_build_query('SELECT', $req);
     $query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
         $mission_id = $row['mission_id'];
         $max_users = $row['mission_max_users'];
-        $groups = get_groups_to_validate($mission_id);
+        $groups = get_groups($mission_id);
         if(check_group($mission_id)) {
             $template->assign_block_vars('missions_to_subscribe', [
                 'MS_ID' => $mission_id,
@@ -225,6 +288,9 @@ function get_missions_to_subscribe() {
     }
 }
 
+/**
+ * Get CREATED missions
+ */
 function get_missions_to_validate() {
     global $db, $template, $user;
     if(my_group(ADMINISTRATOR_ID, $user->data['user_id'])) {
@@ -233,13 +299,15 @@ function get_missions_to_validate() {
             'FROM' => [
                 MISSIONS_TABLE => 'mt'
             ],
-            'WHERE' => 'mt.mission_status = "'.MISSION_CREATED.'"'
+            'WHERE' => $db->sql_build_array('SELECT', [
+                'mt.mission_status' => MISSION_CREATED
+            ])
         ];
         $sql = $db->sql_build_query('SELECT', $req);
         $query = $db->sql_query($sql);
         while ($row = $db->sql_fetchrow($query)) {
             $mission_id = $row['mission_id'];
-            $groups = get_groups_to_validate($mission_id);
+            $groups = get_groups($mission_id);
             $template->assign_block_vars('missions_to_validate', [
                 'MV_ID' => $mission_id,
                 'MV_GROUPS' => $groups,
@@ -256,11 +324,11 @@ function get_missions_to_validate() {
 }
 
 /**
- * Get the groups of the mission to be validated
+ * Get the groups of the mission
  * @param int mission_id
  * @return string groups
  */
-function get_groups_to_validate($mission_id) {
+function get_groups($mission_id) {
     global $db;
     $req = [
         'SELECT' => 'mgt.group_name AS group_name',
@@ -387,6 +455,7 @@ function check_group($mission_id) {
 
 get_missions_to_validate();
 get_missions_to_subscribe();
+get_ongoing_missions();
 
 $template->assign_vars(array(
     'MISSION_IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),

@@ -2,11 +2,51 @@
 {% INCLUDEJS 'missions_board.js' %}
 <div id="missions_board_title">Tableau des missions</div>
 <div id="missions_board_content">
+    <h1>Missions en cours</h1>
+    <!-- BEGIN ongoing_missions -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="ongoing_mission_callback" data-refresh="true">
+            <h2>{ongoing_missions.OM_TITLE}</h2>
+            <input type="hidden" value="{ongoing_missions.OM_ID}" name="mission_id">
+            <input type="hidden" name="mission_title" value="{ongoing_missions.OM_TITLE}">
+            <div class="mission_infos">
+                <strong>Rang de la mission :</strong> {ongoing_missions.OM_RANK}
+            </div>
+            <div class="mission_infos">
+                <strong>Description :</strong> {ongoing_missions.OM_DESCRIPTION}
+            </div>
+            <div class="mission_infos">
+                <strong>Conditions de réussite :</strong> {ongoing_missions.OM_CONDITION}
+            </div>
+            <div class="mission_infos">
+                <strong>Récompenses potentielles :</strong> {ongoing_missions.OM_EARNING}
+            </div>
+            <div class="mission_infos">
+                <strong>Informations complémentaires :</strong> {ongoing_missions.OM_INFOS}
+            </div>
+            <div class="mission_infos">
+                <strong>Nombre de participants maximum :</strong> {ongoing_missions.OM_MAX_USERS}
+            </div>
+            <div class="mission_infos">
+                <strong>Joueurs inscrits :</strong> {ongoing_missions.OM_PLAYERS}
+            </div>
+            <div class="mission_infos">
+                <strong>Groupes concernés :</strong> {ongoing_missions.OM_GROUPS}
+            </div>
+            <div class="align_buttons">
+                <!-- IF MISSION_IS_ADMIN -->
+                    <input type="submit" name="finish_mission_button" class="button_validate" value="Marquer comme terminée">
+                <!-- ENDIF -->
+            </div>
+        </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
+    <!-- END ongoing_missions -->
     <h1>Missions disponibles</h1>
     <!-- BEGIN missions_to_subscribe -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="subscribe_mission_callback" data-refresh="true">
         <h2>{missions_to_subscribe.MS_TITLE}</h2>
         <input type="hidden" value="{missions_to_subscribe.MS_ID}" name="mission_id">
+        <input type="hidden" name="mission_title" value="{missions_to_subscribe.MS_TITLE}">
         <div class="mission_infos">
             <strong>Rang de la mission :</strong> {missions_to_subscribe.MS_RANK}
         </div>
@@ -37,14 +77,21 @@
             <!-- ELSEIF missions_to_subscribe.MS_CAN_UNSUBSCRIBE -->
                 <input type="submit" name="unsubscribe_mission_button" class="button_delete" value="Se désinscrire de la mission">
             <!-- ENDIF -->
+            <!-- IF MISSION_IS_ADMIN -->
+                <input type="submit" name="ongoing_mission_button" class="button_validate" value="Fermer le inscriptions (passer à En cours)">
+            <!-- ENDIF -->
         </div>
     </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
     <!-- END missions_to_subscribe -->
 
+    <!-- IF MISSION_IS_ADMIN -->
+    <h1>Valider les missions (Administrateur)</h1>
+    <!-- ENDIF -->
     <!-- BEGIN missions_to_validate -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_mission_callback" data-refresh="true">
         <input type="hidden" value="{missions_to_validate.MV_ID}" name="mission_id">
-        <h1>Valider les missions (Administrateur)</h1>
         <h2>Titre de la mission</h2>
         <input type="text" name="mission_title" value="{missions_to_validate.MV_TITLE}" required>
         <h2>Description de la mission</h2>
@@ -73,6 +120,8 @@
             <input type="submit" name="delete_mission_button" class="button_delete" value="Supprimer la mission">
         </div>
     </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
     <!-- END missions_to_validate -->
 
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="create_mission_callback" data-refresh="true">
