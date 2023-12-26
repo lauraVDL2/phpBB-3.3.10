@@ -21,12 +21,6 @@ if (!defined('IN_PHPBB'))
 
 error_reporting(E_ERROR | E_PARSE);
 
-const IWAGAKURE_ID = 8;
-const KIRIGAKURE_ID = 9;
-const SUNAGAKURE_ID = 10;
-const NUKENIN_ID = 11;
-const KUMOGAKURE_ID = 12;
-const KONOHAGAKURE_ID = 13;
 const ADMINISTRATOR_ID = 5;
 const MAX_LEVEL = 50;
 
@@ -140,6 +134,22 @@ $c_techniques_levels = [15, 20];
 $b_techniques_levels = [25, 30];
 $a_techniques_levels = [35, 40];
 $s_techniques_levels = [45, 50];
+
+function get_group_by_name($group_name) {
+	global $db;
+	$req = [
+		'SELECT' => 'gt.group_id',
+		'FROM' => [
+			GROUPS_TABLE => 'gt'
+		],
+		'WHERE' => $db->sql_build_array('SELECT', [
+			'gt.group_name' => $group_name
+		])
+		];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['group_id'] ?? -1;
+}
 
 function level_up($user_id) {
 	global $levels, $db, $attributes;
@@ -4498,29 +4508,29 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		$template->assign_var('S_FORM_TOKEN_LOGIN', '');
 	}
 
-	$iwa = total_groups($db, IWAGAKURE_ID);
-	$kiri = total_groups($db, KIRIGAKURE_ID);
-	$suna = total_groups($db, SUNAGAKURE_ID);
-	$nukenin = total_groups($db, NUKENIN_ID);
-	$kumo = total_groups($db, KUMOGAKURE_ID);
-	$konoha = total_groups($db, KONOHAGAKURE_ID);
+	$iwa = total_groups($db, get_group_by_name('Iwagakure'));
+	$kiri = total_groups($db, get_group_by_name('Kirigakure'));
+	$suna = total_groups($db, get_group_by_name('Sunagakure'));
+	$nukenin = total_groups($db, get_group_by_name('Nukenin'));
+	$kumo = total_groups($db, get_group_by_name('Kumogakure'));
+	$konoha = total_groups($db, get_group_by_name('Konohagakure'));
 	$total_final = max($iwa, $kiri, $suna, $nukenin, $kumo, $konoha);
 	$character_infos = character_informations();
 	$exp_bar = $levels[character_informations()['level']];
-	if(my_group(KIRIGAKURE_ID, $user->data['user_id'])) {
-		$influence_points = influence_points(KIRIGAKURE_ID, $user->data['user_id']);
+	if(my_group(get_group_by_name('Kirigakure'), $user->data['user_id'])) {
+		$influence_points = influence_points(get_group_by_name('Kirigakure'), $user->data['user_id']);
 	}
-	else if(my_group(IWAGAKURE_ID, $user->data['user_id'])) {
-		$influence_points = influence_points(IWAGAKURE_ID, $user->data['user_id']);
+	else if(my_group(get_group_by_name('Iwagakure'), $user->data['user_id'])) {
+		$influence_points = influence_points(get_group_by_name('Iwagakure'), $user->data['user_id']);
 	}
-	else if(my_group(SUNAGAKURE_ID, $user->data['user_id'])) {
-		$influence_points = influence_points(SUNAGAKURE_ID, $user->data['user_id']);
+	else if(my_group(get_group_by_name('Sunagakure'), $user->data['user_id'])) {
+		$influence_points = influence_points(get_group_by_name('Sunagakure'), $user->data['user_id']);
 	}
-	else if(my_group(KUMOGAKURE_ID, $user->data['user_id'])) {
-		$influence_points = influence_points(KUMOGAKURE_ID, $user->data['user_id']);
+	else if(my_group(get_group_by_name('Kumogakure'), $user->data['user_id'])) {
+		$influence_points = influence_points(get_group_by_name('Kumogakure'), $user->data['user_id']);
 	}
-	else if(my_group(KONOHAGAKURE_ID, $user->data['user_id'])) {
-		$influence_points = influence_points(KONOHAGAKURE_ID, $user->data['user_id']);
+	else if(my_group(get_group_by_name('Konohagakure'), $user->data['user_id'])) {
+		$influence_points = influence_points(get_group_by_name('Konohagakure'), $user->data['user_id']);
 	}
 	else {
 		$influence_points = 0;
@@ -4561,11 +4571,11 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'IS_THIRD_ELEMENT' => $character_infos['is_third_element'],
 		'TALENT_POINTS' => $character_infos['talent_points'],
 		'IS_ANONYMOUS' => my_group(ANONYMOUS, $user->data['user_id']),
-		'IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),
-		'IS_IWA' => my_group(IWAGAKURE_ID, $user->data['user_id']),
-		'IS_SUNA' => my_group(SUNAGAKURE_ID, $user->data['user_id']),
-		'IS_KUMO' => my_group(KUMOGAKURE_ID, $user->data['user_id']),
-		'IS_KONOHA' => my_group(KONOHAGAKURE_ID, $user->data['user_id']),
+		'IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
+		'IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
+		'IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
+		'IS_KUMO' => my_group(get_group_by_name('Kumogakure'), $user->data['user_id']),
+		'IS_KONOHA' => my_group(get_group_by_name('Konohagakure'), $user->data['user_id']),
 		'INFLUENCE_POINTS' => $influence_points,
 		'SITENAME'						=> $config['sitename'],
 		'SITE_DESCRIPTION'				=> $config['site_desc'],

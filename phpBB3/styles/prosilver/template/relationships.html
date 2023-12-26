@@ -1,0 +1,77 @@
+<!-- INCLUDE overall_header.html -->
+{% INCLUDEJS 'relationships.js' %}
+
+<div id="rs_title">Relations de {RS_USERNAME}</div>
+<div id="rs_content">
+    <h1 id="rs_kiri">Kirigakure no Sato</h1>
+    <!-- BEGIN kiri_relations -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="kiri_relation_modify_callback" data-refresh="true">
+        <div class="relation">
+            <input type="hidden" value="{{ kiri_relations.S_ROW_COUNT }}" name="relation_row">
+            <input type="hidden" value="{kiri_relations.RELATIONSHIP_ID}" name="relationship_id">
+            <img src="./download/file.php?avatar={kiri_relations.RELATION_AVATAR}" class="relation_avatar">
+            <div class="relation_container">
+                <h3 class="relation_name relation_kiri">{kiri_relations.RELATION_USERNAME}</h3>
+                <div class="relation_description">
+                    <strong class="kiri_relations_title">{kiri_relations.RELATION_TITLE}</strong> - 
+                    <span class="kiri_relations_description">{kiri_relations.RELATION_DESCRIPTION}</span>
+                </div>
+            </div>
+        </div>
+        <div class="button_align">
+            <input type="submit" class="button_validate kiri_relations_validate none_button" name="modify_relation" value="Valider les modifications">
+            <input type="submit" class="button_delete kiri_relations_delete none_button" name="rollback_relation" value="Annuler les modifications">
+        </div>
+    </form>
+    <input class="button_modify button_block kiri_relations_modify" onclick="modify_relation({{ kiri_relations.S_ROW_COUNT }}, 'kiri_relations')" type="button" value="Modifier la relation">
+    <!-- END kiri_relations -->
+
+    <!-- IF RS_RIGHTS -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="kiri_relation_callback" data-refresh="true">
+        <h2>Sélectionnez un joueur</h2>
+        <select name="new_relations" required>
+            <!-- BEGIN kiri_new_relations -->
+            <option value="{kiri_new_relations.RS_ID}">{kiri_new_relations.RS_USERNAME}</option>
+            <!-- END kiri_new_relations -->
+        </select>
+        <h2>Nom de la relation</h2>
+        <input type="text" name="name_relation" required>
+        <h2>Description de la relation</h2>
+        <textarea required name="description_relation"></textarea>
+        <input type="submit" name="create_kiri_rs_button" class="button_validate button_align" value="Créer la relation">
+    </form>
+    <!-- ENDIF -->
+    <h1 id="rs_iwa">Iwagakure no Sato</h1>
+    <!-- BEGIN iwa_relations -->
+    <div class="relation">
+        <img src="./download/file.php?avatar={iwa_relations.RELATION_AVATAR}" class="relation_avatar">
+        <div class="relation_container">
+            <h3 class="relation_name relation_iwa">{iwa_relations.RELATION_USERNAME}</h3>
+            <div class="relation_description">
+                <strong>{iwa_relations.RELATION_TITLE} - </strong>{iwa_relations.RELATION_DESCRIPTION}
+            </div>
+        </div>
+    </div>
+    <!-- END iwa_relations -->
+
+    <!-- IF RS_RIGHTS -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="iwa_relation_callback" data-refresh="true">
+        <h2>Sélectionnez un joueur</h2>
+        <select name="new_relations" required>
+            <!-- BEGIN iwa_new_relations -->
+            <option value="{iwa_new_relations.RS_ID}">{iwa_new_relations.RS_USERNAME}</option>
+            <!-- END iwa_new_relations -->
+        </select>
+        <h2>Nom de la relation</h2>
+        <input type="text" name="name_relation" required>
+        <h2>Description de la relation</h2>
+        <textarea required name="description_relation"></textarea>
+        <input type="submit" name="create_iwa_rs_button" class="button_validate button_align" value="Créer la relation">
+    </form>
+    <!-- ENDIF -->
+    <h1 id="rs_suna">Sunagakure no Sato</h1>
+    <h1 id="rs_kumo">Kumogakure no Sato</h1>
+    <h1 id="rs_konoha">Konohagakure no Sato</h1>
+    <h1 id="rs_nuke">Nukenin</h1>
+</div>
+<!-- INCLUDE overall_footer.html -->

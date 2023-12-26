@@ -264,9 +264,9 @@ $template->assign_vars(array(
     'FT_FUIN_BARRER' => $ft_user_infos['fuin_barrer'],
     'FT_IROU_HEAL' => $ft_user_infos['irou_heal'],
     'FT_IROU_POISON' => $ft_user_infos['irou_poison'],
-    'FT_IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),
-    'FT_IS_IWA' => my_group(IWAGAKURE_ID, $user->data['user_id']),
-    'FT_IS_SUNA' => my_group(SUNAGAKURE_ID, $user->data['user_id']),
+    'FT_IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
+    'FT_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
+    'FT_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
     'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
 ));
 

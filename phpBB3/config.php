@@ -21,3 +21,4 @@ $acm_type = 'phpbb\\cache\\driver\\file';
 @define('MISSIONS_TABLE', $table_prefix.'missions');
 @define('MISSION_USERS_TABLE', $table_prefix.'mission_users');
 @define('MISSION_GROUPS_TABLE', $table_prefix.'mission_groups');
+@define('RELATIONSHIPS_TABLE', $table_prefix.'relationships');

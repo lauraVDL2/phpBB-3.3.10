@@ -68,7 +68,7 @@ if($request->is_ajax()) {
             if($kiri_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => KIRIGAKURE_ID,
+                    'group_id' => get_group_by_name('Kirigakure'),
                     'group_name' => 'Kirigakure'
                 ]);
                 $db->sql_query($sql);
@@ -76,7 +76,7 @@ if($request->is_ajax()) {
             if($iwa_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => IWAGAKURE_ID,
+                    'group_id' => get_group_by_name('Iwagakure'),
                     'group_name' => 'Iwagakure'
                 ]);
                 $db->sql_query($sql);
@@ -84,7 +84,7 @@ if($request->is_ajax()) {
             if($suna_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => SUNAGAKURE_ID,
+                    'group_id' => get_group_by_name('Sunagakure'),
                     'group_name' => 'Sunagakure'
                 ]);
                 $db->sql_query($sql);
@@ -92,7 +92,7 @@ if($request->is_ajax()) {
             if($kumo_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => KUMOGAKURE_ID,
+                    'group_id' => get_group_by_name('Kumogakure'),
                     'group_name' => 'Kumogakure'
                 ]);
                 $db->sql_query($sql);
@@ -100,7 +100,7 @@ if($request->is_ajax()) {
             if($konoha_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => KONOHAGAKURE_ID,
+                    'group_id' => get_group_by_name('Konohagakure'),
                     'group_name' => 'Konohagakure'
                 ]);
                 $db->sql_query($sql);
@@ -108,7 +108,7 @@ if($request->is_ajax()) {
             if($nukenin_mission) {
                 $sql = 'INSERT INTO '.MISSION_GROUPS_TABLE.' '.$db->sql_build_array('INSERT', [
                     'mission_id' => $last_id,
-                    'group_id' => NUKENIN_ID,
+                    'group_id' => get_group_by_name('Nukenin'),
                     'group_name' => 'Nukenin'
                 ]);
                 $db->sql_query($sql);
@@ -216,6 +216,9 @@ if($request->is_ajax()) {
     }
 }
 
+/**
+ * Get ONGOING missions
+ */
 function get_ongoing_missions() {
     global $db, $template;
     $req = [
@@ -269,11 +272,12 @@ function get_missions_to_subscribe() {
         $mission_id = $row['mission_id'];
         $max_users = $row['mission_max_users'];
         $groups = get_groups($mission_id);
+        $rank = $row['mission_rank'];
         if(check_group($mission_id)) {
             $template->assign_block_vars('missions_to_subscribe', [
                 'MS_ID' => $mission_id,
                 'MS_GROUPS' => $groups,
-                'MS_RANK' => $row['mission_rank'],
+                'MS_RANK' => $rank,
                 'MS_TITLE' => $row['mission_title'],
                 'MS_DESCRIPTION' => $row['mission_description'],
                 'MS_CONDITION' => $row['mission_condition'],
@@ -281,7 +285,7 @@ function get_missions_to_subscribe() {
                 'MS_INFOS' => $row['mission_infos'],
                 'MS_MAX_USERS' => $max_users,
                 'MS_PLAYERS' => get_player_names($mission_id),
-                'MS_CAN_SUBSCRIBE' => basic_can_subscribe($mission_id) && check_number_of_players($mission_id, $max_users),
+                'MS_CAN_SUBSCRIBE' => basic_can_subscribe($mission_id) && check_number_of_players($mission_id, $max_users) && check_rank($rank),
                 'MS_CAN_UNSUBSCRIBE' => !basic_can_subscribe($mission_id)
             ]);
         }
@@ -432,25 +436,44 @@ function check_group($mission_id) {
     if(my_group(ADMINISTRATOR_ID, $user->data['user_id'])) {
         return true;
     }
-    else if(my_group(KIRIGAKURE_ID, $user->data['user_id'])) {
-        return in_array(KIRIGAKURE_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Kirigakure'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Kirigakure'), $db->sql_fetchrowset($query));
     }
-    else if(my_group(IWAGAKURE_ID, $user->data['user_id'])) {
-        return in_array(IWAGAKURE_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Iwagakure'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Iwagakure'), $db->sql_fetchrowset($query));
     }
-    else if(my_group(SUNAGAKURE_ID, $user->data['user_id'])) {
-        return in_array(SUNAGAKURE_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Sunagakure'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Sunagakure'), $db->sql_fetchrowset($query));
     }
-    else if(my_group(KUMOGAKURE_ID, $user->data['user_id'])) {
-        return in_array(KUMOGAKURE_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Kumogakure'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Kumogakure'), $db->sql_fetchrowset($query));
     }
-    else if(my_group(KONOHAGAKURE_ID, $user->data['user_id'])) {
-        return in_array(KONOHAGAKURE_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Konohagakure'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Konohagakure'), $db->sql_fetchrowset($query));
     }
-    else if(my_group(NUKENIN_ID, $user->data['user_id'])) {
-        return in_array(NUKENIN_ID, $db->sql_fetchrowset($query));
+    else if(my_group(get_group_by_name('Nukenin'), $user->data['user_id'])) {
+        return in_array(get_group_by_name('Nukenin'), $db->sql_fetchrowset($query));
     }
     return false;
+}
+
+/**
+ * Check if the user have a high enough rank to subscribe to the mission
+ * @param int mission_rank
+ * @return bool
+ */
+function check_rank($mission_rank) {
+    global $user;
+    $user_rank = get_rank($user->data['user_id']);
+    //You need to be at least Chûnin to subscribe to a B or a A level mission
+    if($mission_rank == 'B' || $mission_rank == 'A') {
+        return $user_rank != 'Genin';
+    }
+    //You need to be at least Jônin to subscribe to a S level mission
+    else if($mission_rank == 'S') {
+        return $user_rank != 'Genin' && $user_rank != 'Chûnin';
+    }
+    else return true;
 }
 
 get_missions_to_validate();
@@ -458,12 +481,12 @@ get_missions_to_subscribe();
 get_ongoing_missions();
 
 $template->assign_vars(array(
-    'MISSION_IS_KIRI' => my_group(KIRIGAKURE_ID, $user->data['user_id']),
-    'MISSION_IS_IWA' => my_group(IWAGAKURE_ID, $user->data['user_id']),
-    'MISSION_IS_SUNA' => my_group(SUNAGAKURE_ID, $user->data['user_id']),
-    'MISSION_IS_KUMO' => my_group(KUMOGAKURE_ID, $user->data['user_id']),
-    'MISSION_IS_KONOHA' => my_group(KONOHAGAKURE_ID, $user->data['user_id']),
-    'MISSION_IS_NUKE' => my_group(NUKENIN_ID, $user->data['user_id']),
+    'MISSION_IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
+    'MISSION_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
+    'MISSION_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
+    'MISSION_IS_KUMO' => my_group(get_group_by_name('Kumogakure'), $user->data['user_id']),
+    'MISSION_IS_KONOHA' => my_group(get_group_by_name('Konohagakure'), $user->data['user_id']),
+    'MISSION_IS_NUKE' => my_group(get_group_by_name('Nukenin'), $user->data['user_id']),
     'MISSION_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id'])
 ));
 

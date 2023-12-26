@@ -54,12 +54,12 @@
     margin: auto;
     display: block;
     border: none;
-    background-color: blue;
+    background-color: var(--green_button);
     padding: 10px;
     font-family: var(--main_police_2);
     font-size: 1rem;
     font-weight: bold;
-    color: var(--main_color_1);
+    color: white;
     border-radius: 15px;
 }
 
@@ -161,8 +161,8 @@
 }
 
 #um_links a {
-    color: var(--main_color_1);
-    background-color: var(--main_color_2);
+    color: white;
+    background-color: var(--blue_button);
     padding: 10px;
     font-weight: bold;
     border-radius: 15px;

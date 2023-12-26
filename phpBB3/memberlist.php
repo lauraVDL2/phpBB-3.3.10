@@ -881,20 +881,20 @@ switch ($mode)
 
 		$skillpoints = get_profile_informations($user_id)["skillpoints"];
 
-		if(my_group(KIRIGAKURE_ID, $user_id)) {
-			$influence_points = influence_points(KIRIGAKURE_ID, $user_id);
+		if(my_group(get_group_by_name('Kirigakure'), $user_id)) {
+			$influence_points = influence_points(get_group_by_name('Kirigakure'), $user_id);
 		}
-		else if(my_group(IWAGAKURE_ID, $user_id)) {
-			$influence_points = influence_points(IWAGAKURE_ID, $user_id);
+		else if(my_group(get_group_by_name('Iwagakure'), $user_id)) {
+			$influence_points = influence_points(get_group_by_name('Iwagakure'), $user_id);
 		}
-		else if(my_group(SUNAGAKURE_ID, $user_id)) {
-			$influence_points = influence_points(SUNAGAKURE_ID, $user_id);
+		else if(my_group(get_group_by_name('Sunagakure'), $user_id)) {
+			$influence_points = influence_points(get_group_by_name('Sunagakure'), $user_id);
 		}
-		else if(my_group(KUMOGAKURE_ID, $user_id)) {
-			$influence_points = influence_points(KUMOGAKURE_ID, $user_id);
+		else if(my_group(get_group_by_name('Kumogakure'), $user_id)) {
+			$influence_points = influence_points(get_group_by_name('Kumogakure'), $user_id);
 		}
-		else if(my_group(KONOHAGAKURE_ID, $user_id)) {
-			$influence_points = influence_points(KONOHAGAKURE_ID, $user_id);
+		else if(my_group(get_group_by_name('Konohagakure'), $user_id)) {
+			$influence_points = influence_points(get_group_by_name('Konohagakure'), $user_id);
 		}
 		else $influence_points = 0;
 
@@ -951,36 +951,36 @@ switch ($mode)
 			else if($pf_give_influence_button) {
 				$influence_points = $request->variable('pf_give_influence', 0);
 				if($influence_points > 0) {
-					if(my_group(KIRIGAKURE_ID, $user_id)) {
-						give_influence(KIRIGAKURE_ID, $influence_points);
+					if(my_group(get_group_by_name('Kirigakure'), $user_id)) {
+						give_influence(get_group_by_name('Kirigakure'), $influence_points);
 						return $json_response->send([
 							'action' => 'PF_INFLUENCE',
 							],
 						);
 					}
-					else if(my_group(IWAGAKURE_ID, $user_id)) {
-						give_influence(IWAGAKURE_ID, $influence_points);
+					else if(my_group(get_group_by_name('Iwagakure'), $user_id)) {
+						give_influence(get_group_by_name('Iwagakure'), $influence_points);
 						return $json_response->send([
 							'action' => 'PF_INFLUENCE',
 							],
 						);
 					}
-					else if(my_group(SUNAGAKURE_ID, $user_id)) {
-						give_influence(SUNAGAKURE_ID, $influence_points);
+					else if(my_group(get_group_by_name('Sunagakure'), $user_id)) {
+						give_influence(get_group_by_name('Sunagakure'), $influence_points);
 						return $json_response->send([
 							'action' => 'PF_INFLUENCE',
 							],
 						);
 					}
-					else if(my_group(KUMOGAKURE_ID, $user_id)) {
-						give_influence(KUMOGAKURE_ID, $influence_points);
+					else if(my_group(get_group_by_name('Kumogakure'), $user_id)) {
+						give_influence(get_group_by_name('Kumogakure'), $influence_points);
 						return $json_response->send([
 							'action' => 'PF_INFLUENCE',
 							],
 						);
 					}
-					else if(my_group(KONOHAGAKURE_ID, $user_id)) {
-						give_influence(KONOHAGAKURE_ID, $influence_points);
+					else if(my_group(get_group_by_name('Konohagakure'), $user_id)) {
+						give_influence(get_group_by_name('Konohagakure'), $influence_points);
 						return $json_response->send([
 							'action' => 'PF_INFLUENCE',
 							],

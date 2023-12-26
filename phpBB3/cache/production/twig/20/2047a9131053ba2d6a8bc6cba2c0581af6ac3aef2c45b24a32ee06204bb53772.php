@@ -394,7 +394,13 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
             <option value=\"B\">B</option>
             <option value=\"C\">C</option>
             <option value=\"D\">D</option>
-        </select>
+            ";
+        // line 147
+        if (($context["MISSION_IS_ADMIN"] ?? null)) {
+            echo "<option value=\"-\">-</option>";
+        }
+        // line 148
+        echo "        </select>
         <h2>Nombre de participants maximum</h2>
         <input type=\"number\" name=\"mission_max_users\" min=\"1\" required>
         <h2>Groupes concernés</h2>
@@ -422,7 +428,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
     </form>
 </div>
 ";
-        // line 174
+        // line 175
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -430,7 +436,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "missions_board.html", 174)->display($context);
+        $this->loadTemplate("overall_footer.html", "missions_board.html", 175)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -448,7 +454,7 @@ $context["missions_to_subscribe"], "MS_CAN_UNSUBSCRIBE", [], "any", false, false
 
     public function getDebugInfo()
     {
-        return array (  426 => 174,  376 => 127,  373 => 126,  366 => 124,  353 => 116,  348 => 114,  340 => 111,  334 => 110,  328 => 109,  322 => 108,  316 => 107,  310 => 104,  305 => 102,  300 => 100,  295 => 98,  290 => 96,  285 => 94,  280 => 93,  274 => 92,  270 => 90,  268 => 89,  265 => 88,  258 => 86,  251 => 83,  247 => 81,  244 => 80,  240 => 78,  238 => 77,  235 => 76,  233 => 75,  227 => 72,  221 => 69,  215 => 66,  209 => 63,  203 => 60,  197 => 57,  191 => 54,  185 => 51,  180 => 49,  176 => 48,  172 => 47,  167 => 46,  162 => 45,  159 => 44,  152 => 42,  145 => 39,  141 => 37,  139 => 36,  133 => 33,  127 => 30,  121 => 27,  115 => 24,  109 => 21,  103 => 18,  97 => 15,  91 => 12,  86 => 10,  82 => 9,  78 => 8,  73 => 7,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
+        return array (  432 => 175,  403 => 148,  399 => 147,  376 => 127,  373 => 126,  366 => 124,  353 => 116,  348 => 114,  340 => 111,  334 => 110,  328 => 109,  322 => 108,  316 => 107,  310 => 104,  305 => 102,  300 => 100,  295 => 98,  290 => 96,  285 => 94,  280 => 93,  274 => 92,  270 => 90,  268 => 89,  265 => 88,  258 => 86,  251 => 83,  247 => 81,  244 => 80,  240 => 78,  238 => 77,  235 => 76,  233 => 75,  227 => 72,  221 => 69,  215 => 66,  209 => 63,  203 => 60,  197 => 57,  191 => 54,  185 => 51,  180 => 49,  176 => 48,  172 => 47,  167 => 46,  162 => 45,  159 => 44,  152 => 42,  145 => 39,  141 => 37,  139 => 36,  133 => 33,  127 => 30,  121 => 27,  115 => 24,  109 => 21,  103 => 18,  97 => 15,  91 => 12,  86 => 10,  82 => 9,  78 => 8,  73 => 7,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
