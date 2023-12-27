@@ -134,6 +134,7 @@
 }
 
 .button_align {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -145,5 +146,5 @@
 
 .button_block {
     display: block;
-    margin: auto;
+    margin: 10px auto;
 }
