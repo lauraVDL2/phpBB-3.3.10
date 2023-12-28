@@ -120,7 +120,7 @@ function get_players($block_name, $user_id, $group_id) {
                 'ON' => 'ugt.user_id = ut.user_id'
             ],
         ],
-        'WHERE' => "ugt.group_id = $group_id AND ut.user_id NOT IN($ids)"
+        'WHERE' => "ugt.group_id = $group_id AND ut.user_id NOT IN($ids) AND ut.user_id != $user_id"
     ];
     $sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);

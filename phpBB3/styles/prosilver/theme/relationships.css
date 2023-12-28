@@ -133,6 +133,31 @@
     border-bottom: 2px dotted var(--kiri);
 }
 
+.relation_iwa {
+    color: var(--iwa);
+    border-bottom: 2px dotted var(--iwa);
+}
+
+.relation_suna {
+    color: var(--suna);
+    border-bottom: 2px dotted var(--suna);
+}
+
+.relation_konoha {
+    color: var(--konoha);
+    border-bottom: 2px dotted var(--konoha);
+}
+
+.relation_kumo {
+    color: var(--kumo);
+    border-bottom: 2px dotted var(--kumo);
+}
+
+.relation_nuke {
+    color: var(--nukenin);
+    border-bottom: 2px dotted var(--nukenin);
+}
+
 .button_align {
     margin-top: 10px;
     display: flex;

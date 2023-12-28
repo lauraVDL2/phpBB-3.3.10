@@ -71,4 +71,15 @@
         grid-template-rows: auto;
         padding: 10px;
     }
+
+    /* Profile */
+
+    .top_profile, .content_second_col {
+        display: none;
+    }
+
+    .content_second_row {
+        display: block;
+        width: 100%;
+    }
 }

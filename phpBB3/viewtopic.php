@@ -2025,6 +2025,9 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 		$u_pm = append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=compose&amp;action=quotepost&amp;p=' . $row['post_id']);
 	}
 
+	$attributes = get_attributes($poster_id);
+	$infos = get_profile_informations($poster_id);
+
 	//
 	$post_row = array(
 		'POST_AUTHOR_FULL'		=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_full'] : get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
@@ -2032,6 +2035,24 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 		'POST_AUTHOR'			=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_username'] : get_username_string('username', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 		'U_POST_AUTHOR'			=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_profile'] : get_username_string('profile', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 
+		'STRENGTH' => $attributes['strength'],
+		'SENSORIALITY' => $attributes['sensoriality'],
+		'STEALTH' => $attributes['stealth'],
+		'SWIFTNESS' => $attributes['swiftness'],
+		'NINJUTSU' => $attributes['ninjutsu'],
+		'TAIJUTSU' => $attributes['taijutsu'],
+		'GENJUTSU' => $attributes['genjutsu'],
+		'LEVEL' => $infos['level'],
+		'EXP' => $infos['experience'],
+		'EXP_TO_REACH' => $levels[$infos['level']],
+		'USERNAME' => $infos['username'],
+		'RP_RANK' => $infos['rp_rank'],
+		'IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $poster_id),
+		'IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $poster_id),
+		'IS_IWA' => my_group(get_group_by_name('Iwagakure'), $poster_id),
+		'IS_KUMO' => my_group(get_group_by_name('Kumogakure'), $poster_id),
+		'IS_KONOHA' => my_group(get_group_by_name('Konohagakure'), $poster_id),
+		'IS_NUKENIN' => my_group(get_group_by_name('Nukenin'), $poster_id),
 		'RANK_TITLE'		=> $user_cache[$poster_id]['rank_title'],
 		'RANK_IMG'			=> $user_cache[$poster_id]['rank_image'],
 		'RANK_IMG_SRC'		=> $user_cache[$poster_id]['rank_image_src'],

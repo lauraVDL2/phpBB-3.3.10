@@ -151,6 +151,34 @@ function get_group_by_name($group_name) {
 	return $db->sql_fetchrow($query)['group_id'] ?? -1;
 }
 
+function get_attributes($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu',
+		'FROM' => [
+			ATTRIBUTES_TABLE => 'at'
+		],
+		'WHERE' => "at.user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query);
+}
+
+function get_level_and_experience($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience',
+		'FROM' => [
+			USERS_TABLE => 'ut'
+		],
+		'WHERE' => "ut.user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query);
+}
+
 function level_up($user_id) {
 	global $levels, $db, $attributes;
 	$difference = -1;
@@ -229,7 +257,7 @@ function gain_technique($current_level, $user_id) {
 function get_profile_informations($user_id) {
 	global $db;
 	$req = [
-		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.talent_points AS skillpoints',
+		'SELECT' => 'ut.username AS username, ut.user_rp_rank AS rp_rank, ut.user_level AS level, ut.user_experience AS experience, ut.talent_points AS skillpoints',
 		'FROM' => [ USERS_TABLE => 'ut' ],
 		'WHERE' => 'ut.user_id = '.$user_id,
 	];

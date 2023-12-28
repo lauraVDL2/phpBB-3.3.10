@@ -1,0 +1,5 @@
+<?php exit; ?>
+1704298394
+SELECT notification_type_id, notification_type_name FROM phpbb_notification_types
+1008
+a:9:{i:0;a:2:{s:20:"notification_type_id";s:1:"9";s:22:"notification_type_name";s:37:"notification.type.admin_activate_user";}i:1;a:2:{s:20:"notification_type_id";s:1:"6";s:22:"notification_type_name";s:30:"notification.type.approve_post";}i:2;a:2:{s:20:"notification_type_id";s:1:"2";s:22:"notification_type_name";s:31:"notification.type.approve_topic";}i:3;a:2:{s:20:"notification_type_id";s:1:"4";s:22:"notification_type_name";s:26:"notification.type.bookmark";}i:4;a:2:{s:20:"notification_type_id";s:1:"7";s:22:"notification_type_name";s:23:"notification.type.forum";}i:5;a:2:{s:20:"notification_type_id";s:1:"8";s:22:"notification_type_name";s:31:"notification.type.group_request";}i:6;a:2:{s:20:"notification_type_id";s:1:"5";s:22:"notification_type_name";s:22:"notification.type.post";}i:7;a:2:{s:20:"notification_type_id";s:1:"3";s:22:"notification_type_name";s:23:"notification.type.quote";}i:8;a:2:{s:20:"notification_type_id";s:1:"1";s:22:"notification_type_name";s:23:"notification.type.topic";}}
