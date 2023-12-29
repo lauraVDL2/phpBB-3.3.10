@@ -30,6 +30,10 @@
     font-weight: bold;
 }
 
+.guidebookTitle {
+    color: var(--main_color_3) !important;
+}
+
 #rowGuide .forumDescr {
     color: var(--secondary_color_2);
     font-family: var(--main_police);
@@ -126,7 +130,7 @@
 }
 
 .row2 .lastSubject, .rowRPG .lastPost {
-    color: black !important;
+    color: var(--main_color_2) !important;
     font-weight: bold;
 }
 
@@ -209,4 +213,8 @@
 
 time {
     font-weight: normal;
+}
+
+.rowRPG .lastSubject {
+    color: var(--main_color_2) !important;
 }

@@ -86,6 +86,7 @@ body {
     display: block;
     margin: auto;
     box-sizing: border-box;
+    border-radius: 15px;
     border-left: 5px solid var(--secondary_color_2);
     border-right: 5px solid var(--secondary_color_2);
     color: var(--main_color_2);

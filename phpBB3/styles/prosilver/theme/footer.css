@@ -1,13 +1,13 @@
 @import url("var_root.css");
 
 #page-footer {
-    background-color: #181818;
+    background-color: var(--header_color);
     padding-top: 10px;
     margin-bottom: -5px;
 }
 
 .navbar {
-    background-color: #101010;
+    background-color: var(--main_color_2);
     color: var(--main_color_1) !important;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .f_lastpost {
-    background-color: #101010;
+    background-color: var(--main_color_2);
     width: 100%;
     border-radius: 20px;
     padding: 15px;
@@ -72,7 +72,7 @@
 #connected_block {
     border-radius: 20px;
     height: 200px;
-    background-color: #101010;
+    background-color: var(--main_color_2);
     box-sizing: border-box;
     padding: 10px;
     overflow: auto;
@@ -244,7 +244,7 @@ progress#konoha_p:hover:before {
     padding: 10px;
     text-align: center;
     font-size: 0.9rem;
-    background-color: #101010;
+    background-color: var(--main_color_2);
     font-weight: bold;
     text-transform: uppercase;
     display: none;

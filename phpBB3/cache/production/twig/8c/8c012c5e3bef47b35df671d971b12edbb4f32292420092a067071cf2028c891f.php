@@ -100,7 +100,7 @@ class __TwigTemplate_c916681c887c90630b20d11164b77b8fe62f8ce580270c188eaa20ab5cf
                     echo "\t\t\t\t\t\t";
                 }
                 // line 25
-                echo "\t\t\t\t\t\t<a href=\"./guidebook.php\" class=\"forumTitle\">";
+                echo "\t\t\t\t\t\t<a href=\"./guidebook.php\" class=\"forumTitle guidebookTitle\">";
                 echo twig_get_attribute($this->env, $this->source, $context["forumrow"], "FORUM_NAME", [], "any", false, false, false, 25);
                 echo "</a>
 \t\t\t\t\t\t<div class=\"forumDescr\">Toutes les <strong>ANNEXES</strong> à portée de kunaï</div>

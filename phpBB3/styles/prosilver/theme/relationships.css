@@ -39,6 +39,11 @@
     text-align: center;
 }
 
+#rs_content select, #rs_content textarea, #rs_content input[type=text] {
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+}
+
 #rs_content select {
     font-size: 1rem;
     border: 1px dotted var(--main_color_2);

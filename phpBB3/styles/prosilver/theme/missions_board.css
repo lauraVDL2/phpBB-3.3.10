@@ -64,6 +64,8 @@
     width: 200px;
     display: block;
     margin: auto;
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
 }
 
 .align_buttons {
@@ -79,7 +81,7 @@
     padding: 8px;
     font-weight: bold;
     margin-top: 10px;
-    color: var(--main_color_1);
+    color: white;
 }
 
 .button_validate {

@@ -182,7 +182,7 @@
 
 .content_username a {
     font-weight: bold;
-    color: black !important;
+    color: var(--main_color_2) !important;
 }
 
 .info_rank {

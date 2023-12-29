@@ -21,7 +21,7 @@
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .ft_kiri {
@@ -82,7 +82,7 @@
 }
 
 .modify_ft_desc {
-    width: 60%;
+    width: 70%;
 }
 
 .modify_ft_desc, #new_ft_technique {
@@ -91,7 +91,7 @@
     display: block;
     margin: 10px auto;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--main_color_2);
     padding: 5px;
     border: 1px dotted var(--main_color_2);
@@ -110,7 +110,7 @@
 }
 
 .modify_ft_lb {
-    width: 60%;
+    width: 70%;
 }
 
 .modify_ft_lb, .create_ft_lb {
@@ -131,7 +131,7 @@
 
 .ft_md_button {
     background-color: darkorange;
-    color: var(--main_color_1);
+    color: white;
 }
 
 #create_technique {
@@ -140,25 +140,25 @@
 }
 
 .modify_ft_button, .ft_copy_button {
-    color: var(--main_color_3);
-    background-color: var(--main_color_2);
+    color: white;
+    background-color: var(--blue_button);
 }
 
 .ft_delete_button {
-    color: var(--main_color_3);
-    background-color: darkred;
+    color: white;
+    background-color: var(--red_button);
 }
 
 .validate_ft_button, #create_technique {
-    color: var(--main_color_3);
-    background-color: green;
+    color: white;
+    background-color: var(--green_button);
 }
 
 .modify_ft_infos {
     text-align: center;
     color: var(--main_color_2);
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 10px;
 }
 
@@ -187,7 +187,7 @@ body {
 }
 
 #new_tech_wrapper {
-    width: 60%;
+    width: 70%;
     margin: auto;
 }
 
