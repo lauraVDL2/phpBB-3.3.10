@@ -19,6 +19,8 @@
                     <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyNinjutsu({{ Ninjutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de technique de Ninjutsu pour le moment !</div>
         <!-- END Ninjutsu_loop -->
         <h1>Techniques de Taijutsu</h1>
         <!-- BEGIN Taijutsu_loop -->
@@ -37,6 +39,8 @@
                     <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyTaijutsu({{ Taijutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de technique de Taijutsu pour le moment !</div>
         <!-- END Taijutsu_loop -->
         <h1>Techniques de Genjutsu</h1>
         <!-- BEGIN Genjutsu_loop -->
@@ -55,7 +59,49 @@
                     <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyGenjutsu({{ Genjutsu_loop.S_ROW_COUNT }})">
             </div>
         </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de technique de Genjutsu pour le moment !</div>
         <!-- END Genjutsu_loop -->
+        <h1>Techniques Kekkei Genkai & Hiden</h1>
+        <!-- BEGIN KG_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="validated_ft_id" value="{KG_loop.FT_TECHNIQUE_ID}">
+            <input type="hidden" name="validated_ft_rank" value="{KG_loop.FT_TECHNIQUE_RANK}">
+            <div class="ft_kekkei">
+                <div class="ft_technique_information">{KG_loop.FT_TECHNIQUE_NAME} - {KG_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF KG_loop.FT_TECHNIQUE_SPE --> - {KG_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {KG_loop.FT_TECHNIQUE_RANK}</div>
+                <div class="ft_technique_description">{KG_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+            </div>
+            <div class="md_buttons">
+                <!-- IF FT_IS_ADMIN -->
+                    <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
+                    <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
+                <!-- ENDIF -->
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyKG({{ KG_loop.S_ROW_COUNT }})">
+            </div>
+        </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de technique de Kekkei Genkai pour le moment !</div>
+        <!-- END KG_loop -->
+
+        <!-- BEGIN Hiden_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
+            <input type="hidden" name="validated_ft_id" value="{Hiden_loop.FT_TECHNIQUE_ID}">
+            <input type="hidden" name="validated_ft_rank" value="{Hiden_loop.FT_TECHNIQUE_RANK}">
+            <div class="ft_kekkei">
+                <div class="ft_technique_information">{Hiden_loop.FT_TECHNIQUE_NAME} - {Hiden_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF Hiden_loop.FT_TECHNIQUE_SPE --> - {Hiden_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {Hiden_loop.FT_TECHNIQUE_RANK}</div>
+                <div class="ft_technique_description">{Hiden_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+            </div>
+            <div class="md_buttons">
+                <!-- IF FT_IS_ADMIN -->
+                    <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
+                    <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
+                <!-- ENDIF -->
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyKG({{ KG_loop.S_ROW_COUNT }})">
+            </div>
+        </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de technique Hiden pour le moment !</div>
+        <!-- END Hiden_loop -->
         <h1>Techniques en cours de validation</h1>
         <!-- BEGIN to_validate_loop -->
         <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_ft_technique_callback" data-refresh="true">
@@ -82,6 +128,8 @@
                     <option value="Ninjutsu">Ninjutsu</option>
                     <option value="Taijutsu">Taijutsu</option>
                     <option value="Genjutsu">Genjutsu</option>
+                    <option value="Kekkei Genkai">Kekkei Genkai</option>
+                    <option value="Hiden">Hiden</option>
                 </select>
                 <select id="technique_nj_type" class="second_ft_select" name="technique_nj_type">
                     <option value=""></option>
@@ -93,6 +141,42 @@
                     <!-- IF FT_IROU_HEAL || FT_IROU_POISON --><option value="Irou Jutsu">Irou Jutsu</option><!-- ENDIF -->
                     <!-- IF FT_FUIN_SEAL || FT_FUIN_BARRER --><option value="Fuinjutsu">Fuinjutsu</option><!-- ENDIF -->
                     <!-- IF FT_KUCHIYOSE --><option>Kuchiyose</option><!-- ENDIF -->
+                </select>
+                <select id="technique_hiden_type" class="second_ft_select" name="technique_hiden_type">
+                    <option value=""></option>
+                    <option value="Mental">Mental</option>
+                    <option value="Contrôle du corps">Contrôle du corps</option>
+                    <option value="Ombres">Ombres</option>
+                    <option value="Chaînes">Chaînes</option>
+                    <option value="Seijutsu">Seijutsu</option>
+                    <option value="Torijutsu">Torijutsu</option>
+                    <option value="Hachijutsu">Hachijutsu</option>
+                    <option value="Modification corporelle">Modification corporelle</option>
+                    <option value="Chiens">Chiens</option>
+                    <option value="Chats">Chats</option>
+                    <option value="Insectes">Insectes</option>
+                    <option value="Jûken">Jûken</option>
+                </select>
+                <select id="technique_kg_type" class="second_ft_select" name="technique_kg_type">
+                    <option value=""></option>
+                    <option value="Sharingan">Sharingan</option>
+                    <option value="Mokuton">Mokuton</option>
+                    <option value="Byakugan">Byakugan</option>
+                    <option value="Shikotsumyaku">Shikotsumyaku</option>
+                    <option value="Hyôton">Hyôton</option>
+                    <option value="Futton">Futton</option>
+                    <option value="Jiton">Jiton</option>
+                    <option value="Shakuton">Shakuton</option>
+                    <option value="Yoton">Yoton</option>
+                    <option value="Fuuton">Fuuton</option>
+                    <option value="Bakuton">Bakuton</option>
+                    <option value="Shôton">Shôton</option>
+                    <option value="Shouraigan">Shouraigan</option>
+                    <option value="Ketsuryugan">Ketsuryugan</option>
+                    <option value="Ranton">Ranton</option>
+                    <option value="Shokuton">Shokuton</option>
+                    <option value="Kôton">Kôton</option>
+                    <option value="Meiton">Meiton</option>
                 </select>
                 <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
                     <option value=""></option>
@@ -123,6 +207,22 @@
                     <option value=""></option>
                     <!-- IF FT_FUIN_BARRER --><option value="Barrières">Barrières</option><!-- ENDIF -->
                     <!-- IF FT_FUIN_SEAL --><option value="Sceaux">Sceaux</option><!-- ENDIF -->
+                </select>
+                <select id="technique_kg_rank" class="third_ft_select" name="technique_kg_rank">
+                    <option value=""></option>
+                    <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
+                    <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
+                    <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
+                    <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
+                    <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
+                </select>
+                <select id="technique_hiden_rank" class="third_ft_select" name="technique_hiden_rank">
+                    <option value=""></option>
+                    <!-- IF FT_D_TECHNIQUES > 0 --><option value="D">D</option><!-- ENDIF -->
+                    <!-- IF FT_C_TECHNIQUES > 0 --><option value="C">C</option><!-- ENDIF -->
+                    <!-- IF FT_B_TECHNIQUES > 0 --><option value="B">B</option><!-- ENDIF -->
+                    <!-- IF FT_A_TECHNIQUES > 0 --><option value="A">A</option><!-- ENDIF -->
+                    <!-- IF FT_S_TECHNIQUES > 0 --><option value="S">S</option><!-- ENDIF -->
                 </select>
                 <select id="technique_nj_rank" class="third_ft_select" name="technique_nj_rank">
                     <option value=""></option>

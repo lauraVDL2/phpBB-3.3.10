@@ -4567,6 +4567,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
+		'G_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
 		'IWA_TOTAL' => $iwa,
 		'KIRI_TOTAL' => $kiri,
 		'SUNA_TOTAL' => $suna,

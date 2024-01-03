@@ -31,12 +31,16 @@ if(!$is_user && ! $is_admin) {
 if($request->is_ajax()) {
     $art_technique = utf8_normalize_nfc($request->variable('first_ft_select', '', true));
     $new_ft_name = utf8_normalize_nfc(html_entity_decode($request->variable('new_ft_name', '', true)));
+    $kekkei_genkai_type = utf8_normalize_nfc($request->variable('technique_kg_type', '', true));
+    $hiden_type = utf8_normalize_nfc($request->variable('technique_hiden_type', '', true));
     $ninjutsu_type = utf8_normalize_nfc($request->variable('technique_nj_type', '', true));
     $taijutsu_type = utf8_normalize_nfc($request->variable('technique_tj_type', '', true));
     $genjutsu_type = utf8_normalize_nfc($request->variable('technique_gj_type', '', true));
     $ninjutsu_rank = utf8_normalize_nfc($request->variable('technique_nj_rank', '', true));
     $taijutsu_rank = utf8_normalize_nfc($request->variable('technique_tj_rank', '', true));
     $genjutsu_rank = utf8_normalize_nfc($request->variable('technique_gj_rank', '', true));
+    $hiden_rank = utf8_normalize_nfc($request->variable('technique_hiden_rank', '', true));
+    $kekkei_genkai_rank = utf8_normalize_nfc($request->variable('technique_kg_rank', '', true));
     $new_ft_technique = utf8_normalize_nfc(html_entity_decode($request->variable('new_ft_technique', '', true)));
     //SPECIALIZATIONS
     $technique_subspe = '';
@@ -50,6 +54,8 @@ if($request->is_ajax()) {
     create_techniques($art_technique, $ninjutsu_type, $ninjutsu_rank, $technique_subspe);
     create_techniques($art_technique, $taijutsu_type, $taijutsu_rank, $technique_subspe);
     create_techniques($art_technique, $genjutsu_type, $genjutsu_rank, $technique_subspe);
+    create_techniques($art_technique, $kekkei_genkai_type, $kekkei_genkai_rank, $technique_subspe);
+    create_techniques($art_technique, $hiden_type, $hiden_rank, $technique_subspe);
 }
 
 //MODIFY OR VALIDATE TECHNIQUES
@@ -167,7 +173,8 @@ function get_ft_user_infos() {
         .' gtt.d_techniques AS d_techniques, gtt.c_techniques AS c_techniques, gtt.b_techniques AS b_techniques, gtt.a_techniques AS a_techniques, gtt.s_techniques AS s_techniques,'
         .' at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
         .' gtt.first_elite AS first_elite, gtt.second_elite AS second_elite, gtt.is_kuchiyose AS kuchiyose, gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_irou_heal AS irou_heal, gtt.is_fuin_seal AS fuin_seal, '
-        .' gtt.is_irou_poison AS irou_poison, gtt.is_fuin_barrer AS fuin_barrer',
+        .' gtt.is_irou_poison AS irou_poison, gtt.is_fuin_barrer AS fuin_barrer, gtt.first_kekkei_genkai AS first_kekkei_genkai, gtt.second_kekkei_genkai AS second_kekkei_genkai, gtt.first_hidden AS first_hidden,'
+        .' gtt.second_hidden AS second_hidden, gtt.jinchuriki AS jinchuriki',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -188,7 +195,7 @@ function get_ft_user_infos() {
 	return $db->sql_fetchrow($query);
 }
 
-function get_techniques($type) {
+function get_techniques($type, $block_name) {
     global $ft_user_id, $db, $template;
     $req = [
         'SELECT' => 'utt.technique_id AS technique_id, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
@@ -200,7 +207,7 @@ function get_techniques($type) {
     $sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
-        $template->assign_block_vars($type.'_loop', [
+        $template->assign_block_vars($block_name.'_loop', [
             'FT_TECHNIQUE_ID' => $row['technique_id'],
             'FT_TECHNIQUE_SUBTYPE' => $row['technique_type'],
             'FT_TECHNIQUE_SPE' => $row['technique_spe'],
@@ -235,9 +242,11 @@ function get_not_validated() {
 }
 
 $ft_user_infos = get_ft_user_infos();
-get_techniques('Ninjutsu');
-get_techniques('Taijutsu');
-get_techniques('Genjutsu');
+get_techniques('Ninjutsu', 'Ninjutsu');
+get_techniques('Taijutsu', 'Taijutsu');
+get_techniques('Genjutsu', 'Genjutsu');
+get_techniques('Kekkei Genkai', 'KG');
+get_techniques('Hiden', 'Hiden');
 get_not_validated();
 
 $template->assign_vars(array(
@@ -264,6 +273,10 @@ $template->assign_vars(array(
     'FT_FUIN_BARRER' => $ft_user_infos['fuin_barrer'],
     'FT_IROU_HEAL' => $ft_user_infos['irou_heal'],
     'FT_IROU_POISON' => $ft_user_infos['irou_poison'],
+    'FT_FIRST_KG' => $ft_user_infos['first_kekkei_genkai'],
+    'FT_SECOND_KG' => $ft_user_infos['second_kekkei_genkai'],
+    'FT_FIRST_HIDEN' => $ft_user_infos['first_hidden'],
+    'FT_SECOND_HIDEN' => $ft_user_infos['second_hidden'],
     'FT_IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
     'FT_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
     'FT_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),

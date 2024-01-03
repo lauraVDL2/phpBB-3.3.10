@@ -49,7 +49,13 @@
     font-size: 1.4rem;
 }
 
-.ft_ninjutsu, .ft_taijutsu, .ft_genjutsu {
+.no_technique {
+    color: var(--main_color_2);
+    text-align: center;
+    font-size: 1rem;
+}
+
+.ft_ninjutsu, .ft_taijutsu, .ft_genjutsu, .ft_kekkei {
     background-color: var(--main_color_3);
     width: 80%;
     margin: 10px auto;
@@ -70,11 +76,15 @@
     background-color: #b55454;
 }
 
+.ft_kekkei .ft_technique_information {
+    background-color: #8A9977;
+}
+
 .ft_technique_description {
     color: var(--main_color_2);
 }
 
-.ft_ninjutsu .ft_technique_information, .ft_taijutsu .ft_technique_information, .ft_genjutsu .ft_technique_information {
+.ft_ninjutsu .ft_technique_information, .ft_kekkei .ft_technique_information, .ft_taijutsu .ft_technique_information, .ft_genjutsu .ft_technique_information {
     padding: 5px;
     color: var(--main_color_1);
     font-weight: bold;
@@ -103,7 +113,7 @@
     display: block;
     margin: 10px auto;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--main_color_2);
     padding: 5px;
     border: 1px dotted var(--main_color_2);

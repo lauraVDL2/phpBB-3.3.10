@@ -57,7 +57,7 @@
 }
 
 .subforumContent .lastPost, .lastSubject {
-    color: black !important;
+    color: var(--main_color_2) !important;
     font-weight: bold;
 }
 
@@ -139,7 +139,7 @@
 .adminExpForum input[type=submit] {
     all: unset;
     background-color: var(--green_button);
-    color: var(--main_color_3);
+    color: white;
     padding: 5px;
     border-radius: 5px;
     font-weight: bold;
@@ -149,4 +149,6 @@
 .adminExpForum input[type=number] {
     width: 100px;
     border: 1px dotted var(--main_color_2);
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
 }

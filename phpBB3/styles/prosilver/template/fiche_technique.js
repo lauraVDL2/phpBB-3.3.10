@@ -39,6 +39,26 @@ jQuery(function($) {
             second_type_select.hide();
             $('#technique_tj_type').show();
         }
+        else if(first_select.val() === "Kekkei Genkai") {
+            second_selects.val("");
+            third_selects.val("");
+            second_selects.hide();
+            third_selects.hide();
+            ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
+            $('#technique_kg_type').show();
+        }
+        else if(first_select.val() === "Hiden") {
+            second_selects.val("");
+            third_selects.val("");
+            second_selects.hide();
+            third_selects.hide();
+            ft_tech.hide();
+            second_type_select.val("");
+            second_type_select.hide();
+            $('#technique_hiden_type').show();
+        }
         else {
             second_selects.val("");
             third_selects.val("");
@@ -48,6 +68,18 @@ jQuery(function($) {
             second_type_select.val("");
             second_type_select.hide();
         }
+    });
+    $('#technique_kg_type').on("change", () => {
+        ft_tech.hide();
+        $('#technique_kg_rank').show();
+        second_type_select.val("");
+        second_type_select.hide();
+    });
+    $('#technique_hiden_type').on("change", () => {
+        ft_tech.hide();
+        $('#technique_hiden_rank').show();
+        second_type_select.val("");
+        second_type_select.hide();
     });
     $('#technique_nj_type').on("change", () => {
         let nj_type = $('#technique_nj_type').val();
@@ -106,6 +138,14 @@ jQuery(function($) {
         }
         third_selects.val("");
     });
+    $('#technique_kg_rank').on("change", () => {
+        if($('#technique_kg_rank').val()) {
+            ft_tech.show();
+        }
+        else {
+            ft_tech.hide();
+        }
+    });
     $('#technique_nj_rank').on("change", () => {
         if($('#technique_nj_rank').val()) {
             ft_tech.show();
@@ -124,6 +164,14 @@ jQuery(function($) {
     });
     $('#technique_tj_rank').on("change", () => {
         if($('#technique_tj_rank').val()) {
+            ft_tech.show();
+        }
+        else {
+            ft_tech.hide();
+        }
+    });
+    $('#technique_hiden_rank').on("change", () => {
+        if($('#technique_hiden_rank').val()) {
             ft_tech.show();
         }
         else {
@@ -170,11 +218,10 @@ jQuery(function($) {
     //CREATE TECHNIQUE
     $('#new_ft_technique').val($('#new_ft_technique').html());
     phpbb.addAjaxCallback('new_technique_callback', function(r) {
-        if(window.confirm("La technique " + $('#new_ft_name').val() + " va être créée, il vous faudra ensuite contacter un administrateur pour la valider !")) {
-            if(r.is_ok) {
-                window.location.reload(true);
-            }
-         }
+        window.confirm("La technique " + $('#new_ft_name').val() + " va être créée, il vous faudra ensuite contacter un administrateur pour la valider !");
+        if(r.is_ok) {
+            window.location.reload(true);
+        }
     });
 
     phpbb.addAjaxCallback('modify_ft_technique_callback', function(re) {
