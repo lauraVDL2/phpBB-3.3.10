@@ -22,10 +22,25 @@
     padding: 5px;
     border-radius: 5px;
     font-size: 1rem;
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+}
+
+.talents_container {
+    width: 80%;
+    margin: auto;
+    font-size: 1rem;
+    color: var(--main_color_2);
+    text-align: justify;
 }
 
 .ft_kiri {
     background-color: var(--kiri);
+}
+
+.ft_block {
+    display: block;
+    margin: auto !important;
 }
 
 #ft_name, #ft_user {

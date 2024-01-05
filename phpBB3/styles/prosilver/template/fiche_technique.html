@@ -102,6 +102,35 @@
         <!-- BEGINELSE -->
         <div class="no_technique">Pas de technique Hiden pour le moment !</div>
         <!-- END Hiden_loop -->
+        <h1>Talents</h1>
+        <!-- BEGIN ft_my_talents_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_talent_callback" data-refresh="true">
+            <div class="talents_container">
+                <input type="hidden" name="talent_id" value="{ft_my_talents_loop.FT_TALENT_ID}">
+                <strong>{ft_my_talents_loop.FT_TALENT_TITLE}</strong> ; {ft_my_talents_loop.FT_TALENT_DESCRIPTION}
+            </div>
+            <!-- IF FT_IS_ADMIN -->
+            <div class="md_buttons">
+                <input class="ft_delete_button" type="submit" value="Supprimer le talent" name="ft_delete_talent_button">
+            </div>
+            <!-- ENDIF -->
+        </form>
+        <!-- BEGINELSE -->
+        <div class="no_technique">Pas de talent pour le moment !</div>
+        <!-- END ft_my_talents_loop -->
+        <!-- IF FT_IS_ADMIN -->
+        <h1>Ajout de talent</h1>
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="add_ft_talent_callback" data-refresh="true">
+            <select name="add_ft_talent" class="ft_block">
+                <!-- BEGIN ft_talents_loop -->
+                <option value="{ft_talents_loop.FT_TALENT_ID}">{ft_talents_loop.FT_TALENT_TITLE}</option>
+                <!-- END ft_talents_loop -->
+            </select>
+            <div class="md_buttons">
+                <input class="validate_ft_button" type="submit" value="Ajouter le talent" name="add_ft_talent_button">
+            </div>
+        </form>
+        <!-- ENDIF -->
         <h1>Techniques en cours de validation</h1>
         <!-- BEGIN to_validate_loop -->
         <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_ft_technique_callback" data-refresh="true">

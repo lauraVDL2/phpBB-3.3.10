@@ -248,6 +248,21 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+
+    phpbb.addAjaxCallback('add_ft_talent_callback', function(re) {
+        if(re.action === "TALENT_ADDED") {
+            window.confirm("Le talent a bien été ajouté !");
+            window.location.reload(true);
+        }
+    });
+
+    phpbb.addAjaxCallback('delete_ft_talent_callback', function(re) {
+        if(re.action === "TALENT_DELETED") {
+            window.confirm("Le talent a bien été supprimé !");
+            window.location.reload(true);
+        }
+    });
+
 })
 
 function copyNinjutsu(t) {

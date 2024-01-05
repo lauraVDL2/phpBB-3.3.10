@@ -27,6 +27,35 @@ if(!$is_user && ! $is_admin) {
     die();
 }
 
+//TALENTS
+if($request->is_ajax()) {
+    $add_ft_talent_button = $request->variable('add_ft_talent_button', '');
+    $ft_delete_talent_button = $request->variable('ft_delete_talent_button', '');
+    if($add_ft_talent_button) {
+        $talent_id = $request->variable('add_ft_talent', 0);
+        if($talent_id) {
+            $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+                'talent_id' => $talent_id,
+                'user_id' => $ft_user_id
+            ]);
+            $db->sql_query($sql);
+            return $json_response->send([
+                'action'	=> 'TALENT_ADDED',
+                ],
+            );
+        }
+    }
+    else if($ft_delete_talent_button) {
+        $talent_id = $request->variable('talent_id', 0);
+        $sql = 'DELETE FROM '.USER_TALENTS_TABLE." WHERE talent_id = $talent_id AND user_id = $ft_user_id";
+        $db->sql_query($sql);
+        return $json_response->send([
+            'action'	=> 'TALENT_DELETED',
+            ],
+        );
+    }
+}
+
 //CREATING TECHNIQUES
 if($request->is_ajax()) {
     $art_technique = utf8_normalize_nfc($request->variable('first_ft_select', '', true));
@@ -241,6 +270,69 @@ function get_not_validated() {
     }
 }
 
+function get_talents_display_ft($user_id) {
+    global $db, $template;
+    $req = [
+        'SELECT' => 'utt.talent_id AS talent_id, tt.talent_title AS talent_title, tt.talent_description AS talent_description',
+        'FROM' => [
+            USER_TALENTS_TABLE => 'utt'
+        ],
+        'LEFT_JOIN' => [
+            [
+                'FROM' => [ TALENTS_TABLE => 'tt' ],
+                'ON' => 'tt.talent_id = utt.talent_id'
+            ]
+        ],
+        'WHERE' => "utt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    while ($row = $db->sql_fetchrow($query)) {
+        $template->assign_block_vars('ft_my_talents_loop', [
+            'FT_TALENT_ID' => $row['talent_id'],
+            'FT_TALENT_TITLE' => $row['talent_title'],
+            'FT_TALENT_DESCRIPTION' => $row['talent_description']
+        ]);
+    }
+}
+
+/**
+ * Get the talents selection which the user doesn't already have
+ * @param int user_id
+ */
+function get_talents_ft($user_id) {
+    global $db, $template;
+    $req = [
+        'SELECT' => 'utt.talent_id',
+        'FROM' => [
+            USER_TALENTS_TABLE => 'utt'
+        ],
+        'WHERE' => "utt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    $talents = array();
+    while ($row = $db->sql_fetchrow($query)) {
+        array_push($talents, $row['talent_id']);
+    }
+    $param = implode(',', $talents);
+    $req = [
+        'SELECT' => 'tt.talent_title AS talent_title, tt.talent_id AS talent_id',
+        'FROM' => [
+            TALENTS_TABLE => 'tt'
+        ],
+        'WHERE' => "tt.talent_id NOT IN($param)"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    while ($row = $db->sql_fetchrow($query)) {
+        $template->assign_block_vars('ft_talents_loop', [
+            'FT_TALENT_ID' => $row['talent_id'],
+            'FT_TALENT_TITLE' => $row['talent_title']
+        ]);
+    }
+}
+
 $ft_user_infos = get_ft_user_infos();
 get_techniques('Ninjutsu', 'Ninjutsu');
 get_techniques('Taijutsu', 'Taijutsu');
@@ -248,6 +340,8 @@ get_techniques('Genjutsu', 'Genjutsu');
 get_techniques('Kekkei Genkai', 'KG');
 get_techniques('Hiden', 'Hiden');
 get_not_validated();
+get_talents_ft($ft_user_id);
+get_talents_display_ft($ft_user_id);
 
 $template->assign_vars(array(
     'FT_USER_ID' => $ft_user_id,

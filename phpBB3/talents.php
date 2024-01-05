@@ -66,6 +66,8 @@ if($request->is_ajax()) {
         $talent_id = $request->variable('talent_id', 0);
         $sql = 'DELETE FROM '.TALENTS_TABLE." WHERE talent_id = $talent_id";
         $db->sql_query($sql);
+        $sql = 'DELETE FROM '.USER_TALENTS_TABLE." WHERE talent_id = $talent_id";
+        $db->sql_query($sql);
         return $json_response->send([
             'action'	=> 'TALENT_DELETED',
             ],
