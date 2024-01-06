@@ -135,6 +135,66 @@ $b_techniques_levels = [25, 30];
 $a_techniques_levels = [35, 40];
 $s_techniques_levels = [45, 50];
 
+$d_chakra = [
+	"light" => 2,
+	"medium" => 3,
+	"heavy" => 5
+];
+
+$c_chakra = [
+	"light" => 6,
+	"medium" => 7,
+	"heavy" => 9
+];
+
+$b_chakra = [
+	"light" => 10,
+	"medium" => 11,
+	"heavy" => 13
+];
+
+$a_chakra = [
+	"light" => 14,
+	"medium" => 16,
+	"heavy" => 18
+];
+
+$s_chakra = [
+	"light" => 19,
+	"medium" => 20,
+	"heavy" => 22
+];
+
+$d_life = [
+	"light" => 4,
+	"medium" => 6,
+	"heavy" => 9
+];
+
+$c_life = [
+	"light" => 10,
+	"medium" => 12,
+	"heavy" => 14
+];
+
+$b_life = [
+	"light" => 16,
+	"medium" => 18,
+	"heavy" => 20
+];
+
+$a_life = [
+	"light" => 21,
+	"medium" => 24,
+	"heavy" => 27
+];
+
+$s_life = [
+	"light" => 29,
+	"medium" => 31,
+	"heavy" => 36
+];
+
 function get_group_by_name($group_name) {
 	global $db;
 	$req = [
@@ -264,6 +324,24 @@ function get_profile_informations($user_id) {
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
 	return $db->sql_fetchrow($query);
+}
+
+function get_talents_from_user($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'tt.talent_title AS talent_title',
+		'FROM' => [ TALENTS_TABLE => 'tt' ],
+		'LEFT_JOIN' => [
+			[
+				'FROM' => [ USER_TALENTS_TABLE => 'utt' ],
+				'ON' => 'utt.talent_id = tt.talent_id'
+			]
+		],
+		'WHERE' => "utt.user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $query;
 }
 
 /**

@@ -107,8 +107,12 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " Rang ";
             echo twig_get_attribute($this->env, $this->source, $context["Ninjutsu_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 11);
             echo "</div>
-                <div class=\"ft_technique_description\">";
+                <div class=\"ft_technique_description\">(";
             // line 12
+            echo twig_get_attribute($this->env, $this->source, $context["Ninjutsu_loop"], "FT_TECHNIQUE_DAMAGE", [], "any", false, false, false, 12);
+            echo " dégâts en PV | ";
+            echo twig_get_attribute($this->env, $this->source, $context["Ninjutsu_loop"], "FT_TECHNIQUE_CHAKRA", [], "any", false, false, false, 12);
+            echo " coût en PC) ";
             echo twig_get_attribute($this->env, $this->source, $context["Ninjutsu_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 12);
             echo "</div>
             </div>
@@ -171,8 +175,12 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " - Rang ";
             echo twig_get_attribute($this->env, $this->source, $context["Taijutsu_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 31);
             echo "</div>
-                <div class=\"ft_technique_description\">";
+                <div class=\"ft_technique_description\">(";
             // line 32
+            echo twig_get_attribute($this->env, $this->source, $context["Taijutsu_loop"], "FT_TECHNIQUE_DAMAGE", [], "any", false, false, false, 32);
+            echo " dégâts en PV | ";
+            echo twig_get_attribute($this->env, $this->source, $context["Taijutsu_loop"], "FT_TECHNIQUE_CHAKRA", [], "any", false, false, false, 32);
+            echo " coût en PC) ";
             echo twig_get_attribute($this->env, $this->source, $context["Taijutsu_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 32);
             echo "</div>
             </div>
@@ -235,8 +243,12 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " - Rang ";
             echo twig_get_attribute($this->env, $this->source, $context["Genjutsu_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 51);
             echo "</div>
-                <div class=\"ft_technique_description\">";
+                <div class=\"ft_technique_description\">(";
             // line 52
+            echo twig_get_attribute($this->env, $this->source, $context["Genjutsu_loop"], "FT_TECHNIQUE_DAMAGE", [], "any", false, false, false, 52);
+            echo " dégâts en PV | ";
+            echo twig_get_attribute($this->env, $this->source, $context["Genjutsu_loop"], "FT_TECHNIQUE_CHAKRA", [], "any", false, false, false, 52);
+            echo " coût en PC) ";
             echo twig_get_attribute($this->env, $this->source, $context["Genjutsu_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 52);
             echo "</div>
             </div>
@@ -299,8 +311,12 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " - Rang ";
             echo twig_get_attribute($this->env, $this->source, $context["KG_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 71);
             echo "</div>
-                <div class=\"ft_technique_description\">";
+                <div class=\"ft_technique_description\">(";
             // line 72
+            echo twig_get_attribute($this->env, $this->source, $context["KG_loop"], "FT_TECHNIQUE_DAMAGE", [], "any", false, false, false, 72);
+            echo " dégâts en PV | ";
+            echo twig_get_attribute($this->env, $this->source, $context["KG_loop"], "FT_TECHNIQUE_CHAKRA", [], "any", false, false, false, 72);
+            echo " coût en PC) ";
             echo twig_get_attribute($this->env, $this->source, $context["KG_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 72);
             echo "</div>
             </div>
@@ -363,8 +379,12 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " - Rang ";
             echo twig_get_attribute($this->env, $this->source, $context["Hiden_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 91);
             echo "</div>
-                <div class=\"ft_technique_description\">";
+                <div class=\"ft_technique_description\">(";
             // line 92
+            echo twig_get_attribute($this->env, $this->source, $context["Hiden_loop"], "FT_TECHNIQUE_DAMAGE", [], "any", false, false, false, 92);
+            echo " dégâts en PV | ";
+            echo twig_get_attribute($this->env, $this->source, $context["Hiden_loop"], "FT_TECHNIQUE_CHAKRA", [], "any", false, false, false, 92);
+            echo " coût en PC) ";
             echo twig_get_attribute($this->env, $this->source, $context["Hiden_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 92);
             echo "</div>
             </div>
@@ -400,6 +420,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
         // line 106
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "ft_my_talents_loop", [], "any", false, false, false, 106));
+        $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["ft_my_talents_loop"]) {
             // line 107
             echo "        <form method=\"post\" action=\"";
@@ -429,37 +450,43 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             // line 117
             echo "        </form>
         ";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 119
+            echo "        <div class=\"no_technique\">Pas de talent pour le moment !</div>
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ft_my_talents_loop'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 119
+        // line 121
         echo "        ";
         if (($context["FT_IS_ADMIN"] ?? null)) {
-            // line 120
+            // line 122
             echo "        <h1>Ajout de talent</h1>
         <form method=\"post\" action=\"";
-            // line 121
+            // line 123
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"add_ft_talent_callback\" data-refresh=\"true\">
             <select name=\"add_ft_talent\" class=\"ft_block\">
                 ";
-            // line 123
+            // line 125
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "ft_talents_loop", [], "any", false, false, false, 123));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "ft_talents_loop", [], "any", false, false, false, 125));
             foreach ($context['_seq'] as $context["_key"] => $context["ft_talents_loop"]) {
-                // line 124
+                // line 126
                 echo "                <option value=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["ft_talents_loop"], "FT_TALENT_ID", [], "any", false, false, false, 124);
+                echo twig_get_attribute($this->env, $this->source, $context["ft_talents_loop"], "FT_TALENT_ID", [], "any", false, false, false, 126);
                 echo "\">";
-                echo twig_get_attribute($this->env, $this->source, $context["ft_talents_loop"], "FT_TALENT_TITLE", [], "any", false, false, false, 124);
+                echo twig_get_attribute($this->env, $this->source, $context["ft_talents_loop"], "FT_TALENT_TITLE", [], "any", false, false, false, 126);
                 echo "</option>
                 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ft_talents_loop'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 126
+            // line 128
             echo "            </select>
             <div class=\"md_buttons\">
                 <input class=\"validate_ft_button\" type=\"submit\" value=\"Ajouter le talent\" name=\"add_ft_talent_button\">
@@ -467,49 +494,75 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
         </form>
         ";
         }
-        // line 132
+        // line 134
         echo "        <h1>Techniques en cours de validation</h1>
         ";
-        // line 133
+        // line 135
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "to_validate_loop", [], "any", false, false, false, 133));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "to_validate_loop", [], "any", false, false, false, 135));
         foreach ($context['_seq'] as $context["_key"] => $context["to_validate_loop"]) {
-            // line 134
+            // line 136
             echo "        <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"modify_ft_technique_callback\" data-refresh=\"true\">
             <input type=\"hidden\" name=\"modify_ft_id\" value=\"";
-            // line 135
-            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_ID", [], "any", false, false, false, 135);
+            // line 137
+            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_ID", [], "any", false, false, false, 137);
             echo "\">
             <div class=\"modify_ft_lb\">Nom de la technique</div>
             <div class=\"modify_ft_infos\">";
-            // line 137
-            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SUBTYPE", [], "any", false, false, false, 137);
-            if (twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SPE", [], "any", false, false, false, 137)) {
+            // line 139
+            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SUBTYPE", [], "any", false, false, false, 139);
+            if (twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SPE", [], "any", false, false, false, 139)) {
                 echo " - ";
-                echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SPE", [], "any", false, false, false, 137);
+                echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_SPE", [], "any", false, false, false, 139);
             }
             echo " - Rang ";
-            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 137);
+            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_RANK", [], "any", false, false, false, 139);
+            echo " - ";
+            if ((twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_OFFENSIVE", [], "any", false, false, false, 139) == 1)) {
+                echo "Offensive";
+            } else {
+                echo "Non offensive";
+            }
             echo "</div>
             <input type=\"text\" value=\"";
-            // line 138
-            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_NAME", [], "any", false, false, false, 138);
+            // line 140
+            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_NAME", [], "any", false, false, false, 140);
             echo "\" class=\"modify_ft_name\" name=\"modify_ft_name\">
+            <select class=\"ft_block\" name=\"modify_cost\">
+                <option value=\"light\" ";
+            // line 142
+            if ((twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_COST", [], "any", false, false, false, 142) == "light")) {
+                echo "selected";
+            }
+            echo "</option>Léger</option>
+                <option value=\"medium\" ";
+            // line 143
+            if ((twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_COST", [], "any", false, false, false, 143) == "medium")) {
+                echo "selected";
+            }
+            echo ">Moyen</option>
+                <option value=\"heavy\" ";
+            // line 144
+            if ((twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_COST", [], "any", false, false, false, 144) == "heavy")) {
+                echo "selected";
+            }
+            echo ">Lourd</option>
+            </select>
             <div class=\"modify_ft_lb\">Description</div>
             <textarea class=\"modify_ft_desc\" name=\"modify_ft_description\">";
-            // line 140
-            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 140);
+            // line 147
+            echo twig_get_attribute($this->env, $this->source, $context["to_validate_loop"], "FT_TECHNIQUE_DESCRIPTION", [], "any", false, false, false, 147);
             echo "</textarea>
             <div class=\"md_buttons\">
                 <input class=\"modify_ft_button\" type=\"submit\" name=\"modify_ft_button\" value=\"Enregistrer les modifications\">
                 ";
-            // line 143
+            // line 150
             if (($context["FT_IS_ADMIN"] ?? null)) {
                 echo "<input class=\"validate_ft_button\" type=\"submit\" value=\"Valider la technique\" name=\"ft_validate_button\">";
             }
-            // line 144
+            // line 151
             echo "            </div>
         </form>
         ";
@@ -517,15 +570,15 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['to_validate_loop'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 147
+        // line 154
         echo "        <h1>Création de technique</h1>
         ";
-        // line 148
+        // line 155
         if ((($context["FT_TECHNIQUES_TO_USE"] ?? null) > 0)) {
-            // line 149
+            // line 156
             echo "        <div id=\"new_tech_wrapper\">
             <div id=\"ft_stat\">Vous pouvez créer ";
-            // line 150
+            // line 157
             echo ($context["FT_TECHNIQUES_TO_USE"] ?? null);
             echo " techniques dont : ";
             echo ($context["FT_D_TECHNIQUES"] ?? null);
@@ -540,7 +593,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             echo " S</div>
             <div class=\"create_ft_lb\">Informations principales</div>
             <form id=\"new_technique_form\" method=\"post\" action=\"";
-            // line 152
+            // line 159
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"new_technique_callback\" data-refresh=\"true\">
                 <select id=\"first_ft_select\" name=\"first_ft_select\">
@@ -554,46 +607,46 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
                 <select id=\"technique_nj_type\" class=\"second_ft_select\" name=\"technique_nj_type\">
                     <option value=\"\"></option>
                     ";
-            // line 163
+            // line 170
             if ((((($context["FT_FIRST_ELEMENT"] ?? null) == "Katon") || (($context["FT_SECOND_ELEMENT"] ?? null) == "Katon")) || (($context["FT_THIRD_ELEMENT"] ?? null) == "Katon"))) {
                 echo "<option value=\"Katon\">Katon</option>";
             }
-            // line 164
+            // line 171
             echo "                    ";
             if ((((($context["FT_FIRST_ELEMENT"] ?? null) == "Fûton") || (($context["FT_SECOND_ELEMENT"] ?? null) == "Fûton")) || (($context["FT_THIRD_ELEMENT"] ?? null) == "Fûton"))) {
                 echo "<option value=\"Fûton\">Fûton</option>";
             }
-            // line 165
+            // line 172
             echo "                    ";
             if ((((($context["FT_FIRST_ELEMENT"] ?? null) == "Raiton") || (($context["FT_SECOND_ELEMENT"] ?? null) == "Raiton")) || (($context["FT_THIRD_ELEMENT"] ?? null) == "Raiton"))) {
                 echo "<option value=\"Raiton\">Raiton</option>";
             }
-            // line 166
+            // line 173
             echo "                    ";
             if ((((($context["FT_FIRST_ELEMENT"] ?? null) == "Doton") || (($context["FT_SECOND_ELEMENT"] ?? null) == "Doton")) || (($context["FT_THIRD_ELEMENT"] ?? null) == "Doton"))) {
                 echo "<option value=\"Doton\">Doton</option>";
             }
-            // line 167
+            // line 174
             echo "                    ";
             if ((((($context["FT_FIRST_ELEMENT"] ?? null) == "Suiton") || (($context["FT_SECOND_ELEMENT"] ?? null) == "Suiton")) || (($context["FT_THIRD_ELEMENT"] ?? null) == "Suiton"))) {
                 echo "<option value=\"Suiton\">Suiton</option>";
             }
-            // line 168
+            // line 175
             echo "                    ";
             if ((($context["FT_IROU_HEAL"] ?? null) || ($context["FT_IROU_POISON"] ?? null))) {
                 echo "<option value=\"Irou Jutsu\">Irou Jutsu</option>";
             }
-            // line 169
+            // line 176
             echo "                    ";
             if ((($context["FT_FUIN_SEAL"] ?? null) || ($context["FT_FUIN_BARRER"] ?? null))) {
                 echo "<option value=\"Fuinjutsu\">Fuinjutsu</option>";
             }
-            // line 170
+            // line 177
             echo "                    ";
             if (($context["FT_KUCHIYOSE"] ?? null)) {
                 echo "<option>Kuchiyose</option>";
             }
-            // line 171
+            // line 178
             echo "                </select>
                 <select id=\"technique_hiden_type\" class=\"second_ft_select\" name=\"technique_hiden_type\">
                     <option value=\"\"></option>
@@ -654,179 +707,193 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
                 <select id=\"irou_jutsu_ft_type\" class=\"second_type_select\" name=\"irou_jutsu_ft_type\">
                     <option value=\"\"></option>
                     ";
-            // line 230
+            // line 237
             if (($context["FT_IROU_HEAL"] ?? null)) {
                 echo "<option value=\"Soins\">Soins</option>";
             }
-            // line 231
+            // line 238
             echo "                    ";
             if (($context["FT_IROU_POISON"] ?? null)) {
                 echo "<option value=\"Poisons\">Poisons</option>";
             }
-            // line 232
+            // line 239
             echo "                </select>
                 <select id=\"fuinjutsu_ft_type\" class=\"second_type_select\" name=\"fuinjutsu_ft_type\">
                     <option value=\"\"></option>
                     ";
-            // line 235
+            // line 242
             if (($context["FT_FUIN_BARRER"] ?? null)) {
                 echo "<option value=\"Barrières\">Barrières</option>";
             }
-            // line 236
+            // line 243
             echo "                    ";
             if (($context["FT_FUIN_SEAL"] ?? null)) {
                 echo "<option value=\"Sceaux\">Sceaux</option>";
             }
-            // line 237
+            // line 244
             echo "                </select>
                 <select id=\"technique_kg_rank\" class=\"third_ft_select\" name=\"technique_kg_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 240
+            // line 247
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 241
+            // line 248
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 242
+            // line 249
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 243
+            // line 250
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 244
+            // line 251
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 245
+            // line 252
             echo "                </select>
                 <select id=\"technique_hiden_rank\" class=\"third_ft_select\" name=\"technique_hiden_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 248
+            // line 255
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 249
+            // line 256
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 250
+            // line 257
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 251
+            // line 258
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 252
+            // line 259
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 253
+            // line 260
             echo "                </select>
                 <select id=\"technique_nj_rank\" class=\"third_ft_select\" name=\"technique_nj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 256
+            // line 263
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 257
+            // line 264
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 258
+            // line 265
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 259
+            // line 266
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 260
+            // line 267
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 261
+            // line 268
             echo "                </select>
                 <select id=\"technique_tj_rank\" class=\"third_ft_select\" name=\"technique_tj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 264
+            // line 271
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 265
+            // line 272
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 266
+            // line 273
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 267
+            // line 274
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 268
+            // line 275
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 269
+            // line 276
             echo "                </select>
                 <select id=\"technique_gj_rank\" class=\"third_ft_select\" name=\"technique_gj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 272
+            // line 279
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 273
+            // line 280
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 274
+            // line 281
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 275
+            // line 282
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 276
+            // line 283
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 277
+            // line 284
             echo "                </select>
                 <div id=\"new_ft_tech\" name=\"new_ft_tech\">
                     <div class=\"create_ft_lb\">Nom de la technique</div>
                     <input type=\"text\" id=\"new_ft_name\" name=\"new_ft_name\">
+                    <div class=\"create_ft_lb\">Coût de la technique</div>
+                    <select name=\"new_ft_cost\" class=\"ft_block ft_margin\">
+                        <option value=\"light\">Léger</option>
+                        <option value=\"medium\">Moyen</option>
+                        <option value=\"heavy\">Lourd</option>
+                    </select>
+                    <div class=\"create_ft_lb\">Technique offensive ?</div>
+                    <div class=\"no_technique ft_block\">Si non, elle n'infligera pas de dégâts directs</div>
+                    <div class=\"ft_block ft_radio\">
+                        <input type=\"radio\" name=\"new_ft_offensive\" value=\"offensive\" checked>
+                        <label for=\"offensive\">Oui</label>
+                        <input type=\"radio\" name=\"new_ft_offensive\" value=\"other\">
+                        <label for=\"other\">Non</label>
+                    </div>
                     <div class=\"create_ft_lb\">Description de la technique</div>
                     <textarea id=\"new_ft_technique\" name=\"new_ft_technique\"></textarea>
                     <input type=\"submit\" id=\"create_technique\" value=\"Créer la technique\">
@@ -835,11 +902,11 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
         </div>
     ";
         }
-        // line 288
+        // line 309
         echo "</div>
 
 ";
-        // line 290
+        // line 311
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -847,7 +914,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "fiche_technique.html", 290)->display($context);
+        $this->loadTemplate("overall_footer.html", "fiche_technique.html", 311)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -865,7 +932,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
 
     public function getDebugInfo()
     {
-        return array (  843 => 290,  839 => 288,  826 => 277,  821 => 276,  816 => 275,  811 => 274,  806 => 273,  802 => 272,  797 => 269,  792 => 268,  787 => 267,  782 => 266,  777 => 265,  773 => 264,  768 => 261,  763 => 260,  758 => 259,  753 => 258,  748 => 257,  744 => 256,  739 => 253,  734 => 252,  729 => 251,  724 => 250,  719 => 249,  715 => 248,  710 => 245,  705 => 244,  700 => 243,  695 => 242,  690 => 241,  686 => 240,  681 => 237,  676 => 236,  672 => 235,  667 => 232,  662 => 231,  658 => 230,  597 => 171,  592 => 170,  587 => 169,  582 => 168,  577 => 167,  572 => 166,  567 => 165,  562 => 164,  558 => 163,  544 => 152,  529 => 150,  526 => 149,  524 => 148,  521 => 147,  513 => 144,  509 => 143,  503 => 140,  498 => 138,  488 => 137,  483 => 135,  478 => 134,  474 => 133,  471 => 132,  463 => 126,  452 => 124,  448 => 123,  443 => 121,  440 => 120,  437 => 119,  430 => 117,  424 => 113,  422 => 112,  415 => 110,  411 => 109,  405 => 107,  401 => 106,  398 => 105,  391 => 103,  381 => 99,  376 => 96,  374 => 95,  368 => 92,  356 => 91,  351 => 89,  347 => 88,  342 => 87,  337 => 86,  334 => 85,  327 => 83,  317 => 79,  312 => 76,  310 => 75,  304 => 72,  292 => 71,  287 => 69,  283 => 68,  278 => 67,  273 => 66,  270 => 65,  263 => 63,  253 => 59,  248 => 56,  246 => 55,  240 => 52,  228 => 51,  223 => 49,  219 => 48,  214 => 47,  209 => 46,  206 => 45,  199 => 43,  189 => 39,  184 => 36,  182 => 35,  176 => 32,  164 => 31,  159 => 29,  155 => 28,  150 => 27,  145 => 26,  142 => 25,  135 => 23,  125 => 19,  120 => 16,  118 => 15,  112 => 12,  99 => 11,  94 => 9,  90 => 8,  85 => 7,  80 => 6,  63 => 3,  49 => 2,  37 => 1,);
+        return array (  910 => 311,  906 => 309,  879 => 284,  874 => 283,  869 => 282,  864 => 281,  859 => 280,  855 => 279,  850 => 276,  845 => 275,  840 => 274,  835 => 273,  830 => 272,  826 => 271,  821 => 268,  816 => 267,  811 => 266,  806 => 265,  801 => 264,  797 => 263,  792 => 260,  787 => 259,  782 => 258,  777 => 257,  772 => 256,  768 => 255,  763 => 252,  758 => 251,  753 => 250,  748 => 249,  743 => 248,  739 => 247,  734 => 244,  729 => 243,  725 => 242,  720 => 239,  715 => 238,  711 => 237,  650 => 178,  645 => 177,  640 => 176,  635 => 175,  630 => 174,  625 => 173,  620 => 172,  615 => 171,  611 => 170,  597 => 159,  582 => 157,  579 => 156,  577 => 155,  574 => 154,  566 => 151,  562 => 150,  556 => 147,  548 => 144,  542 => 143,  536 => 142,  531 => 140,  515 => 139,  510 => 137,  505 => 136,  501 => 135,  498 => 134,  490 => 128,  479 => 126,  475 => 125,  470 => 123,  467 => 122,  464 => 121,  457 => 119,  451 => 117,  445 => 113,  443 => 112,  436 => 110,  432 => 109,  426 => 107,  421 => 106,  418 => 105,  411 => 103,  401 => 99,  396 => 96,  394 => 95,  384 => 92,  372 => 91,  367 => 89,  363 => 88,  358 => 87,  353 => 86,  350 => 85,  343 => 83,  333 => 79,  328 => 76,  326 => 75,  316 => 72,  304 => 71,  299 => 69,  295 => 68,  290 => 67,  285 => 66,  282 => 65,  275 => 63,  265 => 59,  260 => 56,  258 => 55,  248 => 52,  236 => 51,  231 => 49,  227 => 48,  222 => 47,  217 => 46,  214 => 45,  207 => 43,  197 => 39,  192 => 36,  190 => 35,  180 => 32,  168 => 31,  163 => 29,  159 => 28,  154 => 27,  149 => 26,  146 => 25,  139 => 23,  129 => 19,  124 => 16,  122 => 15,  112 => 12,  99 => 11,  94 => 9,  90 => 8,  85 => 7,  80 => 6,  63 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

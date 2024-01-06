@@ -9,7 +9,7 @@
             <input type="hidden" name="validated_ft_rank" value="{Ninjutsu.loop.FT_TECHNIQUE_RANK}">
             <div class="ft_ninjutsu">
                 <div class="ft_technique_information">{Ninjutsu_loop.FT_TECHNIQUE_NAME} - {Ninjutsu_loop.FT_TECHNIQUE_SUBTYPE} -<!-- IF Ninjutsu_loop.FT_TECHNIQUE_SPE --> - {Ninjutsu_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> Rang {Ninjutsu_loop.FT_TECHNIQUE_RANK}</div>
-                <div class="ft_technique_description">{Ninjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+                <div class="ft_technique_description">({Ninjutsu_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Ninjutsu_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Ninjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
             </div>
             <div class="md_buttons">
                 <!-- IF FT_IS_ADMIN -->
@@ -29,7 +29,7 @@
             <input type="hidden" name="validated_ft_rank" value="{Taijutsu.loop.FT_TECHNIQUE_RANK}">
             <div class="ft_taijutsu">
                 <div class="ft_technique_information">{Taijutsu_loop.FT_TECHNIQUE_NAME} - {Taijutsu_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF Taijutsu_loop.FT_TECHNIQUE_SPE --> - {Taijutsu_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {Taijutsu_loop.FT_TECHNIQUE_RANK}</div>
-                <div class="ft_technique_description">{Taijutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+                <div class="ft_technique_description">({Taijutsu_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Taijutsu_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Taijutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
             </div>
             <div class="md_buttons">
                 <!-- IF FT_IS_ADMIN -->
@@ -49,7 +49,7 @@
             <input type="hidden" name="validated_ft_rank" value="{Genjutsu.loop.FT_TECHNIQUE_RANK}">
             <div class="ft_genjutsu">
                 <div class="ft_technique_information">{Genjutsu_loop.FT_TECHNIQUE_NAME} - {Genjutsu_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF Genjutsu_loop.FT_TECHNIQUE_SPE --> - {Genjutsu_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {Genjutsu_loop.FT_TECHNIQUE_RANK}</div>
-                <div class="ft_technique_description">{Genjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+                <div class="ft_technique_description">({Genjutsu_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Genjutsu_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Genjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
             </div>
             <div class="md_buttons">
                 <!-- IF FT_IS_ADMIN -->
@@ -69,7 +69,7 @@
             <input type="hidden" name="validated_ft_rank" value="{KG_loop.FT_TECHNIQUE_RANK}">
             <div class="ft_kekkei">
                 <div class="ft_technique_information">{KG_loop.FT_TECHNIQUE_NAME} - {KG_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF KG_loop.FT_TECHNIQUE_SPE --> - {KG_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {KG_loop.FT_TECHNIQUE_RANK}</div>
-                <div class="ft_technique_description">{KG_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+                <div class="ft_technique_description">({KG_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {KG_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {KG_loop.FT_TECHNIQUE_DESCRIPTION}</div>
             </div>
             <div class="md_buttons">
                 <!-- IF FT_IS_ADMIN -->
@@ -89,7 +89,7 @@
             <input type="hidden" name="validated_ft_rank" value="{Hiden_loop.FT_TECHNIQUE_RANK}">
             <div class="ft_kekkei">
                 <div class="ft_technique_information">{Hiden_loop.FT_TECHNIQUE_NAME} - {Hiden_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF Hiden_loop.FT_TECHNIQUE_SPE --> - {Hiden_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {Hiden_loop.FT_TECHNIQUE_RANK}</div>
-                <div class="ft_technique_description">{Hiden_loop.FT_TECHNIQUE_DESCRIPTION}</div>
+                <div class="ft_technique_description">({Hiden_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Hiden_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Hiden_loop.FT_TECHNIQUE_DESCRIPTION}</div>
             </div>
             <div class="md_buttons">
                 <!-- IF FT_IS_ADMIN -->
@@ -136,8 +136,13 @@
         <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_ft_technique_callback" data-refresh="true">
             <input type="hidden" name="modify_ft_id" value="{to_validate_loop.FT_TECHNIQUE_ID}">
             <div class="modify_ft_lb">Nom de la technique</div>
-            <div class="modify_ft_infos">{to_validate_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF to_validate_loop.FT_TECHNIQUE_SPE --> - {to_validate_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {to_validate_loop.FT_TECHNIQUE_RANK}</div>
+            <div class="modify_ft_infos">{to_validate_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF to_validate_loop.FT_TECHNIQUE_SPE --> - {to_validate_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {to_validate_loop.FT_TECHNIQUE_RANK} - <!-- IF to_validate_loop.FT_TECHNIQUE_OFFENSIVE == 1 -->Offensive<!-- ELSE -->Non offensive<!-- ENDIF --></div>
             <input type="text" value="{to_validate_loop.FT_TECHNIQUE_NAME}" class="modify_ft_name" name="modify_ft_name">
+            <select class="ft_block" name="modify_cost">
+                <option value="light" <!-- IF to_validate_loop.FT_TECHNIQUE_COST == "light" -->selected<!-- ENDIF --></option>Léger</option>
+                <option value="medium" <!-- IF to_validate_loop.FT_TECHNIQUE_COST == "medium" -->selected<!-- ENDIF -->>Moyen</option>
+                <option value="heavy" <!-- IF to_validate_loop.FT_TECHNIQUE_COST == "heavy" -->selected<!-- ENDIF -->>Lourd</option>
+            </select>
             <div class="modify_ft_lb">Description</div>
             <textarea class="modify_ft_desc" name="modify_ft_description">{to_validate_loop.FT_TECHNIQUE_DESCRIPTION}</textarea>
             <div class="md_buttons">
@@ -280,6 +285,20 @@
                 <div id="new_ft_tech" name="new_ft_tech">
                     <div class="create_ft_lb">Nom de la technique</div>
                     <input type="text" id="new_ft_name" name="new_ft_name">
+                    <div class="create_ft_lb">Coût de la technique</div>
+                    <select name="new_ft_cost" class="ft_block ft_margin">
+                        <option value="light">Léger</option>
+                        <option value="medium">Moyen</option>
+                        <option value="heavy">Lourd</option>
+                    </select>
+                    <div class="create_ft_lb">Technique offensive ?</div>
+                    <div class="no_technique ft_block">Si non, elle n'infligera pas de dégâts directs</div>
+                    <div class="ft_block ft_radio">
+                        <input type="radio" name="new_ft_offensive" value="offensive" checked>
+                        <label for="offensive">Oui</label>
+                        <input type="radio" name="new_ft_offensive" value="other">
+                        <label for="other">Non</label>
+                    </div>
                     <div class="create_ft_lb">Description de la technique</div>
                     <textarea id="new_ft_technique" name="new_ft_technique"></textarea>
                     <input type="submit" id="create_technique" value="Créer la technique">

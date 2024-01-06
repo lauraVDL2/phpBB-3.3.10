@@ -89,7 +89,7 @@
 
 .profile_level {
     text-align: center;
-    margin: 20px auto;
+    margin-top: 15px;
     font-size: 1.4rem;
     font-weight: bold;
 }
@@ -175,6 +175,13 @@
     box-sizing: border-box;
     padding-bottom: 15px;
     border-bottom-right-radius: 15px;
+}
+
+.profile_points {
+    text-align: center;
+    color: var(--main_color_2);
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 .poster_avatar img {

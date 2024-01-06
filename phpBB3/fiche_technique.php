@@ -69,6 +69,9 @@ if($request->is_ajax()) {
     $taijutsu_rank = utf8_normalize_nfc($request->variable('technique_tj_rank', '', true));
     $genjutsu_rank = utf8_normalize_nfc($request->variable('technique_gj_rank', '', true));
     $hiden_rank = utf8_normalize_nfc($request->variable('technique_hiden_rank', '', true));
+    $cost_technique = utf8_normalize_nfc($request->variable('new_ft_cost', '', true));
+    $offensive = utf8_normalize_nfc($request->variable('new_ft_offensive', '', true));
+
     $kekkei_genkai_rank = utf8_normalize_nfc($request->variable('technique_kg_rank', '', true));
     $new_ft_technique = utf8_normalize_nfc(html_entity_decode($request->variable('new_ft_technique', '', true)));
     //SPECIALIZATIONS
@@ -80,11 +83,11 @@ if($request->is_ajax()) {
     $fuinjutsu_subspe = utf8_normalize_nfc($request->variable('fuinjutsu_ft_type', '', true));
     if($fuinjutsu_subspe != '') $technique_subspe = $fuinjutsu_subspe;
     //INSERT INTO DATABASE
-    create_techniques($art_technique, $ninjutsu_type, $ninjutsu_rank, $technique_subspe);
-    create_techniques($art_technique, $taijutsu_type, $taijutsu_rank, $technique_subspe);
-    create_techniques($art_technique, $genjutsu_type, $genjutsu_rank, $technique_subspe);
-    create_techniques($art_technique, $kekkei_genkai_type, $kekkei_genkai_rank, $technique_subspe);
-    create_techniques($art_technique, $hiden_type, $hiden_rank, $technique_subspe);
+    create_techniques($art_technique, $ninjutsu_type, $ninjutsu_rank, $technique_subspe, $cost_technique, $offensive);
+    create_techniques($art_technique, $taijutsu_type, $taijutsu_rank, $technique_subspe, $cost_technique, $offensive);
+    create_techniques($art_technique, $genjutsu_type, $genjutsu_rank, $technique_subspe, $cost_technique, $offensive);
+    create_techniques($art_technique, $kekkei_genkai_type, $kekkei_genkai_rank, $technique_subspe, $cost_technique, $offensive);
+    create_techniques($art_technique, $hiden_type, $hiden_rank, $technique_subspe, $cost_technique, $offensive);
 }
 
 //MODIFY OR VALIDATE TECHNIQUES
@@ -94,8 +97,9 @@ if($request->is_ajax()) {
     $md_ft_desc = utf8_normalize_nfc(html_entity_decode($request->variable('modify_ft_description', '', true)));
     $md_button = $request->variable('modify_ft_button', '');
     $validate_button = $request->variable('ft_validate_button', '');
+    $modify_cost = utf8_normalize_nfc($request->variable('modify_cost', '', true));
     if($md_button != '' && $md_technique_id != 0) {
-        $sql = 'UPDATE '.USER_TECHNIQUES_TABLE.' SET technique_name = "'.$md_ft_name.'", technique_description = "'.$md_ft_desc.'" WHERE user_id = '.$ft_user_id.' AND technique_id = '.$md_technique_id;
+        $sql = 'UPDATE '.USER_TECHNIQUES_TABLE.' SET technique_name = "'.$md_ft_name.'", technique_cost = "'.$modify_cost.'", technique_description = "'.$md_ft_desc.'" WHERE user_id = '.$ft_user_id.' AND technique_id = '.$md_technique_id;
         $db->sql_query($sql);
         return $json_response->send([
             'my_action'	=> 'MODIFY',
@@ -155,8 +159,14 @@ if($request->is_ajax()) {
     }
 }
 
-function create_techniques($art_technique, $type_technique, $rank_technique, $technique_subspe) {
+function create_techniques($art_technique, $type_technique, $rank_technique, $technique_subspe, $cost_technique, $offensive) {
     global $db, $ft_user_id, $new_ft_technique, $new_ft_name, $json_response;
+    if($offensive == 'offensive') {
+        $is_offensive = 1;
+    }
+    else {
+        $is_offensive = 0;
+    }
     if($art_technique != '' && $rank_technique != '' && $type_technique != '' && $new_ft_technique != '' && $new_ft_name != '') {
         $sql = 'INSERT INTO '.USER_TECHNIQUES_TABLE.' '.$db->sql_build_array('INSERT', [
             'user_id' => $ft_user_id,
@@ -165,7 +175,9 @@ function create_techniques($art_technique, $type_technique, $rank_technique, $te
             'technique_rank' => $rank_technique,
             'technique_description' => $new_ft_technique,
             'technique_name' => $new_ft_name,
-            'technique_subspe' => $technique_subspe
+            'technique_subspe' => $technique_subspe,
+            'technique_cost' => $cost_technique,
+            'technique_is_offensive' => $is_offensive
         ]);
         $db->sql_query($sql);
         if($rank_technique == 'S') {
@@ -226,8 +238,10 @@ function get_ft_user_infos() {
 
 function get_techniques($type, $block_name) {
     global $ft_user_id, $db, $template;
+    global $d_chakra, $c_chakra, $b_chakra, $a_chakra, $s_chakra;
+    global $d_life, $c_life, $b_life, $a_life, $s_life;
     $req = [
-        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
+        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_is_offensive AS technique_is_offensive, utt.technique_cost AS technique_cost, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
         'FROM' => [
             USER_TECHNIQUES_TABLE => 'utt',
         ],
@@ -236,13 +250,52 @@ function get_techniques($type, $block_name) {
     $sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
+        $offensive = $row['technique_is_offensive'];
+        $cost = $row['technique_cost'];
+        $rank = $row['technique_rank'];
+        $damage = 0;
+        $chakra = 0;
+        if($cost) {
+            if($rank == 'D') {
+                $chakra = $d_chakra[$cost];
+                if($offensive) {
+                    $damage = $d_life[$cost];
+                }
+            }
+            else if($rank == 'C') {
+                $chakra = $c_chakra[$cost];
+                if($offensive) {
+                    $damage = $c_life[$cost];
+                }
+            }
+            else if($rank == 'B') {
+                $chakra = $b_chakra[$cost];
+                if($offensive) {
+                    $damage = $b_life[$cost];
+                }
+            }
+            else if($rank == 'A') {
+                $chakra = $a_chakra[$cost];
+                if($offensive) {
+                    $damage = $a_life[$cost];
+                }
+            }
+            else if($rank == 'S') {
+                $chakra = $s_chakra[$cost];
+                if($offensive) {
+                    $damage = $s_life[$cost];
+                }
+            }
+        }
         $template->assign_block_vars($block_name.'_loop', [
             'FT_TECHNIQUE_ID' => $row['technique_id'],
             'FT_TECHNIQUE_SUBTYPE' => $row['technique_type'],
             'FT_TECHNIQUE_SPE' => $row['technique_spe'],
             'FT_TECHNIQUE_RANK' => $row['technique_rank'],
             'FT_TECHNIQUE_NAME' => $row['technique_name'],
-            'FT_TECHNIQUE_DESCRIPTION' => $row['technique_description']
+            'FT_TECHNIQUE_DESCRIPTION' => $row['technique_description'],
+            'FT_TECHNIQUE_DAMAGE' => $damage,
+            'FT_TECHNIQUE_CHAKRA' => $chakra
         ]);
     }
 }
@@ -250,7 +303,7 @@ function get_techniques($type, $block_name) {
 function get_not_validated() {
     global $ft_user_id, $db, $template;
     $req = [
-        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
+        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_is_offensive AS technique_is_offensive, utt.technique_cost AS technique_cost, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
         'FROM' => [
             USER_TECHNIQUES_TABLE => 'utt',
         ],
@@ -265,7 +318,9 @@ function get_not_validated() {
             'FT_TECHNIQUE_RANK' => $row['technique_rank'],
             'FT_TECHNIQUE_NAME' => $row['technique_name'],
             'FT_TECHNIQUE_SPE' => $row['technique_spe'],
-            'FT_TECHNIQUE_DESCRIPTION' => $row['technique_description']
+            'FT_TECHNIQUE_DESCRIPTION' => $row['technique_description'],
+            'FT_TECHNIQUE_COST' => $row['technique_cost'],
+            'FT_TECHNIQUE_OFFENSIVE' => $row['technique_is_offensive']
         ]);
     }
 }

@@ -38,9 +38,14 @@
     background-color: var(--kiri);
 }
 
+.ft_radio {
+    text-align: center;
+    color: var(--main_color_2);
+}
+
 .ft_block {
     display: block;
-    margin: auto !important;
+    margin: 10px auto !important;
 }
 
 #ft_name, #ft_user {

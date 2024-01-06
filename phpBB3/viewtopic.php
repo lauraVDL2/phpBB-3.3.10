@@ -2027,7 +2027,58 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 
 	$attributes = get_attributes($poster_id);
 	$infos = get_profile_informations($poster_id);
+	$strength = $attributes['strength'];
+	$spirit = $attributes['sensoriality'];
+	$pv = 0;
+	if($strength < 2) {
+		$pv = 10;
+	}
+	else if($strength >= 2 && $strength < 4) {
+		$pv = 20;
+	}
+	else if($strength >= 4 && $strength < 6) {
+		$pv = 30;
+	}
+	else if($strength >= 6 && $strength < 8) {
+		$pv = 40;
+	}
+	else if($strength == 8) {
+		$pv = 60;
+	}
+	$pc = 0;
+	if($spirit < 2) {
+		$pc = 10;
+	}
+	else if($spirit >= 2 && $spirit < 4) {
+		$pc = 20;
+	}
+	else if($spirit >= 4 && $spirit < 6) {
+		$pc = 30;
+	}
+	else if($spirit >= 6 && $spirit < 8) {
+		$pc = 40;
+	}
+	else if($spirit == 8) {
+		$pc = 60;
+	}
 
+	$query_talents = get_talents_from_user($poster_id);
+
+	while($row_talents = $db->sql_fetchrow($query_talents)) {
+		$talent_title = $row_talents['talent_title'];
+		if($talent_title == 'Chakra+') {
+			$pc += 10;
+		}
+		else if($talent_title == 'Chakra++') {
+			$pc += 20;
+		}
+		else if($talent_title == 'Constitution+') {
+			$pv += 10;
+		}
+		else if($talent_title == 'Constitution++') {
+			$pv += 20;
+		}
+	}
 	//
 	$post_row = array(
 		'POST_AUTHOR_FULL'		=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_full'] : get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
@@ -2035,6 +2086,8 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 		'POST_AUTHOR'			=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_username'] : get_username_string('username', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 		'U_POST_AUTHOR'			=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_profile'] : get_username_string('profile', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 
+		'PV' => $pv,
+		'PC' => $pc,
 		'STRENGTH' => $attributes['strength'],
 		'SENSORIALITY' => $attributes['sensoriality'],
 		'STEALTH' => $attributes['stealth'],
