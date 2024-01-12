@@ -101,6 +101,7 @@
 }
 
 .ft_technique_description {
+    margin-top: 5px;
     color: var(--main_color_2);
 }
 
