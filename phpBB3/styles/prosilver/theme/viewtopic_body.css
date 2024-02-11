@@ -209,3 +209,46 @@
     font-weight: bold;
     color: var(--main_color_2) !important;
 }
+
+.p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nuke {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    padding: 5px;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.p_cadre {
+    background-color: var(--main_color_3);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.p_kiri {
+    background-color: var(--kiri);
+}
+
+.p_iwa {
+    background-color: var(--iwa);
+}
+
+.p_suna {
+    background-color: var(--suna);
+}
+
+.p_kumo {
+    background-color: var(--kumo);
+}
+
+.p_konoha {
+    background-color: var(--konoha);
+}
+
+.p_nuke {
+    background-color: var(--nukenin);
+}
