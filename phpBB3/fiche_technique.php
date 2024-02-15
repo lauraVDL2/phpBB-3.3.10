@@ -215,7 +215,7 @@ function get_ft_user_infos() {
         .' at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
         .' gtt.first_elite AS first_elite, gtt.second_elite AS second_elite, gtt.is_kuchiyose AS kuchiyose, gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_irou_heal AS irou_heal, gtt.is_fuin_seal AS fuin_seal, '
         .' gtt.is_irou_poison AS irou_poison, gtt.is_fuin_barrer AS fuin_barrer, gtt.first_kekkei_genkai AS first_kekkei_genkai, gtt.second_kekkei_genkai AS second_kekkei_genkai, gtt.first_hidden AS first_hidden,'
-        .' gtt.second_hidden AS second_hidden, gtt.jinchuriki AS jinchuriki',
+        .' gtt.second_hidden AS second_hidden, gtt.jinchuriki AS jinchuriki, gtt.is_sight AS sight, gtt.is_sound AS sound ',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -422,10 +422,14 @@ $template->assign_vars(array(
     'FT_FUIN_BARRER' => $ft_user_infos['fuin_barrer'],
     'FT_IROU_HEAL' => $ft_user_infos['irou_heal'],
     'FT_IROU_POISON' => $ft_user_infos['irou_poison'],
+    'FT_SOUND' => $ft_user_infos['sound'],
+    'FT_SIGHT' => $ft_user_infos['sight'],
     'FT_FIRST_KG' => $ft_user_infos['first_kekkei_genkai'],
     'FT_SECOND_KG' => $ft_user_infos['second_kekkei_genkai'],
     'FT_FIRST_HIDEN' => $ft_user_infos['first_hidden'],
     'FT_SECOND_HIDEN' => $ft_user_infos['second_hidden'],
+    'FT_FIRST_ELITE' => $ft_user_infos['first_elite'],
+    'FT_SECOND_ELITE' => $ft_user_infos['second_elite'],
     'FT_IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
     'FT_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
     'FT_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),

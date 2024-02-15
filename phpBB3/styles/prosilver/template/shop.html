@@ -68,6 +68,32 @@
     </form>
     <!-- ENDIF -->
 
+    <!-- IF !SP_IS_SIGHT && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sight_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Genjutsu Vue</h1>
+        Acheter la spécialisation Genjutsu permettant de gérer les contacts visuels. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_sight" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF !SP_IS_SOUND && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sound_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Genjutsu Son</h1>
+        Acheter la spécialisation Genjutsu permettant de gérer les contacts auditifs. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_sound" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_SPIRIT = 8 && SP_GENJUTSU = 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demonic_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Illusions démoniaques</h1>
+        Acheter la spécialisation <strong>élite</strong> de Genjutsu vous permettant de créer des illusions démoniaques sans contact visuel ni auditif. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_demonic" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+
     <!-- IF SP_RP_RANK == "Genin" && SP_NINJUTSU >= 3 && SP_TAIJUTSU >= 3 && SP_GENJUTSU >= 3 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chunin_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="125">

@@ -58,4 +58,8 @@ jQuery(function($) {
 			window.location.reload(true);
 		}
 	});
+	phpbb.addAjaxCallback('first_genjutsu_callback', function(r) {
+		window.confirm(`Vous êtes désormais spécialisé dans les Genjutsu de type ${r.first_genjutsu} !`);
+		window.location.reload(true);
+	});
 });

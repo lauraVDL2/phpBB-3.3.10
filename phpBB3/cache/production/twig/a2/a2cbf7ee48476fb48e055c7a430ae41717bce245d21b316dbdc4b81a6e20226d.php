@@ -299,123 +299,155 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
 \t\t\t";
             }
             // line 90
+            echo "
+\t\t\t";
+            // line 91
+            if (($context["FIRST_GENJUTSU"] ?? null)) {
+                // line 92
+                echo "\t\t\t<form method=\"post\" action=\"";
+                echo ($context["U_ACTION"] ?? null);
+                echo "\" accept-charset=\"utf-8\" data-ajax=\"first_genjutsu_callback\" data-refresh=\"true\">
+\t\t\t\t<div>Sélectionnez une spécialisation Genjutsu :</div>
+\t\t\t\t<select id=\"first_genjutsu_select\" name=\"fgenjutsu\">
+\t\t\t\t\t<option value=\"Vue\">Vue</option>
+\t\t\t\t\t<option value=\"Son\">Son</option>
+\t\t\t\t\t<input name=\"first_genjutsu_button\" type=\"submit\" value=\"Valider\">
+\t\t\t\t</select>
+\t\t\t</form>
+\t\t\t";
+            }
+            // line 101
+            echo "\t\t\t";
+            if (($context["IS_SOUND"] ?? null)) {
+                // line 102
+                echo "\t\t\t<div class=\"my_elements\">Spécialisation Son (Genjutsu)</div>
+\t\t\t";
+            }
+            // line 104
+            echo "\t\t\t";
+            if (($context["IS_SIGHT"] ?? null)) {
+                // line 105
+                echo "\t\t\t<div class=\"my_elements\">Spécialisation Vue (Genjutsu)</div>
+\t\t\t";
+            }
+            // line 107
             echo "\t\t</div>
 \t</div>
 \t<div id=\"info_attributes_use\">Points d'attributs à dépenser : <span id=\"my_attributes_to_use\">";
-            // line 92
+            // line 109
             echo ($context["ATTRIBUTES_TO_USE"] ?? null);
             echo "</span></div>
 \t<form id=\"level_attributes\" method=\"post\" action=\"";
-            // line 93
+            // line 110
             echo ($context["U_ACTION"] ?? null);
             echo "\" data-ajax=\"attributes_callback\" data-refresh=\"true\">
 \t\t<div id=\"my_attributes_interface\">
 \t\t\t<div>
 \t\t\t\t<div>Physique</div>
 \t\t\t\t<div id=\"my_strength\">";
-            // line 97
+            // line 114
             echo ($context["MY_STRENGTH"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 98
+            // line 115
             if (((($context["MY_STRENGTH"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_strength_button\" class=\"my_attributes\" id=\"my_strength_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 99
+            // line 116
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Esprit</div>
 \t\t\t\t<div id=\"my_sensoriality\">";
-            // line 103
+            // line 120
             echo ($context["MY_SENSORIALITY"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 104
+            // line 121
             if (((($context["MY_SENSORIALITY"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_sensoriality_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 105
+            // line 122
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Furtivité</div>
 \t\t\t\t<div id =\"my_stealth\">";
-            // line 109
+            // line 126
             echo ($context["MY_STEALTH"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 110
+            // line 127
             if (((($context["MY_STEALTH"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_stealth_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 111
+            // line 128
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Vitesse</div>
 \t\t\t\t<div id=\"my_swiftness\">";
-            // line 115
+            // line 132
             echo ($context["MY_SWIFTNESS"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 116
+            // line 133
             if (((($context["MY_SWIFTNESS"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_swiftness_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 117
+            // line 134
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Ninjutsu</div>
 \t\t\t\t<div id=\"my_ninjutsu\">";
-            // line 121
+            // line 138
             echo ($context["MY_NINJUTSU"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 122
+            // line 139
             if (((($context["MY_NINJUTSU"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_ninjutsu_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 123
+            // line 140
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Taijutsu</div>
 \t\t\t\t<div id=\"my_taijutsu\">";
-            // line 127
+            // line 144
             echo ($context["MY_TAIJUTSU"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 128
+            // line 145
             if (((($context["MY_TAIJUTSU"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_taijutsu_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 129
+            // line 146
             echo "\t\t\t</div>
 
 \t\t\t<div>
 \t\t\t\t<div>Genjutsu</div>
 \t\t\t\t<div id=\"my_genjutsu\">";
-            // line 133
+            // line 150
             echo ($context["MY_GENJUTSU"] ?? null);
             echo "</div>
 \t\t\t\t";
-            // line 134
+            // line 151
             if (((($context["MY_GENJUTSU"] ?? null) < 8) && (($context["ATTRIBUTES_TO_USE"] ?? null) > 0))) {
                 echo "<input name=\"my_genjutsu_button\" class=\"my_attributes_button\" type=\"submit\" value=\"Dépenser\">";
             }
-            // line 135
+            // line 152
             echo "\t\t\t</div>
 \t\t</div>
 \t</form>
 </div>
 ";
         }
-        // line 140
+        // line 157
         echo "
 ";
-        // line 141
+        // line 158
         $location = "forumlist_body.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -423,25 +455,25 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("forumlist_body.html", "index_body.html", 141)->display($context);
+        $this->loadTemplate("forumlist_body.html", "index_body.html", 158)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
-        // line 142
+        // line 159
         echo "
 ";
-        // line 143
-        // line 144
+        // line 160
+        // line 161
         echo "
 ";
-        // line 145
+        // line 162
         if (( !($context["S_USER_LOGGED_IN"] ?? null) &&  !($context["S_IS_BOT"] ?? null))) {
-            // line 146
+            // line 163
             echo "\t<form method=\"post\" action=\"";
             echo ($context["S_LOGIN_ACTION"] ?? null);
             echo "\" class=\"headerspace\">
 \t<h3><a href=\"";
-            // line 147
+            // line 164
             echo ($context["U_LOGIN_LOGOUT"] ?? null);
             echo "\">";
             echo $this->extensions['phpbb\template\twig\extension']->lang("LOGIN_LOGOUT");
@@ -456,23 +488,23 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
             echo "</h3>
 \t\t<fieldset class=\"quick-login\">
 \t\t\t<label for=\"username\"><span>";
-            // line 149
+            // line 166
             echo $this->extensions['phpbb\template\twig\extension']->lang("USERNAME");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</span> <input type=\"text\" tabindex=\"1\" name=\"username\" id=\"username\" size=\"10\" class=\"inputbox\" title=\"";
             echo $this->extensions['phpbb\template\twig\extension']->lang("USERNAME");
             echo "\" /></label>
 \t\t\t<label for=\"password\"><span>";
-            // line 150
+            // line 167
             echo $this->extensions['phpbb\template\twig\extension']->lang("PASSWORD");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</span> <input type=\"password\" tabindex=\"2\" name=\"password\" id=\"password\" size=\"10\" class=\"inputbox\" title=\"";
             echo $this->extensions['phpbb\template\twig\extension']->lang("PASSWORD");
             echo "\" autocomplete=\"off\" /></label>
 \t\t\t";
-            // line 151
+            // line 168
             if (($context["U_SEND_PASSWORD"] ?? null)) {
-                // line 152
+                // line 169
                 echo "\t\t\t\t<a href=\"";
                 echo ($context["U_SEND_PASSWORD"] ?? null);
                 echo "\">";
@@ -480,39 +512,39 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
                 echo "</a>
 \t\t\t";
             }
-            // line 154
+            // line 171
             echo "\t\t\t";
             if (($context["S_AUTOLOGIN_ENABLED"] ?? null)) {
-                // line 155
+                // line 172
                 echo "\t\t\t\t<span class=\"responsive-hide\">|</span> <label for=\"autologin\">";
                 echo $this->extensions['phpbb\template\twig\extension']->lang("LOG_ME_IN");
                 echo " <input type=\"checkbox\" tabindex=\"4\" name=\"autologin\" id=\"autologin\" /></label>
 \t\t\t";
             }
-            // line 157
+            // line 174
             echo "\t\t\t<input type=\"submit\" tabindex=\"5\" name=\"login\" value=\"";
             echo $this->extensions['phpbb\template\twig\extension']->lang("LOGIN");
             echo "\" class=\"button2\" />
 \t\t\t";
-            // line 158
+            // line 175
             echo ($context["S_LOGIN_REDIRECT"] ?? null);
             echo "
 \t\t\t";
-            // line 159
+            // line 176
             echo ($context["S_FORM_TOKEN_LOGIN"] ?? null);
             echo "
 \t\t</fieldset>
 \t</form>
 ";
         }
-        // line 163
+        // line 180
         echo "
 ";
-        // line 164
-        // line 165
+        // line 181
+        // line 182
         echo "
 ";
-        // line 166
+        // line 183
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -520,7 +552,7 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "index_body.html", 166)->display($context);
+        $this->loadTemplate("overall_footer.html", "index_body.html", 183)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -538,7 +570,7 @@ class __TwigTemplate_643b5f84ea6597a4bb26e05b7929b51ffb0bbcb413120f79dc816d64de6
 
     public function getDebugInfo()
     {
-        return array (  516 => 166,  513 => 165,  512 => 164,  509 => 163,  502 => 159,  498 => 158,  493 => 157,  487 => 155,  484 => 154,  476 => 152,  474 => 151,  467 => 150,  460 => 149,  445 => 147,  440 => 146,  438 => 145,  435 => 144,  434 => 143,  431 => 142,  419 => 141,  416 => 140,  409 => 135,  405 => 134,  401 => 133,  395 => 129,  391 => 128,  387 => 127,  381 => 123,  377 => 122,  373 => 121,  367 => 117,  363 => 116,  359 => 115,  353 => 111,  349 => 110,  345 => 109,  339 => 105,  335 => 104,  331 => 103,  325 => 99,  321 => 98,  317 => 97,  310 => 93,  306 => 92,  302 => 90,  296 => 88,  294 => 87,  289 => 84,  284 => 83,  279 => 82,  274 => 81,  269 => 80,  265 => 79,  258 => 76,  256 => 75,  253 => 74,  247 => 72,  245 => 71,  240 => 68,  235 => 67,  230 => 66,  225 => 65,  220 => 64,  216 => 63,  209 => 60,  207 => 59,  204 => 58,  198 => 56,  182 => 44,  180 => 43,  175 => 40,  169 => 38,  167 => 37,  163 => 36,  153 => 35,  148 => 33,  144 => 32,  140 => 30,  136 => 28,  130 => 26,  128 => 25,  121 => 21,  115 => 18,  112 => 17,  110 => 16,  107 => 15,  93 => 14,  90 => 13,  89 => 12,  81 => 9,  78 => 8,  76 => 7,  75 => 6,  72 => 5,  66 => 4,  52 => 3,  49 => 2,  37 => 1,);
+        return array (  548 => 183,  545 => 182,  544 => 181,  541 => 180,  534 => 176,  530 => 175,  525 => 174,  519 => 172,  516 => 171,  508 => 169,  506 => 168,  499 => 167,  492 => 166,  477 => 164,  472 => 163,  470 => 162,  467 => 161,  466 => 160,  463 => 159,  451 => 158,  448 => 157,  441 => 152,  437 => 151,  433 => 150,  427 => 146,  423 => 145,  419 => 144,  413 => 140,  409 => 139,  405 => 138,  399 => 134,  395 => 133,  391 => 132,  385 => 128,  381 => 127,  377 => 126,  371 => 122,  367 => 121,  363 => 120,  357 => 116,  353 => 115,  349 => 114,  342 => 110,  338 => 109,  334 => 107,  330 => 105,  327 => 104,  323 => 102,  320 => 101,  307 => 92,  305 => 91,  302 => 90,  296 => 88,  294 => 87,  289 => 84,  284 => 83,  279 => 82,  274 => 81,  269 => 80,  265 => 79,  258 => 76,  256 => 75,  253 => 74,  247 => 72,  245 => 71,  240 => 68,  235 => 67,  230 => 66,  225 => 65,  220 => 64,  216 => 63,  209 => 60,  207 => 59,  204 => 58,  198 => 56,  182 => 44,  180 => 43,  175 => 40,  169 => 38,  167 => 37,  163 => 36,  153 => 35,  148 => 33,  144 => 32,  140 => 30,  136 => 28,  130 => 26,  128 => 25,  121 => 21,  115 => 18,  112 => 17,  110 => 16,  107 => 15,  93 => 14,  90 => 13,  89 => 12,  81 => 9,  78 => 8,  76 => 7,  75 => 6,  72 => 5,  66 => 4,  52 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

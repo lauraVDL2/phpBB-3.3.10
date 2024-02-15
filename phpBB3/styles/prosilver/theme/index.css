@@ -129,3 +129,8 @@ body {
 .switch input:checked + span:before {
 	left: 34px;
 }
+
+#second_infos_col input[type=submit] {
+    background-color: green;
+    color: white;
+}

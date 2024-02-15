@@ -570,7 +570,7 @@ function character_informations() {
 	$req = [
 		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total, ut.username AS username,'.
 		' ut.user_avatar AS avatar, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.talent_points AS talent_points,'.
-		' gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element',
+		' gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_sound AS is_sound, gtt.is_sight AS is_sight',
 		'FROM' => [
 			USERS_TABLE => 'ut'
 		],
@@ -4622,6 +4622,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	$konoha = total_groups($db, get_group_by_name('Konohagakure'));
 	$total_final = max($iwa, $kiri, $suna, $nukenin, $kumo, $konoha);
 	$character_infos = character_informations();
+	$first_genjutsu = !$character_infos['is_sight'] && !$character_infos['is_sound'];
 	$exp_bar = $levels[character_informations()['level']];
 	if(my_group(get_group_by_name('Kirigakure'), $user->data['user_id'])) {
 		$influence_points = influence_points(get_group_by_name('Kirigakure'), $user->data['user_id']);
@@ -4671,6 +4672,9 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'MY_AVATAR' => $character_infos['avatar'],
 		'USERNAME' => $character_infos['username'],
 		'EXP_BAR' => $exp_bar,
+		'FIRST_GENJUTSU' => $first_genjutsu,
+		'IS_SIGHT' => $character_infos['is_sight'],
+		'IS_SOUND' => $character_infos['is_sound'],
 		'FIRST_ELEMENT' => $character_infos['first_element'],
 		'SECOND_ELEMENT' => $character_infos['second_element'],
 		'THIRD_ELEMENT' => $character_infos['third_element'],

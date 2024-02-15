@@ -87,6 +87,23 @@
 			<!-- ELSE IF THIRD_ELEMENT -->
 			<div class="my_elements">Troisième affinité : {THIRD_ELEMENT}</div>
 			<!-- ENDIF -->
+
+			<!-- IF FIRST_GENJUTSU -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="first_genjutsu_callback" data-refresh="true">
+				<div>Sélectionnez une spécialisation Genjutsu :</div>
+				<select id="first_genjutsu_select" name="fgenjutsu">
+					<option value="Vue">Vue</option>
+					<option value="Son">Son</option>
+					<input name="first_genjutsu_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ENDIF -->
+			<!-- IF IS_SOUND -->
+			<div class="my_elements">Spécialisation Son (Genjutsu)</div>
+			<!-- ENDIF -->
+			<!-- IF IS_SIGHT -->
+			<div class="my_elements">Spécialisation Vue (Genjutsu)</div>
+			<!-- ENDIF -->
 		</div>
 	</div>
 	<div id="info_attributes_use">Points d'attributs à dépenser : <span id="my_attributes_to_use">{ATTRIBUTES_TO_USE}</span></div>

@@ -31,32 +31,57 @@ $user->setup('viewforum');
 $json_response = new \phpbb\json_response;
 
 if($request->is_ajax()) {
-	$my_first_element = utf8_normalize_nfc($request->variable('felement', '', true));
-	$my_second_element = utf8_normalize_nfc($request->variable('selement', '', true));
-	$my_third_element = utf8_normalize_nfc($request->variable('telement', '', true));
-	if($my_first_element != '') {
-		$sql = 'UPDATE '.USERS_TABLE.' SET user_first_element = "'.$my_first_element.'" WHERE user_id = '.$user->data['user_id'];
-		$db->sql_query($sql);
-		return $json_response->send([
-			'first_element'	=> $my_first_element,
-			],
-		);
+	$my_first_element_button = $request->variable('my_first_element_button', '');
+	$my_second_element_button = $request->variable('my_second_element_button', '');
+	$my_third_element_button = $request->variable('my_third_element_button', '');
+	$first_genjutsu_button = $request->variable('first_genjutsu_button', '');
+	if($my_first_element_button || $my_second_element_button || $my_third_element_button) {
+		$my_first_element = utf8_normalize_nfc($request->variable('felement', '', true));
+		$my_second_element = utf8_normalize_nfc($request->variable('selement', '', true));
+		$my_third_element = utf8_normalize_nfc($request->variable('telement', '', true));
+		if($my_first_element != '') {
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_first_element = "'.$my_first_element.'" WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'first_element'	=> $my_first_element,
+				],
+			);
+		}
+		else if($my_second_element != '') {
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_second_element = "'.$my_second_element.'" WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'second_element'	=> $my_second_element,
+				],
+			);
+		}
+		else if($my_third_element != '') {
+			$sql = 'UPDATE '.USERS_TABLE.' SET user_third_element = "'.$my_third_element.'" WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'third_element'	=> $my_third_element,
+				],
+			);
+		}
 	}
-	else if($my_second_element != '') {
-		$sql = 'UPDATE '.USERS_TABLE.' SET user_second_element = "'.$my_second_element.'" WHERE user_id = '.$user->data['user_id'];
-		$db->sql_query($sql);
-		return $json_response->send([
-			'second_element'	=> $my_second_element,
-			],
-		);
-	}
-	else if($my_third_element != '') {
-		$sql = 'UPDATE '.USERS_TABLE.' SET user_third_element = "'.$my_third_element.'" WHERE user_id = '.$user->data['user_id'];
-		$db->sql_query($sql);
-		return $json_response->send([
-			'third_element'	=> $my_third_element,
-			],
-		);
+	else if($first_genjutsu_button) {
+		$first_genjutsu = utf8_normalize_nfc($request->variable('fgenjutsu', '', true));
+		if($first_genjutsu == 'Vue') {
+			$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_sight = 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'first_genjutsu'	=> $first_genjutsu,
+				],
+			);
+		}
+		else if($first_genjutsu == 'Son') {
+			$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_sound = 1 WHERE user_id = '.$user->data['user_id'];
+			$db->sql_query($sql);
+			return $json_response->send([
+				'first_genjutsu'	=> $first_genjutsu,
+				],
+			);
+		}
 	}
 }
 

@@ -89,4 +89,24 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+
+    //GENJUTSU
+    phpbb.addAjaxCallback('sp_sight_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous pouvez désormais maîtriser des techniques de Genjutsu liées au contact visuel !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_sound_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous pouvez désormais maîtriser des techniques de Genjutsu liées au contact auditif !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_demonic_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous avez désormais la spécialisation élite Illusions Démoniaques !");
+            window.location.reload(true);
+        }
+    });
 })

@@ -20,6 +20,8 @@ page_header($page_title, true);
 
 $json_response = new \phpbb\json_response;
 
+$infos = get_talent_infos();
+
 //BUY ITEMS
 if($request->is_ajax()) { 
     $sp_kuchiyose = $request->variable('sp_kuchiyose', '');
@@ -36,6 +38,9 @@ if($request->is_ajax()) {
     $sp_s_technique = $request->variable('sp_s_technique', '');
     $sp_second_element = $request->variable('sp_second_element', '');
     $sp_third_element = $request->variable('sp_third_element', '');
+    $sp_sound = $request->variable('sp_sound', '');
+    $sp_sight = $request->variable('sp_sight', '');
+    $sp_demonic = $request->variable('sp_demonic', '');
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
         $sp_price = $request->variable('sp_price', 0);
@@ -197,6 +202,54 @@ if($request->is_ajax()) {
             ],
         );
     }
+    //GENJUTSU SOUND
+    else if($sp_sound) {
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_sound = 1 WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //GENJUTSU SIGHT
+    else if($sp_sight) {
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_sight = 1 WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //GENJUTSU ELITE : DEMONIC
+    else if($sp_demonic) {
+        $sp_price = $request->variable('sp_price', 0);
+        if(!$infos['first_elite']) {
+            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+                'first_elite' => 'Illusions démoniaques'
+            ]).' WHERE user_id = '.$user->data['user_id'];
+            $db->sql_query($sql);
+            buying($sp_price);
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+        else if(!$infos['second_elite']) {
+            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+                'second_elite' => 'Illusions démoniaques'
+            ]).' WHERE user_id = '.$user->data['user_id'];
+            $db->sql_query($sql);
+            buying($sp_price);
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
 }
 
 function buying($sp_price) {
@@ -209,9 +262,9 @@ function get_talent_infos() {
     global $db, $user;
     $req = [
         'SELECT' => 'gt.first_elite AS first_elite, gt.second_elite AS second_elite, gt.is_kuchiyose AS kuchiyose, gt.is_second_element AS is_second_element, gt.is_third_element AS is_third_element, gt.is_irou_heal AS irou_heal, gt.is_fuin_seal AS fuin_seal, '
-        .'ut.talent_points AS talent_points, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.user_rp_rank AS rp_rank, '
+        .'ut.user_level AS level, ut.talent_points AS talent_points, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.user_rp_rank AS rp_rank, '
         .'at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
-        .'gt.is_irou_poison AS irou_poison, gt.is_fuin_barrer AS fuin_barrer',
+        .'gt.is_irou_poison AS irou_poison, gt.is_fuin_barrer AS fuin_barrer, gt.is_sight AS is_sight, gt.is_sound AS is_sound ',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -232,7 +285,8 @@ function get_talent_infos() {
     return $db->sql_fetchrow($query);
 }
 
-$infos = get_talent_infos();
+$can_first_elite = !$infos['first_elite'] && $infos['level'] >= 20;
+$can_second_elite = !$infos['second_elite'] && $infos['rp_rank'] == 'Kage' && $infos['level'] >= 20;
 
 $template->assign_vars(array(
     'SP_TALENT_POINTS' => $infos['talent_points'],
@@ -242,6 +296,7 @@ $template->assign_vars(array(
     'SP_NINJUTSU' => $infos['ninjutsu'],
     'SP_TAIJUTSU' => $infos['taijutsu'],
     'SP_GENJUTSU' => $infos['genjutsu'],
+    'SP_SPIRIT' => $infos['sensoriality'],
     'SP_IROU_HEAL' => $infos['irou_heal'],
     'SP_IROU_POISON' => $infos['irou_poison'],
     'SP_FIRST_ELEMENT' => $infos['first_element'],
@@ -249,6 +304,12 @@ $template->assign_vars(array(
     'SP_THIRD_ELEMENT' => $infos['third_element'],
     'SP_IS_SECOND_ELEMENT' => $infos['is_second_element'],
     'SP_IS_THIRD_ELEMENT' => $infos['is_third_element'],
+    'SP_IS_SOUND' => $infos['is_sound'],
+    'SP_IS_SIGHT' => $infos['is_sight'],
+    'CAN_FIRST_ELITE' => $can_first_elite,
+    'CAN_SECOND_ELITE' => $can_second_elite,
+    'SP_FIRST_ELITE' => $infos['first_elite'],
+    'SP_SECOND_ELITE' => $infos['second_elite'],
     'SP_RP_RANK' => $infos['rp_rank'],
 ));
 

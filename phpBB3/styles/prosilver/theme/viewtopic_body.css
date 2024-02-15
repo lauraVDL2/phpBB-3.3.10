@@ -210,7 +210,7 @@
     color: var(--main_color_2) !important;
 }
 
-.p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nuke {
+.p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nukenin {
     font-weight: bold;
     text-align: center;
     font-size: 1.4rem;
@@ -249,6 +249,6 @@
     background-color: var(--konoha);
 }
 
-.p_nuke {
+.p_nukenin {
     background-color: var(--nukenin);
 }
