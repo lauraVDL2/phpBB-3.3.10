@@ -570,7 +570,8 @@ function character_informations() {
 	$req = [
 		'SELECT' => 'ut.user_level AS level, ut.user_experience AS experience, ut.user_attributes_to_use AS attributes_to_use, ut.user_attributes_total AS attributes_total, ut.username AS username,'.
 		' ut.user_avatar AS avatar, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.talent_points AS talent_points,'.
-		' gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_sound AS is_sound, gtt.is_sight AS is_sight',
+		' gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_sound AS is_sound, gtt.is_sight AS is_sight, gtt.first_weapon AS first_weapon,'
+		.' gtt.second_weapon AS second_weapon, gtt.third_weapon AS third_weapon, gtt.is_second_weapon AS is_second_weapon, gtt.is_third_weapon AS is_third_weapon',
 		'FROM' => [
 			USERS_TABLE => 'ut'
 		],
@@ -4680,6 +4681,11 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'THIRD_ELEMENT' => $character_infos['third_element'],
 		'IS_SECOND_ELEMENT' => $character_infos['is_second_element'],
 		'IS_THIRD_ELEMENT' => $character_infos['is_third_element'],
+		'FIRST_WEAPON' => $character_infos['first_weapon'],
+		'SECOND_WEAPON' => $character_infos['second_weapon'],
+		'THIRD_WEAPON' => $character_infos['third_weapon'],
+		'IS_SECOND_WEAPON' => $character_infos['is_second_weapon'],
+		'IS_THIRD_WEAPON' => $character_infos['is_third_weapon'],
 		'TALENT_POINTS' => $character_infos['talent_points'],
 		'IS_ANONYMOUS' => my_group(ANONYMOUS, $user->data['user_id']),
 		'IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),

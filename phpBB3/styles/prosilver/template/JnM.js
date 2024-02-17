@@ -62,4 +62,16 @@ jQuery(function($) {
 		window.confirm(`Vous êtes désormais spécialisé dans les Genjutsu de type ${r.first_genjutsu} !`);
 		window.location.reload(true);
 	});
+	phpbb.addAjaxCallback('first_bukijutsu_callback', function(r) {
+		window.confirm(`Vous êtes désormais spécialisé dans le ${r.first_bukijutsu} !`);
+		window.location.reload(true);
+	});
+	phpbb.addAjaxCallback('second_bukijutsu_callback', function(r) {
+		window.confirm(`Vous êtes désormais spécialisé dans le ${r.second_bukijutsu} !`);
+		window.location.reload(true);
+	});
+	phpbb.addAjaxCallback('third_bukijutsu_callback', function(r) {
+		window.confirm(`Vous êtes désormais spécialisé dans le ${r.third_bukijutsu} !`);
+		window.location.reload(true);
+	});
 });

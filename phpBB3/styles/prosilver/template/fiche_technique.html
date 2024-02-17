@@ -215,9 +215,9 @@
                 <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
                     <option value=""></option>
                     <option value="Gôken">Gôken</option>
-                    <option value="Jûken">Jûken</option>
                     <option value="Bukijutsu">Bukijutsu</option>
-                    <option value="Hachimon">Hachimon</option>
+                    <!-- IF FT_FIRST_ELITE == "Hachimon" || FT_SECOND_ELITE == "Hachimon" --><option value="Hachimon">Hachimon</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_ELITE == "Nintaijutsu" || FT_SECOND_ELITE == "Nintaijutsu" --><option value="Nintaijutsu">Nintaijutsu</option><!-- ENDIF -->
                 </select>
                 <select id="technique_gj_type" class="second_ft_select" name="technique_gj_type">
                     <option value=""></option>
@@ -227,10 +227,11 @@
                 </select>
                 <select id="buki_ft_type" class="second_type_select" name="buki_ft_type">
                     <option value=""></option>
-                    <option value="Kenjutsu">Kenjutsu</option>
-                    <option value="Shurikenjutsu">Shurikenjutsu</option>
-                    <option value="Bôjutsu">Bôjutsu</option>
-                    <option value="Kyûjutsu">Kyujutsu</option>
+                    <!-- IF FT_FIRST_WEAPON == "Kenjutsu" || FT_SECOND_WEAPON == "Kenjutsu" || FT_THIRD_WEAPON == "Kenjutsu" --><option value="Kenjutsu">Kenjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_WEAPON == "Shurikenjutsu" || FT_SECOND_WEAPON == "Shurikenjutsu" || FT_THIRD_WEAPON == "Shurikenjutsu" --><option value="Shurikenjutsu">Shurikenjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_WEAPON == "Bôjutsu" || FT_SECOND_WEAPON == "Bôjutsu" || FT_THIRD_WEAPON == "Bôjutsu" --><option value="Bôjutsu">Bôjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_WEAPON == "Kyûjutsu" || FT_SECOND_WEAPON == "Kyûjutsu" || FT_THIRD_WEAPON == "Kyûjutsu" --><option value="Kyûjutsu">Kyûjutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_ELITE == "Lames de Chakra" || FT_SECOND_ELITE == "Lames de Chakra" --><option value="Lames de Chakra">Lames de Chakra</option><!-- ENDIF -->
                 </select>
                 <select id="irou_jutsu_ft_type" class="second_type_select" name="irou_jutsu_ft_type">
                     <option value=""></option>

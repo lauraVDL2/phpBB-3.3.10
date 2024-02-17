@@ -35,6 +35,9 @@ if($request->is_ajax()) {
 	$my_second_element_button = $request->variable('my_second_element_button', '');
 	$my_third_element_button = $request->variable('my_third_element_button', '');
 	$first_genjutsu_button = $request->variable('first_genjutsu_button', '');
+	$first_bukijutsu_button = $request->variable('first_bukijutsu_button', '');
+	$second_bukijutsu_button = $request->variable('second_bukijutsu_button', '');
+	$third_bukijutsu_button = $request->variable('third_bukijutsu_button', '');
 	if($my_first_element_button || $my_second_element_button || $my_third_element_button) {
 		$my_first_element = utf8_normalize_nfc($request->variable('felement', '', true));
 		$my_second_element = utf8_normalize_nfc($request->variable('selement', '', true));
@@ -82,6 +85,39 @@ if($request->is_ajax()) {
 				],
 			);
 		}
+	}
+	else if($first_bukijutsu_button) {
+		$first_bukijutsu = utf8_normalize_nfc($request->variable('fbukijutsu', '', true));
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+			'first_weapon' => $first_bukijutsu
+		]).' WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+			return $json_response->send([
+				'first_bukijutsu'	=> $first_bukijutsu,
+				],
+			);
+	}
+	else if($second_bukijutsu_button) {
+		$second_bukijutsu = utf8_normalize_nfc($request->variable('sbukijutsu', '', true));
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+			'second_weapon' => $second_bukijutsu
+		]).' WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+			return $json_response->send([
+				'second_bukijutsu'	=> $second_bukijutsu,
+				],
+			);
+	}
+	else if($third_bukijutsu_button) {
+		$third_bukijutsu = utf8_normalize_nfc($request->variable('tbukijutsu', '', true));
+		$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+			'third_weapon' => $third_bukijutsu
+		]).' WHERE user_id = '.$user->data['user_id'];
+		$db->sql_query($sql);
+			return $json_response->send([
+				'third_bukijutsu'	=> $third_bukijutsu,
+				],
+			);
 	}
 }
 

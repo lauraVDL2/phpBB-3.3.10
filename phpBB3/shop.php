@@ -41,6 +41,11 @@ if($request->is_ajax()) {
     $sp_sound = $request->variable('sp_sound', '');
     $sp_sight = $request->variable('sp_sight', '');
     $sp_demonic = $request->variable('sp_demonic', '');
+    $sp_second_weapon = $request->variable('sp_second_weapon', '');
+    $sp_third_weapon = $request->variable('sp_third_weapon', '');
+    $sp_hachimon = $request->variable('sp_hachimon', '');
+    $sp_nintaijutsu = $request->variable('sp_nintaijutsu', '');
+    $sp_chakrablade = $request->variable('sp_chakrablade', '');
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
         $sp_price = $request->variable('sp_price', 0);
@@ -227,29 +232,92 @@ if($request->is_ajax()) {
     //GENJUTSU ELITE : DEMONIC
     else if($sp_demonic) {
         $sp_price = $request->variable('sp_price', 0);
-        if(!$infos['first_elite']) {
-            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
-                'first_elite' => 'Illusions démoniaques'
-            ]).' WHERE user_id = '.$user->data['user_id'];
-            $db->sql_query($sql);
-            buying($sp_price);
-            return $json_response->send([
-                'is_ok'	=> true,
-                ],
-            );
-        }
-        else if(!$infos['second_elite']) {
-            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
-                'second_elite' => 'Illusions démoniaques'
-            ]).' WHERE user_id = '.$user->data['user_id'];
-            $db->sql_query($sql);
-            buying($sp_price);
+        if (set_elite($sp_price, 'Illusions démoniaques')) {
             return $json_response->send([
                 'is_ok'	=> true,
                 ],
             );
         }
     }
+    //BUKIJUTSU : SECOND WEAPON
+    else if ($sp_second_weapon) {
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_second_weapon = 1 WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //BUKIJUTSU : THIRD WEAPON
+    else if ($sp_third_weapon) {
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET is_third_weapon = 1 WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //ELITE TAIJUTSU : HACHIMON
+    else if ($sp_hachimon) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Hachimon')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE TAIJUTSU : NINTAIJUTSU
+    else if ($sp_nintaijutsu) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Nintaijutsu')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE TAIJUTSU : CHAKRA BLADES
+    else if ($sp_chakrablade) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Lames de Chakra')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+}
+
+/**
+ * Set the elite specialization
+ * @param int price
+ * @param string elite
+ * @return bool true if applies the elite
+ */
+function set_elite($sp_price, $elite) {
+    global $user, $infos, $db;
+    if(!$infos['first_elite']) {
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+            'first_elite' => $elite
+        ]).' WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return true;
+    }
+    else if(!$infos['second_elite']) {
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+            'second_elite' => $elite
+        ]).' WHERE user_id = '.$user->data['user_id'];
+        $db->sql_query($sql);
+        buying($sp_price);
+        return true;
+    }
+    return false;
 }
 
 function buying($sp_price) {
@@ -264,7 +332,8 @@ function get_talent_infos() {
         'SELECT' => 'gt.first_elite AS first_elite, gt.second_elite AS second_elite, gt.is_kuchiyose AS kuchiyose, gt.is_second_element AS is_second_element, gt.is_third_element AS is_third_element, gt.is_irou_heal AS irou_heal, gt.is_fuin_seal AS fuin_seal, '
         .'ut.user_level AS level, ut.talent_points AS talent_points, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.user_rp_rank AS rp_rank, '
         .'at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
-        .'gt.is_irou_poison AS irou_poison, gt.is_fuin_barrer AS fuin_barrer, gt.is_sight AS is_sight, gt.is_sound AS is_sound ',
+        .'gt.is_irou_poison AS irou_poison, gt.is_fuin_barrer AS fuin_barrer, gt.is_sight AS is_sight, gt.is_sound AS is_sound, gt.first_weapon AS first_weapon, gt.is_second_weapon AS is_second_weapon, gt.is_third_weapon AS is_third_weapon, '
+        .'gt.second_weapon AS second_weapon, gt.third_weapon AS third_weapon',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -297,6 +366,7 @@ $template->assign_vars(array(
     'SP_TAIJUTSU' => $infos['taijutsu'],
     'SP_GENJUTSU' => $infos['genjutsu'],
     'SP_SPIRIT' => $infos['sensoriality'],
+    'SP_STRENGHT' => $infos['strength'],
     'SP_IROU_HEAL' => $infos['irou_heal'],
     'SP_IROU_POISON' => $infos['irou_poison'],
     'SP_FIRST_ELEMENT' => $infos['first_element'],
@@ -304,6 +374,11 @@ $template->assign_vars(array(
     'SP_THIRD_ELEMENT' => $infos['third_element'],
     'SP_IS_SECOND_ELEMENT' => $infos['is_second_element'],
     'SP_IS_THIRD_ELEMENT' => $infos['is_third_element'],
+    'SP_FIRST_WEAPON' => $infos['first_weapon'],
+    'SP_SECOND_WEAPON' => $infos['second_weapon'],
+    'SP_THIRD_WEAPON' => $infos['third_weapon'],
+    'SP_IS_SECOND_WEAPON' => $infos['is_second_weapon'],
+    'SP_IS_THIRD_WEAPON' => $infos['is_third_weapon'],
     'SP_IS_SOUND' => $infos['is_sound'],
     'SP_IS_SIGHT' => $infos['is_sight'],
     'CAN_FIRST_ELITE' => $can_first_elite,

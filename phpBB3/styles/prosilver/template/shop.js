@@ -109,4 +109,36 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+
+    //TAIJUTSU
+    phpbb.addAjaxCallback('sp_second_weapon_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous avez désormais la possibilité de sélectionner une nouvelle arme dans le menu utilisateur !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_third_weapon_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous avez désormais la possibilité de sélectionner une nouvelle arme dans le menu utilisateur !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_hachimon_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Hachimon !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_nintaijutsu_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Nintaijutsu !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_chakrablade_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Lames de Chakra !");
+            window.location.reload(true);
+        }
+    });
 })

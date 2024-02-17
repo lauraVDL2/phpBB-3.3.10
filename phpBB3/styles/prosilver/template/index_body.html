@@ -104,6 +104,51 @@
 			<!-- IF IS_SIGHT -->
 			<div class="my_elements">Spécialisation Vue (Genjutsu)</div>
 			<!-- ENDIF -->
+
+			<!-- IF !FIRST_WEAPON -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="first_bukijutsu_callback" data-refresh="true">
+				<div>Sélectionnez une spécialisation d'arme :</div>
+				<select id="first_bukijutsu_select" name="fbukijutsu">
+					<option value="Kenjutsu">Kenjutsu</option>
+					<option value="Bôjutsu">Bôjutsu</option>
+					<option value="Shurikenjutsu">Shurikenjutsu</option>
+					<option value="Kyûjutsu">Kyûjutsu</option>
+					<input name="first_bukijutsu_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ELSE -->
+			<div class="my_elements">Première spécialisation d'arme : {FIRST_WEAPON}</div>
+			<!-- ENDIF -->
+
+			<!-- IF !SECOND_WEAPON && IS_SECOND_WEAPON -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="second_bukijutsu_callback" data-refresh="true">
+				<div>Sélectionnez une spécialisation d'arme :</div>
+				<select id="second_bukijutsu_select" name="sbukijutsu">
+					<!-- IF FIRST_WEAPON != "Kenjutsu" --><option value="Kenjutsu">Kenjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Bôjutsu" --><option value="Bôjutsu">Bôjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Shurikenjutsu" --><option value="Shurikenjutsu">Shurikenjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Kyûjutsu" --><option value="Kyûjutsu">Kyûjutsu</option><!-- ENDIF -->
+					<input name="second_bukijutsu_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ELSE IF SECOND_WEAPON -->
+			<div class="my_elements">Deuxième spécialisation d'arme : {SECOND_WEAPON}</div>
+			<!-- ENDIF -->
+
+			<!-- IF !THIRD_WEAPON && IS_THIRD_WEAPON -->
+			<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="third_bukijutsu_callback" data-refresh="true">
+				<div>Sélectionnez une spécialisation d'arme :</div>
+				<select id="third_element_select" name="tbukijutsu">
+					<!-- IF FIRST_WEAPON != "Kenjutsu" && SECOND_WEAPON != "Kenjutsu" --><option value="Kenjutsu">Kenjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Bôjutsu" && SECOND_WEAPON != "Bôjutsu" --><option value="Bôjutsu">Bôjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Shurikenjutsu" && SECOND_WEAPON != "Shurikenjutsu" --><option value="Shurikenjutsu">Shurikenjutsu</option><!-- ENDIF -->
+					<!-- IF FIRST_WEAPON != "Kyûjutsu" && SECOND_WEAPON != "Kyûjutsu" --><option value="Kyûjutsu">Kyûjutsu</option><!-- ENDIF -->
+					<input name="third_bukijutsu_button" type="submit" value="Valider">
+				</select>
+			</form>
+			<!-- ELSE IF THIRD_WEAPON -->
+			<div class="my_elements">Troisième spécialisation d'arme : {THIRD_WEAPON}</div>
+			<!-- ENDIF -->
 		</div>
 	</div>
 	<div id="info_attributes_use">Points d'attributs à dépenser : <span id="my_attributes_to_use">{ATTRIBUTES_TO_USE}</span></div>

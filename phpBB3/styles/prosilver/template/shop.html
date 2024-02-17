@@ -86,13 +86,59 @@
     </form>
     <!-- ENDIF -->
 
-    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_SPIRIT = 8 && SP_GENJUTSU = 8 -->
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Illusions démoniaques" && SP_SPIRIT == 8 && SP_GENJUTSU == 8 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demonic_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="150">
-        <h1>Illusions démoniaques</h1>
+        <h1>Spécialisation élite : Illusions démoniaques</h1>
         Acheter la spécialisation <strong>élite</strong> de Genjutsu vous permettant de créer des illusions démoniaques sans contact visuel ni auditif. <em>(150 points de compétence)</em>.
         <input type="submit" name="sp_demonic" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
     </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_FIRST_WEAPON && !SP_IS_SECOND_WEAPON && SP_TAIJUTSU >= 3 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_weapon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Deuxième arme</h1>
+        Acheter la maîtrise d'un deuxième type d'arme. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_second_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_SECOND_WEAPON && !SP_IS_THIRD_WEAPON && SP_TAIJUTSU >= 5 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_weapon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Troisième arme</h1>
+        Acheter la maîtrise d'un troisième type d'arme. <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_third_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Hachimon" && SP_STRENGTH == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hachimon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Hachimon</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant d'ouvrir les huit portes. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_hachimon" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Nintaijutsu" && SP_NINJUTSU == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_nintaijutsu_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Nintaijutsu</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques de Taijutsu avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_nintaijutsu" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Lames de Chakra" && SP_NINJUTSU == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chakrablade_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Lames de Chakra</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques liées aux armes avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_chakrablade" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
 
     <!-- IF SP_RP_RANK == "Genin" && SP_NINJUTSU >= 3 && SP_TAIJUTSU >= 3 && SP_GENJUTSU >= 3 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chunin_callback" data-refresh="true">
