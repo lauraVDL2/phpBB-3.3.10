@@ -141,4 +141,30 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+
+    //HIDEN & KG
+    phpbb.addAjaxCallback('sp_kugutsu_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous pouvez désormais sélectionner le Kugutsu dans votre Fiche Technique !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_mangekyo_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Mangekyô !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_hashirama_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Hashirama !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_hitokugutsu_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Hitokugutsu !");
+            window.location.reload(true);
+        }
+    });
 })

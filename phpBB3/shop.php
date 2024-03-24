@@ -46,6 +46,10 @@ if($request->is_ajax()) {
     $sp_hachimon = $request->variable('sp_hachimon', '');
     $sp_nintaijutsu = $request->variable('sp_nintaijutsu', '');
     $sp_chakrablade = $request->variable('sp_chakrablade', '');
+    $sp_kugutsu = $request->variable('sp_kugutsu', '');
+    $sp_mangekyo = $request->variable('sp_mangekyo', '');
+    $sp_hashirama = $request->variable('sp_hashirama', '');
+    $sp_hitokugutsu = $request->variable('sp_hitokugutsu', '');
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
         $sp_price = $request->variable('sp_price', 0);
@@ -291,6 +295,63 @@ if($request->is_ajax()) {
             );
         }
     }
+
+    //HIDEN : KUGUTSU
+    else if($sp_kugutsu) {
+        $sp_price = $request->variable('sp_price', 0);
+        if(!$infos['first_hidden']) {
+            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+                'first_hidden' => 'Kugutsu'
+            ]).' WHERE user_id = '.$user->data['user_id'];
+            $db->sql_query($sql);
+            buying($sp_price);
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+        else if(!$infos['second_hidden']) {
+            $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+                'second_hidden' => 'Kugutsu'
+            ]).' WHERE user_id = '.$user->data['user_id'];
+            $db->sql_query($sql);
+            buying($sp_price);
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE KG : MANGEKYO
+    else if ($sp_mangekyo) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Mangekyô')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE KG : HASHIRAMA
+    else if ($sp_hashirama) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Hashirama')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE KG : HITOKUHUTSU
+    else if ($sp_hitokugutsu) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Hitokugutsu')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
 }
 
 /**
@@ -333,7 +394,7 @@ function get_talent_infos() {
         .'ut.user_level AS level, ut.talent_points AS talent_points, ut.user_first_element AS first_element, ut.user_second_element AS second_element, ut.user_third_element AS third_element, ut.user_rp_rank AS rp_rank, '
         .'at.strength AS strength, at.sensoriality AS sensoriality, at.stealth AS stealth, at.swiftness AS swiftness, at.ninjutsu AS ninjutsu, at.taijutsu AS taijutsu, at.genjutsu AS genjutsu, '
         .'gt.is_irou_poison AS irou_poison, gt.is_fuin_barrer AS fuin_barrer, gt.is_sight AS is_sight, gt.is_sound AS is_sound, gt.first_weapon AS first_weapon, gt.is_second_weapon AS is_second_weapon, gt.is_third_weapon AS is_third_weapon, '
-        .'gt.second_weapon AS second_weapon, gt.third_weapon AS third_weapon',
+        .'gt.second_weapon AS second_weapon, gt.third_weapon AS third_weapon, gt.first_hidden AS first_hidden, gt.second_hidden AS second_hidden, gt.first_kekkei_genkai AS first_kekkei_genkai, gt.second_kekkei_genkai AS second_kekkei_genkai',
         'FROM' => [
             USERS_TABLE => 'ut',
         ],
@@ -386,6 +447,12 @@ $template->assign_vars(array(
     'SP_FIRST_ELITE' => $infos['first_elite'],
     'SP_SECOND_ELITE' => $infos['second_elite'],
     'SP_RP_RANK' => $infos['rp_rank'],
+    'SP_FIRST_HIDEN' => $infos['first_hidden'],
+    'SP_SECOND_HIDEN' => $infos['second_hidden'],
+    'SP_KUGUTSU' => $infos['first_hidden'] == 'Kugutsu' || $infos['second_hidden'] == 'Kugutsu',
+    'SP_SHARINGAN' => $infos['first_kekkei_genkai'] == 'Sharingan' || $infos['second_kekkei_genkai'] == 'Sharingan',
+    'SP_MOKUTON' => $infos['first_kekkei_genkai'] == 'Mokuton' || $infos['second_kekkei_genkai'] == 'Mokuton',
+    'SP_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id'])
 ));
 
 $template->set_filenames(array(

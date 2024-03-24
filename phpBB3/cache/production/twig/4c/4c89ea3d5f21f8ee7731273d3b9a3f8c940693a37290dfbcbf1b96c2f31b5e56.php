@@ -999,6 +999,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<div>Concerne essentiellement les membres des clans, le Hiden sera disponible sur la Fiche Technique.</div>
 \t\t\t<select name=\"pf_first_hiden_select\">
 \t\t\t\t<option value=\"Mental\">Mental</option>
+\t\t\t\t<option value=\"Kugutsu\">Kugutsu</option>
 \t\t\t\t<option value=\"Contrôle du corps\">Contrôle du corps</option>
 \t\t\t\t<option value=\"Ombres\">Ombres</option>
 \t\t\t\t<option value=\"Chaînes\">Chaînes</option>
@@ -1015,23 +1016,23 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             } else {
-                // line 311
+                // line 312
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_first_hiden_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le premier Hiden</h3>
 \t\t\t<div>Le personnage possède le Hiden suivant : ";
-                // line 313
+                // line 314
                 echo ($context["PF_FIRST_HIDEN"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Hiden\" name=\"pf_erase_first_hiden_button\">
 \t\t</form>
 \t\t";
             }
-            // line 317
+            // line 318
             echo "\t\t";
             if ( !($context["PF_SECOND_HIDEN"] ?? null)) {
-                // line 318
+                // line 319
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_second_hiden_callback\" data-refresh=\"true\">
@@ -1039,94 +1040,99 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<div>Pour des cas particuliers, le second Hiden sera disponible sur la Fiche Technique.</div>
 \t\t\t<select name=\"pf_second_hiden_select\">
 \t\t\t\t";
-                // line 322
+                // line 323
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Mental")) {
                     echo "<option value=\"Mental\">Mental</option>";
                 }
-                // line 323
+                // line 324
+                echo "\t\t\t\t";
+                if ((($context["PF_FIRST_HIDEN"] ?? null) != "Kugutsu")) {
+                    echo "<option value=\"Kugutsu\">Kugutsu</option>";
+                }
+                // line 325
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Contrôle du corps")) {
                     echo "<option value=\"Contrôle du corps\">Contrôle du corps</option>";
                 }
-                // line 324
+                // line 326
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Ombres")) {
                     echo "<option value=\"Ombres\">Ombres</option>";
                 }
-                // line 325
+                // line 327
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chaînes")) {
                     echo "<option value=\"Chaînes\">Chaînes</option>";
                 }
-                // line 326
+                // line 328
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Seijutsu")) {
                     echo "<option value=\"Seijutsu\">Seijutsu</option>";
                 }
-                // line 327
+                // line 329
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Torijutsu")) {
                     echo "<option value=\"Torijutsu\">Torijutsu</option>";
                 }
-                // line 328
+                // line 330
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Hachijutsu")) {
                     echo "<option value=\"Hachijutsu\">Hachijutsu</option>";
                 }
-                // line 329
+                // line 331
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Modification corporelle")) {
                     echo "<option value=\"Modification corporelle\">Modification corporelle</option>";
                 }
-                // line 330
+                // line 332
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chiens")) {
                     echo "<option value=\"Chiens\">Chiens</option>";
                 }
-                // line 331
+                // line 333
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chats")) {
                     echo "<option value=\"Chats\">Chats</option>";
                 }
-                // line 332
+                // line 334
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Insectes")) {
                     echo "<option value=\"Insectes\">Insectes</option>";
                 }
-                // line 333
+                // line 335
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Jûken")) {
                     echo "<option value=\"Jûken\">Jûken</option>";
                 }
-                // line 334
+                // line 336
                 echo "\t\t\t</select>
 \t\t\t<input type=\"submit\" value=\"Donner le Hidden\" name=\"pf_give_second_hiden_button\">
 \t\t</form>
 \t\t";
             } else {
-                // line 338
+                // line 340
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_second_hiden_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le second Hiden</h3>
 \t\t\t<div>Le personnage possède le Hiden suivant : ";
-                // line 340
+                // line 342
                 echo ($context["PF_SECOND_HIDEN"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Hiden\" name=\"pf_erase_second_hiden_button\">
 \t\t</form>
 \t\t";
             }
-            // line 344
+            // line 346
             echo "\t</div>
 \t";
         }
-        // line 346
+        // line 348
         echo "
 </div>
 
 ";
-        // line 349
+        // line 351
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -1134,7 +1140,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "memberlist_view.html", 349)->display($context);
+        $this->loadTemplate("overall_footer.html", "memberlist_view.html", 351)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -1152,7 +1158,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 
     public function getDebugInfo()
     {
-        return array (  1130 => 349,  1125 => 346,  1121 => 344,  1114 => 340,  1108 => 338,  1102 => 334,  1097 => 333,  1092 => 332,  1087 => 331,  1082 => 330,  1077 => 329,  1072 => 328,  1067 => 327,  1062 => 326,  1057 => 325,  1052 => 324,  1047 => 323,  1043 => 322,  1035 => 318,  1032 => 317,  1025 => 313,  1019 => 311,  995 => 291,  992 => 290,  985 => 286,  979 => 284,  973 => 280,  968 => 279,  963 => 278,  958 => 277,  953 => 276,  948 => 275,  943 => 274,  938 => 273,  933 => 272,  928 => 271,  923 => 270,  918 => 269,  913 => 268,  908 => 267,  903 => 266,  898 => 265,  893 => 264,  888 => 263,  884 => 262,  876 => 258,  873 => 257,  866 => 253,  860 => 251,  830 => 225,  827 => 224,  817 => 218,  807 => 212,  804 => 211,  794 => 205,  788 => 201,  783 => 200,  778 => 199,  773 => 198,  768 => 197,  763 => 196,  758 => 195,  753 => 194,  748 => 193,  744 => 192,  737 => 189,  735 => 188,  722 => 178,  717 => 176,  710 => 172,  705 => 170,  698 => 166,  693 => 164,  685 => 159,  679 => 156,  673 => 155,  668 => 153,  662 => 150,  658 => 149,  653 => 147,  649 => 145,  634 => 144,  632 => 143,  629 => 142,  617 => 141,  614 => 140,  613 => 139,  608 => 136,  600 => 131,  595 => 129,  590 => 126,  588 => 125,  585 => 124,  584 => 123,  577 => 118,  575 => 117,  555 => 115,  535 => 114,  533 => 113,  530 => 112,  517 => 111,  508 => 110,  498 => 109,  492 => 108,  464 => 106,  458 => 105,  456 => 104,  449 => 103,  441 => 102,  440 => 101,  435 => 99,  429 => 95,  421 => 93,  418 => 92,  415 => 91,  413 => 90,  407 => 89,  404 => 88,  398 => 86,  390 => 84,  388 => 83,  382 => 82,  379 => 81,  374 => 80,  372 => 79,  353 => 78,  341 => 77,  330 => 76,  324 => 73,  318 => 69,  317 => 68,  310 => 63,  308 => 62,  305 => 61,  302 => 60,  294 => 58,  291 => 57,  283 => 55,  280 => 54,  272 => 52,  270 => 51,  263 => 50,  260 => 49,  257 => 48,  255 => 47,  253 => 46,  247 => 45,  238 => 43,  235 => 42,  230 => 41,  228 => 40,  216 => 39,  206 => 38,  196 => 37,  193 => 36,  191 => 35,  177 => 34,  167 => 33,  165 => 32,  163 => 31,  160 => 30,  151 => 29,  142 => 28,  133 => 27,  124 => 26,  114 => 25,  108 => 23,  104 => 21,  100 => 19,  98 => 18,  91 => 17,  84 => 16,  83 => 15,  79 => 14,  76 => 13,  74 => 12,  66 => 9,  62 => 8,  59 => 7,  58 => 6,  53 => 4,  49 => 2,  37 => 1,);
+        return array (  1136 => 351,  1131 => 348,  1127 => 346,  1120 => 342,  1114 => 340,  1108 => 336,  1103 => 335,  1098 => 334,  1093 => 333,  1088 => 332,  1083 => 331,  1078 => 330,  1073 => 329,  1068 => 328,  1063 => 327,  1058 => 326,  1053 => 325,  1048 => 324,  1044 => 323,  1036 => 319,  1033 => 318,  1026 => 314,  1020 => 312,  995 => 291,  992 => 290,  985 => 286,  979 => 284,  973 => 280,  968 => 279,  963 => 278,  958 => 277,  953 => 276,  948 => 275,  943 => 274,  938 => 273,  933 => 272,  928 => 271,  923 => 270,  918 => 269,  913 => 268,  908 => 267,  903 => 266,  898 => 265,  893 => 264,  888 => 263,  884 => 262,  876 => 258,  873 => 257,  866 => 253,  860 => 251,  830 => 225,  827 => 224,  817 => 218,  807 => 212,  804 => 211,  794 => 205,  788 => 201,  783 => 200,  778 => 199,  773 => 198,  768 => 197,  763 => 196,  758 => 195,  753 => 194,  748 => 193,  744 => 192,  737 => 189,  735 => 188,  722 => 178,  717 => 176,  710 => 172,  705 => 170,  698 => 166,  693 => 164,  685 => 159,  679 => 156,  673 => 155,  668 => 153,  662 => 150,  658 => 149,  653 => 147,  649 => 145,  634 => 144,  632 => 143,  629 => 142,  617 => 141,  614 => 140,  613 => 139,  608 => 136,  600 => 131,  595 => 129,  590 => 126,  588 => 125,  585 => 124,  584 => 123,  577 => 118,  575 => 117,  555 => 115,  535 => 114,  533 => 113,  530 => 112,  517 => 111,  508 => 110,  498 => 109,  492 => 108,  464 => 106,  458 => 105,  456 => 104,  449 => 103,  441 => 102,  440 => 101,  435 => 99,  429 => 95,  421 => 93,  418 => 92,  415 => 91,  413 => 90,  407 => 89,  404 => 88,  398 => 86,  390 => 84,  388 => 83,  382 => 82,  379 => 81,  374 => 80,  372 => 79,  353 => 78,  341 => 77,  330 => 76,  324 => 73,  318 => 69,  317 => 68,  310 => 63,  308 => 62,  305 => 61,  302 => 60,  294 => 58,  291 => 57,  283 => 55,  280 => 54,  272 => 52,  270 => 51,  263 => 50,  260 => 49,  257 => 48,  255 => 47,  253 => 46,  247 => 45,  238 => 43,  235 => 42,  230 => 41,  228 => 40,  216 => 39,  206 => 38,  196 => 37,  193 => 36,  191 => 35,  177 => 34,  167 => 33,  165 => 32,  163 => 31,  160 => 30,  151 => 29,  142 => 28,  133 => 27,  124 => 26,  114 => 25,  108 => 23,  104 => 21,  100 => 19,  98 => 18,  91 => 17,  84 => 16,  83 => 15,  79 => 14,  76 => 13,  74 => 12,  66 => 9,  62 => 8,  59 => 7,  58 => 6,  53 => 4,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
