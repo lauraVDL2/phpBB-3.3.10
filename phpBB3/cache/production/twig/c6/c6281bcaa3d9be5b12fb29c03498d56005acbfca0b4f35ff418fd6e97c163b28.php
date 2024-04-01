@@ -265,7 +265,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_second_element_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"75\">
-        <h1>Deuxième affinité élémentaire</h1>
+        <h1>Spécialisation : Deuxième affinité élémentaire</h1>
         Acheter une deuxième affinité élémentaire. <em>(75 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_second_element\" value=\"Acheter\" ";
             // line 94
@@ -286,7 +286,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_third_element_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"100\">
-        <h1>Troisième affinité élémentaire</h1>
+        <h1>Spécialisation : Troisième affinité élémentaire</h1>
         Acheter une troisième affinité élémentaire. <em>(100 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_third_element\" value=\"Acheter\" ";
             // line 103
@@ -307,7 +307,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_sight_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"75\">
-        <h1>Genjutsu Vue</h1>
+        <h1>Spécialisation : Genjutsu Vue</h1>
         Acheter la spécialisation Genjutsu permettant de gérer les contacts visuels. <em>(75 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_sight\" value=\"Acheter\" ";
             // line 112
@@ -328,7 +328,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_sound_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"75\">
-        <h1>Genjutsu Son</h1>
+        <h1>Spécialisation : Genjutsu Son</h1>
         Acheter la spécialisation Genjutsu permettant de gérer les contacts auditifs. <em>(75 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_sound\" value=\"Acheter\" ";
             // line 121
@@ -343,17 +343,17 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 125
-        if (((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Illusions démoniaques")) && (($context["SP_SPIRIT"] ?? null) == 8)) && (($context["SP_GENJUTSU"] ?? null) == 8))) {
+        if ((($context["CAN_ILLU1"] ?? null) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
             // line 126
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
-            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_demonic_callback\" data-refresh=\"true\">
-        <input type=\"hidden\" name=\"sp_price\" value=\"150\">
-        <h1>Spécialisation élite : Illusions démoniaques</h1>
-        Acheter la spécialisation <strong>élite</strong> de Genjutsu vous permettant de créer des illusions démoniaques sans contact visuel ni auditif. <em>(150 points de compétence)</em>.
-        <input type=\"submit\" name=\"sp_demonic\" value=\"Acheter\" ";
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_illu1_callback\" data-refresh=\"true\">
+        <input type=\"hidden\" name=\"sp_price\" value=\"25\">
+        <h1>Talent : Illusionniste+</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 10%. <em>(25 points de compétence)</em>.
+        <input type=\"submit\" name=\"sp_illu1\" value=\"Acheter\" ";
             // line 130
-            if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
+            if ((($context["SP_TALENT_POINTS"] ?? null) < 25)) {
                 echo "disabled ";
             }
             echo " >
@@ -364,17 +364,17 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 134
-        if (((($context["SP_FIRST_WEAPON"] ?? null) &&  !($context["SP_IS_SECOND_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 3))) {
+        if ((($context["CAN_ILLU2"] ?? null) && (($context["SP_GENJUTSU"] ?? null) >= 6))) {
             // line 135
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
-            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_second_weapon_callback\" data-refresh=\"true\">
-        <input type=\"hidden\" name=\"sp_price\" value=\"75\">
-        <h1>Deuxième arme</h1>
-        Acheter la maîtrise d'un deuxième type d'arme. <em>(75 points de compétence)</em>.
-        <input type=\"submit\" name=\"sp_second_weapon\" value=\"Acheter\" ";
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_illu2_callback\" data-refresh=\"true\">
+        <input type=\"hidden\" name=\"sp_price\" value=\"50\">
+        <h1>Talent : Illusionniste++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 20% (évolution d'Illusionniste+). <em>(50 points de compétence)</em>.
+        <input type=\"submit\" name=\"sp_illu2\" value=\"Acheter\" ";
             // line 139
-            if ((($context["SP_TALENT_POINTS"] ?? null) < 75)) {
+            if ((($context["SP_TALENT_POINTS"] ?? null) < 50)) {
                 echo "disabled ";
             }
             echo " >
@@ -383,18 +383,75 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         }
         // line 142
         echo "
-    ";
+    <form method=\"post\" action=\"";
         // line 143
+        echo ($context["U_ACTION"] ?? null);
+        echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_illu3_callback\" data-refresh=\"true\">
+        <input type=\"hidden\" name=\"sp_price\" value=\"75\">
+        <h1>Talent : Illusionniste+++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 30% (évolution d'Illusionniste++). <em>(75 points de compétence)</em>.
+        <input type=\"submit\" name=\"sp_illu3\" value=\"Acheter\" ";
+        // line 147
+        if ((($context["SP_TALENT_POINTS"] ?? null) < 75)) {
+            echo "disabled ";
+        }
+        echo " >
+    </form>
+
+    ";
+        // line 150
+        if (((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Illusions démoniaques")) && (($context["SP_SPIRIT"] ?? null) == 8)) && (($context["SP_GENJUTSU"] ?? null) == 8))) {
+            // line 151
+            echo "    <form method=\"post\" action=\"";
+            echo ($context["U_ACTION"] ?? null);
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_demonic_callback\" data-refresh=\"true\">
+        <input type=\"hidden\" name=\"sp_price\" value=\"150\">
+        <h1>Spécialisation élite : Illusions démoniaques</h1>
+        Acheter la spécialisation <strong>élite</strong> de Genjutsu vous permettant de créer des illusions démoniaques sans contact visuel ni auditif. <em>(150 points de compétence)</em>.
+        <input type=\"submit\" name=\"sp_demonic\" value=\"Acheter\" ";
+            // line 155
+            if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
+                echo "disabled ";
+            }
+            echo " >
+    </form>
+    ";
+        }
+        // line 158
+        echo "
+    ";
+        // line 159
+        if (((($context["SP_FIRST_WEAPON"] ?? null) &&  !($context["SP_IS_SECOND_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 3))) {
+            // line 160
+            echo "    <form method=\"post\" action=\"";
+            echo ($context["U_ACTION"] ?? null);
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_second_weapon_callback\" data-refresh=\"true\">
+        <input type=\"hidden\" name=\"sp_price\" value=\"75\">
+        <h1>Spécialisation : Deuxième arme</h1>
+        Acheter la maîtrise d'un deuxième type d'arme. <em>(75 points de compétence)</em>.
+        <input type=\"submit\" name=\"sp_second_weapon\" value=\"Acheter\" ";
+            // line 164
+            if ((($context["SP_TALENT_POINTS"] ?? null) < 75)) {
+                echo "disabled ";
+            }
+            echo " >
+    </form>
+    ";
+        }
+        // line 167
+        echo "
+    ";
+        // line 168
         if (((($context["SP_SECOND_WEAPON"] ?? null) &&  !($context["SP_IS_THIRD_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 5))) {
-            // line 144
+            // line 169
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_third_weapon_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"100\">
-        <h1>Troisième arme</h1>
+        <h1>Spécialisation : Troisième arme</h1>
         Acheter la maîtrise d'un troisième type d'arme. <em>(100 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_third_weapon\" value=\"Acheter\" ";
-            // line 148
+            // line 173
             if ((($context["SP_TALENT_POINTS"] ?? null) < 100)) {
                 echo "disabled ";
             }
@@ -402,12 +459,12 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 151
+        // line 176
         echo "
     ";
-        // line 152
+        // line 177
         if (((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Hachimon")) && (($context["SP_STRENGTH"] ?? null) == 8)) && (($context["SP_TAIJUTSU"] ?? null) == 8))) {
-            // line 153
+            // line 178
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_hachimon_callback\" data-refresh=\"true\">
@@ -415,7 +472,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         <h1>Spécialisation élite : Hachimon</h1>
         Acheter la spécialisation <strong>élite</strong> vous permettant d'ouvrir les huit portes. <em>(150 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_hachimon\" value=\"Acheter\" ";
-            // line 157
+            // line 182
             if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
                 echo "disabled ";
             }
@@ -423,12 +480,12 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 160
+        // line 185
         echo "
     ";
-        // line 161
+        // line 186
         if (((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Nintaijutsu")) && (($context["SP_NINJUTSU"] ?? null) == 8)) && (($context["SP_TAIJUTSU"] ?? null) == 8))) {
-            // line 162
+            // line 187
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_nintaijutsu_callback\" data-refresh=\"true\">
@@ -436,7 +493,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         <h1>Spécialisation élite : Nintaijutsu</h1>
         Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques de Taijutsu avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_nintaijutsu\" value=\"Acheter\" ";
-            // line 166
+            // line 191
             if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
                 echo "disabled ";
             }
@@ -444,12 +501,12 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 169
+        // line 194
         echo "
     ";
-        // line 170
+        // line 195
         if (((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Lames de Chakra")) && (($context["SP_NINJUTSU"] ?? null) == 8)) && (($context["SP_TAIJUTSU"] ?? null) == 8))) {
-            // line 171
+            // line 196
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_chakrablade_callback\" data-refresh=\"true\">
@@ -457,7 +514,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         <h1>Spécialisation élite : Lames de Chakra</h1>
         Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques liées aux armes avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
         <input type=\"submit\" name=\"sp_chakrablade\" value=\"Acheter\" ";
-            // line 175
+            // line 200
             if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
                 echo "disabled ";
             }
@@ -465,12 +522,12 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 178
+        // line 203
         echo "
     ";
-        // line 179
+        // line 204
         if (((((($context["SP_RP_RANK"] ?? null) == "Genin") && (($context["SP_NINJUTSU"] ?? null) >= 3)) && (($context["SP_TAIJUTSU"] ?? null) >= 3)) && (($context["SP_GENJUTSU"] ?? null) >= 3))) {
-            // line 180
+            // line 205
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_chunin_callback\" data-refresh=\"true\">
@@ -478,7 +535,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         <h1>Devenir Chûnin</h1>
         Félicitations, vous avez suffisamment de points d'attribut pour devenir Chûnin ! <em>(125 points de compétence)</em>
         <input type=\"submit\" name=\"sp_chunin\" value=\"Acheter\" ";
-            // line 184
+            // line 209
             if ((($context["SP_TALENT_POINTS"] ?? null) < 125)) {
                 echo "disabled ";
             }
@@ -486,12 +543,12 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 187
+        // line 212
         echo "
     ";
-        // line 188
+        // line 213
         if (((((($context["SP_RP_RANK"] ?? null) == "Chûnin") && (($context["SP_NINJUTSU"] ?? null) >= 4)) && (($context["SP_TAIJUTSU"] ?? null) >= 4)) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
-            // line 189
+            // line 214
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_jonin_callback\" data-refresh=\"true\">
@@ -499,7 +556,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         <h1>Devenir Jônin</h1>
         Félicitations, vous avez suffisamment de points d'attribut pour devenir Jônin, ninja d'élite ! Vous pourrez prendre des Genin sous votre aile. <em>(150 points de compétence)</em>
         <input type=\"submit\" name=\"sp_jonin\" value=\"Acheter\" ";
-            // line 193
+            // line 218
             if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
                 echo "disabled ";
             }
@@ -507,17 +564,17 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
     ";
         }
-        // line 196
+        // line 221
         echo "
     <form method=\"post\" action=\"";
-        // line 197
+        // line 222
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_d_technique_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"25\">
         <h1>Technique de rang D</h1>
         Gagner une technique de rang D <em>(25 points de compétence)</em>
         <input type=\"submit\" name=\"sp_d_technique\" value=\"Acheter\" ";
-        // line 201
+        // line 226
         if ((($context["SP_TALENT_POINTS"] ?? null) < 25)) {
             echo "disabled ";
         }
@@ -525,14 +582,14 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
 
     <form method=\"post\" action=\"";
-        // line 204
+        // line 229
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_c_technique_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"50\">
         <h1>Technique de rang C</h1>
         Gagner une technique de rang C <em>(50 points de compétence)</em>
         <input type=\"submit\" name=\"sp_c_technique\" value=\"Acheter\" ";
-        // line 208
+        // line 233
         if ((($context["SP_TALENT_POINTS"] ?? null) < 50)) {
             echo "disabled ";
         }
@@ -540,14 +597,14 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
 
     <form method=\"post\" action=\"";
-        // line 211
+        // line 236
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_b_technique_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_b_technique\" value=\"75\">
         <h1>Technique de rang B</h1>
         Gagner une technique de rang B <em>(75 points de compétence)</em>
         <input type=\"submit\" name=\"sp_jonin\" value=\"Acheter\" ";
-        // line 215
+        // line 240
         if ((($context["SP_TALENT_POINTS"] ?? null) < 75)) {
             echo "disabled ";
         }
@@ -555,14 +612,14 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
 
     <form method=\"post\" action=\"";
-        // line 218
+        // line 243
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_a_technique_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"100\">
         <h1>Technique de rang A</h1>
         Gagner une technique de rang A <em>(100 points de compétence)</em>
         <input type=\"submit\" name=\"sp_a_technique\" value=\"Acheter\" ";
-        // line 222
+        // line 247
         if ((($context["SP_TALENT_POINTS"] ?? null) < 100)) {
             echo "disabled ";
         }
@@ -570,14 +627,14 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
     </form>
 
     <form method=\"post\" action=\"";
-        // line 225
+        // line 250
         echo ($context["U_ACTION"] ?? null);
         echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_s_technique_callback\" data-refresh=\"true\">
         <input type=\"hidden\" name=\"sp_price\" value=\"150\">
         <h1>Technique de rang S</h1>
         Gagner une technique de rang S <em>(150 points de compétence)</em>
         <input type=\"submit\" name=\"sp_s_technique\" value=\"Acheter\" ";
-        // line 229
+        // line 254
         if ((($context["SP_TALENT_POINTS"] ?? null) < 150)) {
             echo "disabled ";
         }
@@ -586,7 +643,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
 </div>
 </div>
 ";
-        // line 233
+        // line 258
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -594,7 +651,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "shop.html", 233)->display($context);
+        $this->loadTemplate("overall_footer.html", "shop.html", 258)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -612,7 +669,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
 
     public function getDebugInfo()
     {
-        return array (  590 => 233,  581 => 229,  574 => 225,  566 => 222,  559 => 218,  551 => 215,  544 => 211,  536 => 208,  529 => 204,  521 => 201,  514 => 197,  511 => 196,  503 => 193,  495 => 189,  493 => 188,  490 => 187,  482 => 184,  474 => 180,  472 => 179,  469 => 178,  461 => 175,  453 => 171,  451 => 170,  448 => 169,  440 => 166,  432 => 162,  430 => 161,  427 => 160,  419 => 157,  411 => 153,  409 => 152,  406 => 151,  398 => 148,  390 => 144,  388 => 143,  385 => 142,  377 => 139,  369 => 135,  367 => 134,  364 => 133,  356 => 130,  348 => 126,  346 => 125,  343 => 124,  335 => 121,  327 => 117,  325 => 116,  322 => 115,  314 => 112,  306 => 108,  304 => 107,  301 => 106,  293 => 103,  285 => 99,  283 => 98,  280 => 97,  272 => 94,  264 => 90,  262 => 89,  259 => 88,  251 => 85,  243 => 81,  241 => 80,  238 => 79,  230 => 76,  222 => 72,  220 => 71,  217 => 70,  209 => 67,  201 => 63,  199 => 62,  196 => 61,  188 => 58,  180 => 54,  178 => 53,  175 => 52,  167 => 49,  159 => 45,  157 => 44,  154 => 43,  146 => 40,  138 => 36,  136 => 35,  133 => 34,  125 => 31,  117 => 27,  115 => 26,  112 => 25,  104 => 22,  96 => 18,  94 => 17,  91 => 16,  83 => 13,  75 => 9,  73 => 8,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
+        return array (  647 => 258,  638 => 254,  631 => 250,  623 => 247,  616 => 243,  608 => 240,  601 => 236,  593 => 233,  586 => 229,  578 => 226,  571 => 222,  568 => 221,  560 => 218,  552 => 214,  550 => 213,  547 => 212,  539 => 209,  531 => 205,  529 => 204,  526 => 203,  518 => 200,  510 => 196,  508 => 195,  505 => 194,  497 => 191,  489 => 187,  487 => 186,  484 => 185,  476 => 182,  468 => 178,  466 => 177,  463 => 176,  455 => 173,  447 => 169,  445 => 168,  442 => 167,  434 => 164,  426 => 160,  424 => 159,  421 => 158,  413 => 155,  405 => 151,  403 => 150,  395 => 147,  388 => 143,  385 => 142,  377 => 139,  369 => 135,  367 => 134,  364 => 133,  356 => 130,  348 => 126,  346 => 125,  343 => 124,  335 => 121,  327 => 117,  325 => 116,  322 => 115,  314 => 112,  306 => 108,  304 => 107,  301 => 106,  293 => 103,  285 => 99,  283 => 98,  280 => 97,  272 => 94,  264 => 90,  262 => 89,  259 => 88,  251 => 85,  243 => 81,  241 => 80,  238 => 79,  230 => 76,  222 => 72,  220 => 71,  217 => 70,  209 => 67,  201 => 63,  199 => 62,  196 => 61,  188 => 58,  180 => 54,  178 => 53,  175 => 52,  167 => 49,  159 => 45,  157 => 44,  154 => 43,  146 => 40,  138 => 36,  136 => 35,  133 => 34,  125 => 31,  117 => 27,  115 => 26,  112 => 25,  104 => 22,  96 => 18,  94 => 17,  91 => 16,  83 => 13,  75 => 9,  73 => 8,  68 => 6,  63 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

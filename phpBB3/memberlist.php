@@ -1021,6 +1021,16 @@ switch ($mode)
 						],
 					);
 				}
+				else if($pf_current_rank == 'Jônin') {
+					$sql = 'UPDATE '.USERS_TABLE.' SET user_rp_rank = "Kage", user_attributes_to_use = user_attributes_to_use + 4, user_attributes_total = user_attributes_total + 4 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET a_techniques = a_techniques + 2, s_techniques = s_techniques + 1 WHERE user_id = '.$user_id;
+					$db->sql_query($sql);
+					return $json_response->send([
+						'action'	=> 'is_kage',
+						],
+					);
+				}
 			}
 			else if($pf_give_techniques_button) {
 				$pf_technique_rank = $request->variable('pf_technique_select', '', true);

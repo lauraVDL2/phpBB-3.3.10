@@ -2031,32 +2031,32 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 	$spirit = $attributes['sensoriality'];
 	$pv = 0;
 	if($strength < 2) {
-		$pv = 10;
-	}
-	else if($strength >= 2 && $strength < 4) {
 		$pv = 20;
 	}
-	else if($strength >= 4 && $strength < 6) {
+	else if($strength >= 2 && $strength < 4) {
 		$pv = 30;
 	}
-	else if($strength >= 6 && $strength < 8) {
+	else if($strength >= 4 && $strength < 6) {
 		$pv = 40;
+	}
+	else if($strength >= 6 && $strength < 8) {
+		$pv = 50;
 	}
 	else if($strength == 8) {
 		$pv = 60;
 	}
 	$pc = 0;
 	if($spirit < 2) {
-		$pc = 10;
-	}
-	else if($spirit >= 2 && $spirit < 4) {
 		$pc = 20;
 	}
-	else if($spirit >= 4 && $spirit < 6) {
+	else if($spirit >= 2 && $spirit < 4) {
 		$pc = 30;
 	}
-	else if($spirit >= 6 && $spirit < 8) {
+	else if($spirit >= 4 && $spirit < 6) {
 		$pc = 40;
+	}
+	else if($spirit >= 6 && $spirit < 8) {
+		$pc = 50;
 	}
 	else if($spirit == 8) {
 		$pc = 60;

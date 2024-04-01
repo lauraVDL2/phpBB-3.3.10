@@ -148,7 +148,7 @@
 			<h3>Changer le rang</h3>
 			<div>Rang actuel : {PF_RP_RANK}</div>
 			<input type="hidden" value="{PF_RP_RANK}" name="pf_current_rank">
-			<input type="submit" value="Passer au rang suivant" name="pf_gain_rank_button">
+			<!-- IF PF_RP_RANK != "Kage" --><input type="submit" value="Passer au rang suivant" name="pf_gain_rank_button"><!-- ENDIF -->
 		</form>
 		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_level_callback" data-refresh="true">
 			<h3>Donner des niveaux</h3>

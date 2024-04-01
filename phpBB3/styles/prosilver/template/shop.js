@@ -109,6 +109,24 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('sp_illu1_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Illusionniste+ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_illu2_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Illusionniste++ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_illu3_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Illusionniste+++ !");
+            window.location.reload(true);
+        }
+    });
 
     //TAIJUTSU
     phpbb.addAjaxCallback('sp_second_weapon_callback', function(r) {

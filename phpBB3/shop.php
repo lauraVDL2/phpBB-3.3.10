@@ -50,6 +50,10 @@ if($request->is_ajax()) {
     $sp_mangekyo = $request->variable('sp_mangekyo', '');
     $sp_hashirama = $request->variable('sp_hashirama', '');
     $sp_hitokugutsu = $request->variable('sp_hitokugutsu', '');
+    $sp_illu1 = $request->variable('sp_illu1', '');
+    $sp_illu2 = $request->variable('sp_illu2', '');
+    $sp_illu3 = $request->variable('sp_illu3', '');
+    $user_id = $user->data['user_id'];
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
         $sp_price = $request->variable('sp_price', 0);
@@ -233,6 +237,53 @@ if($request->is_ajax()) {
             ],
         );
     }
+    //GENJUTSU TALENT : ILLU1
+    else if($sp_illu1) {
+        $talent_id = get_talent_id('Illusionniste+');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //GENJUTSU TALENT : ILLU2
+    else if($sp_illu2) {
+        delete_talent_by_name('Illusionniste+');
+        $talent_id = get_talent_id('Illusionniste++');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //GENJUTSU TALENT : ILLU3
+    else if($sp_illu3) {
+        delete_talent_by_name('Illusionniste++');
+        $talent_id = get_talent_id('Illusionniste+++');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        //buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
     //GENJUTSU ELITE : DEMONIC
     else if($sp_demonic) {
         $sp_price = $request->variable('sp_price', 0);
@@ -354,6 +405,34 @@ if($request->is_ajax()) {
     }
 }
 
+function delete_talent_by_name($talent_name) {
+    global $db, $user;
+    $talent_id = get_talent_id($talent_name);
+    $sql = 'DELETE FROM '.USER_TALENTS_TABLE.' WHERE talent_id = '.$talent_id.' AND user_id = '.$user->data['user_id'];
+    $db->sql_query($sql);
+}
+
+/**
+ * Get talent id by name
+ * @param string talent_name
+ * @return int talent_id
+ */
+function get_talent_id($talent_name) {
+    global $db;
+    $req = [
+        'SELECT' => 'tt.talent_id AS talent_id',
+        'FROM' => [
+            TALENTS_TABLE => 'tt',
+        ],
+        'WHERE' => $db->sql_build_array('SELECT', [
+            'talent_title' => $talent_name
+        ])
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['talent_id'];
+}
+
 /**
  * Set the elite specialization
  * @param int price
@@ -387,6 +466,34 @@ function buying($sp_price) {
     $db->sql_query($sql);
 }
 
+/**
+ * Get all talents
+ * @return array talents_row
+ */
+function get_all_talents() {
+    global $db, $user;
+    $req = [
+        'SELECT' => 'tt.talent_title AS talent_title',
+        'FROM' => [
+            TALENTS_TABLE => 'tt'
+        ],
+        'LEFT_JOIN' => [
+            [
+                'FROM' => [ USER_TALENTS_TABLE => 'utt' ],
+                'ON' => 'utt.talent_id = tt.talent_id'
+            ]
+        ],
+        'WHERE' => 'utt.user_id = '.$user->data['user_id']
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    $talents = [];
+    while($row = $db->sql_fetchrow($query)) {
+        array_push($talents, $row['talent_title']);
+    }
+    return $talents;
+}
+
 function get_talent_infos() {
     global $db, $user;
     $req = [
@@ -417,6 +524,10 @@ function get_talent_infos() {
 
 $can_first_elite = !$infos['first_elite'] && $infos['level'] >= 20;
 $can_second_elite = !$infos['second_elite'] && $infos['rp_rank'] == 'Kage' && $infos['level'] >= 20;
+$talents_row = get_all_talents();
+$can_illu1 = !in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_illu2 = in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_illu3 = !in_array('Illusionniste+', $talents_row) && in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
 
 $template->assign_vars(array(
     'SP_TALENT_POINTS' => $infos['talent_points'],
@@ -452,7 +563,10 @@ $template->assign_vars(array(
     'SP_KUGUTSU' => $infos['first_hidden'] == 'Kugutsu' || $infos['second_hidden'] == 'Kugutsu',
     'SP_SHARINGAN' => $infos['first_kekkei_genkai'] == 'Sharingan' || $infos['second_kekkei_genkai'] == 'Sharingan',
     'SP_MOKUTON' => $infos['first_kekkei_genkai'] == 'Mokuton' || $infos['second_kekkei_genkai'] == 'Mokuton',
-    'SP_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id'])
+    'SP_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
+    'CAN_ILLU1' => $can_illu1,
+    'CAN_ILLU2' => $can_illu2,
+    'CAN_ILLU3' => $can_illu3
 ));
 
 $template->set_filenames(array(

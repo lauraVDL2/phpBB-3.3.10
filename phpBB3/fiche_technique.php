@@ -241,7 +241,7 @@ function get_techniques($type, $block_name) {
     global $d_chakra, $c_chakra, $b_chakra, $a_chakra, $s_chakra;
     global $d_life, $c_life, $b_life, $a_life, $s_life;
     $req = [
-        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_is_offensive AS technique_is_offensive, utt.technique_cost AS technique_cost, utt.technique_subtype AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
+        'SELECT' => 'utt.technique_id AS technique_id, utt.technique_is_offensive AS technique_is_offensive, utt.technique_cost AS technique_cost, utt.technique_subtype AS technique_subtype, utt.technique_type AS technique_type, utt.technique_rank AS technique_rank, utt.technique_name AS technique_name, utt.technique_description AS technique_description, utt.technique_subspe AS technique_spe',
         'FROM' => [
             USER_TECHNIQUES_TABLE => 'utt',
         ],
@@ -284,6 +284,21 @@ function get_techniques($type, $block_name) {
                 $chakra = $s_chakra[$cost];
                 if($offensive) {
                     $damage = $s_life[$cost];
+                }
+            }
+            $query_talents = get_talents_from_user($ft_user_id);
+            while($row_talents = $db->sql_fetchrow($query_talents)) {
+                $talent_title = $row_talents['talent_title'];
+                if($row['technique_type'] == 'Genjutsu') {
+                    if($talent_title == 'Illusionniste+') {
+                        $chakra = $chakra - round($chakra*0.10);
+                    }
+                    else if($talent_title == 'Illusionniste++') {
+                        $chakra = $chakra - round($chakra*0.20);
+                    }
+                    else if($talent_title == 'Illusionniste+++') {
+                        $chakra = $chakra - round($chakra*0.30);
+                    }
                 }
             }
         }

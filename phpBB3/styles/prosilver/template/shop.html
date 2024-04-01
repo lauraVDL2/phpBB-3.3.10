@@ -89,7 +89,7 @@
     <!-- IF SP_FIRST_ELEMENT && !SP_IS_SECOND_ELEMENT -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_element_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="75">
-        <h1>Deuxième affinité élémentaire</h1>
+        <h1>Spécialisation : Deuxième affinité élémentaire</h1>
         Acheter une deuxième affinité élémentaire. <em>(75 points de compétence)</em>.
         <input type="submit" name="sp_second_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
     </form>
@@ -98,7 +98,7 @@
     <!-- IF SP_SECOND_ELEMENT && !SP_IS_THIRD_ELEMENT -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_element_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="100">
-        <h1>Troisième affinité élémentaire</h1>
+        <h1>Spécialisation : Troisième affinité élémentaire</h1>
         Acheter une troisième affinité élémentaire. <em>(100 points de compétence)</em>.
         <input type="submit" name="sp_third_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
     </form>
@@ -107,7 +107,7 @@
     <!-- IF !SP_IS_SIGHT && SP_GENJUTSU >= 4 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sight_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="75">
-        <h1>Genjutsu Vue</h1>
+        <h1>Spécialisation : Genjutsu Vue</h1>
         Acheter la spécialisation Genjutsu permettant de gérer les contacts visuels. <em>(75 points de compétence)</em>.
         <input type="submit" name="sp_sight" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
     </form>
@@ -116,11 +116,36 @@
     <!-- IF !SP_IS_SOUND && SP_GENJUTSU >= 4 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sound_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="75">
-        <h1>Genjutsu Son</h1>
+        <h1>Spécialisation : Genjutsu Son</h1>
         Acheter la spécialisation Genjutsu permettant de gérer les contacts auditifs. <em>(75 points de compétence)</em>.
         <input type="submit" name="sp_sound" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
     </form>
     <!-- ENDIF -->
+
+    <!-- IF CAN_ILLU1 && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu1_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="25">
+        <h1>Talent : Illusionniste+</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 10%. <em>(25 points de compétence)</em>.
+        <input type="submit" name="sp_illu1" value="Acheter" <!-- IF SP_TALENT_POINTS < 25 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_ILLU2 && SP_GENJUTSU >= 6 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu2_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Talent : Illusionniste++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 20% (évolution d'Illusionniste+). <em>(50 points de compétence)</em>.
+        <input type="submit" name="sp_illu2" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu3_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Talent : Illusionniste+++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 30% (évolution d'Illusionniste++). <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_illu3" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
 
     <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Illusions démoniaques" && SP_SPIRIT == 8 && SP_GENJUTSU == 8 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demonic_callback" data-refresh="true">
@@ -134,7 +159,7 @@
     <!-- IF SP_FIRST_WEAPON && !SP_IS_SECOND_WEAPON && SP_TAIJUTSU >= 3 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_weapon_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="75">
-        <h1>Deuxième arme</h1>
+        <h1>Spécialisation : Deuxième arme</h1>
         Acheter la maîtrise d'un deuxième type d'arme. <em>(75 points de compétence)</em>.
         <input type="submit" name="sp_second_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
     </form>
@@ -143,7 +168,7 @@
     <!-- IF SP_SECOND_WEAPON && !SP_IS_THIRD_WEAPON && SP_TAIJUTSU >= 5 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_weapon_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="100">
-        <h1>Troisième arme</h1>
+        <h1>Spécialisation : Troisième arme</h1>
         Acheter la maîtrise d'un troisième type d'arme. <em>(100 points de compétence)</em>.
         <input type="submit" name="sp_third_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
     </form>

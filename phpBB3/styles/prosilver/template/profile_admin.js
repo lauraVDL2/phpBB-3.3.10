@@ -37,6 +37,10 @@ jQuery(function($) {
             window.confirm("Le personnage est devenu Jônin !");
             window.location.reload(true);
         }
+        else if(re.action === "is_kage") {
+            window.confirm("Le personnage est devenu Kage !");
+            window.location.reload(true);
+        }
     });
     phpbb.addAjaxCallback('pf_give_technique_callback', function(re) {
         if(re.action === "PF_D_TECHNIQUE") {
