@@ -53,6 +53,8 @@ if($request->is_ajax()) {
     $sp_illu1 = $request->variable('sp_illu1', '');
     $sp_illu2 = $request->variable('sp_illu2', '');
     $sp_illu3 = $request->variable('sp_illu3', '');
+    $sp_crit1 = $request->variable('sp_crit1', '');
+    $sp_crit2 = $request->variable('sp_crit2', '');
     $user_id = $user->data['user_id'];
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
@@ -278,7 +280,7 @@ if($request->is_ajax()) {
             'user_id' => $user_id
         ]);
         $db->sql_query($sql);
-        //buying($sp_price);
+        buying($sp_price);
         return $json_response->send([
             'is_ok'	=> true,
             ],
@@ -325,6 +327,37 @@ if($request->is_ajax()) {
                 ],
             );
         }
+    }
+    //TAIJUTSU TALENT : CRIT1
+    else if($sp_crit1) {
+        $talent_id = get_talent_id('Critique+');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //TAIJUTSU TALENT : CRIT2
+    else if($sp_crit2) {
+        delete_talent_by_name('Critique+');
+        $talent_id = get_talent_id('Critique++');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
     }
     //ELITE TAIJUTSU : NINTAIJUTSU
     else if ($sp_nintaijutsu) {
@@ -393,7 +426,7 @@ if($request->is_ajax()) {
             );
         }
     }
-    //ELITE KG : HITOKUHUTSU
+    //ELITE KG : HITOKUGUTSU
     else if ($sp_hitokugutsu) {
         $sp_price = $request->variable('sp_price', 0);
         if (set_elite($sp_price, 'Hitokugutsu')) {
@@ -528,6 +561,8 @@ $talents_row = get_all_talents();
 $can_illu1 = !in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
 $can_illu2 = in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
 $can_illu3 = !in_array('Illusionniste+', $talents_row) && in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_crit1 = !in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
+$can_crit2 = in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
 
 $template->assign_vars(array(
     'SP_TALENT_POINTS' => $infos['talent_points'],
@@ -538,6 +573,7 @@ $template->assign_vars(array(
     'SP_TAIJUTSU' => $infos['taijutsu'],
     'SP_GENJUTSU' => $infos['genjutsu'],
     'SP_SPIRIT' => $infos['sensoriality'],
+    'SP_SPEED' => $infos['swiftness'],
     'SP_STRENGHT' => $infos['strength'],
     'SP_IROU_HEAL' => $infos['irou_heal'],
     'SP_IROU_POISON' => $infos['irou_poison'],
@@ -566,7 +602,9 @@ $template->assign_vars(array(
     'SP_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
     'CAN_ILLU1' => $can_illu1,
     'CAN_ILLU2' => $can_illu2,
-    'CAN_ILLU3' => $can_illu3
+    'CAN_ILLU3' => $can_illu3,
+    'CAN_CRIT1' => $can_crit1,
+    'CAN_CRIT2' => $can_crit2
 ));
 
 $template->set_filenames(array(

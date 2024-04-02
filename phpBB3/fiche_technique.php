@@ -304,7 +304,7 @@ function get_techniques($type, $block_name) {
         }
         $template->assign_block_vars($block_name.'_loop', [
             'FT_TECHNIQUE_ID' => $row['technique_id'],
-            'FT_TECHNIQUE_SUBTYPE' => $row['technique_type'],
+            'FT_TECHNIQUE_SUBTYPE' => $row['technique_subtype'],
             'FT_TECHNIQUE_SPE' => $row['technique_spe'],
             'FT_TECHNIQUE_RANK' => $row['technique_rank'],
             'FT_TECHNIQUE_NAME' => $row['technique_name'],

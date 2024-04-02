@@ -140,12 +140,14 @@
     </form>
     <!-- ENDIF -->
 
+    <!-- IF CAN_ILLU3 && SP_GENJUTSU == 8 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu3_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="75">
         <h1>Talent : Illusionniste+++</h1>
         Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 30% (évolution d'Illusionniste++). <em>(75 points de compétence)</em>.
         <input type="submit" name="sp_illu3" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
     </form>
+    <!-- ENDIF -->
 
     <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Illusions démoniaques" && SP_SPIRIT == 8 && SP_GENJUTSU == 8 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demonic_callback" data-refresh="true">
@@ -171,6 +173,24 @@
         <h1>Spécialisation : Troisième arme</h1>
         Acheter la maîtrise d'un troisième type d'arme. <em>(100 points de compétence)</em>.
         <input type="submit" name="sp_third_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_CRIT1 && SP_SPEED >= 4 && SP_TAIJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_crit1_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Talent : Critique+</h1>
+        Acheter le talent vous permettant d'ajouter 5 points de dégâts de plus à vos techniques de Taijutsu si vous attaquez le premier. <em>(50 points de compétence)</em>.
+        <input type="submit" name="sp_crit1" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_CRIT2 && SP_SPEED == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_crit2_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Talent : Critique++</h1>
+        Acheter le talent vous permettant d'ajouter 10 points de dégâts de plus à vos techniques de Taijutsu si vous attaquez le premier (évolution de Critique+). <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_crit2" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
     </form>
     <!-- ENDIF -->
 

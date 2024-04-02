@@ -159,6 +159,18 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('sp_crit1_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Critique+ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_crit2_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Critique++ !");
+            window.location.reload(true);
+        }
+    });
 
     //HIDEN & KG
     phpbb.addAjaxCallback('sp_kugutsu_callback', function(r) {
