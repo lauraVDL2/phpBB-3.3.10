@@ -136,4 +136,12 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('pf_reset_callback', function(re) {
+        console.log("ok");
+        console.log(re.action);
+        if(re.action === "PF_RESET") {
+            window.confirm("Le reset a été effectué !");
+            window.location.reload(true);
+        }
+    });
 });

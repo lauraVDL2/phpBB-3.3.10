@@ -920,7 +920,45 @@ switch ($mode)
 			$pf_give_first_hiden_button = $request->variable('pf_give_first_hiden_button', '');
 			$pf_give_second_hiden_button = $request->variable('pf_give_second_hiden_button', '');
 			$pf_erase_second_hiden_button = $request->variable('pf_erase_second_hiden_button', '');
-			if($gain_level_button) {
+			$pf_reset_button = $request->variable('pf_reset_button', '');
+			if($pf_reset_button) {
+				$sql = 'UPDATE '.USERS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
+					'user_rp_rank' => 'Genin',
+					'talent_points' => 0,
+					'user_first_element' => '',
+					'user_second_element' => '',
+					'user_third_element' => '',
+					'user_level' => 1,
+					'user_experience' => 0,
+					'user_attributes_to_use' => 12,
+					'user_attributes_total' => 12,
+				])." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.USER_TECHNIQUES_TABLE." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.USER_TALENTS_TABLE." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.RELATIONSHIPS_TABLE." WHERE relationship_user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.MISSION_USERS_TABLE." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.GAINED_TECHNIQUES_TABLE." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'INSERT INTO '.GAINED_TECHNIQUES_TABLE.' '.$db->sql_build_array('INSERT', [
+					'user_id' => $user_id
+				]);
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.ATTRIBUTES_TABLE." WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'INSERT INTO '.ATTRIBUTES_TABLE.' '.$db->sql_build_array('INSERT', [
+					'user_id' => $user_id
+				]);
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_RESET'
+				]);
+			}
+			else if($gain_level_button) {
 				$to_level = (int)$request->variable('pf_gain_level', 0) + (int)$level;
 				$experience = 0;
 				for($i = $level; $i < $to_level; $i++) $experience += $levels[$i];

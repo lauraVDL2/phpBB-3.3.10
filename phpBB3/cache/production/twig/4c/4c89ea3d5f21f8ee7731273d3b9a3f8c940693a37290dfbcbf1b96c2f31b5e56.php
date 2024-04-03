@@ -651,42 +651,50 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t<form method=\"post\" action=\"";
             // line 147
             echo ($context["U_ACTION"] ?? null);
+            echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_reset_callback\" data-refresh=\"true\">
+\t\t\t<h3>Reset du personnage</h3>
+\t\t\t<div>Reset entièrement le personnage (cas reroll), <strong>attention irreversible !</strong></div>
+\t\t\t<input type=\"submit\" value=\"Reset du personnage\" name=\"pf_reset_button\">
+\t\t</form>
+\t\t<form method=\"post\" action=\"";
+            // line 152
+            echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_gain_rank_callback\" data-refresh=\"true\">
 \t\t\t<h3>Changer le rang</h3>
 \t\t\t<div>Rang actuel : ";
-            // line 149
+            // line 154
             echo ($context["PF_RP_RANK"] ?? null);
             echo "</div>
 \t\t\t<input type=\"hidden\" value=\"";
-            // line 150
+            // line 155
             echo ($context["PF_RP_RANK"] ?? null);
             echo "\" name=\"pf_current_rank\">
 \t\t\t";
-            // line 151
+            // line 156
             if ((($context["PF_RP_RANK"] ?? null) != "Kage")) {
                 echo "<input type=\"submit\" value=\"Passer au rang suivant\" name=\"pf_gain_rank_button\">";
             }
-            // line 152
+            // line 157
             echo "\t\t</form>
 \t\t<form method=\"post\" action=\"";
-            // line 153
+            // line 158
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_gain_level_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner des niveaux</h3>
 \t\t\t<div>Personnage de niveau ";
-            // line 155
+            // line 160
             echo ($context["PF_LEVEL"] ?? null);
             echo " pouvant gagner ";
             echo ($context["PF_LEVEL_DIFFERENCE"] ?? null);
             echo " niveaux.</div>
 \t\t\t<input type=\"number\" max=\"";
-            // line 156
+            // line 161
             echo ($context["PF_LEVEL_DIFFERENCE"] ?? null);
             echo "\" min=\"1\" name=\"pf_gain_level\" id=\"pf_gain_level\">
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_gain_level_button\">
 \t\t</form>
 \t\t<form method=\"post\" action=\"";
-            // line 159
+            // line 164
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_gain_exp_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner de l'expérience</h3>
@@ -694,36 +702,36 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_gain_exp_button\">
 \t\t</form>
 \t\t<form method=\"post\" action=\"";
-            // line 164
+            // line 169
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_skillpoints_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner des points de compétence</h3>
 \t\t\t<div>Le personnage possède ";
-            // line 166
+            // line 171
             echo ($context["PF_SKILLPOINTS"] ?? null);
             echo " points de compétence.</div>
 \t\t\t<input type=\"number\" name=\"pf_give_skillpoints\" min=\"1\" id=\"pf_give_skillpoints\">
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_give_skillpoints_button\">
 \t\t</form>
 \t\t<form method=\"post\" action=\"";
-            // line 170
+            // line 175
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_influence_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner des points d'influence</h3>
 \t\t\t<div>Le groupe de ce personnage possède ";
-            // line 172
+            // line 177
             echo ($context["PF_INFLUENCE_POINTS"] ?? null);
             echo " points d'influence.</div>
 \t\t\t<input type=\"number\" name=\"pf_give_influence\" min=\"1\" id=\"pf_give_influence\">
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_give_influence_button\">
 \t\t</form>
 \t\t<form method=\"post\" action=\"";
-            // line 176
+            // line 181
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_technique_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner une technique</h3>
 \t\t\t";
-            // line 178
+            // line 183
             echo ($context["PF_TECHNIQUES_INFO"] ?? null);
             echo "
 \t\t\t<select name=\"pf_technique_select\">
@@ -736,66 +744,66 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_give_techniques_button\">
 \t\t</form>
 \t\t";
-            // line 188
+            // line 193
             if ( !($context["PF_IS_JINCHURIKI"] ?? null)) {
-                // line 189
+                // line 194
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_jinchuriki_callback\" data-refresh=\"true\">
 \t\t\t<h3>Donner un démon à queues</h3>
 \t\t\t<select name=\"pf_jinchuriki_select\">
 \t\t\t\t";
-                // line 192
+                // line 197
                 if ( !($context["IS_CHUKAKU"] ?? null)) {
                     echo "<option value=\"Shukaku\">Shukaku</option>";
                 }
-                // line 193
+                // line 198
                 echo "\t\t\t\t";
                 if ( !($context["IS_MATATABI"] ?? null)) {
                     echo "<option value=\"Matatabi\">Matatabi</option>";
                 }
-                // line 194
+                // line 199
                 echo "\t\t\t\t";
                 if ( !($context["IS_ISOBU"] ?? null)) {
                     echo "<option value=\"Isobu\">Isobu</option>";
                 }
-                // line 195
+                // line 200
                 echo "\t\t\t\t";
                 if ( !($context["IS_SON_GOKU"] ?? null)) {
                     echo "<option value=\"Son Gokû\">Son Gokû</option>";
                 }
-                // line 196
+                // line 201
                 echo "\t\t\t\t";
                 if ( !($context["IS_KUKUO"] ?? null)) {
                     echo "<option value=\"Kukuô\">Kukuô</option>";
                 }
-                // line 197
+                // line 202
                 echo "\t\t\t\t";
                 if ( !($context["IS_SAIKEN"] ?? null)) {
                     echo "<option value=\"Saiken\">Saiken</option>";
                 }
-                // line 198
+                // line 203
                 echo "\t\t\t\t";
                 if ( !($context["IS_CHOMEI"] ?? null)) {
                     echo "<option value=\"Chômei\">Chômei</option>";
                 }
-                // line 199
+                // line 204
                 echo "\t\t\t\t";
                 if ( !($context["IS_GUIKI"] ?? null)) {
                     echo "<option value=\"Gyûki\">Gyûki</option>";
                 }
-                // line 200
+                // line 205
                 echo "\t\t\t\t";
                 if ( !($context["IS_KURAMA"] ?? null)) {
                     echo "<option value=\"Kurama\">Kurama</option>";
                 }
-                // line 201
+                // line 206
                 echo "\t\t\t</select>
 \t\t\t<input type=\"submit\" value=\"Valider\" name=\"pf_give_jinchuriki_button\">
 \t\t</form>
 \t\t";
             } else {
-                // line 205
+                // line 210
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_jinchuriki_callback\" data-refresh=\"true\">
@@ -805,10 +813,10 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             }
-            // line 211
+            // line 216
             echo "\t\t";
             if ( !($context["PF_IS_OVERSPECIALIZED"] ?? null)) {
-                // line 212
+                // line 217
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_overspecialization_callback\" data-refresh=\"true\">
@@ -818,7 +826,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             } else {
-                // line 218
+                // line 223
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_overspecialization_callback\" data-refresh=\"true\">
@@ -828,10 +836,10 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             }
-            // line 224
+            // line 229
             echo "\t\t";
             if ( !($context["PF_FIRST_KG"] ?? null)) {
-                // line 225
+                // line 230
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_first_kg_callback\" data-refresh=\"true\">
@@ -861,23 +869,23 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             } else {
-                // line 251
+                // line 256
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_first_kg_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le premier Kekkei Genkai</h3>
 \t\t\t<div>Le personnage possède le Kekkei Genkai suivant : ";
-                // line 253
+                // line 258
                 echo ($context["PF_FIRST_KG"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Kekkei Genkai\" name=\"pf_erase_first_kg_button\">
 \t\t</form>
 \t\t";
             }
-            // line 257
+            // line 262
             echo "\t\t";
             if ( !($context["PF_SECOND_KG"] ?? null)) {
-                // line 258
+                // line 263
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_second_kg_callback\" data-refresh=\"true\">
@@ -885,118 +893,118 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<div>Prévu pour des cas particuliers, le second Kekkei Genkai sera disponible sur la Fiche Technique.</div>
 \t\t\t<select name=\"pf_second_kg_select\">
 \t\t\t\t";
-                // line 262
+                // line 267
                 if ((($context["PF_FIRST_KG"] ?? null) != "Sharingan")) {
                     echo "<option value=\"Sharingan\">Sharingan</option>";
                 }
-                // line 263
+                // line 268
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Mokuton")) {
                     echo "<option value=\"Mokuton\">Mokuton</option>";
                 }
-                // line 264
+                // line 269
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Byakugan")) {
                     echo "<option value=\"Byakugan\">Byakugan</option>";
                 }
-                // line 265
+                // line 270
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Shikotsumyaku")) {
                     echo "<option value=\"Shikotsumyaku\">Shikotsumyaku</option>";
                 }
-                // line 266
+                // line 271
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Hyôton")) {
                     echo "<option value=\"Hyôton\">Hyôton</option>";
                 }
-                // line 267
+                // line 272
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Futton")) {
                     echo "<option value=\"Futton\">Futton</option>";
                 }
-                // line 268
+                // line 273
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Jiton")) {
                     echo "<option value=\"Jiton\">Jiton</option>";
                 }
-                // line 269
+                // line 274
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Shakuton")) {
                     echo "<option value=\"Shakuton\">Shakuton</option>";
                 }
-                // line 270
+                // line 275
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Yoton")) {
                     echo "<option value=\"Yoton\">Yoton</option>";
                 }
-                // line 271
+                // line 276
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Fuuton")) {
                     echo "<option value=\"Fuuton\">Fuuton</option>";
                 }
-                // line 272
+                // line 277
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Bakuton")) {
                     echo "<option value=\"Bakuton\">Bakuton</option>";
                 }
-                // line 273
+                // line 278
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Shôton")) {
                     echo "<option value=\"Shôton\">Shôton</option>";
                 }
-                // line 274
+                // line 279
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Shouraigan")) {
                     echo "<option value=\"Shouraigan\">Shouraigan</option>";
                 }
-                // line 275
+                // line 280
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Ketsuryugan")) {
                     echo "<option value=\"Ketsuryugan\">Ketsuryugan</option>";
                 }
-                // line 276
+                // line 281
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Ranton")) {
                     echo "<option value=\"Ranton\">Ranton</option>";
                 }
-                // line 277
+                // line 282
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Shokuton")) {
                     echo "<option value=\"Shokuton\">Shokuton</option>";
                 }
-                // line 278
+                // line 283
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Kôton")) {
                     echo "<option value=\"Kôton\">Kôton</option>";
                 }
-                // line 279
+                // line 284
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_KG"] ?? null) != "Meiton")) {
                     echo "<option value=\"Meiton\">Meiton</option>";
                 }
-                // line 280
+                // line 285
                 echo "\t\t\t</select>
 \t\t\t<input type=\"submit\" value=\"Donner le Kekkei Genkai\" name=\"pf_give_second_kg_button\">
 \t\t</form>
 \t\t";
             } else {
-                // line 284
+                // line 289
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_second_kg_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le second Kekkei Genkai</h3>
 \t\t\t<div>Le personnage possède le Kekkei Genkai suivant : ";
-                // line 286
+                // line 291
                 echo ($context["PF_SECOND_KG"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Kekkei Genkai\" name=\"pf_erase_second_kg_button\">
 \t\t</form>
 \t\t";
             }
-            // line 290
+            // line 295
             echo "\t\t";
             if ( !($context["PF_FIRST_HIDEN"] ?? null)) {
-                // line 291
+                // line 296
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_first_hiden_callback\" data-refresh=\"true\">
@@ -1021,23 +1029,23 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t</form>
 \t\t";
             } else {
-                // line 312
+                // line 317
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_first_hiden_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le premier Hiden</h3>
 \t\t\t<div>Le personnage possède le Hiden suivant : ";
-                // line 314
+                // line 319
                 echo ($context["PF_FIRST_HIDEN"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Hiden\" name=\"pf_erase_first_hiden_button\">
 \t\t</form>
 \t\t";
             }
-            // line 318
+            // line 323
             echo "\t\t";
             if ( !($context["PF_SECOND_HIDEN"] ?? null)) {
-                // line 319
+                // line 324
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_give_second_hiden_callback\" data-refresh=\"true\">
@@ -1045,99 +1053,99 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 \t\t\t<div>Pour des cas particuliers, le second Hiden sera disponible sur la Fiche Technique.</div>
 \t\t\t<select name=\"pf_second_hiden_select\">
 \t\t\t\t";
-                // line 323
+                // line 328
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Mental")) {
                     echo "<option value=\"Mental\">Mental</option>";
                 }
-                // line 324
+                // line 329
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Kugutsu")) {
                     echo "<option value=\"Kugutsu\">Kugutsu</option>";
                 }
-                // line 325
+                // line 330
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Contrôle du corps")) {
                     echo "<option value=\"Contrôle du corps\">Contrôle du corps</option>";
                 }
-                // line 326
+                // line 331
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Ombres")) {
                     echo "<option value=\"Ombres\">Ombres</option>";
                 }
-                // line 327
+                // line 332
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chaînes")) {
                     echo "<option value=\"Chaînes\">Chaînes</option>";
                 }
-                // line 328
+                // line 333
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Seijutsu")) {
                     echo "<option value=\"Seijutsu\">Seijutsu</option>";
                 }
-                // line 329
+                // line 334
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Torijutsu")) {
                     echo "<option value=\"Torijutsu\">Torijutsu</option>";
                 }
-                // line 330
+                // line 335
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Hachijutsu")) {
                     echo "<option value=\"Hachijutsu\">Hachijutsu</option>";
                 }
-                // line 331
+                // line 336
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Modification corporelle")) {
                     echo "<option value=\"Modification corporelle\">Modification corporelle</option>";
                 }
-                // line 332
+                // line 337
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chiens")) {
                     echo "<option value=\"Chiens\">Chiens</option>";
                 }
-                // line 333
+                // line 338
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Chats")) {
                     echo "<option value=\"Chats\">Chats</option>";
                 }
-                // line 334
+                // line 339
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Insectes")) {
                     echo "<option value=\"Insectes\">Insectes</option>";
                 }
-                // line 335
+                // line 340
                 echo "\t\t\t\t";
                 if ((($context["PF_FIRST_HIDEN"] ?? null) != "Jûken")) {
                     echo "<option value=\"Jûken\">Jûken</option>";
                 }
-                // line 336
+                // line 341
                 echo "\t\t\t</select>
 \t\t\t<input type=\"submit\" value=\"Donner le Hidden\" name=\"pf_give_second_hiden_button\">
 \t\t</form>
 \t\t";
             } else {
-                // line 340
+                // line 345
                 echo "\t\t<form method=\"post\" action=\"";
                 echo ($context["U_ACTION"] ?? null);
                 echo "\" accept-charset=\"utf-8\" data-ajax=\"pf_erase_second_hiden_callback\" data-refresh=\"true\">
 \t\t\t<h3>Retirer le second Hiden</h3>
 \t\t\t<div>Le personnage possède le Hiden suivant : ";
-                // line 342
+                // line 347
                 echo ($context["PF_SECOND_HIDEN"] ?? null);
                 echo ", vous pouvez le retirer.</div>
 \t\t\t<input type=\"submit\" value=\"Retirer le Hiden\" name=\"pf_erase_second_hiden_button\">
 \t\t</form>
 \t\t";
             }
-            // line 346
+            // line 351
             echo "\t</div>
 \t";
         }
-        // line 348
+        // line 353
         echo "
 </div>
 
 ";
-        // line 351
+        // line 356
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -1145,7 +1153,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "memberlist_view.html", 351)->display($context);
+        $this->loadTemplate("overall_footer.html", "memberlist_view.html", 356)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -1163,7 +1171,7 @@ class __TwigTemplate_3903d0f553feff5e8752cd08ce0fd578d937330b5e49eda2096c40839d5
 
     public function getDebugInfo()
     {
-        return array (  1141 => 351,  1136 => 348,  1132 => 346,  1125 => 342,  1119 => 340,  1113 => 336,  1108 => 335,  1103 => 334,  1098 => 333,  1093 => 332,  1088 => 331,  1083 => 330,  1078 => 329,  1073 => 328,  1068 => 327,  1063 => 326,  1058 => 325,  1053 => 324,  1049 => 323,  1041 => 319,  1038 => 318,  1031 => 314,  1025 => 312,  1000 => 291,  997 => 290,  990 => 286,  984 => 284,  978 => 280,  973 => 279,  968 => 278,  963 => 277,  958 => 276,  953 => 275,  948 => 274,  943 => 273,  938 => 272,  933 => 271,  928 => 270,  923 => 269,  918 => 268,  913 => 267,  908 => 266,  903 => 265,  898 => 264,  893 => 263,  889 => 262,  881 => 258,  878 => 257,  871 => 253,  865 => 251,  835 => 225,  832 => 224,  822 => 218,  812 => 212,  809 => 211,  799 => 205,  793 => 201,  788 => 200,  783 => 199,  778 => 198,  773 => 197,  768 => 196,  763 => 195,  758 => 194,  753 => 193,  749 => 192,  742 => 189,  740 => 188,  727 => 178,  722 => 176,  715 => 172,  710 => 170,  703 => 166,  698 => 164,  690 => 159,  684 => 156,  678 => 155,  673 => 153,  670 => 152,  666 => 151,  662 => 150,  658 => 149,  653 => 147,  649 => 145,  634 => 144,  632 => 143,  629 => 142,  617 => 141,  614 => 140,  613 => 139,  608 => 136,  600 => 131,  595 => 129,  590 => 126,  588 => 125,  585 => 124,  584 => 123,  577 => 118,  575 => 117,  555 => 115,  535 => 114,  533 => 113,  530 => 112,  517 => 111,  508 => 110,  498 => 109,  492 => 108,  464 => 106,  458 => 105,  456 => 104,  449 => 103,  441 => 102,  440 => 101,  435 => 99,  429 => 95,  421 => 93,  418 => 92,  415 => 91,  413 => 90,  407 => 89,  404 => 88,  398 => 86,  390 => 84,  388 => 83,  382 => 82,  379 => 81,  374 => 80,  372 => 79,  353 => 78,  341 => 77,  330 => 76,  324 => 73,  318 => 69,  317 => 68,  310 => 63,  308 => 62,  305 => 61,  302 => 60,  294 => 58,  291 => 57,  283 => 55,  280 => 54,  272 => 52,  270 => 51,  263 => 50,  260 => 49,  257 => 48,  255 => 47,  253 => 46,  247 => 45,  238 => 43,  235 => 42,  230 => 41,  228 => 40,  216 => 39,  206 => 38,  196 => 37,  193 => 36,  191 => 35,  177 => 34,  167 => 33,  165 => 32,  163 => 31,  160 => 30,  151 => 29,  142 => 28,  133 => 27,  124 => 26,  114 => 25,  108 => 23,  104 => 21,  100 => 19,  98 => 18,  91 => 17,  84 => 16,  83 => 15,  79 => 14,  76 => 13,  74 => 12,  66 => 9,  62 => 8,  59 => 7,  58 => 6,  53 => 4,  49 => 2,  37 => 1,);
+        return array (  1149 => 356,  1144 => 353,  1140 => 351,  1133 => 347,  1127 => 345,  1121 => 341,  1116 => 340,  1111 => 339,  1106 => 338,  1101 => 337,  1096 => 336,  1091 => 335,  1086 => 334,  1081 => 333,  1076 => 332,  1071 => 331,  1066 => 330,  1061 => 329,  1057 => 328,  1049 => 324,  1046 => 323,  1039 => 319,  1033 => 317,  1008 => 296,  1005 => 295,  998 => 291,  992 => 289,  986 => 285,  981 => 284,  976 => 283,  971 => 282,  966 => 281,  961 => 280,  956 => 279,  951 => 278,  946 => 277,  941 => 276,  936 => 275,  931 => 274,  926 => 273,  921 => 272,  916 => 271,  911 => 270,  906 => 269,  901 => 268,  897 => 267,  889 => 263,  886 => 262,  879 => 258,  873 => 256,  843 => 230,  840 => 229,  830 => 223,  820 => 217,  817 => 216,  807 => 210,  801 => 206,  796 => 205,  791 => 204,  786 => 203,  781 => 202,  776 => 201,  771 => 200,  766 => 199,  761 => 198,  757 => 197,  750 => 194,  748 => 193,  735 => 183,  730 => 181,  723 => 177,  718 => 175,  711 => 171,  706 => 169,  698 => 164,  692 => 161,  686 => 160,  681 => 158,  678 => 157,  674 => 156,  670 => 155,  666 => 154,  661 => 152,  653 => 147,  649 => 145,  634 => 144,  632 => 143,  629 => 142,  617 => 141,  614 => 140,  613 => 139,  608 => 136,  600 => 131,  595 => 129,  590 => 126,  588 => 125,  585 => 124,  584 => 123,  577 => 118,  575 => 117,  555 => 115,  535 => 114,  533 => 113,  530 => 112,  517 => 111,  508 => 110,  498 => 109,  492 => 108,  464 => 106,  458 => 105,  456 => 104,  449 => 103,  441 => 102,  440 => 101,  435 => 99,  429 => 95,  421 => 93,  418 => 92,  415 => 91,  413 => 90,  407 => 89,  404 => 88,  398 => 86,  390 => 84,  388 => 83,  382 => 82,  379 => 81,  374 => 80,  372 => 79,  353 => 78,  341 => 77,  330 => 76,  324 => 73,  318 => 69,  317 => 68,  310 => 63,  308 => 62,  305 => 61,  302 => 60,  294 => 58,  291 => 57,  283 => 55,  280 => 54,  272 => 52,  270 => 51,  263 => 50,  260 => 49,  257 => 48,  255 => 47,  253 => 46,  247 => 45,  238 => 43,  235 => 42,  230 => 41,  228 => 40,  216 => 39,  206 => 38,  196 => 37,  193 => 36,  191 => 35,  177 => 34,  167 => 33,  165 => 32,  163 => 31,  160 => 30,  151 => 29,  142 => 28,  133 => 27,  124 => 26,  114 => 25,  108 => 23,  104 => 21,  100 => 19,  98 => 18,  91 => 17,  84 => 16,  83 => 15,  79 => 14,  76 => 13,  74 => 12,  66 => 9,  62 => 8,  59 => 7,  58 => 6,  53 => 4,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

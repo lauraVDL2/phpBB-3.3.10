@@ -70,7 +70,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
 
     ";
         // line 8
-        if ((((((($context["SP_NINJUTSU"] ?? null) >= 4) && ( !($context["SP_FIRST_HIDEN"] ?? null) ||  !($context["SP_SECOND_HIDEN"] ?? null))) && ($context["SP_IS_SUNA"] ?? null)) && (($context["SP_FIRST_HIDEN"] ?? null) != "Kugutsu")) && (($context["SP_SECOND_HIDEN"] ?? null) != "Kugutsu"))) {
+        if ((((((($context["CAN_SPE"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4)) && ( !($context["SP_FIRST_HIDEN"] ?? null) ||  !($context["SP_SECOND_HIDEN"] ?? null))) && ($context["SP_IS_SUNA"] ?? null)) && (($context["SP_FIRST_HIDEN"] ?? null) != "Kugutsu")) && (($context["SP_SECOND_HIDEN"] ?? null) != "Kugutsu"))) {
             // line 9
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -154,28 +154,28 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 44
-        if (( !($context["SP_FUIN_SEAL"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_FUIN_SEAL"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
             // line 45
-            echo "        <form method=\"post\" action=\"";
+            echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
             echo "\" accept-charset=\"utf-8\" data-ajax=\"sp_fuin_seal_callback\" data-refresh=\"true\">
-            <input type=\"hidden\" name=\"sp_price\" value=\"75\">
-            <h1>Spécialisation : Fuinjutsu (Sceaux)</h1>
-            Permet de maîtriser l'art des sceaux <em>(75 points de compétence)</em>.
-                <input type=\"submit\" name=\"sp_fuin_seal\" value=\"Acheter\" ";
+        <input type=\"hidden\" name=\"sp_price\" value=\"75\">
+        <h1>Spécialisation : Fuinjutsu (Sceaux)</h1>
+        Permet de maîtriser l'art des sceaux <em>(75 points de compétence)</em>.
+            <input type=\"submit\" name=\"sp_fuin_seal\" value=\"Acheter\" ";
             // line 49
             if ((($context["SP_TALENT_POINTS"] ?? null) < 75)) {
                 echo "disabled ";
             }
             echo " >
-        </form>
+    </form>
     ";
         }
         // line 52
         echo "
     ";
         // line 53
-        if (( !($context["SP_FUIN_BARRER"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_FUIN_BARRER"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
             // line 54
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -190,13 +190,13 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
             }
             echo " >
     </form>
-";
+    ";
         }
         // line 61
         echo "
     ";
         // line 62
-        if (( !($context["SP_KUCHIYOSE"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_KUCHIYOSE"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
             // line 63
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -217,7 +217,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 71
-        if (( !($context["SP_IROU_HEAL"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_IROU_HEAL"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
             // line 72
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -238,7 +238,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 80
-        if (( !($context["SP_IROU_POISON"] ?? null) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_IROU_POISON"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) >= 4))) {
             // line 81
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -259,7 +259,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 89
-        if ((($context["SP_FIRST_ELEMENT"] ?? null) &&  !($context["SP_IS_SECOND_ELEMENT"] ?? null))) {
+        if (((($context["CAN_SPE"] ?? null) && ($context["SP_FIRST_ELEMENT"] ?? null)) &&  !($context["SP_IS_SECOND_ELEMENT"] ?? null))) {
             // line 90
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -280,7 +280,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 98
-        if ((($context["SP_SECOND_ELEMENT"] ?? null) &&  !($context["SP_IS_THIRD_ELEMENT"] ?? null))) {
+        if (((($context["CAN_SPE"] ?? null) && ($context["SP_SECOND_ELEMENT"] ?? null)) &&  !($context["SP_IS_THIRD_ELEMENT"] ?? null))) {
             // line 99
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -301,7 +301,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 107
-        if (( !($context["SP_IS_SIGHT"] ?? null) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_IS_SIGHT"] ?? null)) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
             // line 108
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -322,7 +322,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 116
-        if (( !($context["SP_IS_SOUND"] ?? null) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
+        if (((($context["CAN_SPE"] ?? null) &&  !($context["SP_IS_SOUND"] ?? null)) && (($context["SP_GENJUTSU"] ?? null) >= 4))) {
             // line 117
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -427,7 +427,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 161
-        if (((($context["SP_FIRST_WEAPON"] ?? null) &&  !($context["SP_IS_SECOND_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 3))) {
+        if ((((($context["CAN_SPE"] ?? null) && ($context["SP_FIRST_WEAPON"] ?? null)) &&  !($context["SP_IS_SECOND_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 3))) {
             // line 162
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -448,7 +448,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 170
-        if (((($context["SP_SECOND_WEAPON"] ?? null) &&  !($context["SP_IS_THIRD_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 5))) {
+        if ((((($context["CAN_SPE"] ?? null) && ($context["SP_SECOND_WEAPON"] ?? null)) &&  !($context["SP_IS_THIRD_WEAPON"] ?? null)) && (($context["SP_TAIJUTSU"] ?? null) >= 5))) {
             // line 171
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);

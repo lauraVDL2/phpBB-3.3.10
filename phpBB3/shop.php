@@ -527,6 +527,66 @@ function get_all_talents() {
     return $talents;
 }
 
+function can_specialize() {
+    global $db, $user;
+    $specializations = 0;
+    $user_id = $user->data['user_id'];
+    $req1 = [
+        'SELECT' => 'gtt.surspecialization AS overspecialized',
+        'FROM' => [
+            GAINED_TECHNIQUES_TABLE => 'gtt'
+        ],
+        'WHERE' => "gtt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req1);
+	$query = $db->sql_query($sql);
+    $result = $db->sql_fetchrow($query)['overspecialized'];
+    if(!$result){
+        return true;
+    }
+    $req2 = [
+        'SELECT' => 'gtt.is_kuchiyose AS is_kuchiyose, gtt.is_second_element AS is_second_element, gtt.is_third_element AS is_third_element, gtt.is_irou_heal AS is_irou_heal,'
+        .'gtt.is_fuin_seal AS is_fuin_seal, gtt.is_irou_poison AS is_irou_poison, gtt.is_fuin_barrer AS is_fuin_barrer,'
+        .'gtt.is_sight AS is_sight, gtt.is_sound AS is_sound',
+        'FROM' => [
+            GAINED_TECHNIQUES_TABLE => 'gtt'
+        ],
+        'WHERE' => "gtt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req2);
+	$query = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($query)) {
+        if($row['is_sound'] || $row['is_sight']) {
+            $specializations -= 1;
+        }
+        foreach($row as $value) {
+            $specializations += (int)$value;
+        }
+    }
+    $req3 = [
+        'SELECT' => 'gtt.first_kekkei_genkai AS first_kekkei_genkai, gtt.second_kekkei_genkai AS second_kekkei_genkai, gtt.first_hidden AS first_hidden, gtt.second_hidden AS second_hidden,'
+        .'gtt.second_weapon, ut.user_second_element AS second_element, ut.user_third_element AS third_element',
+        'FROM' => [
+            GAINED_TECHNIQUES_TABLE => 'gtt'
+        ],
+        'LEFT_JOIN' => [
+            [
+                'FROM' => [ USERS_TABLE => 'ut' ],
+                'ON' => 'ut.user_id = gtt.user_id'
+            ]
+        ],
+        'WHERE' => "gtt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req3);
+	$query = $db->sql_query($sql);
+    while($row = $db->sql_fetchrow($query)) {
+        foreach($row as $value) {
+            $specializations += !empty($value);
+        }
+    }
+    return $specializations < 3;
+}
+
 function get_talent_infos() {
     global $db, $user;
     $req = [
@@ -604,7 +664,8 @@ $template->assign_vars(array(
     'CAN_ILLU2' => $can_illu2,
     'CAN_ILLU3' => $can_illu3,
     'CAN_CRIT1' => $can_crit1,
-    'CAN_CRIT2' => $can_crit2
+    'CAN_CRIT2' => $can_crit2,
+    'CAN_SPE' => can_specialize()
 ));
 
 $template->set_filenames(array(

@@ -386,13 +386,23 @@ function get_talents_ft($user_id) {
         array_push($talents, $row['talent_id']);
     }
     $param = implode(',', $talents);
-    $req = [
-        'SELECT' => 'tt.talent_title AS talent_title, tt.talent_id AS talent_id',
-        'FROM' => [
-            TALENTS_TABLE => 'tt'
-        ],
-        'WHERE' => "tt.talent_id NOT IN($param)"
-    ];
+    if($param) {
+        $req = [
+            'SELECT' => 'tt.talent_title AS talent_title, tt.talent_id AS talent_id',
+            'FROM' => [
+                TALENTS_TABLE => 'tt'
+            ],
+            'WHERE' => "tt.talent_id NOT IN($param)"
+        ];
+    }
+    else {
+        $req = [
+            'SELECT' => 'tt.talent_title AS talent_title, tt.talent_id AS talent_id',
+            'FROM' => [
+                TALENTS_TABLE => 'tt'
+            ],
+        ];
+    }
     $sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {

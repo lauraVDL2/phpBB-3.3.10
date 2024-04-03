@@ -144,6 +144,11 @@
 	<!-- INCLUDEJS profile_admin.js -->
 	<div class="pf_title">Administrateur</div>
 	<div class="pf_field">
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_reset_callback" data-refresh="true">
+			<h3>Reset du personnage</h3>
+			<div>Reset entièrement le personnage (cas reroll), <strong>attention irreversible !</strong></div>
+			<input type="submit" value="Reset du personnage" name="pf_reset_button">
+		</form>
 		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_rank_callback" data-refresh="true">
 			<h3>Changer le rang</h3>
 			<div>Rang actuel : {PF_RP_RANK}</div>
