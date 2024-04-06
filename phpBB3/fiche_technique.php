@@ -286,19 +286,40 @@ function get_techniques($type, $block_name) {
                     $damage = $s_life[$cost];
                 }
             }
+            //TALENTS CASE
             $query_talents = get_talents_from_user($ft_user_id);
             while($row_talents = $db->sql_fetchrow($query_talents)) {
                 $talent_title = $row_talents['talent_title'];
                 if($row['technique_type'] == 'Genjutsu') {
                     if($talent_title == 'Illusionniste+') {
-                        $chakra = $chakra - round($chakra*0.10);
+                        $chakra -= round($chakra*0.10);
                     }
                     else if($talent_title == 'Illusionniste++') {
-                        $chakra = $chakra - round($chakra*0.20);
+                        $chakra -= round($chakra*0.20);
                     }
                     else if($talent_title == 'Illusionniste+++') {
-                        $chakra = $chakra - round($chakra*0.30);
+                        $chakra -= round($chakra*0.30);
                     }
+                }
+                if($row['technique_type'] == 'Ninjutsu') {
+                    if($talent_title == 'Généraliste+') {
+                        $chakra -= round($chakra*0.10);
+                    }
+                    else if($talent_title == 'Généraliste++') {
+                        $chakra -= round($chakra*0.20);
+                    }
+                    else if($talent_title == 'Généraliste+++') {
+                        $chakra -= round($chakra*0.30);
+                    }
+                }
+            }
+            //ELITE CASE
+            if($offensive) {
+                $elites = get_ft_elites($ft_user_id);
+                $jinchuriki = is_jinchuriki($ft_user_id);
+                if($row['technique_subtype'] == $elites['first_elite'] || $row['technique_subtype'] == $elites['second_elite'] || $row['technique_spe'] == $elites['first_elite'] 
+                    || $row['technique_spe'] == $elites['second_elite'] || $row['technique_subtype'] == $jinchuriki || $row['technique_spe'] == $jinchuriki) {
+                    $damage += round($damage*0.15);
                 }
             }
         }
@@ -364,6 +385,20 @@ function get_talents_display_ft($user_id) {
             'FT_TALENT_DESCRIPTION' => $row['talent_description']
         ]);
     }
+}
+
+function get_ft_elites($user_id) {
+    global $db;
+    $req = [
+        'SELECT' => 'gtt.first_elite AS first_elite, gtt.second_elite AS second_elite',
+        'FROM' => [
+            GAINED_TECHNIQUES_TABLE => 'gtt'
+        ],
+        'WHERE' => "gtt.user_id = $user_id"
+    ];
+    $sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+    return $db->sql_fetchrow($query);
 }
 
 /**

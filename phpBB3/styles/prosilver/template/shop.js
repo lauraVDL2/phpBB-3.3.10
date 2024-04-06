@@ -43,6 +43,60 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('sp_gen1_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Généraliste+ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_gen2_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Généraliste++ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_gen3_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Généraliste+++ !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_senjutsu_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Senjutsu !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_hiraishin_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Hiraishin !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_jinton_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Jinton !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_gyoton_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Gyôton !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_kyoton_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Kyôton !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_cursed_seal_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Marque maudite !");
+            window.location.reload(true);
+        }
+    });
 
     //GAIN NEW TECHNIQUE
     phpbb.addAjaxCallback('sp_d_technique_callback', function(r) {

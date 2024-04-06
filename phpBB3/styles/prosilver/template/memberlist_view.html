@@ -348,6 +348,19 @@
 			<input type="submit" value="Retirer le Hiden" name="pf_erase_second_hiden_button">
 		</form>
 		<!-- ENDIF -->
+		<!-- IF !PF_CURSE_SEAL -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_curse_callback" data-refresh="true">
+			<h3>Débloquer la marque maudite</h3>
+			<div>Débloque la spé élite marque maudite sur l'arbre de compétences de l'utilisateur.</div>
+			<input type="submit" value="Donner la marque maudite" name="pf_give_curse_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_remove_curse_callback" data-refresh="true">
+			<h3>Retirer la marque maudite</h3>
+			<div>Retire la spé élite marque maudite sur l'arbre de compétences de l'utilisateur.</div>
+			<input type="submit" value="Retirer la marque maudite" name="pf_remove_curse_button">
+		</form>
+		<!-- ENDIF -->
 	</div>
 	<!-- ENDIF -->
 

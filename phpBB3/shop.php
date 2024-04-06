@@ -55,6 +55,15 @@ if($request->is_ajax()) {
     $sp_illu3 = $request->variable('sp_illu3', '');
     $sp_crit1 = $request->variable('sp_crit1', '');
     $sp_crit2 = $request->variable('sp_crit2', '');
+    $sp_gen1 = $request->variable('sp_gen1', '');
+    $sp_gen2 = $request->variable('sp_gen2', '');
+    $sp_gen3 = $request->variable('sp_gen3', '');
+    $sp_senjutsu = $request->variable('sp_senjutsu', '');
+    $sp_hiraishin = $request->variable('sp_hiraishin', '');
+    $sp_jinton = $request->variable('sp_jinton', '');
+    $sp_gyoton = $request->variable('sp_gyoton', '');
+    $sp_kyoton = $request->variable('sp_kyoton', '');
+    $sp_cursed_seal = $request->variable('sp_cursed_seal', '');
     $user_id = $user->data['user_id'];
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
@@ -134,7 +143,113 @@ if($request->is_ajax()) {
             ],
         );
     }
-
+    //NINJUTSU TALENT : GEN1
+    else if($sp_gen1) {
+        $talent_id = get_talent_id('Généraliste+');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //NINJUTSU TALENT : GEN2
+    else if($sp_gen2) {
+        delete_talent_by_name('Généraliste+');
+        $talent_id = get_talent_id('Généraliste++');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //NINJUTSU TALENT : GEN3
+    else if($sp_gen3) {
+        delete_talent_by_name('Généraliste++');
+        $talent_id = get_talent_id('Généraliste+++');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
+    //ELITE NINJUTSU : SENJUTSU
+    else if ($sp_senjutsu) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Senjutsu')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE NINJUTSU : HIRAISHIN
+    else if ($sp_hiraishin) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Hiraishin')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE NINJUTSU : JINTON
+    else if ($sp_jinton) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Jinton')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE NINJUTSU : GYOTON
+    else if ($sp_gyoton) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Gyôton')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE NINJUTSU : KYOTON
+    else if ($sp_kyoton) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Kyôton')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //ELITE NINJUTSU : CURSED SEAL
+    else if ($sp_cursed_seal) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Marque maudite')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
     //D TECHNIQUE
     else if($sp_d_technique) {
         $sp_price = $request->variable('sp_price', 0);
@@ -619,10 +734,22 @@ $can_first_elite = !$infos['first_elite'] && $infos['level'] >= 20;
 $can_second_elite = !$infos['second_elite'] && $infos['rp_rank'] == 'Kage' && $infos['level'] >= 20;
 $talents_row = get_all_talents();
 $can_illu1 = !in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_gen1 = !in_array('Généraliste+', $talents_row) && !in_array('Généraliste++', $talents_row) && !in_array('Généraliste+++', $talents_row);
 $can_illu2 = in_array('Illusionniste+', $talents_row) && !in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_gen2 = in_array('Généraliste+', $talents_row) && !in_array('Généraliste++', $talents_row) && !in_array('Généraliste+++', $talents_row);
 $can_illu3 = !in_array('Illusionniste+', $talents_row) && in_array('Illusionniste++', $talents_row) && !in_array('Illusionniste+++', $talents_row);
+$can_gen3 = !in_array('Généraliste+', $talents_row) && in_array('Généraliste++', $talents_row) && !in_array('Généraliste+++', $talents_row);
 $can_crit1 = !in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
 $can_crit2 = in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
+
+$elements = array();
+array_push($elements, $infos['first_element']);
+array_push($elements, $infos['second_element']);
+array_push($elements, $infos['third_element']);
+
+$can_jinton = in_array('Doton', $elements) && in_array('Katon', $elements) && in_array('Fûton', $elements);
+$can_gyoton = in_array('Suiton', $elements) && in_array('Raiton', $elements) && in_array('Fûton',  $elements);
+$can_kyoton = in_array('Suiton', $elements) && in_array('Fûton', $elements) && in_array('Doton', $elements);
 
 $template->assign_vars(array(
     'SP_TALENT_POINTS' => $infos['talent_points'],
@@ -660,11 +787,21 @@ $template->assign_vars(array(
     'SP_SHARINGAN' => $infos['first_kekkei_genkai'] == 'Sharingan' || $infos['second_kekkei_genkai'] == 'Sharingan',
     'SP_MOKUTON' => $infos['first_kekkei_genkai'] == 'Mokuton' || $infos['second_kekkei_genkai'] == 'Mokuton',
     'SP_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
+    'SP_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
+    'SP_IS_KIRI' => my_group(get_group_by_name('Kirigakure'), $user->data['user_id']),
+    'SP_IS_KUMO' => my_group(get_group_by_name('Kumogakure'), $user->data['user_id']),
+    'SP_CAN_KYOTON' => $can_kyoton,
+    'SP_CAN_JINTON' => $can_jinton,
+    'SP_CAN_GYOTON' => $can_gyoton,
+    'SP_CAN_CURSE' => get_curse_seal_unlocked($user->data['user_id']),
     'CAN_ILLU1' => $can_illu1,
     'CAN_ILLU2' => $can_illu2,
     'CAN_ILLU3' => $can_illu3,
     'CAN_CRIT1' => $can_crit1,
     'CAN_CRIT2' => $can_crit2,
+    'CAN_GEN1' => $can_gen1,
+    'CAN_GEN2' => $can_gen2,
+    'CAN_GEN3' => $can_gen3,
     'CAN_SPE' => can_specialize()
 ));
 

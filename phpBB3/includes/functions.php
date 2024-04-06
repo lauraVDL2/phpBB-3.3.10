@@ -211,6 +211,20 @@ function get_group_by_name($group_name) {
 	return $db->sql_fetchrow($query)['group_id'] ?? -1;
 }
 
+function get_curse_seal_unlocked($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'gtt.can_curse_seal',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gtt'
+		],
+		'WHERE' => "user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['can_curse_seal'];
+}
+
 function get_attributes($user_id) {
 	global $db;
 	$req = [

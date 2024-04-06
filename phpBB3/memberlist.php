@@ -920,6 +920,8 @@ switch ($mode)
 			$pf_give_first_hiden_button = $request->variable('pf_give_first_hiden_button', '');
 			$pf_give_second_hiden_button = $request->variable('pf_give_second_hiden_button', '');
 			$pf_erase_second_hiden_button = $request->variable('pf_erase_second_hiden_button', '');
+			$pf_give_curse_button = $request->variable('pf_give_curse_button', '');
+			$pf_remove_curse_button = $request->variable('pf_remove_curse_button', '');
 			$pf_reset_button = $request->variable('pf_reset_button', '');
 			if($pf_reset_button) {
 				$sql = 'UPDATE '.USERS_TABLE.' SET '.$db->sql_build_array('UPDATE', [
@@ -1213,6 +1215,20 @@ switch ($mode)
 					'action' => 'PF_ERASE_SECOND_HIDEN'
 				]);
 			}
+			else if($pf_give_curse_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE." SET can_curse_seal = 1 WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_GIVE_CURSE'
+				]);
+			}
+			else if($pf_remove_curse_button) {
+				$sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE." SET can_curse_seal = 0 WHERE user_id = $user_id";
+				$db->sql_query($sql);
+				return $json_response->send([
+					'action' => 'PF_REMOVE_CURSE'
+				]);
+			}
 		}
 
 		$specials = get_specials($user_id);
@@ -1232,6 +1248,7 @@ switch ($mode)
 			'PF_SECOND_KG' => $specials['second_kg'],
 			'PF_FIRST_HIDEN' => $specials['first_hiden'],
 			'PF_SECOND_HIDEN' => $specials['second_hiden'],
+			'PF_CURSE_SEAL' => get_curse_seal_unlocked($user_id),
 			'PF_IS_OVERSPECIALIZED' => is_overspecialized($user_id),
 			'PF_IS_JINCHURIKI' => is_jinchuriki($user_id),
 			'PF_TECHNIQUES_INFO' => get_techniques_count($user_id),

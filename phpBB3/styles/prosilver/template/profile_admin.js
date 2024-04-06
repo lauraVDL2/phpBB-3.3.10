@@ -137,10 +137,20 @@ jQuery(function($) {
         }
     });
     phpbb.addAjaxCallback('pf_reset_callback', function(re) {
-        console.log("ok");
-        console.log(re.action);
         if(re.action === "PF_RESET") {
             window.confirm("Le reset a été effectué !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_give_curse_callback', function(re) {
+        if(re.action === "PF_GIVE_CURSE") {
+            window.confirm("La marque maudite peut maintenant apparaître sur l'arbre de compétences !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('pf_remove_curse_callback', function(re) {
+        if(re.action === "PF_REMOVE_CURSE") {
+            window.confirm("La marque maudite n'est plus sur l'arbre de compétences !");
             window.location.reload(true);
         }
     });
