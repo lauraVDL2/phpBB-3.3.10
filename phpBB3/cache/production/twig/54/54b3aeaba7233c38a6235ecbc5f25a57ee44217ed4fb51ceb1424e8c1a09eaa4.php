@@ -677,15 +677,20 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
                 echo "<option value=\"Marque maudite\">Marque maudite</option>";
             }
             // line 184
+            echo "                    ";
+            if (((($context["FT_FIRST_ELITE"] ?? null) == "Manteau de chakra") || (($context["FT_SECOND_ELITE"] ?? null) == "Manteau de chakra"))) {
+                echo "<option value=\"Manteau de chakra\">Manteau de chakra</option>";
+            }
+            // line 185
             echo "                </select>
                 <select id=\"technique_hiden_type\" class=\"second_ft_select\" name=\"technique_hiden_type\">
                     <option value=\"\"></option>
                     ";
-            // line 187
+            // line 188
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Hitokugutsu") || (($context["FT_SECOND_ELITE"] ?? null) == "Hitokugutsu"))) {
                 echo "<option value=\"Hitokugutsu\">Hitokugutsu</option>";
             }
-            // line 188
+            // line 189
             echo "                    <option value=\"Kugutsu\">Kugutsu</option>
                     <option value=\"Mental\">Mental</option>
                     <option value=\"Contrôle du corps\">Contrôle du corps</option>
@@ -703,16 +708,16 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
                 <select id=\"technique_kg_type\" class=\"second_ft_select\" name=\"technique_kg_type\">
                     <option value=\"\"></option>
                     ";
-            // line 204
+            // line 205
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Mangekyô") || (($context["FT_SECOND_ELITE"] ?? null) == "Mangekyô"))) {
                 echo "<option value=\"Mangekyô\">Mangekyô</option>";
             }
-            // line 205
+            // line 206
             echo "                    ";
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Hashirama") || (($context["FT_SECOND_ELITE"] ?? null) == "Hashirama"))) {
                 echo "<option value=\"Hashirama\">Hashirama</option>";
             }
-            // line 206
+            // line 207
             echo "                    <option value=\"Sharingan\">Sharingan</option>
                     <option value=\"Mokuton\">Mokuton</option>
                     <option value=\"Byakugan\">Byakugan</option>
@@ -737,237 +742,237 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
                     <option value=\"Gôken\">Gôken</option>
                     <option value=\"Bukijutsu\">Bukijutsu</option>
                     ";
-            // line 229
+            // line 230
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Hachimon") || (($context["FT_SECOND_ELITE"] ?? null) == "Hachimon"))) {
                 echo "<option value=\"Hachimon\">Hachimon</option>";
             }
-            // line 230
+            // line 231
             echo "                    ";
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Nintaijutsu") || (($context["FT_SECOND_ELITE"] ?? null) == "Nintaijutsu"))) {
                 echo "<option value=\"Nintaijutsu\">Nintaijutsu</option>";
             }
-            // line 231
+            // line 232
             echo "                </select>
                 <select id=\"technique_gj_type\" class=\"second_ft_select\" name=\"technique_gj_type\">
                     <option value=\"\"></option>
                     ";
-            // line 234
+            // line 235
             if (($context["FT_SIGHT"] ?? null)) {
                 echo "<option value=\"Vue\">Vue</option>";
             }
-            // line 235
+            // line 236
             echo "                    ";
             if (($context["FT_SOUND"] ?? null)) {
                 echo "<option value=\"Son\">Son</option>";
             }
-            // line 236
+            // line 237
             echo "                    ";
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Illusions démoniaques") || (($context["FT_SECOND_ELITE"] ?? null) == "Illusions démoniaques"))) {
                 echo "<option value=\"Illusions démoniaques\">Illusions démoniaques</option>";
             }
-            // line 237
+            // line 238
             echo "                </select>
                 <select id=\"buki_ft_type\" class=\"second_type_select\" name=\"buki_ft_type\">
                     <option value=\"\"></option>
                     ";
-            // line 240
+            // line 241
             if ((((($context["FT_FIRST_WEAPON"] ?? null) == "Kenjutsu") || (($context["FT_SECOND_WEAPON"] ?? null) == "Kenjutsu")) || (($context["FT_THIRD_WEAPON"] ?? null) == "Kenjutsu"))) {
                 echo "<option value=\"Kenjutsu\">Kenjutsu</option>";
             }
-            // line 241
+            // line 242
             echo "                    ";
             if ((((($context["FT_FIRST_WEAPON"] ?? null) == "Shurikenjutsu") || (($context["FT_SECOND_WEAPON"] ?? null) == "Shurikenjutsu")) || (($context["FT_THIRD_WEAPON"] ?? null) == "Shurikenjutsu"))) {
                 echo "<option value=\"Shurikenjutsu\">Shurikenjutsu</option>";
             }
-            // line 242
+            // line 243
             echo "                    ";
             if ((((($context["FT_FIRST_WEAPON"] ?? null) == "Bôjutsu") || (($context["FT_SECOND_WEAPON"] ?? null) == "Bôjutsu")) || (($context["FT_THIRD_WEAPON"] ?? null) == "Bôjutsu"))) {
                 echo "<option value=\"Bôjutsu\">Bôjutsu</option>";
             }
-            // line 243
+            // line 244
             echo "                    ";
             if ((((($context["FT_FIRST_WEAPON"] ?? null) == "Kyûjutsu") || (($context["FT_SECOND_WEAPON"] ?? null) == "Kyûjutsu")) || (($context["FT_THIRD_WEAPON"] ?? null) == "Kyûjutsu"))) {
                 echo "<option value=\"Kyûjutsu\">Kyûjutsu</option>";
             }
-            // line 244
+            // line 245
             echo "                    ";
             if (((($context["FT_FIRST_ELITE"] ?? null) == "Lames de Chakra") || (($context["FT_SECOND_ELITE"] ?? null) == "Lames de Chakra"))) {
                 echo "<option value=\"Lames de Chakra\">Lames de Chakra</option>";
             }
-            // line 245
+            // line 246
             echo "                </select>
                 <select id=\"irou_jutsu_ft_type\" class=\"second_type_select\" name=\"irou_jutsu_ft_type\">
                     <option value=\"\"></option>
                     ";
-            // line 248
+            // line 249
             if (($context["FT_IROU_HEAL"] ?? null)) {
                 echo "<option value=\"Soins\">Soins</option>";
             }
-            // line 249
+            // line 250
             echo "                    ";
             if (($context["FT_IROU_POISON"] ?? null)) {
                 echo "<option value=\"Poisons\">Poisons</option>";
             }
-            // line 250
+            // line 251
             echo "                </select>
                 <select id=\"fuinjutsu_ft_type\" class=\"second_type_select\" name=\"fuinjutsu_ft_type\">
                     <option value=\"\"></option>
                     ";
-            // line 253
+            // line 254
             if (($context["FT_FUIN_BARRER"] ?? null)) {
                 echo "<option value=\"Barrières\">Barrières</option>";
             }
-            // line 254
+            // line 255
             echo "                    ";
             if (($context["FT_FUIN_SEAL"] ?? null)) {
                 echo "<option value=\"Sceaux\">Sceaux</option>";
             }
-            // line 255
+            // line 256
             echo "                </select>
                 <select id=\"technique_kg_rank\" class=\"third_ft_select\" name=\"technique_kg_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 258
+            // line 259
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 259
+            // line 260
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 260
+            // line 261
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 261
+            // line 262
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 262
+            // line 263
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 263
+            // line 264
             echo "                </select>
                 <select id=\"technique_hiden_rank\" class=\"third_ft_select\" name=\"technique_hiden_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 266
+            // line 267
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 267
+            // line 268
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 268
+            // line 269
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 269
+            // line 270
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 270
+            // line 271
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 271
+            // line 272
             echo "                </select>
                 <select id=\"technique_nj_rank\" class=\"third_ft_select\" name=\"technique_nj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 274
+            // line 275
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 275
+            // line 276
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 276
+            // line 277
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 277
+            // line 278
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 278
+            // line 279
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 279
+            // line 280
             echo "                </select>
                 <select id=\"technique_tj_rank\" class=\"third_ft_select\" name=\"technique_tj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 282
+            // line 283
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 283
+            // line 284
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 284
+            // line 285
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 285
+            // line 286
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 286
+            // line 287
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 287
+            // line 288
             echo "                </select>
                 <select id=\"technique_gj_rank\" class=\"third_ft_select\" name=\"technique_gj_rank\">
                     <option value=\"\"></option>
                     ";
-            // line 290
+            // line 291
             if ((($context["FT_D_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"D\">D</option>";
             }
-            // line 291
+            // line 292
             echo "                    ";
             if ((($context["FT_C_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"C\">C</option>";
             }
-            // line 292
+            // line 293
             echo "                    ";
             if ((($context["FT_B_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"B\">B</option>";
             }
-            // line 293
+            // line 294
             echo "                    ";
             if ((($context["FT_A_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"A\">A</option>";
             }
-            // line 294
+            // line 295
             echo "                    ";
             if ((($context["FT_S_TECHNIQUES"] ?? null) > 0)) {
                 echo "<option value=\"S\">S</option>";
             }
-            // line 295
+            // line 296
             echo "                </select>
                 <div id=\"new_ft_tech\" name=\"new_ft_tech\">
                     <div class=\"create_ft_lb\">Nom de la technique</div>
@@ -994,11 +999,11 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
         </div>
     ";
         }
-        // line 320
+        // line 321
         echo "</div>
 
 ";
-        // line 322
+        // line 323
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -1006,7 +1011,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "fiche_technique.html", 322)->display($context);
+        $this->loadTemplate("overall_footer.html", "fiche_technique.html", 323)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -1024,7 +1029,7 @@ class __TwigTemplate_2ec033454d4c0903857e4c3d3791fd244341dbfb4bcd5e989bdd58dc685
 
     public function getDebugInfo()
     {
-        return array (  1002 => 322,  998 => 320,  971 => 295,  966 => 294,  961 => 293,  956 => 292,  951 => 291,  947 => 290,  942 => 287,  937 => 286,  932 => 285,  927 => 284,  922 => 283,  918 => 282,  913 => 279,  908 => 278,  903 => 277,  898 => 276,  893 => 275,  889 => 274,  884 => 271,  879 => 270,  874 => 269,  869 => 268,  864 => 267,  860 => 266,  855 => 263,  850 => 262,  845 => 261,  840 => 260,  835 => 259,  831 => 258,  826 => 255,  821 => 254,  817 => 253,  812 => 250,  807 => 249,  803 => 248,  798 => 245,  793 => 244,  788 => 243,  783 => 242,  778 => 241,  774 => 240,  769 => 237,  764 => 236,  759 => 235,  755 => 234,  750 => 231,  745 => 230,  741 => 229,  716 => 206,  711 => 205,  707 => 204,  689 => 188,  685 => 187,  680 => 184,  675 => 183,  670 => 182,  665 => 181,  660 => 180,  655 => 179,  650 => 178,  645 => 177,  640 => 176,  635 => 175,  630 => 174,  625 => 173,  620 => 172,  615 => 171,  611 => 170,  597 => 159,  582 => 157,  579 => 156,  577 => 155,  574 => 154,  566 => 151,  562 => 150,  556 => 147,  548 => 144,  542 => 143,  536 => 142,  531 => 140,  515 => 139,  510 => 137,  505 => 136,  501 => 135,  498 => 134,  490 => 128,  479 => 126,  475 => 125,  470 => 123,  467 => 122,  464 => 121,  457 => 119,  451 => 117,  445 => 113,  443 => 112,  436 => 110,  432 => 109,  426 => 107,  421 => 106,  418 => 105,  411 => 103,  401 => 99,  396 => 96,  394 => 95,  384 => 92,  372 => 91,  367 => 89,  363 => 88,  358 => 87,  353 => 86,  350 => 85,  343 => 83,  333 => 79,  328 => 76,  326 => 75,  316 => 72,  304 => 71,  299 => 69,  295 => 68,  290 => 67,  285 => 66,  282 => 65,  275 => 63,  265 => 59,  260 => 56,  258 => 55,  248 => 52,  236 => 51,  231 => 49,  227 => 48,  222 => 47,  217 => 46,  214 => 45,  207 => 43,  197 => 39,  192 => 36,  190 => 35,  180 => 32,  168 => 31,  163 => 29,  159 => 28,  154 => 27,  149 => 26,  146 => 25,  139 => 23,  129 => 19,  124 => 16,  122 => 15,  112 => 12,  99 => 11,  94 => 9,  90 => 8,  85 => 7,  80 => 6,  63 => 3,  49 => 2,  37 => 1,);
+        return array (  1007 => 323,  1003 => 321,  976 => 296,  971 => 295,  966 => 294,  961 => 293,  956 => 292,  952 => 291,  947 => 288,  942 => 287,  937 => 286,  932 => 285,  927 => 284,  923 => 283,  918 => 280,  913 => 279,  908 => 278,  903 => 277,  898 => 276,  894 => 275,  889 => 272,  884 => 271,  879 => 270,  874 => 269,  869 => 268,  865 => 267,  860 => 264,  855 => 263,  850 => 262,  845 => 261,  840 => 260,  836 => 259,  831 => 256,  826 => 255,  822 => 254,  817 => 251,  812 => 250,  808 => 249,  803 => 246,  798 => 245,  793 => 244,  788 => 243,  783 => 242,  779 => 241,  774 => 238,  769 => 237,  764 => 236,  760 => 235,  755 => 232,  750 => 231,  746 => 230,  721 => 207,  716 => 206,  712 => 205,  694 => 189,  690 => 188,  685 => 185,  680 => 184,  675 => 183,  670 => 182,  665 => 181,  660 => 180,  655 => 179,  650 => 178,  645 => 177,  640 => 176,  635 => 175,  630 => 174,  625 => 173,  620 => 172,  615 => 171,  611 => 170,  597 => 159,  582 => 157,  579 => 156,  577 => 155,  574 => 154,  566 => 151,  562 => 150,  556 => 147,  548 => 144,  542 => 143,  536 => 142,  531 => 140,  515 => 139,  510 => 137,  505 => 136,  501 => 135,  498 => 134,  490 => 128,  479 => 126,  475 => 125,  470 => 123,  467 => 122,  464 => 121,  457 => 119,  451 => 117,  445 => 113,  443 => 112,  436 => 110,  432 => 109,  426 => 107,  421 => 106,  418 => 105,  411 => 103,  401 => 99,  396 => 96,  394 => 95,  384 => 92,  372 => 91,  367 => 89,  363 => 88,  358 => 87,  353 => 86,  350 => 85,  343 => 83,  333 => 79,  328 => 76,  326 => 75,  316 => 72,  304 => 71,  299 => 69,  295 => 68,  290 => 67,  285 => 66,  282 => 65,  275 => 63,  265 => 59,  260 => 56,  258 => 55,  248 => 52,  236 => 51,  231 => 49,  227 => 48,  222 => 47,  217 => 46,  214 => 45,  207 => 43,  197 => 39,  192 => 36,  190 => 35,  180 => 32,  168 => 31,  163 => 29,  159 => 28,  154 => 27,  149 => 26,  146 => 25,  139 => 23,  129 => 19,  124 => 16,  122 => 15,  112 => 12,  99 => 11,  94 => 9,  90 => 8,  85 => 7,  80 => 6,  63 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

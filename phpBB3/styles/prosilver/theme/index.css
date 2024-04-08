@@ -3,6 +3,7 @@
 :root, div, fieldset{
     scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
     scrollbar-width: thin !important;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   ::-webkit-scrollbar{
@@ -70,6 +71,11 @@ a:hover {
 .panel {
     width: 100%;
     background-color: var(--main_color_1);
+}
+
+#message, #subject {
+    background-color: var(--main_color_1);
+    color: var(--main_color_2);
 }
 
 body {

@@ -97,6 +97,18 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+    phpbb.addAjaxCallback('sp_chakra_mantle_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez la spécialisation élite Manteau de chakra !");
+            window.location.reload(true);
+        }
+    });
+    phpbb.addAjaxCallback('sp_master_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez désormais le talent Maîtrise totale !");
+            window.location.reload(true);
+        }
+    });
 
     //GAIN NEW TECHNIQUE
     phpbb.addAjaxCallback('sp_d_technique_callback', function(r) {

@@ -64,6 +64,8 @@ if($request->is_ajax()) {
     $sp_gyoton = $request->variable('sp_gyoton', '');
     $sp_kyoton = $request->variable('sp_kyoton', '');
     $sp_cursed_seal = $request->variable('sp_cursed_seal', '');
+    $sp_chakra_mantle = $request->variable('sp_chakra_mantle', '');
+    $sp_master = $request->variable('sp_master', '');
     $user_id = $user->data['user_id'];
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
@@ -249,6 +251,31 @@ if($request->is_ajax()) {
                 ],
             );
         }
+    }
+    //ELITE NINJUTSU : CHAKRA MANTLE
+    else if ($sp_chakra_mantle) {
+        $sp_price = $request->variable('sp_price', 0);
+        if (set_elite($sp_price, 'Manteau de chakra')) {
+            return $json_response->send([
+                'is_ok'	=> true,
+                ],
+            );
+        }
+    }
+    //NINJUTSU TALENT : MASTER
+    else if($sp_master) {
+        $talent_id = get_talent_id('Maîtrise totale');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
     }
     //D TECHNIQUE
     else if($sp_d_technique) {
@@ -741,6 +768,7 @@ $can_illu3 = !in_array('Illusionniste+', $talents_row) && in_array('Illusionnist
 $can_gen3 = !in_array('Généraliste+', $talents_row) && in_array('Généraliste++', $talents_row) && !in_array('Généraliste+++', $talents_row);
 $can_crit1 = !in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
 $can_crit2 = in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
+$can_master = !in_array('Maîtrise totale', $talents_row);
 
 $elements = array();
 array_push($elements, $infos['first_element']);
@@ -794,6 +822,7 @@ $template->assign_vars(array(
     'SP_CAN_JINTON' => $can_jinton,
     'SP_CAN_GYOTON' => $can_gyoton,
     'SP_CAN_CURSE' => get_curse_seal_unlocked($user->data['user_id']),
+    'SP_IS_JINCHURIKI' => is_jinchuriki($user->data['user_id']),
     'CAN_ILLU1' => $can_illu1,
     'CAN_ILLU2' => $can_illu2,
     'CAN_ILLU3' => $can_illu3,
@@ -802,7 +831,8 @@ $template->assign_vars(array(
     'CAN_GEN1' => $can_gen1,
     'CAN_GEN2' => $can_gen2,
     'CAN_GEN3' => $can_gen3,
-    'CAN_SPE' => can_specialize()
+    'CAN_SPE' => can_specialize(),
+    'CAN_MASTER' => $can_master
 ));
 
 $template->set_filenames(array(

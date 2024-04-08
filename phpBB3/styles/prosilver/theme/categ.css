@@ -24,7 +24,7 @@
 #rowGuide .forumTitle {
     color: #fcfcfc;
     font-family: var(--main_police);
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-left: 20px;
     margin-bottom: 5px;
     font-weight: bold;
@@ -68,7 +68,7 @@
     color: var(--main_color_2);
     font-family: var(--main_police);
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-left: 20px;
     margin-top: 10px;
 }
@@ -217,4 +217,30 @@ time {
 
 .rowRPG .lastSubject {
     color: var(--main_color_2) !important;
+}
+
+#partos {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--main_color_1);
+    border-radius: 15px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+#partos legend {
+    color: var(--secondary_color_2);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#partos img {
+    border-radius: 10px;
+    border: 4px solid var(--main_color_3);
 }
