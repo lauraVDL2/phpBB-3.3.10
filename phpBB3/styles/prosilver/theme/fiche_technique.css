@@ -4,7 +4,7 @@
     display: none;
 }
 
-#ft_name {
+#ft_name, .new_tech {
     padding: 15px;
     box-sizing: border-box;
     font-size: 1.4rem;
@@ -48,7 +48,7 @@
     margin: 10px auto !important;
 }
 
-#ft_name, #ft_user {
+#ft_name, #ft_user, .new_tech {
     width: 70%;
 }
 
@@ -116,7 +116,7 @@
     width: 70%;
 }
 
-.modify_ft_desc, #new_ft_technique {
+.modify_ft_desc, #new_ft_technique, .new_ft_technique {
     resize: none;
     background-color: var(--main_color_3);
     display: block;
@@ -128,7 +128,7 @@
     border: 1px dotted var(--main_color_2);
 }
 
-.modify_ft_name, #new_ft_name {
+.modify_ft_name, #new_ft_name, .new_tech {
     border: none;
     background-color: var(--main_color_3);
     display: block;
@@ -153,11 +153,12 @@
     border-bottom: 1px dotted var(--secondary_color_2);
 }
 
-.modify_ft_button, .validate_ft_button, .ft_delete_button, #create_technique, .ft_md_button, .ft_copy_button {
+.modify_ft_button, .create_technique, .validate_ft_button, .ft_delete_button, #create_technique, .ft_md_button, .ft_copy_button {
     font-size: 1rem;
     border: none;
     border-radius: 15px;
     padding: 10px;
+    font-weight: bold;
 }
 
 .ft_md_button {
@@ -165,7 +166,7 @@
     color: white;
 }
 
-#create_technique {
+#create_technique, .create_technique {
     margin: auto;
     display: block;
 }
@@ -180,7 +181,7 @@
     background-color: var(--red_button);
 }
 
-.validate_ft_button, #create_technique {
+.validate_ft_button, #create_technique, .create_technique {
     color: white;
     background-color: var(--green_button);
 }
@@ -222,6 +223,20 @@ body {
     margin: auto;
 }
 
-#new_ft_technique {
+#new_ft_technique, .new_ft_technique {
     width: 100%;
+}
+
+.ft_invoc_title {
+    background-color: var(--main_color_2);
+}
+
+.fuinjutsu_ft_type, .irou_jutsu_ft_type, .rank_select {
+    display: none;
+}
+
+.tech_infos {
+    display: none;
+    margin: auto;
+    width: 60%;
 }

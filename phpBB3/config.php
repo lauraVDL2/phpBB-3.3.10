@@ -25,3 +25,4 @@ $acm_type = 'phpbb\\cache\\driver\\file';
 @define('TALENTS_TABLE', $table_prefix.'talents');
 @define('USER_TALENTS_TABLE', $table_prefix.'user_talents');
 @define('GROUP_INFLUENCE_TABLE', $table_prefix.'group_influences');
+@define('KUCHIYOSES_TABLE', $table_prefix.'user_kuchiyose_techniques');

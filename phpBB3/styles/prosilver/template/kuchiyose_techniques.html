@@ -1,0 +1,99 @@
+<!-- INCLUDE overall_header.html -->
+{% INCLUDEJS 'kuchiyose_techniques.js' %}
+<div id="ft_name" class="ft_invoc_title">Fiche invocations de {KT_USERNAME}</div>
+<div id="ft_user">
+    <div id="um_links">
+        <a href="./fiche_technique.php?uid={KT_USER_ID}">Retourner à la Fiche Technique</a>
+    </div>
+    <!-- BEGIN kuchiyoses_loop -->
+        <div class="tech_invoc">
+        <h1>{kuchiyoses_loop.KT_TECHNIQUE_NAME} - Rang {kuchiyoses_loop.KT_TECHNIQUE_RANK} ({kuchiyoses_loop.KT_PV} PV | {kuchiyoses_loop.KT_PC} PC)</h1>
+        <!-- BEGIN kuchiyoses_loop.ktechniques_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_kt_technique_callback" data-refresh="true">
+            <input type="hidden" value="{kuchiyoses_loop.ktechniques_loop.KT_TECH_ID}" name="kt_tech_id">
+            <div class="ft_ninjutsu">
+                <div class="ft_technique_information">{kuchiyoses_loop.ktechniques_loop.KT_TECH_NAME} - {kuchiyoses_loop.ktechniques_loop.KT_TECH_SUBTYPE} - <!-- IF kuchiyoses_loop.ktechniques_loop.KT_TECH_SPE -->{kuchiyoses_loop.ktechniques_loop.KT_TECH_SPE} - <!-- ENDIF -->Rang {kuchiyoses_loop.ktechniques_loop.KT_TECH_RANK}</div>
+                <div class="ft_technique_description">({kuchiyoses_loop.ktechniques_loop.KT_TECH_DAMAGE} dégâts en PV | {kuchiyoses_loop.ktechniques_loop.KT_TECH_CHAKRA} coût en PC) {kuchiyoses_loop.ktechniques_loop.KT_TECH_DESCR}</div>
+            </div>
+            <div class="md_buttons">
+                <!-- IF KT_IS_ADMIN -->
+                    <input type="submit" class="ft_md_button" name="ft_md_button" value="Repasser en modification">
+                    <input type="submit" class="ft_delete_button" name="ft_delete_button" value="Supprimer la technique">
+                    <input type="button" class="ft_copy_button" value="Copier la technique" onclick="copyInvoc({{ kuchiyoses_loop.S_ROW_COUNT }}, {{ kuchiyoses_loop.ktechniques_loop.S_ROW_COUNT }})">
+                <!-- ENDIF -->
+            </div>
+        </form>
+        <!-- END kuchiyoses_loop.ktechniques_loop -->
+        <!-- BEGIN kuchiyoses_loop.kvtechniques_loop -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_kt_technique_callback" data-refresh="true">
+            <input type="hidden" name="modify_ft_id" value="{kuchiyoses_loop.kvtechniques_loop.KTV_TECH_ID}">
+            <div class="modify_ft_lb">Nom de la technique</div>
+            <div class="modify_ft_infos">{kuchiyoses_loop.kvtechniques_loop.KTV_TECH_SUBTYPE}<!-- IF kuchiyoses_loop.kvtechniques_loop.KTV_TECH_SPE --> - {kuchiyoses_loop.kvtechniques_loop.KTV_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {kuchiyoses_loop.kvtechniques_loop.KTV_TECH_RANK} - <!-- IF kuchiyoses_loop.kvtechniques_loop.KTV_TECH_OFFENSIVE == 1 -->Offensive<!-- ELSE -->Non offensive<!-- ENDIF --></div>
+            <input type="text" value="{kuchiyoses_loop.kvtechniques_loop.KTV_TECH_NAME}" class="modify_ft_name" name="modify_ft_name">
+            <div class="modify_ft_lb">Description</div>
+            <textarea class="modify_ft_desc" name="modify_ft_description">{kuchiyoses_loop.kvtechniques_loop.KTV_TECH_DESCR}</textarea>
+            <div class="md_buttons">
+                <input class="modify_ft_button" type="submit" name="modify_ft_button" value="Enregistrer les modifications">
+                <!-- IF KT_IS_ADMIN --><input class="validate_ft_button" type="submit" value="Valider la technique" name="ft_validate_button"><!-- ENDIF -->
+            </div>
+        </form>
+        <!-- END kuchiyoses_loop.kvtechniques_loop -->
+        <!-- IF kuchiyoses_loop.KT_CAN_CREATE -->
+            <div class="new_tech_wrapper">
+                <h1>Création de technique</h1>
+                <form id="new_technique_form" method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="new_technique_callback" data-refresh="true">
+                    <input type="hidden" value="{kuchiyoses_loop.KT_TECHNIQUE_ID}" name="kuchiyose_new_tech_id">
+                    <input type="hidden" value="{kuchiyoses_loop.KT_TECHNIQUE_NAME}" name="kuchiyose_new_tech_name">
+                    <input type="hidden" value="{kuchiyoses_loop.KT_TECHNIQUE_RANK}" name="kuchiyose_new_tech_rank">
+                    <select class="first_ft_select" name="first_ft_select" onchange="changeSelect(this);" id="{{ kuchiyoses_loop.S_ROW_COUNT }}">
+                        <option value=""></option>
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Capacité raciale" || !kuchiyoses_loop.KT_TYPE --><option value="Capacité raciale">Capacité raciale</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Katon" || !kuchiyoses_loop.KT_TYPE --><option value="Katon">Katon</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Suiton" || !kuchiyoses_loop.KT_TYPE --><option value="Suiton">Suiton</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Fûton" || !kuchiyoses_loop.KT_TYPE --><option value="Fûton">Fûton</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Doton" || !kuchiyoses_loop.KT_TYPE --><option value="Doton">Doton</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Raiton" || !kuchiyoses_loop.KT_TYPE --><option value="Katon">Raiton</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Irou Jutsu" || !kuchiyoses_loop.KT_TYPE --><option value="Irou Jutsu">Irou Jutsu</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TYPE == "Fuinjutsu" || !kuchiyoses_loop.KT_TYPE --><option value="Fuinjutsu">Fuinjutsu</option><!-- ENDIF -->
+                    </select>
+                    <select class="second_type_select fuinjutsu_ft_type" name="fuinjutsu_ft_type" onchange="secondChangeSelect(this);">
+                        <option value=""></option>
+                        <!-- IF kuchiyoses_loop.KT_SPE == "Barrières" || !kuchiyoses_loop.KT_SPE --><option value="Barrières">Barrières</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_SPE == "Sceaux" || !kuchiyoses_loop.KT_SPE --><option value="Sceaux">Sceaux</option><!-- ENDIF -->
+                    </select>
+                    <select class="second_type_select irou_jutsu_ft_type" name="irou_jutsu_ft_type" onchange="secondChangeSelect(this);">
+                        <option value=""></option>
+                        <!-- IF kuchiyoses_loop.KT_SPE == "Soins" || !kuchiyoses_loop.KT_SPE --><option value="Soins">Soins</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_SPE == "Poisons" || !kuchiyoses_loop.KT_SPE --><option value="Poisons">Poisons</option><!-- ENDIF -->
+                    </select>
+                    <select class="rank_select" name="rank_select" onchange="rankSelect(this);">
+                        <option value=""></option>
+                        <option value="D">D</option>
+                        <!-- IF kuchiyoses_loop.KT_TECHNIQUE_RANK == "S" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "A" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "B" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "C" --><option value="C">C</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TECHNIQUE_RANK == "S" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "A" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "B" --><option value="B">B</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TECHNIQUE_RANK == "S" || kuchiyoses_loop.KT_TECHNIQUE_RANK == "A" --><option value="A">A</option><!-- ENDIF -->
+                        <!-- IF kuchiyoses_loop.KT_TECHNIQUE_RANK == "S" --><option value="S">S</option><!-- ENDIF -->
+                    </select>
+                    <div class="tech_infos">
+                        <div class="create_ft_lb">Nom de la technique</div>
+                        <input type="text" class="new_tech" name="new_ft_name">
+                        <div class="create_ft_lb">Technique offensive ?</div>
+                        <div class="no_technique ft_block">Si non, elle n'infligera pas de dégâts directs</div>
+                        <div class="ft_block ft_radio">
+                            <input type="radio" name="new_ft_offensive" value="offensive" checked/>
+                            <label for="offensive">Oui</label>
+                            <input type="radio" name="new_ft_offensive" value="other">
+                            <label for="other">Non</label>
+                        </div>
+                        <div class="create_ft_lb">Description de la technique</div>
+                        <textarea class="new_ft_technique" name="new_ft_technique"></textarea>
+                        <input type="submit" class="create_technique" name="create_tech_button" value="Créer la technique">
+                    </div>
+                </form>
+            </div>
+        <!-- ENDIF -->
+        </div>
+    <!-- END kuchiyoses_loop -->
+</div>
+
+<!-- INCLUDE overall_footer.html -->
