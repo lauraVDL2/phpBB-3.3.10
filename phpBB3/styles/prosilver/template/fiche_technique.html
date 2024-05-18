@@ -4,12 +4,13 @@
 <div id="ft_user">
         <div id="um_links">
             <!-- IF FT_KUCHIYOSE --><a href="./kuchiyose_techniques.php?uid={FT_USER_ID}">Invocations</a><!-- ENDIF -->
+            <!-- IF FT_FIRST_ELITE == "Hitokugutsu" || FT_SECOND_ELITE == "Hitokugutsu" --><a href="./marionnettes.php?uid={FT_USER_ID}">Marionnettes humaines</a><!-- ENDIF -->
         </div>
         <h1>Techniques de Ninjutsu</h1>
         <!-- BEGIN Ninjutsu_loop -->
         <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
             <input type="hidden" name="validated_ft_id" value="{Ninjutsu_loop.FT_TECHNIQUE_ID}">
-            <input type="hidden" name="validated_ft_rank" value="{Ninjutsu.loop.FT_TECHNIQUE_RANK}">
+            <input type="hidden" name="validated_ft_rank" value="{Ninjutsu_loop.FT_TECHNIQUE_RANK}">
             <div class="ft_ninjutsu">
                 <div class="ft_technique_information">{Ninjutsu_loop.FT_TECHNIQUE_NAME} - {Ninjutsu_loop.FT_TECHNIQUE_SUBTYPE} -<!-- IF Ninjutsu_loop.FT_TECHNIQUE_SPE --> - {Ninjutsu_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> Rang {Ninjutsu_loop.FT_TECHNIQUE_RANK}</div>
                 <div class="ft_technique_description">({Ninjutsu_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Ninjutsu_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Ninjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>
@@ -49,7 +50,7 @@
         <!-- BEGIN Genjutsu_loop -->
         <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="delete_ft_technique_callback" data-refresh="true">
             <input type="hidden" name="validated_ft_id" value="{Genjutsu_loop.FT_TECHNIQUE_ID}">
-            <input type="hidden" name="validated_ft_rank" value="{Genjutsu.loop.FT_TECHNIQUE_RANK}">
+            <input type="hidden" name="validated_ft_rank" value="{Genjutsu_loop.FT_TECHNIQUE_RANK}">
             <div class="ft_genjutsu">
                 <div class="ft_technique_information">{Genjutsu_loop.FT_TECHNIQUE_NAME} - {Genjutsu_loop.FT_TECHNIQUE_SUBTYPE}<!-- IF Genjutsu_loop.FT_TECHNIQUE_SPE --> - {Genjutsu_loop.FT_TECHNIQUE_SPE}<!-- ENDIF --> - Rang {Genjutsu_loop.FT_TECHNIQUE_RANK}</div>
                 <div class="ft_technique_description">({Genjutsu_loop.FT_TECHNIQUE_DAMAGE} dégâts en PV | {Genjutsu_loop.FT_TECHNIQUE_CHAKRA} coût en PC) {Genjutsu_loop.FT_TECHNIQUE_DESCRIPTION}</div>

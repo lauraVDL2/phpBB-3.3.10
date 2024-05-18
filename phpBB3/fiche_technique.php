@@ -123,7 +123,6 @@ if($request->is_ajax()) {
     $ft_md_button = $request->variable('ft_md_button', '');
     if($ft_delete_button != '' && $ft_validated_id != 0) {
         $sql = 'DELETE FROM '.USER_TECHNIQUES_TABLE.' WHERE user_id = '.$ft_user_id.' AND technique_id = '.$ft_validated_id;
-        $db->sql_query($sql);
         if($ft_validated_rank == 'D') {
             $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET d_techniques = d_techniques + 1 WHERE user_id = '.$ft_user_id;
             $db->sql_query($sql);
