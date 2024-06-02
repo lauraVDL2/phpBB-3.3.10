@@ -137,7 +137,7 @@
 		<a id="unread" class="anchor"<!-- IF S_UNREAD_VIEW --> data-url="{postrow.U_MINI_POST}"<!-- ENDIF -->></a>
 	<!-- ENDIF -->
 	<!-- IF postrow.STRENGTH >= 0 -->
-	<div class="top_profile <!-- IF postrow.IS_KIRI -->bgp_kiri<!-- ELSEIF postrow.IS_KONOHA -->bgp_konoha<!-- ELSEIF postrow.IS_KUMO -->bgp_kumo<!-- ELSEIF postrow.IS_SUNA -->bgp_suna<!-- ELSEIF postrow.IS_IWA -->bgp_iwa<!-- ELSEIF IS_NUKENIN -->bgp_nuke<!-- ELSE -->bgp_others<!-- ENDIF -->">
+	<div class="top_profile" style="background-color: #{postrow.COLOUR}">
 		<div class="profile_attributes">
 			<div class="attributes_name">Physique</div>
 			<div class="attributes_name">Esprit</div>

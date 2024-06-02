@@ -458,6 +458,7 @@ get_talents_ft($ft_user_id);
 get_talents_display_ft($ft_user_id);
 
 $template->assign_vars(array(
+    'FT_COLOUR' => get_colour($ft_user_id),
     'FT_USER_ID' => $ft_user_id,
     'FT_USERNAME' => $ft_user_infos['username'],
     'FT_D_TECHNIQUES' => $ft_user_infos['d_techniques'],

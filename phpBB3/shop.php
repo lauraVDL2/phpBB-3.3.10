@@ -67,6 +67,7 @@ if($request->is_ajax()) {
     $sp_chakra_mantle = $request->variable('sp_chakra_mantle', '');
     $sp_master = $request->variable('sp_master', '');
     $user_id = $user->data['user_id'];
+    $sp_demon = $request->variable('sp_demon', '');
     //KUCHIYOSE
     if($sp_kuchiyose != '') {
         $sp_price = $request->variable('sp_price', 0);
@@ -428,6 +429,22 @@ if($request->is_ajax()) {
             ],
         );
     }
+    //NINJUTSU TALENT : DEMON CHAKRA
+    else if($sp_demon) {
+        delete_talent_by_name('Chakra++');
+        $talent_id = get_talent_id('Chakra du démon');
+        $sp_price = $request->variable('sp_price', 0);
+        $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [
+            'talent_id' => $talent_id,
+            'user_id' => $user_id
+        ]);
+        $db->sql_query($sql);
+        buying($sp_price);
+        return $json_response->send([
+            'is_ok'	=> true,
+            ],
+        );
+    }
     //GENJUTSU ELITE : DEMONIC
     else if($sp_demonic) {
         $sp_price = $request->variable('sp_price', 0);
@@ -770,6 +787,8 @@ $can_crit1 = !in_array('Critique+', $talents_row) && !in_array('Critique++', $ta
 $can_crit2 = in_array('Critique+', $talents_row) && !in_array('Critique++', $talents_row);
 $can_master = !in_array('Maîtrise totale', $talents_row);
 
+$can_demon_chakra = !in_array('Chakra du demon', $talents_row) && ($infos['first_elite'] == 'Manteau de chakra' || $infos['second_elite'] == 'Manteau de chakra');
+
 $elements = array();
 array_push($elements, $infos['first_element']);
 array_push($elements, $infos['second_element']);
@@ -832,6 +851,7 @@ $template->assign_vars(array(
     'CAN_GEN2' => $can_gen2,
     'CAN_GEN3' => $can_gen3,
     'CAN_SPE' => can_specialize(),
+    'CAN_DEMON_CHAKRA' => $can_demon_chakra,
     'CAN_MASTER' => $can_master
 ));
 

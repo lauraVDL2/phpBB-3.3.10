@@ -1765,7 +1765,7 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 				$query = $db->sql_query($sql);
 				$gainedExp = $db->sql_fetchrow($query)['experience'];
 				if(is_overspecialized($user->data['user_id'])) {
-					$gainedExp += 1;
+					$gainedExp += 2;
 				}
 				//S'il rapporte de l'expérience, on la donne au joueur (évite une requête inutile si 0)
 				if($gainedExp > 0) {
@@ -1790,9 +1790,9 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 				$sql = $db->sql_build_query('SELECT', $req);
 				$query = $db->sql_query($sql);
 				$gainedExp = $db->sql_fetchrow($query)['experience'];
-				if(is_overspecialized($user->data['user_id'])) {
+				/*if(is_overspecialized($user->data['user_id'])) {
 					$gainedExp += 1;
-				}
+				}*/
 				//S'il rapporte de l'expérience, on la donne au joueur (évite une requête inutile si 0)
 				if($gainedExp > 0) {
 					$sql = 'UPDATE '.USERS_TABLE.' SET user_experience = user_experience + '.$gainedExp.' WHERE user_id = '. $user->data['user_id'];

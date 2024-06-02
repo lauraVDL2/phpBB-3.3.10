@@ -211,6 +211,20 @@ function get_group_by_name($group_name) {
 	return $db->sql_fetchrow($query)['group_id'] ?? -1;
 }
 
+function get_colour($user_id) {
+	global $db;
+	$req = [
+		'SELECT' => 'ut.user_colour AS colour',
+		'FROM' => [
+			USERS_TABLE => 'ut'
+		],
+		'WHERE' => "user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['colour'];
+}
+
 function get_curse_seal_unlocked($user_id) {
 	global $db;
 	$req = [
@@ -471,7 +485,7 @@ function last_hours($timestamp) {
 	$query = $db->sql_query($sql);
 	$str = '';
 	while($column = $db->sql_fetchrow($query)) {
-		$str .= '<a style="color:#'.$column['user_colour'].';">'.$column['username'].'</a> ';
+		$str .= '<a style="color:#'.$column['user_colour'].';" href="/memberlist.php?mode=viewprofile&u='.$column['user_id'].'">'.$column['username'].'</a> ';
 	}
 	return $str;
 }
@@ -4629,12 +4643,12 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		$template->assign_var('S_FORM_TOKEN_LOGIN', '');
 	}
 
-	$iwa = total_groups($db, get_group_by_name('Iwagakure'));
-	$kiri = total_groups($db, get_group_by_name('Kirigakure'));
-	$suna = total_groups($db, get_group_by_name('Sunagakure'));
-	$nukenin = total_groups($db, get_group_by_name('Nukenin'));
-	$kumo = total_groups($db, get_group_by_name('Kumogakure'));
-	$konoha = total_groups($db, get_group_by_name('Konohagakure'));
+	$iwa = total_groups($db, get_group_by_name('Iwagakure')) - 1;
+	$kiri = total_groups($db, get_group_by_name('Kirigakure')) - 1;
+	$suna = total_groups($db, get_group_by_name('Sunagakure')) - 1;
+	$nukenin = total_groups($db, get_group_by_name('Nukenin')) - 1;
+	$kumo = total_groups($db, get_group_by_name('Kumogakure')) - 1;
+	$konoha = total_groups($db, get_group_by_name('Konohagakure')) - 1;
 	$total_final = max($iwa, $kiri, $suna, $nukenin, $kumo, $konoha);
 	$character_infos = character_informations();
 	$first_genjutsu = !$character_infos['is_sight'] && !$character_infos['is_sound'];

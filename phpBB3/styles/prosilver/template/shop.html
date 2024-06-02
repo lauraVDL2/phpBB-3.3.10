@@ -293,6 +293,15 @@
     </form>
     <!-- ENDIF -->
 
+    <!-- IF CAN_DEMON_CHAKRA -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Talent : Chakra du démon</h1>
+        Acheter le talent vous permettant d'ajouter 40 points de Chakra à votre jauge. <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_demon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
     <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Hachimon" && SP_STRENGTH == 8 && SP_TAIJUTSU == 8 -->
     <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hachimon_callback" data-refresh="true">
         <input type="hidden" name="sp_price" value="150">

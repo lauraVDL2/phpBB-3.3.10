@@ -263,4 +263,11 @@ jQuery(function($) {
             window.location.reload(true);
         }
     });
+
+    phpbb.addAjaxCallback('sp_demon_callback', function(r) {
+        if(r.is_ok) {
+            window.confirm("Achat effectué, vous possédez le talent Chakra du démon !");
+            window.location.reload(true);
+        }
+    });
 })

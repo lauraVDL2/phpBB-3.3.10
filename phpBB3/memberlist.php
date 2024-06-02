@@ -956,6 +956,10 @@ switch ($mode)
 					'user_id' => $user_id
 				]);
 				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.MARIONNETTES_TABLE." WHERE marionnette_user_id = $user_id";
+				$db->sql_query($sql);
+				$sql = 'DELETE FROM '.KUCHIYOSES_TABLE." WHERE kuchiyose_user_id = $user_id";
+				$db->sql_query($sql);
 				return $json_response->send([
 					'action' => 'PF_RESET'
 				]);

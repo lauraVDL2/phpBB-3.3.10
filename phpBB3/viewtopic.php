@@ -2072,6 +2072,9 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 		else if($talent_title == 'Chakra++') {
 			$pc += 20;
 		}
+		else if($talent_title == 'Chakra du démon') {
+			$pc += 40;
+		}
 		else if($talent_title == 'Constitution+') {
 			$pv += 10;
 		}
@@ -2079,6 +2082,8 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 			$pv += 20;
 		}
 	}
+
+	$colour = get_colour($poster_id);
 	//
 	$post_row = array(
 		'POST_AUTHOR_FULL'		=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_full'] : get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
@@ -2095,6 +2100,7 @@ for ($i = 0, $end = count($post_list); $i < $end; ++$i)
 		'NINJUTSU' => $attributes['ninjutsu'],
 		'TAIJUTSU' => $attributes['taijutsu'],
 		'GENJUTSU' => $attributes['genjutsu'],
+		'COLOUR' => $colour,
 		'LEVEL' => $infos['level'],
 		'EXP' => $infos['experience'],
 		'EXP_TO_REACH' => $levels[$infos['level']],

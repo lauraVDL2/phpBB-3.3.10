@@ -1,6 +1,6 @@
 <!-- INCLUDE overall_header.html -->
 {% INCLUDEJS 'fiche_technique.js' %}
-<div id="ft_name" class="<!-- IF FT_IS_KIRI -->ft_kiri<!-- ELSEIF FT_IS_IWA -->ft_iwa<!-- ELSEIF FT_IS_SUNA -->ft_suna<!-- ELSE -->ft_nuke<!-- ENDIF -->">Fiche technique de {FT_USERNAME}</div>
+<div id="ft_name" style="background-color: #{FT_COLOUR}">Fiche technique de {FT_USERNAME}</div>
 <div id="ft_user">
         <div id="um_links">
             <!-- IF FT_KUCHIYOSE --><a href="./kuchiyose_techniques.php?uid={FT_USER_ID}">Invocations</a><!-- ENDIF -->
@@ -171,6 +171,7 @@
                 </select>
                 <select id="technique_nj_type" class="second_ft_select" name="technique_nj_type">
                     <option value=""></option>
+                    <option value="Universelle">Universelle</option>
                     <!-- IF FT_FIRST_ELEMENT == "Katon" || FT_SECOND_ELEMENT == "Katon" || FT_THIRD_ELEMENT == "Katon"--><option value="Katon">Katon</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELEMENT == "Fûton" || FT_SECOND_ELEMENT == "Fûton" || FT_THIRD_ELEMENT == "Fûton"--><option value="Fûton">Fûton</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELEMENT == "Raiton" || FT_SECOND_ELEMENT == "Raiton" || FT_THIRD_ELEMENT == "Raiton"--><option value="Raiton">Raiton</option><!-- ENDIF -->
@@ -190,42 +191,43 @@
                 <select id="technique_hiden_type" class="second_ft_select" name="technique_hiden_type">
                     <option value=""></option>
                     <!-- IF FT_FIRST_ELITE == "Hitokugutsu" || FT_SECOND_ELITE == "Hitokugutsu" --><option value="Hitokugutsu">Hitokugutsu</option><!-- ENDIF -->
-                    <option value="Kugutsu">Kugutsu</option>
-                    <option value="Mental">Mental</option>
-                    <option value="Contrôle du corps">Contrôle du corps</option>
-                    <option value="Ombres">Ombres</option>
-                    <option value="Chaînes">Chaînes</option>
-                    <option value="Seijutsu">Seijutsu</option>
-                    <option value="Torijutsu">Torijutsu</option>
-                    <option value="Hachijutsu">Hachijutsu</option>
-                    <option value="Modification corporelle">Modification corporelle</option>
-                    <option value="Chiens">Chiens</option>
-                    <option value="Chats">Chats</option>
-                    <option value="Insectes">Insectes</option>
-                    <option value="Jûken">Jûken</option>
+                    <!-- IF FT_FIRST_HIDEN == "Kugutsu" || FT_SECOND_HIDEN == "Kugutsu" --><option value="Kugutsu">Kugutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Mental" || FT_SECOND_HIDEN == "Mental" --><option value="Mental">Mental</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Contrôle du corps" || FT_SECOND_HIDEN == "Contrôle du corps" --><option value="Contrôle du corps">Contrôle du corps</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Ombres" || FT_SECOND_HIDEN == "Ombres" --><option value="Ombres">Ombres</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Chaînes et soins" || FT_SECOND_HIDEN == "Chaînes et soins" --><option value="Chaînes">Chaînes et soins</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Seijutsu" || FT_SECOND_HIDEN == "Seijutsu" --><option value="Seijutsu">Seijutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Torijutsu" || FT_SECOND_HIDEN == "Torijutsu" --><option value="Torijutsu">Torijutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Hachijutsu" || FT_SECOND_HIDEN == "Hachijutsu" --><option value="Hachijutsu">Hachijutsu</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Modification corporelle" || FT_SECOND_HIDEN == "Modification corporelle" --><option value="Modification corporelle">Modification corporelle</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Chiens" || FT_SECOND_HIDEN == "Chiens" --><option value="Chiens">Chiens</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Chats" || FT_SECOND_HIDEN == "Chats" --><option value="Chats">Chats</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Insectes" || FT_SECOND_HIDEN == "Insectes" --><option value="Insectes">Insectes</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Jûken" || FT_SECOND_HIDEN == "Jûken" --><option value="Jûken">Jûken</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_HIDEN == "Liquéfaction" || FT_SECOND_HIDEN == "Liquéfaction" --><option value="Liquéfaction">Liquéfaction</option><!-- ENDIF -->
                 </select>
                 <select id="technique_kg_type" class="second_ft_select" name="technique_kg_type">
                     <option value=""></option>
                     <!-- IF FT_FIRST_ELITE == "Mangekyô" || FT_SECOND_ELITE == "Mangekyô" --><option value="Mangekyô">Mangekyô</option><!-- ENDIF -->
                     <!-- IF FT_FIRST_ELITE == "Hashirama" || FT_SECOND_ELITE == "Hashirama" --><option value="Hashirama">Hashirama</option><!-- ENDIF -->
-                    <option value="Sharingan">Sharingan</option>
-                    <option value="Mokuton">Mokuton</option>
-                    <option value="Byakugan">Byakugan</option>
-                    <option value="Shikotsumyaku">Shikotsumyaku</option>
-                    <option value="Hyôton">Hyôton</option>
-                    <option value="Futton">Futton</option>
-                    <option value="Jiton">Jiton</option>
-                    <option value="Shakuton">Shakuton</option>
-                    <option value="Yoton">Yoton</option>
-                    <option value="Fuuton">Fuuton</option>
-                    <option value="Bakuton">Bakuton</option>
-                    <option value="Shôton">Shôton</option>
-                    <option value="Shouraigan">Shouraigan</option>
-                    <option value="Ketsuryugan">Ketsuryugan</option>
-                    <option value="Ranton">Ranton</option>
-                    <option value="Shokuton">Shokuton</option>
-                    <option value="Kôton">Kôton</option>
-                    <option value="Meiton">Meiton</option>
+                    <!-- IF FT_FIRST_KG == "Sharingan" || FT_SECOND_KG == "Sharingan" --><option value="Sharingan">Sharingan</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Mokuton" || FT_SECOND_KG == "Mokuton" --><option value="Mokuton">Mokuton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Byakugan" || FT_SECOND_KG == "Byakugan" --><option value="Byakugan">Byakugan</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Shikotsumyaku" || FT_SECOND_KG == "Shikotsumyaku" --><option value="Shikotsumyaku">Shikotsumyaku</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Hyôton" || FT_SECOND_KG == "Hyôton" --><option value="Hyôton">Hyôton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Futton" || FT_SECOND_KG == "Futton" --><option value="Futton">Futton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Jiton" || FT_SECOND_KG == "Jiton" --><option value="Jiton">Jiton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Shakuton" || FT_SECOND_KG == "Shakuton" --><option value="Shakuton">Shakuton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Yoton" || FT_SECOND_KG == "Yoton" --><option value="Yoton">Yoton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Fuuton" || FT_SECOND_KG == "Fuuton" --><option value="Fuuton">Fuuton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Bakuton" || FT_SECOND_KG == "Bakuton" --><option value="Bakuton">Bakuton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Shôton" || FT_SECOND_KG == "Shôton" --><option value="Shôton">Shôton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Shouraigan" || FT_SECOND_KG == "Shouraigan" --><option value="Shouraigan">Shouraigan</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Ketsuryugan" || FT_SECOND_KG == "Ketsuryugan" --><option value="Ketsuryugan">Ketsuryugan</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Ranton" || FT_SECOND_KG == "Ranton" --><option value="Ranton">Ranton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Shokuton" || FT_SECOND_KG == "Shokuton" --><option value="Shokuton">Shokuton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Kôton" || FT_SECOND_KG == "Kôton" --><option value="Kôton">Kôton</option><!-- ENDIF -->
+                    <!-- IF FT_FIRST_KG == "Meiton" || FT_SECOND_KG == "Meiton" --><option value="Meiton">Meiton</option><!-- ENDIF -->
                 </select>
                 <select id="technique_tj_type" class="second_ft_select" name="technique_tj_type">
                     <option value=""></option>

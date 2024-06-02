@@ -45,12 +45,13 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 <meta charset=\"utf-8\" />
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+<link rel=\"icon\" type=\"image/png\" href=\"https://zupimages.net/up/23/13/vjii.png\" />
 ";
-        // line 7
+        // line 8
         echo ($context["META"] ?? null);
         echo "
 <title>";
-        // line 8
+        // line 9
         if (($context["UNREAD_NOTIFICATIONS_COUNT"] ?? null)) {
             echo "(";
             echo ($context["UNREAD_NOTIFICATIONS_COUNT"] ?? null);
@@ -75,9 +76,9 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
         echo "</title>
 
 ";
-        // line 10
+        // line 11
         if (($context["S_ENABLE_FEEDS"] ?? null)) {
-            // line 11
+            // line 12
             echo "\t";
             if (($context["S_ENABLE_FEEDS_OVERALL"] ?? null)) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -88,7 +89,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_index");
                 echo "\">";
             }
-            // line 12
+            // line 13
             echo "\t";
             if (($context["S_ENABLE_FEEDS_NEWS"] ?? null)) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -99,7 +100,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_news");
                 echo "\">";
             }
-            // line 13
+            // line 14
             echo "\t";
             if (($context["S_ENABLE_FEEDS_FORUMS"] ?? null)) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -110,7 +111,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_forums");
                 echo "\">";
             }
-            // line 14
+            // line 15
             echo "\t";
             if (($context["S_ENABLE_FEEDS_TOPICS"] ?? null)) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -121,7 +122,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_topics");
                 echo "\">";
             }
-            // line 15
+            // line 16
             echo "\t";
             if (($context["S_ENABLE_FEEDS_TOPICS_ACTIVE"] ?? null)) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -132,7 +133,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_topics_active");
                 echo "\">";
             }
-            // line 16
+            // line 17
             echo "\t";
             if ((($context["S_ENABLE_FEEDS_FORUM"] ?? null) && ($context["S_FORUM_ID"] ?? null))) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -145,7 +146,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_forum", ["forum_id" => ($context["S_FORUM_ID"] ?? null)]);
                 echo "\">";
             }
-            // line 17
+            // line 18
             echo "\t";
             if ((($context["S_ENABLE_FEEDS_TOPIC"] ?? null) && ($context["S_TOPIC_ID"] ?? null))) {
                 echo "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"";
@@ -158,21 +159,21 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
                 echo $this->extensions['phpbb\template\twig\extension\routing']->getPath("phpbb_feed_topic", ["topic_id" => ($context["S_TOPIC_ID"] ?? null)]);
                 echo "\">";
             }
-            // line 18
+            // line 19
             echo "\t";
         }
-        // line 20
+        // line 21
         echo "
 ";
-        // line 21
+        // line 22
         if (($context["U_CANONICAL"] ?? null)) {
-            // line 22
+            // line 23
             echo "\t<link rel=\"canonical\" href=\"";
             echo ($context["U_CANONICAL"] ?? null);
             echo "\">
 ";
         }
-        // line 24
+        // line 25
         echo "
 <!--
 \tphpBB style name: prosilver
@@ -182,9 +183,9 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 -->
 
 ";
-        // line 32
+        // line 33
         if (($context["S_ALLOW_CDN"] ?? null)) {
-            // line 33
+            // line 34
             echo "<script>
 \tWebFontConfig = {
 \t\tgoogle: {
@@ -201,23 +202,23 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 </script>
 ";
         }
-        // line 48
+        // line 49
         echo "<link href=\"";
         echo ($context["T_FONT_AWESOME_LINK"] ?? null);
         echo "\" rel=\"stylesheet\">
 <link href=\"";
-        // line 49
+        // line 50
         echo ($context["T_STYLESHEET_LINK"] ?? null);
         echo "\" rel=\"stylesheet\">
 <link href=\"";
-        // line 50
+        // line 51
         echo ($context["T_STYLESHEET_LANG_LINK"] ?? null);
         echo "\" rel=\"stylesheet\">
 
 ";
-        // line 52
+        // line 53
         if ((($context["S_CONTENT_DIRECTION"] ?? null) == "rtl")) {
-            // line 53
+            // line 54
             echo "\t<link href=\"";
             echo ($context["T_THEME_PATH"] ?? null);
             echo "/bidi.css?assets_version=";
@@ -225,12 +226,12 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
             echo "\" rel=\"stylesheet\">
 ";
         }
-        // line 55
+        // line 56
         echo "
 ";
-        // line 56
+        // line 57
         if (($context["S_PLUPLOAD"] ?? null)) {
-            // line 57
+            // line 58
             echo "\t<link href=\"";
             echo ($context["T_THEME_PATH"] ?? null);
             echo "/plupload.css?assets_version=";
@@ -238,12 +239,12 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
             echo "\" rel=\"stylesheet\">
 ";
         }
-        // line 59
+        // line 60
         echo "
 ";
-        // line 60
+        // line 61
         if (($context["S_COOKIE_NOTICE"] ?? null)) {
-            // line 61
+            // line 62
             echo "\t<link href=\"";
             echo ($context["T_ASSETS_PATH"] ?? null);
             echo "/cookieconsent/cookieconsent.min.css?assets_version=";
@@ -251,11 +252,11 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
             echo "\" rel=\"stylesheet\">
 ";
         }
-        // line 63
+        // line 64
         echo "
 <!--[if lte IE 9]>
 \t<link href=\"";
-        // line 65
+        // line 66
         echo ($context["T_THEME_PATH"] ?? null);
         echo "/tweaks.css?assets_version=";
         echo ($context["T_ASSETS_VERSION"] ?? null);
@@ -263,21 +264,21 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 <![endif]-->
 
 ";
-        // line 68
         // line 69
+        // line 70
         echo "
 ";
-        // line 70
-        echo twig_get_attribute($this->env, $this->source, ($context["definition"] ?? null), "STYLESHEETS", [], "any", false, false, false, 70);
+        // line 71
+        echo twig_get_attribute($this->env, $this->source, ($context["definition"] ?? null), "STYLESHEETS", [], "any", false, false, false, 71);
         echo "
 
 ";
-        // line 72
         // line 73
+        // line 74
         echo "
 </head>
 <body id=\"phpbb\" class=\"nojs notouch section-";
-        // line 75
+        // line 76
         echo ($context["SCRIPT_NAME"] ?? null);
         echo " ";
         echo ($context["S_CONTENT_DIRECTION"] ?? null);
@@ -286,11 +287,11 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
         echo "\">
 \t<div id=\"greyscreen\"></div>
 ";
-        // line 77
         // line 78
+        // line 79
         echo "
 ";
-        // line 79
+        // line 80
         $asset_file = "header.js";
         $asset = new \phpbb\template\asset($asset_file, $this->env->get_path_helper(), $this->env->get_filesystem());
         if (substr($asset_file, 0, 2) !== './' && $asset->is_relative()) {
@@ -304,7 +305,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
         if ($asset->is_relative()) {
             $asset->add_assets_version($this->env->get_phpbb_config()['assets_version']);
         }
-        $this->env->get_assets_bag()->add_script($asset);        // line 80
+        $this->env->get_assets_bag()->add_script($asset);        // line 81
         echo "
 <div >
 \t<a id=\"top\" class=\"top-anchor\" accesskey=\"t\"></a>
@@ -322,44 +323,44 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 \t\t<h1>Navigation</h1>
 \t\t<a href=\"./index.php\">Forum</a>
 \t\t";
-        // line 96
+        // line 97
         if (($context["G_IS_ADMIN"] ?? null)) {
             echo "<a href=\"./talents.php\">Gestion des talents</a>";
         }
-        // line 97
+        // line 98
         echo "\t\t<a href=\"./villages.php\">Gestion des villages</a>
 \t\t";
-        // line 98
+        // line 99
         if (($context["IS_ANONYMOUS"] ?? null)) {
-            // line 99
+            // line 100
             echo "\t\t<a href=\"./ucp.php?mode=login\">Se connecter</a>
 \t\t<a href=\"./ucp.php?mode=register&sid=";
-            // line 100
+            // line 101
             echo ($context["SESSION_ID"] ?? null);
             echo "\">S'enregistrer</a>
 \t\t";
         } else {
-            // line 102
+            // line 103
             echo "\t\t<a href=\"./ucp.php?sid=";
             echo ($context["SESSION_ID"] ?? null);
             echo "\">Profil</a>
 \t\t<a href=\"./ucp.php?mode=logout&sid=";
-            // line 103
+            // line 104
             echo ($context["SESSION_ID"] ?? null);
             echo "\">Se déconnecter</a>
 \t\t";
         }
-        // line 105
+        // line 106
         echo "\t</div>
 \t<div id=\"page-header\">
 \t\t<div id=\"banner\">
 \t\t\t<a href=\"./index.php\">
 \t\t\t\t<div id=\"main_title\">";
-        // line 109
+        // line 110
         echo ($context["SITENAME"] ?? null);
         echo "</div>
 \t\t\t\t<div id=\"forum_descr\">";
-        // line 110
+        // line 111
         echo ($context["SITE_DESCRIPTION"] ?? null);
         echo "</div>
 \t\t\t</a>
@@ -382,19 +383,19 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 \t</div>
 
 \t";
-        // line 130
         // line 131
+        // line 132
         echo "
 \t<a id=\"start_here\" class=\"anchor\"></a>
 \t<div id=\"page-body\" class=\"page-body\" role=\"main\">
 \t\t";
-        // line 134
+        // line 135
         if (((($context["S_BOARD_DISABLED"] ?? null) && ($context["S_USER_LOGGED_IN"] ?? null)) && (($context["U_MCP"] ?? null) || ($context["U_ACP"] ?? null)))) {
-            // line 135
+            // line 136
             echo "\t\t<div id=\"information\" class=\"rules\">
 \t\t\t<div class=\"inner\">
 \t\t\t\t<strong>";
-            // line 137
+            // line 138
             echo $this->extensions['phpbb\template\twig\extension']->lang("INFORMATION");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</strong> ";
@@ -404,10 +405,10 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 \t\t</div>
 \t\t";
         }
-        // line 141
+        // line 142
         echo "
 \t\t";
-        // line 142
+        // line 143
     }
 
     public function getTemplateName()
@@ -422,7 +423,7 @@ class __TwigTemplate_25c7fa039f97898f4d2145dbbf048d6f24901398419cc57b4b55efbd04f
 
     public function getDebugInfo()
     {
-        return array (  411 => 142,  408 => 141,  398 => 137,  394 => 135,  392 => 134,  387 => 131,  386 => 130,  363 => 110,  359 => 109,  353 => 105,  348 => 103,  343 => 102,  338 => 100,  335 => 99,  333 => 98,  330 => 97,  326 => 96,  308 => 80,  294 => 79,  291 => 78,  290 => 77,  281 => 75,  277 => 73,  276 => 72,  271 => 70,  268 => 69,  267 => 68,  259 => 65,  255 => 63,  247 => 61,  245 => 60,  242 => 59,  234 => 57,  232 => 56,  229 => 55,  221 => 53,  219 => 52,  214 => 50,  210 => 49,  205 => 48,  188 => 33,  186 => 32,  176 => 24,  170 => 22,  168 => 21,  165 => 20,  162 => 18,  149 => 17,  136 => 16,  125 => 15,  114 => 14,  103 => 13,  92 => 12,  81 => 11,  79 => 10,  54 => 8,  50 => 7,  40 => 2,  37 => 1,);
+        return array (  412 => 143,  409 => 142,  399 => 138,  395 => 136,  393 => 135,  388 => 132,  387 => 131,  364 => 111,  360 => 110,  354 => 106,  349 => 104,  344 => 103,  339 => 101,  336 => 100,  334 => 99,  331 => 98,  327 => 97,  309 => 81,  295 => 80,  292 => 79,  291 => 78,  282 => 76,  278 => 74,  277 => 73,  272 => 71,  269 => 70,  268 => 69,  260 => 66,  256 => 64,  248 => 62,  246 => 61,  243 => 60,  235 => 58,  233 => 57,  230 => 56,  222 => 54,  220 => 53,  215 => 51,  211 => 50,  206 => 49,  189 => 34,  187 => 33,  177 => 25,  171 => 23,  169 => 22,  166 => 21,  163 => 19,  150 => 18,  137 => 17,  126 => 16,  115 => 15,  104 => 14,  93 => 13,  82 => 12,  80 => 11,  55 => 9,  51 => 8,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

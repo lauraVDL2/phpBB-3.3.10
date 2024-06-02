@@ -5,6 +5,12 @@ body {
     padding: 0px;
 }
 
+.symbol_clan {
+    width: 100px;
+    display: block;
+    margin: auto;
+}
+
 #nav_guidebook {
     width: 100%;
     box-sizing: border-box;
@@ -65,6 +71,12 @@ body {
     color: var(--main_color_2);
     font-size: 1rem;
     text-align: justify;
+}
+
+.gb_content li {
+    list-style-image: url('https://zupimages.net/up/24/22/w6fl.png');
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .gb_content h3 {
