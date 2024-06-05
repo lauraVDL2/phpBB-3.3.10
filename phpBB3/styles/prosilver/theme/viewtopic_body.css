@@ -210,7 +210,7 @@
     color: var(--main_color_2) !important;
 }
 
-.p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nukenin {
+.p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nukenin, .p_predef {
     font-weight: bold;
     text-align: center;
     font-size: 1.4rem;
@@ -231,6 +231,11 @@
 
 .p_kiri {
     background-color: var(--kiri);
+}
+
+.p_predef {
+    background-color: var(--main_color_2);
+    color: var(--main_color_1) !important;
 }
 
 .p_iwa {

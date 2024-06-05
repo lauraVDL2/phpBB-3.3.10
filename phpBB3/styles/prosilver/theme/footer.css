@@ -15,6 +15,14 @@
     color: var(--main_color_1) !important;
 }
 
+#last_username {
+    text-align: center;
+    color: var(--main_color_3) !important;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 #flex_footer {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr 2fr;

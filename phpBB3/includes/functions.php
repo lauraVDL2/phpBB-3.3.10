@@ -490,6 +490,34 @@ function last_hours($timestamp) {
 	return $str;
 }
 
+function get_max_user_id() {
+	global $db;
+	$req = [
+		'SELECT' => 'MAX(user_id) AS max_id',
+		'FROM' => [
+			USERS_TABLE => 'ut'
+		]
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['max_id'];
+}
+
+function get_last_username() {
+	global $db;
+	$id = get_max_user_id();
+	$req = [
+		'SELECT' => 'ut.username',
+		'FROM' => [
+			USERS_TABLE => 'ut'
+		],
+		'WHERE' => "ut.user_id = $id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['username'];
+}
+
 /**
  * Get user informations of the technique (admin interface of the profile)
  * @param int user_id
@@ -4675,6 +4703,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
+		'LAST_USERNAME' => get_last_username(),
 		'G_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
 		'IWA_TOTAL' => $iwa,
 		'KIRI_TOTAL' => $kiri,

@@ -431,7 +431,6 @@ if($request->is_ajax()) {
     }
     //NINJUTSU TALENT : DEMON CHAKRA
     else if($sp_demon) {
-        delete_talent_by_name('Chakra++');
         $talent_id = get_talent_id('Chakra du démon');
         $sp_price = $request->variable('sp_price', 0);
         $sql = 'INSERT INTO '.USER_TALENTS_TABLE.' '.$db->sql_build_array('INSERT', [

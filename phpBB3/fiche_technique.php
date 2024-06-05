@@ -312,13 +312,22 @@ function get_techniques($type, $block_name) {
                     }
                 }
             }
-            //ELITE CASE
+            //SPECIFIC CASES
             if($offensive) {
                 $elites = get_ft_elites($ft_user_id);
                 $jinchuriki = is_jinchuriki($ft_user_id);
                 if($row['technique_subtype'] == $elites['first_elite'] || $row['technique_subtype'] == $elites['second_elite'] || $row['technique_spe'] == $elites['first_elite'] 
-                    || $row['technique_spe'] == $elites['second_elite'] || $row['technique_subtype'] == $jinchuriki || $row['technique_spe'] == $jinchuriki) {
+                    || $row['technique_spe'] == $elites['second_elite']) {
                     $damage += round($damage*0.15);
+                }
+                else if($row['technique_subtype'] == $jinchuriki || $row['technique_spe'] == $jinchuriki) {
+                    $damage += round($damage*0.08);
+                }
+                else if($row['technique_type'] == 'Kekkei Genkai') {
+                    $damage += round($damage*0.05);
+                }
+                else if($row['technique_type'] == 'Hiden') {
+                    $chakra -= round($chakra*0.30);
                 }
             }
         }

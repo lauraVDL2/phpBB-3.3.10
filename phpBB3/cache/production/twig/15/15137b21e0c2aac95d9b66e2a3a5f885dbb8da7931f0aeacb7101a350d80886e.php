@@ -88,6 +88,9 @@ class __TwigTemplate_d3ea5eaf0c670c7f05905a0d46e64f8c7ae242b033d9bfde5f571002132
         </div>
         <div class=\"gb_menu\">
             <h1>Annexes</h1>
+            <div class=\"gb_link\" onclick=\"tabs('a_genjutsu', event);\">Genjutsu</div>
+            <div class=\"gb_link\" onclick=\"tabs('a_biju', event);\">Jinchuriki & Bijû</div>
+            <div class=\"gb_link\" onclick=\"tabs('a_swordmen', event);\">Épéistes de la brume</div>
         </div>
     </div>
 
@@ -107,7 +110,7 @@ class __TwigTemplate_d3ea5eaf0c670c7f05905a0d46e64f8c7ae242b033d9bfde5f571002132
 <p><strong>Staff ;</strong> Vous pourrez reconnaître le staff sur Discord à leurs pseudonymes affichés en couleur différente. Nous sommes bien entendu disponibles si jamais quelque chose vous tracasse sur la plateforme et vous invitons à nous contacter.</p>
 <p><strong>Contenus ;</strong> Les contenus gores et érotiques sont prohibés sur la plateforme, et ce sur toutes leurs formes.</p>
 <p><strong>HTML ;</strong> Le forum étant basé sur phpbb core, le HTML n’est pas autorisé dans les messages, contrairement au bbcode.</p>
-<p><strong>Lisibilité ;</strong> Nous sommes particulièrement tolérants sur le niveau d’écriture de chacun et tenons à ce que chaque joueur puisse s’amuser tranquillement sur Jikan no Mon. Nous vous demandons simplement d’éviter l’abus de langage SMS, pour des questions d’accessibilité.</p>
+<p><strong>Lisibilité ;</strong> Nous sommes particulièrement tolérants sur le niveau d’écriture de chacun et tenons à ce que chaque joueur puisse s’amuser tranquillement sur Jikan no Mon. Nous vous demandons simplement d’éviter l’abus du langage SMS ou de l'écriture inclusive, pour des questions d’accessibilité.</p>
 <p><strong>Absences ;</strong> Le RP étant avant tout un loisir, vous pouvez vous absenter sans avoir à vous justifier du moment que vous nous prévenez. Nous effectuons de temps à autre un tri des utilisateurs inactifs afin d’alléger notre base de données. Une personne ne s’étant pas connectée plus de deux mois sans absence signalée sera susceptible d’être supprimée.</p>
 <p><strong>Rythme ;</strong> Jikan no Mon n’exige un rythme que pour les missions et intrigues. Un post par semaine sera demandé lorsque vous vous inscrivez à une intrigue. Une mission sans absence ni nouvelle de votre part pourra quant à elle être clôturée au bout de deux semaines. Nous avons tous nos obligations et un emploi du temps plus ou moins chargé, nous vous demanderons donc d’être respectueux du rythme de vos partenaires.</p>
 
@@ -145,7 +148,10 @@ class __TwigTemplate_d3ea5eaf0c670c7f05905a0d46e64f8c7ae242b033d9bfde5f571002132
     </div>
 
     <div class=\"gb_visible\" id=\"staff\">
-        Blablah
+        <div class=\"gb_title\">Staff</div>
+        <div class=\"gb_content\">
+            À venir !
+        </div>
     </div>
 
     <div class=\"gb_visible\" id=\"copyright\">
@@ -286,28 +292,193 @@ class __TwigTemplate_d3ea5eaf0c670c7f05905a0d46e64f8c7ae242b033d9bfde5f571002132
     <div class=\"gb_visible\" id=\"suna_context\">
         <div class=\"gb_title\">Contexte de Suna</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Histoire</h3>
+
+            <p>Il s’agit d’un village né de la solidarité des habitants du désert pour survivre dans ces conditions difficiles. Le désert étant difficile à parcourir en raison des tempêtes de sable impitoyable, il s’agit d’une région où il est également difficile de contrôler ce qui se passe et où le taux de criminalité est vraisemblablement sous-estimé.</p>
+
+            <p>Suna a en outre été créé par le premier Kazekage, qui croyait en la puissance des ninjas du désert. C’était un homme qui aspirait à la paix, malgré la possession du démon à une queue, mais qui n’empêcha pas le monde de sombrer dans la guerre. Aujourd’hui encore, une forte rivalité existe entre les ninjas de Suna et ceux d’Iwa.</p>
+
+            <p>Il n’y a pas de village à la fois plus mal placé, mais aussi mieux placé que celui de Suna. Bien à l’abri au fond d’un désert hostile, il s’agit d’une véritable forteresse défensive, retranchée au cœur d’une série de rochers, n’offrant à de potentiels attaquants qu’une seule entrée.</p>
+
+            <p>Malheureusement, cette forte position défensive vient avec son lot de faiblesses, et la plus grande du village de Suna est sa dépendance sur les ressources extérieures pour pouvoir survivre.</p>
+
+            <p>Cette dépendance ainsi que l’impact des plusieurs guerres précédentes font de Suna un village vieillissant où les anciennes générations sont encore amères des défaites qu’elles ont subies, et prêtes à tout pour combattre la famine et la pénurie d’eau.</p>
+
+            <p>C’est aussi le village le plus inégal au niveau des shinobis, avec le plus de Genin qui jettent l’éponge quand ils doivent affronter le désert impitoyable, mais aussi le plus de Jônin capables de survivre dans les pires conditions avec le minimum de ressources possibles.</p>
+
+            <p>Tout ceci a créé dans le village de Suna un sentiment de camaraderie important, où il est nécessaire que chaque personne puisse compter sur son prochain dans ses moments de faiblesse, et où chacun doit être capable de défendre ses intérêts et ceux de son village bec et ongle, quitte à en mourir.</p>
+
+            <p>Le concept de clans de ce village est particulier. Quand bien même de nombreux pouvoirs incroyables sont issus de ses membres, il n’y a pour le moment aucune rivalité entre ces derniers, et aucun type de communautarisme n’a jamais vu le jour. Tous sont unis pour le bien de Suna, mais certains diront que c’est à cause de leur fondation plutôt récente.</p>
+
+            <p>Le village tire aussi sa réputation de leur Kazekage, Ootani Junko. C’est une femme à ne pas prendre à la légère. Elle a su sceller une alliance avec Iwa, et s’entend plutôt bien avec sa comparse Tsuchikage. Certains racontent qu’elle aurait par le passé eu affaire à Ichibi et aurait été capable de calmer ses ardeurs ; il s’agit de l’une des rares ayant la réputation de pouvoir défier les démons à queue en duel.</p>
+
+            <h3>Personnages importants</h3>
+
+            <p>Ootani Junko : Il s’agit sans nul doute de la plus sage et de la plus expérimentée des Kage. Si elle sait faire preuve de dureté et de discipline quand il le faut, elle cache aussi une grande tendresse envers ses shinobis, beaucoup la voyant presque comme une mère. Elle a conservé les aspirations de paix qui furent fondamentales dans la création de Suna, y a-t-elle même assisté. Elle est très appréciée et admirée au sein de son village, et est même respectée au sein des autres, quand bien même certains la voient toujours en adversaire.</p>
+
+            <h3>Chronologie</h3>
+
+            <p>An -14 : Naissance de Junko.</p>
+
+            <p>An 8 : Fondation.</p>
+
+            <p>An 16 : Premier conseil des Kage, répartition des Bijû.</p>
+
+            <p>An 20 : Le premier Kazekage, Ootani Aoi se retire pour laisser place au Nidaime Kazekage, Ootani Kentarô.</p>
+
+            <p>An 22 : Si Suna ne perd pas ses objectifs de paix, Kentarô essuie quelques erreurs diplomatiques, qui le mettent notamment en conflit avec Iwa.</p>
+
+            <p>An 30 : Cessez-le-feu entre Suna et Iwa, après la mort du Nidaime Tsuchikage lors d’une bataille.</p>
+
+            <p>An 34 : Ootani Junko devient la Sandaime Kazekage après la mort de son prédécesseur.</p>
+
+            <p>An 35 : Crise d’Ame. Le daimyo du pays de la pluie négocie l'annexion de ses terres à celles de Suna/Iwa qui se disputent la terre. Konoha intervient et remet de l’ordre. Ame est sous statut de protectorat par Konoha, sous les yeux méfiants de Suna et d’Iwa.</p>
+
+            <p>An 41 : Alliance avec Iwa.</p>
+
+            <p>An 46 : Début du forum.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"iwa_context\">
         <div class=\"gb_title\">Contexte d'Iwa</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Histoire</h3>
+
+            <p>Le village d’Iwa a été fondé par le premier Tsuchikage. Peu de temps après la création des villages, le premier Hokage de Konoha a vendu des bêtes à queue à Iwa en signe d’amitié, ainsi que pour assurer la balance du pouvoir entre les villages. Alors que les Tsuchikage se sont succédés, les relations se sont toutefois bien détériorées entre les villages.</p>
+
+            <p>Iwa est un village construit en hauteur, dont les nombreuses montagnes donnent l’avantage aux défenseurs qui connaissent le terrain, Iwa s’est bâti au flanc d’une montagne riche en minéraux et en matériaux rares. Se faisant, il a assuré un véritable contrôle de la production d’armes des pays ninja.</p>
+
+            <p>C’est un village où les shinobis ne sont pas les plus nombreux, mais qui sait quand même se défendre. De plus, s’il devait se faire attaquer, le village dispose de très nombreux passages dans les mines pour s’échapper ou s’enfuir.</p>
+
+            <p>La détérioration de la relation entre Iwa et les autres villages a été alimentée par les tendances belliqueuses et expansionnistes d’Iwa. Si la plus grande conquête de ce village a sans doute été celle du pays de la neige, il n’en a pas fallu plus pour que Konoha se sente menacé et que des tensions naissent. L’arrivée du Sandaime Tsuchikage n’arrangea en rien la situation, une rivalité puissante séparant désormais Konoha et Iwa, au fil des escarmouches et des erreurs diplomatiques.</p>
+
+            <p>L’arrivée de la Yondaime Tsuchikage, Bakugei Hikaru, changea toutefois les choses. Cette dernière, bien qu’ambitieuse, souhaite faire connaître une ère plus paisible à son village, dont les effectifs ont été minés par les guerres passées. Elle a ainsi scellé une alliance tactique avec Suna - autrefois village rival d’Iwa - afin d’avancer dans cette direction.</p>
+
+            <p>Les ninjas d’Iwagakure sont réputés pour leur ambition et leur soif de gloire. Ils accordent également une grande importance à l’expérience, et respectent particulièrement leurs aînés.</p>
+
+            <p>L’arrivée d’Hikaru au pouvoir ne fait toutefois pas l’unanimité au sein du village. Non seulement son jeune âge peut être vu d’un mauvais œil par certains, mais en plus, tous ne partagent pas ses idées nouvelles ainsi que sa vision moins rigide de la vie d’un shinobi. Si elle possède ses partisans parmi les plus jeunes, certains - plus conservateurs - tendent à grincer les dents face à la politique qu’elle mène.</p>
+
+            <p>Iwa se trouve en outre aujourd’hui dans une position inconfortable. Si les shinobis se vouaient autrefois leur corps et leur âme à leur Tsuchikage, cette passion s’est perdue. Les expansionnistes se font de plus en plus entendre, mettant à mal l’autorité d’Hikaru. On raconte également qu’un élève du Sandaime, maître du Jinton, souhaiterait faire entendre sa voix.</p>
+
+            <h3>Personnages importants</h3>
+
+            <p>Bakugei Hikaru : Prodige de sa génération, c’est grâce à ses compétences hors du commun qu’Hikaru a pu se hisser au rang de Kage. Kunoichi d’aspect médicinal, c’est également elle qui est à l’origine du Meiton. Elle incarne pour certains la jeunesse et l’espoir d’Iwa avec ses idées nouvelles. D’autres voient néanmoins ce changement d’un mauvais oeil. Malgré son aspiration à une paix durable, elle est une jeune femme possédant de la poigne, bien qu’elle puisse parfois l’impression d’être dépassée par la fracture d’Iwa en raison de son inexpérience ; gérer un  nouveau virage pour un village autrefois expansionniste n’a rien d’évident.</p>
+
+            <h3>Chronologie</h3>
+
+            <p>An 0 : Construction du village d’Iwa.</p>
+
+            <p>An 16 : Premier conseil des Kage, répartition des Bijû.</p>
+
+            <p>An 20 : Naissance d’Hikaru.</p>
+
+            <p>An 21 : Début de la guerre contre le pays de la neige.</p>
+
+            <p>An 23 : Le pays de la neige est annexé à Iwa, début des tensions entre Konoha et Iwa.</p>
+
+            <p>An 30 : Cessez-le-feu entre Suna et Iwa, après la mort du Nidaime Tsuchikage lors d’une bataille.</p>
+
+            <p>An 35 : Crise d’Ame. Le daimyo du pays de la pluie négocie l'annexion de ses terres à celles de Suna/Iwa qui se disputent la terre. Konoha intervient et remet de l’ordre. Ame est sous statut de protectorat par Konoha, sous les yeux méfiants de Suna et d’Iwa.</p>
+
+            <p>An 41 : Hikaru devient la Yondaime Tsuchikage, elle scelle par la même occasion une alliance avec Suna.</p>
+
+            <p>An 46 : Début du forum.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"kumo_context\">
         <div class=\"gb_title\">Contexte de Kumo</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Histoire</h3>
+
+            <p>Bien que le plus récent des cinq grands villages, Kumo n’en demeure pas moins le plus puissant et surtout le plus militaire. Il suffit de jeter un œil aux registres officiels détenus dans la tour du Raikage pour constater que de nombreux shinobis sont nommés selon des lettres de l’alphabet. Le Raikage lui-même abandonne son identité au profit de la lettre “A”, première lettre de l’alphabet, pour le premier shinobi de son village.</p>
+
+            <p>Les dirigeants du village caché de Kumo se sont néanmoins rapidement intéressés aux Bijû ; l’on raconte que leurs Jinchuriki possèdent là-bas une maîtrise toute particulière de leur démon à queues.</p>
+
+            <p>Malgré les tentatives d’alliance répétées au fil des années, Kumo n’a jamais su se doter d’alliés conséquents, à cause d’un manque de coordination au fil des différents dirigeants. Si le Shodai Raikage était pour la paix par les armes, et les affrontements directs, le Nidaime lui souhaitait se lier à Konoha. Le Sandaime prit la décision de tenter de rallier les samouraïs, avec un gros échec à la clé. Enfin, le Yondaime scella la première alliance officieuse de Kumo, avec le village caché de Kiri.</p>
+
+            <p>La grande force de Kumo réside dans sa politique interne. Malgré les successions des Raikage et les potentiels désaccords entre ces derniers, tous ont eu l’optique de rendre le village fort. Cela se ressent dans la politique militaire ; l’enseignement des ninjas de Kumo est rude et repose sur une discipline distinctive. Les voix dissidentes à l’égard de la hiérarchie sont particulièrement mal vues dans ce village aux tendances autoritaires. Certains murmurent que le Raikage actuel ferait disparaître ses adversaires, mais peu osent pour le moment vérifier l’information à la source.</p>
+
+            <p>Les shinobis de ce village ne sont pas réputés pour leur liberté, ou même leur esprit critique. Ils n’en restent pas moins unis sous la même bannière, obéissant au doigt et à l'œil au Raikage, et ce malgré la direction confuse qu’à pu prendre le village au fil des successeurs. Contrairement à certains villages, même s’il existe des clans avec leurs particularités, ils tendent à ne pas se détacher de la direction imposée par le Raikage. L’esprit commun prime-t-il sur le reste, ou certains ont-ils peur de lever la voix ? Tout ceci dépendra du chef de clan.</p>
+
+            <p>Si on peut noter que quelques arts ont été initialement créés dans le village, à l’image du Nintaijutsu, ce dernier a toutefois essuyé des échecs. Notamment dans sa tentative de créer un groupe susceptible de rivaliser avec les épéistes de la brume de Kiri.</p>
+
+            <h3>Personnages importants</h3>
+
+            <p>Bôkun “A” Nari, Yondaime Raikage ; Raikage actuel du village de Kumo. Si on pourrait songer qu’un shinobi ayant abandonné son identité possède une personnalité effacée, il en est tout le contraire. Aussi chaleureux avec ses subalternes que s’il s’agissait de ses propres enfants et ne refusant jamais un verre d’alcool, A n’est pourtant pas un Kage à sous-estimer. Il sait faire preuve d’un grand sérieux dans ses tâches quand la situation l’exige, et sa rigueur militaire n’est plus à prouver.</p>
+
+            <h3>Chronologie</h3>
+
+            <p>An 6 : Naissance de Nari.</p>
+
+            <p>An 12 : Fondation.</p>
+
+            <p>An 16 : Premier conseil des cinq Kage, répartition des Bijû.</p>
+
+            <p>An 19 : L’alliance Konoha/Kumo n’a pas lieu, en raison de la disparition du Nidaime Hokage et du décès du Nidaime Raikage. Leurs successeurs prennent des directions politiques différentes.</p>
+
+            <p>An 24 : Le Sandaime échoue à faire alliance avec les samuraï. Kumo commence alors à prendre une politique plus isolationniste, et se développe de l’intérieur.</p>
+
+            <p>An 33 : Tentative de coup d’état de la part d’un certain Hangyaku. Il est rapidement abattu, la politique intérieure de Kumo se durcit davantage.</p>
+
+            <p>An 38 : Nari devient le Yondaime Raikage. Comme ses prédécesseurs, il abandonne son identité pour prendre la lettre “A”.</p>
+
+            <p>An 42 : Première alliance de Kumo, avec Kiri.</p>
+
+            <p>An 46 : Début du forum.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"konoha_context\">
         <div class=\"gb_title\">Contexte de Konoha</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Histoire</h3>
+
+            <p>Premier des cinq grands villages cachés, Konoha est issu de l’union d’une multitude de clans, qui croyaient en un idéal de paix, mais sur l’initiative des deux plus grands : les Senju et les Uchiha, éternels rivaux qui mirent de côté toute rancoeur, toute haine.</p>
+
+            <p>Même s’il n’est pas le plus puissant des villages, Konoha possède une réputation qui vient du fait que de grands noms du Sekai proviennent de ses effectifs, tel que le fondateur Senju Hashirama et son prodigieux mokuton capable de dresser les démons à queues ou même l’actuel Hokage, Uchiha Ieyasu.</p>
+
+            <p>C’est un village très clanique, ayant basé toute sa politique autour des dons héréditaires de ses grands clans, le tout uni par une politique matrimoniale où les Senju ont sacrifié jusqu’à leur nom pour créer des liens familiaux entre chaque ensemble. Chacun possède sa place, et tout le monde y trouve son compte.</p>
+
+            <p>Par exemple, le clan Uchiha a reçu le rôle d’assurer la sécurité du village et ses membres font donc partie de la police. Ce qui fut longtemps une insulte (un moyen de reléguer le clan aux abords du village, où se tiennent leurs quartiers), c’est aujourd’hui une fierté. Le clan Yamanaka, quant à lui, assure la protection des murailles grâce à la barrière protectrice du village.</p>
+
+            <p>Malgré sa force, Konoha sort d’une période d’instabilité interne. La mort du Shodai Hokage, puis du Nidaime, créèrent un doute sur la succession. La disparition du Nidaime laissa un trouble qui ne put être résorbé que par l’arrivée au pouvoir d’un nouveau Hokage.</p>
+
+            <p>Surprenamment, l’installation d’un Uchiha au pouvoir se fit sans heurts. Accueilli avec les honneurs, celui qui porta longtemps le simple titre de chef de clan, sut se faire aimer de son peuple. Sa dureté, son implacabilité, fut rapidement accueillie avec bonheur par ses congénères qui voyaient la situation se détériorer au sein du Sekai.</p>
+
+            <p>C’est ainsi que Konoha, depuis l’an 24 et l’ascension du Sandaime, mène une politique dure à l’échelle du Sekai. Ne voulant pas se faire dépasser, elle impose sa présence sur tous les fronts, quitte à se faire haïr de ses rivaux.</p>
+
+            <h3>Personnages importants</h3>
+
+            <p>Uchiha Ieyasu : Successeur direct de Hyûga Akihiko, Ieyasu s’est fait une place dans les hautes sphères du village grâce à l'ingérence menée par le daimyo du pays du feu. Manipulateur et silencieux, le Uchiha aux pupilles pourpres n’a eu de cesse de se battre contre son adversaire, Tobirama Senju, pour la place qu’il jugeait lui revenir de droit. La disparition inopinée du Senju et la place que prit le Uchiha permirent une ascension pour le clan policier qui, depuis, mène Konoha avec une main de fer.
+                Cependant, la montée en puissance d’un petit-fils de Senju Tobirama, n’est pas vu d’un bon œil. Si la popularité d’Ieyasu demeure particulièrement haute, il sait que ce Senju sera une épine dans son pied, car il joue de son influence de l’ombre pour diriger quelques actions qui pourraient se retourner contre Konoha.
+                Si d’apparence, Ieyasu est un homme dur et implacable, c’est en réalité un homme aimant ayant donné beaucoup de son temps au village et à ses habitants, qu’il considère comme sa famille. Sa dureté ne remet pas en cause la volonté du feu qu’il porte et c’est en ce sens qu’il a tout aussi durement formé les sannins : il leur a donné tout ce qu’il savait et même s’il fut dur, il les traita comme ses propres enfants.
+            </p>
+
+            <h3>Chronologie</h3>
+
+            <p>An -6 : Naissance de Uchiha Ieyasu</p>
+
+            <p>An 0 : Fondation.</p>
+
+            <p>An 6 : Affront de Kiri envers Konoha. Premier protectorat d’Uzushio assuré par Senju Hashirama.</p>
+
+            <p>An 12 : Naissance des Sannins.</p>
+
+            <p>An 16 : premier conseil des cinq Kage, répartition des Bijû.</p>
+
+            <p>An 17 : décès de Senju Hashirama. Hyûga Akihiko devient le Nidaime.</p>
+
+            <p>An 19 : disparition du Nidaime Hokage, Hyûga Akihiko. Une nouvelle légende s’éteint. Uchiha Ieyasu obtient le titre de Sandaime Hokage. Décès du Nidaime Raikage, un nouveau A devient le Sandaime Raikage.</p>
+
+            <p>An 35 : crise d’Ame. Le daimyo du pays de la pluie négocie l'annexion de ses terres à celles de Suna/Iwa. Konoha envoie une troupe d’élite s’occuper de l’affaire et remettre de l’ordre chez les ninjas. Le retour en ordre, brutal, est opéré par les sannins qui obtiennent leur réputation à cet instant.
+                Le daimyo de la pluie est placé sous « tutelle » et Ame sous statut de protectorat par Konoha.
+            </p>
+
+            <p>An 40 : le pays de la pluie se dote de défenses incroyables, financées notamment avec l’aide de Konoha — contre quelques concessions territoriales.</p>
+
+            <p>An 46 : Kiri conquiert une île proche d’Uzushio et y place une garnison composée, notamment, de ninjas Kaguya. Uzushio entre officiellement sous statut de protectorat par Konoha, comme par le passé. On parle du Second protectorat d’Uzushio.</p>
         </div>
     </div>
 
@@ -1001,35 +1172,269 @@ class __TwigTemplate_d3ea5eaf0c670c7f05905a0d46e64f8c7ae242b033d9bfde5f571002132
     <div class=\"gb_visible\" id=\"principe\">
         <div class=\"gb_title\">Principe</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Généralités</h3>
+
+            <p>Au fil du jeu, votre personnage bénéficiera de points de compétence. Ces derniers pourront être dépensés au sein d’un arbre. Les points de compétence sont susceptibles d’être gagnés lors d’entraînements, de missions, ou encore lors d’évènements (liste non exhaustive).</p>
+
+            <h3>Contenu de l'arbre</h3>
+
+            <p>Il est important de noter que certaines parties de l’arbre de compétences ne seront pas visibles à vous, joueur. Vous n’aurez peut-être pas assez de points d’attribut, un niveau pas assez élevé ; <strong>vous n’aurez pas atteint les conditions requises pour que votre personnage puisse débloquer la compétence indiquée.</strong> N’ayez crainte, les divers domaines de l’arbre de compétences (appelés spécialisations) sont dévoilés dans l’annexe de chacune des branches.</p>
+
+            <h3>Récompenses particulières</h3>
+
+            <p>Il est possible - au travers de l’arbre de compétences - de <strong>gérer la montée en rang de votre personnage.</strong> En effet, si vous avez 3 points d’attribut en Ninjutsu, Taijutsu et Genjutsu, il vous sera possible de devenir Chûnin pour 125 points de compétence. De même, avec 4 points d’attribut dans ces mêmes domaines, il sera possible de devenir Jônin pour 150 points de compétence.</p>
+
+            <p>
+                Les points de compétence vous permettront également d’acheter <strong>de nouvelles techniques</strong> ;
+                <li>Pour 25 points, vous pourrez acheter une technique de rang D.</li>
+                <li>Pour 50 points, vous pourrez acheter une technique de rang C.</li>
+                <li>Pour 75 points, vous pourrez acheter une technique de rang B.</li>
+                <li>Pour 100 points, vous pourrez acheter une technique de rang A.</li>
+                <li>Pour 150 points, vous pourrez acheter une technique de rang S.</li>
+            </p>
+
+            <h3>Surspécialisation</h3>
+
+            <p>La surspécialisation survient lorsqu’un joueur décide d’avoir des compétences dans un domaine particulier (par exemple, l’Iroujutsu pour Tsunade, qu’elle pousse au maximum). Si sur le forum, nous autorisons la polyvalence, il est également possible de se surspécialiser au début du jeu, en effectuant une demande auprès du staff. Voici ce que cela implique :
+                <li>Il ne sera possible d’avoir que trois spécialisations dans l’arbre (en comptant les éléments, armes et types de Genjutsu et sans compter les spécialisations élite).</li>
+                <li>Vous gagnerez deux points d’expérience supplémentaire à chaque ouverture rp.</li>
+                <li>Le staff sera plus enclin à vous attribuer des talents.</li>
+            </p>
+
+            <p>Attention toutefois, si vous décidez d’activer la fonctionnalité surspécialisation, il ne sera pas possible de revenir en arrière.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"ninjutsu_branch\">
         <div class=\"gb_title\">Branche Ninjutsu</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Généralités</h3>
+
+            <p>Le Ninjutsu est l’un des trois grands arts ninjas. Il regroupe toutes les techniques qui ne rentrent pas dans les catégories Genjutsu ou Taijutsu. Cela en fait une branche très diversifiée, avec le plus grand panel de techniques possibles.</p>
+
+            <h3>Spécialisations</h3>
+
+            <p>Le Ninjutsu possède d’une part des <strong>spécialisations liées aux éléments.</strong> Si <strong>un premier élément vous est offert à l’inscription</strong>, il vous est possible d’avoir <strong>une deuxième affinité élémentaire</strong> une fois que vous aurez dépensé <strong>4 points d’attribut en Ninjutsu</strong> pour un prix de 75 points de compétences. La <strong>troisième affinité élémentaire</strong> sera ainsi possible au bout de <strong>6 points d’attribut dépensés en Ninjutsu</strong> pour un prix de 100 points de compétence.</p>
+
+            <p>La branche Ninjutsu possède également la spécialisation <strong>Fuinjutsu au bout de 4 points d’attribut dépensés en Ninjutsu</strong> pour 75 points de compétences. Vous aurez la possibilité de voir deux types de Fuinjutsu : <strong>les Barrières et les Sceaux.</strong></p>
+
+            <p>Vient ensuite <strong>l’Irou Jutsu, aussi disponible après 4 points d’attribut dépensés en Ninjutsu</strong> pour 75 points de compétence. Vous aurez la possibilité de voir deux types d’Irou Jutsu : <strong>les Poisons ainsi que les Soins.</strong></p>
+
+            <p>Enfin, <strong>les Kuchiyoses sont également disponibles après 4 points d’attribut dépensés en Ninjutsu.</strong> Cela désigne ni plus ni moins que les techniques d’invocation en tout genre (il faudra d’ailleurs référencer votre animal dans le bottin). Cette spécialisation coûtera en outre 75 points de compétence.</p>
+
+            <p>Les Jinchuriki possèdent également une spécialisation particulière à l’inscription ; cette dernière, portant le nom Jinchuriki, leur permet d’utiliser les pouvoirs particuliers du démon de manière assez basique (par exemple, le sable pour Shukaku ou l’élément Katon pour Matatabi).</p>
+
+            <h3>Talents</h3>
+
+            <p>Il existe une série de talents susceptibles de vous conférer des avantages intéressants pour les techniques de cette branche ;
+                <li>Généraliste+ : Réduit le coût en Chakra de vos techniques de Ninjutsu de 10%. Ce talent nécessitera d’avoir dépensé au moins <strong>4 points d’attribut en Ninjutsu</strong> et coûtera 25 points de compétence.</li>
+                <li>Généraliste++ : Réduit le coût en Chakra de vos techniques de Ninjutsu de 20%. Ce talent nécessitera d’avoir dépensé au moins <strong>6 points d’attribut en Ninjutsu</strong> et coûtera 50 points de compétence.</li>
+                <li>Généraliste+++ : Réduit le coût en Chakra de vos techniques de Ninjutsu de 30%. Ce talent nécessitera d’avoir dépensé au moins <strong>8 points d’attribut en Ninjutsu</strong> et coûtera 75 points de compétence.</li>
+                Il est à noter que ces talents sont évolutifs, et non cumulables.
+            </p>
+
+            <p>Un autre talent, ne concernant que les Jinchuriki, se nomme <strong>Maîtrise totale.</strong> Il offre la totale maîtrise de son bijû, et est disponible dans l’arbre de compétences <strong>après avoir acheté la spécialisation élite Manteau de chakra</strong>. Il coûtera 75 points de compétence. Ces derniers auront également accès au talent <strong>Chakra du démon</strong>, pour 100 points de compétence et leur offrant un +40 dans leur jauge de Chakra.</p>
+
+            <h3>Spécialisations élite</h3>
+
+            <p><em>Il vous faudra être minimum niveau 20 pour voir les spécialisations élite apparaître.</em></p>
+
+            <p>Le <strong>Senjutsu</strong> ou l’art de l’ermite est une catégorie de techniques permettant de ressentir et canaliser l’énergie naturelle autour de l’utilisateur. Pour accéder à cette spécialisation élite, il faut déjà <strong>posséder la spécialisation Kuchiyose, et avoir dépensé 8 points d’attribut en Ninjutsu et en Esprit.</strong> Elle coûtera 150 points de compétence.</p>
+
+            <p><strong>Hiraishin</strong>, ou Dieu du Tonnerre Volant, regroupe des techniques combinant les notions de déplacement instantané et de Ninjutsu spatio-temporel pour des attaques éclair et mortelles. Pour accéder à cette spécialisation élite, il faut avoir dépensé <strong>8 points d’attribut en Ninjutsu et en Vitesse.</strong> Elle coûtera 150 points de compétence.</p>
+
+            <p><strong>Le Jinton est un Kekkei Tôta n’étant disponible qu’à Iwa.</strong> Cela désigne les techniques de libération de la poussière. Pour y accéder, il faut au préalable <strong>posséder les affinités élémentaires Doton, Katon, et Fûton et avoir dépensé 8 points d’attribut en Ninjutsu.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
+
+            <p><strong>Le Gyôton est un Kekkei Tôta n’étant disponible qu’à Kumo.</strong> Il consiste en la création d’aurores boréale ; ce sont des voiles de chakra, des condensés de chakra. Pour y accéder, il faut au préalable <strong>posséder les affinités élémentaires Suiton, Raiton et Fûton et avoir dépensé 8 points d’attribut en Ninjutsu.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
+
+            <p><strong>Le Kyôton est un Kekkei Tôta n’étant disponible qu’à Kiri.</strong> Il consiste en la manipulation de miroirs permettant de refléter les attaques. Pour y accéder, il faut au préalable <strong>posséder les affinités élémentaires Suiton, Fûton et Doton, et avoir dépensé 8 points d’attribut en Ninjutsu.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
+
+            <p><strong>La marque maudite</strong> est un cas particulier, car elle n’apparaîtra dans votre arbre qu’après activation du staff et une justification scénaristique solide. Pour y accéder, il faut déjà <strong>posséder le Fuinjutsu des sceaux et avoir dépensé 8 points d’attribut en Ninjutsu.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
+
+            <p>La spécialisation élite <strong>Manteau de chakra n’est disponible que pour les Jinchuriki</strong> et permet de faire appel aux grands pouvoirs de son démon à queue. Cette spécialisation élite sera disponible après avoir dépensé <strong>8 points d’attribut en Esprit et en Ninjutsu.</strong> Elle coûtera 150 points de compétence.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"taijutsu_branch\">
         <div class=\"gb_title\">Branche Taijutsu</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Généralités</h3>
+
+            <p>Le Taijutsu est l’un des trois grands arts ninja. Les utilisateurs de Taijutsu peuvent pousser les limites de leur corps à des stades incroyables ou même réaliser des prouesses avec leurs armes. Ce sont des spécialistes du corps-à-corps.</p>
+
+            <h3>Spécialisations</h3>
+
+            <p>Il existe plusieurs types d’armes. Le Kenjutsu désigne le maniement de l’épée, le Shurikenjutsu désigne le lancé de shuriken, de kunai ou de senbon, le Bôjutsu désigne le maniement des bâtons, et enfin le Kyûjutsu le maniement des arcs. <strong>Un premier type d’arme est offert à l’inscription.</strong> Vous aurez ensuite la possibilité d’en acheter <strong>un deuxième</strong> pour 75 points de compétence, sous réserve d’avoir dépensé au moins <strong>3 points d’attribut en Taijutsu.</strong> Le <strong>troisième</strong> type d’arme sera disponible pour 100 points de compétence lorsque vous aurez dépensé au moins <strong>5 points en Taijutsu.</strong></p>
+
+            <h3>Talents</h3>
+
+            <p>
+                Il existe une série de talents susceptibles de vous conférer des avantages intéressants pour les techniques de cette branche ;
+                <li>Critique+ : Rajoutez manuellement 5 points de dégâts à votre technique de Taijutsu si vous attaquez en premier. Ce talent nécessitera d’avoir dépensé au moins <strong>4 points d’attribut en Taijutsu et en Vitesse.</strong> Il coûtera 50 points de compétence.</li>
+                <li>Critique++ : Rajoutez manuellement 10 points de dégâts à votre technique de Taijutsu si vous attaquez en premier. Ce talent nécessitera d’avoir dépensé au moins <strong>8 points d’attribut en Taijutsu et en Vitesse.</strong> Il coûtera 100 points de compétence.</li>
+                Il est à noter que ces talents sont évolutifs, et non cumulables.
+            </p>
+
+            <h3>Spécialisations élite</h3>
+
+            <p>L’une des spécialisations les plus connues en Taijutsu est <strong>Hachimon</strong>, aussi appelée les huit portes. Ce sont des techniques destructrices repoussant les limites du corps au-delà de l’imaginable, mais ayant de grandes conséquences pour le corps, l’ouverture de la huitième porte entraînant la mort de son utilisateur. Pour voir cette spécialisation élite apparaître, il vous faudra avoir dépensé <strong>8 points d’attribut en Taijutsu et Physique.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
+
+            <p>Une autre spécialisation, relativement populaire à Kumo, est le <strong>Nintaijutsu.</strong> Il s’agit d’un style de combat combinant le Ninjutsu (ici affinités élémentaires) et le Taijutsu afin d’augmenter ses capacités physiques et ses réflexes. Cette spécialisation élite apparaîtra quand vous aurez dépensé <strong>8 points d’attribut en Taijutsu et en Ninjutsu.</strong> Elle coûtera 150 points de compétence.</p>
+
+            <p>Il existe également une spécialisation élite relative aux armes, nommée <strong>Lames de Chakra.</strong> Cela regroupe des techniques combinant le Ninjutsu (ici affinités élémentaires) et le Bukijutsu afin de donner lieu à des techniques meurtrières. Une épée infusée au Fûton augmentera ainsi particulièrement son tranchant. Tout comme le Nintaijutsu, cette spécialisation élite apparaîtra lorsque vous aurez dépensé <strong>8 points d’attribut en Taijutsu et Ninjutsu.</strong> Elle coûtera 150 points de compétence.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"genjutsu_branch\">
         <div class=\"gb_title\">Branche Genjutsu</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Généralités</h3>
+
+            <p>Le Genjutsu est l’un des trois grands arts ninja. Ses utilisateurs savent manier les illusions, et les rompre. Pour plus d’informations sur le Genjutsu, vous pourrez vous référer à l’annexe de cet art.</p>
+
+            <h3>Spécialisations</h3>
+
+            <p>Il existe deux spécialisations de Genjutsu ; <strong>la Vue et le Son.</strong> Elles regroupent respectivement les techniques nécessitant un contact visuel ou auditif. <strong>L’une de ces spécialisations vous est offerte à l’inscription.</strong> Concernant la seconde, elle sera disponible dans l’arbre de compétences pour 75 points de compétence si vous avez investi au moins <strong>4 points dans l’attribut Genjutsu.</strong></p>
+
+            <h3>Talents</h3>
+
+            <p>Il existe une série de talents susceptibles de vous conférer des avantages intéressants pour les techniques de cette branche ;
+                <li>Illusionniste+ : Réduit le coût en Chakra de vos techniques de Genjutsu de 10%. Ce talent nécessitera d’avoir dépensé au moins <strong>4 points d’attribut en Genjutsu</strong> et coûtera 25 points de compétence.</li>
+                <li>Illusionniste++ : Réduit le coût en Chakra de vos techniques de Genjutsu de 20%. Ce talent nécessitera d’avoir dépensé au moins <strong>6 points d’attribut en Genjutsu</strong> et coûtera 50 points de compétence.</li>
+                <li>llusionniste+++ : Réduit le coût en Chakra de vos techniques de Genjutsu de 30%. Ce talent nécessitera d’avoir dépensé au moins <strong>8 points d’attribut en Genjutsu</strong> et coûtera 75 points de compétence.</li>
+                Il est à noter que ces talents sont évolutifs, et non cumulables.
+            </p>
+
+            <h3>Spécialisation élite</h3>
+
+            <p><em>Il vous faudra être au minimum niveau 20 pour voir la spécialisation élite apparaître.</em></p>
+
+            <p>Il existe une spécialisation élite dans cette branche : <strong>les illusions démoniaques.</strong> Il s’agit de techniques ne nécessitant ni un contact visuel, ni un contact auditif, seule la portée étant cruciale. Il est à noter que les techniques d’illusion démoniaque sont usuellement considérées comme des techniques offensives, l’épouvante de ces dernières causant des dégâts mentaux susceptibles de mettre l’adversaire complètement hors d’état de nuire. Cette spécialisation, réservée à l’élite des ninjas, sera disponible lorsque vous aurez investi <strong>8 points d’attribut en Genjutsu et en Esprit.</strong> Cette spécialisation élite coûtera 150 points de compétence.</p>
         </div>
     </div>
 
     <div class=\"gb_visible\" id=\"kg_branch\">
         <div class=\"gb_title\">Branche Kekkei Genkai & Hiden</div>
         <div class=\"gb_content\">
-            Texte
+            <h3>Généralités</h3>
+
+            <p>Le monde des ninjas connaît des aptitudes rares. Certaines sont héréditaires (Kekkei Genkai), et d’autres, secrètes, sont transmises au travers des générations (Hiden). Bien que ces techniques figurent sur une catégorie à part au sein de la Fiche Technique, elles font bien partie des trois grands arts ninja. Cette branche de l’arbre montrera comment faire évoluer ces compétences. Il est également à noter que si la plupart des Kekkei Genkai et Hiden n’apparaissent pas dans les spécialisations, cela signifie qu’ils sont donnés dès la présentation.</p>
+
+            <h3>Spécialisations</h3>
+
+            <p>Le <strong>Kugutsu</strong> désigne l’art de manier les marionnettes, en tant que techniques de Ninjutsu. Le Kugutsu est l’un des rares Hiden exclusif à un village et non un clan. En effet, pour voir le Kugutsu apparaître au sein de l’arbre, il faudra avoir dépensé au moins <strong>4 points d’attribut en Ninjutsu, et être de Suna.</strong> La spécialisation coûtera 75 points de compétence.</p>
+
+            <h3>Spécialisations élite</h3>
+
+            <p><em>Il vous faudra être minimum niveau 20 pour voir les spécialisations élite apparaître.</em></p>
+
+            <p>Le <strong>Mangekyô</strong> est une forme avancée du Sharingan qui - sans se contenter de reprendre les capacités du Sharingan - en confère de nouvelles, susceptibles de varier entre chaque œil. Le Mangekyô est susceptible de regrouper des techniques de Ninjutsu et de Kenjutsu. Ce Dôjutsu n’est accessible <strong>qu’aux utilisateurs de Sharingan, sous réserve d’avoir dépensé 8 points d’attribut en Genjutsu et Ninjutsu.</strong> La spécialisation coûtera 150 points de compétence.</p>
+
+            <p>Les techniques <strong>Hashirama</strong> sont des techniques de Ninjutsu avancées, concernant le Mokuton, développées par le tout premier Hokage. La spécialisation n’apparaîtra dans l’arbre <strong>que pour les utilisateurs de Mokuton, après avoir dépensé 8 points d’attribut en Ninjutsu.</strong> Elle coûtera 150 points de compétence.</p>
+
+            <p><strong>Hitokugutsu</strong> désigne les techniques de marionnettes humaines. Il s’agit de techniques de Ninjutsu et sont considérées comme un art tabou au sein même de Suna. Cette spécialisation est disponible <strong>aux utilisateurs de Kugutsu ayant dépensé 8 points d’attribut en Ninjutsu.</strong> Elle coûtera 150 points de compétence.</p>
+        </div>
+    </div>
+
+    <div class=\"gb_visible\" id=\"a_genjutsu\">
+        <div class=\"gb_title\">Genjutsu</div>
+        <div class=\"gb_content\">
+            <h3>Généralités</h3>
+
+            <p>Le Genjutsu figure parmi les trois grands arts ninjas. L’utilisation de ces techniques nécessite du chakra et des incantations. Ce domaine englobe en outre tout type d’illusions, avec des techniques offensives et non offensives.</p>
+
+            <h3>Différence entre techniques offensives et non offensives</h3>
+
+            <p>Les techniques offensives de Genjutsu fonctionnent comme les techniques offensives de Ninjutsu d’un point de vue purement mécanique. Une illusion démoniaque par exemple, va infliger des dégâts sur l’instant, voire mettre l’ennemi hors d’état de nuire, au même titre qu’une technique Katon serait susceptible de le faire.</p>
+
+            <p>Les choses se corsent toutefois pour les techniques non offensives, où l’utilisateur est susceptible d’être piégé au sein d’une illusion pendant plusieurs tours. Le personnage s’agitera, mais sera une cible facile pour les attaques adverses, qu’il ne pourra esquiver pendant ces tours, faute de pouvoir différencier le réel de l’illusion.</p>
+
+            <p>Pour sortir de l’illusion, vous aurez alors deux possibilités : 
+                <li>Vous possédez une technique de Ninjutsu (catégorie universelle sur la FT) exprès pour rompre l’illusion. Pour que cela fonctionne, la technique devra au moins être du même rang que celle lancée par l’utilisateur de Genjutsu.</li>
+                <li>Vous n’avez pas de technique de Ninjutsu susceptible de rompre l’illusion. Dans ce cas, votre jet d’attribut Esprit s’opposera au jet d’attribut Genjutsu de votre adversaire. Si le résultat du jet d’Esprit est supérieur strictement celui du jet de Genjutsu de l’ennemi, vous parvenez à sortir de l’illusion.</li>
+            </p>
+        </div>
+    </div>
+
+    <div class=\"gb_visible\" id=\"a_biju\">
+        <div class=\"gb_title\">Jinchuriki & Bijû</div>
+        <div class=\"gb_content\">
+            <h3>Généralités</h3>
+
+            <p>Les Jinchûriki sont les hôtes des Bijû (démons à queues). Souvent marginalisés en raison du pouvoir qu’ils cachent, ils n’en restent pas moins des armes puissantes pour leur village. Sur Jikan no Mon, il sera en outre possible de devenir l’hôte d’un démon à queue. Pour cela, veuillez contacter le staff par ticket afin de vous voir attribuer un démon. Le statut de Jinchûriki peut très bien rester secret (et inconnu des autres joueurs) si vous le désirez.</p>
+
+            <h3>Description</h3>
+
+            <p>Dans notre contexte, chaque Bijû possède la même puissance, ceci afin de limiter la course à la puissance qui pourrait découler d’une puissance grandissante en fonction du nombre de queues. Ainsi, si Konoha possède Kyûbi, ce n’est pas pour cette raison que le village caché de la feuille a réussi à maintenir sa puissance supérieure aux autres, mais plutôt par une multitudes d’éléments tels que la grande concentration de dons « extraordinaires » au sein de la population (occurrence du mokuton, sharingan, byakugan ou même hiden des grands clans).</p>
+
+            <p>Cependant, le nombre de queues possède bien un impact, différent mais basé sur le manga : moins un démon à de queues, plus vite il déploie son potentiel lors de la prise de contrôle de son jinchûriki et moins ce dernier possède de « manteaux de chakra ».</p>
+
+            <p>Pour exemple :</p>
+
+            <p>Ichibi est le premier démon de la liste, détenteur d’une seule queue. Si sa puissance brute est égale à celle de son confrère Kyûbi, il ne peut avoir des manteaux de chakra que d' une queue et de fait, possède une marge d’évolution réduite. Il se matérialise donc presque automatiquement en mini-bijû, passant de sa version 1, à la 2 puis à la transformation partielle.</p>
+
+            <p>Kyûbi, étant le dernier de la liste, voit son hôte avoir la possibilité de déployer plus de queues lors de ses transformations (partagées entre version 1, version 2 ou transformation partielle) ou de déployer le « manteau de chakra », qui pour ce dernier, est la particularité que Kyûbi offre à son hôte s’il maîtrise son chakra.</p>
+
+            <p>Dans notre contexte, tous les Jinchûriki peuvent avoir accès à une forme qui sacrifie à la fois la vie du démon et la vie de l’hôte : le baryon mode, tel que vu dans l’anime Boruto. Ce mode offre une puissance démesurée à l’hôte, mais le sacrifice est la mort des deux utilisateurs (hôte & démon ; pour ce dernier, il se reforme au bout de quelque temps).
+                <br />Ce dernier est un avantage qui donne une “victoire scénaristique automatique”.
+                </p>
+            
+            <h3>Dé de contrôle</h3>
+
+            <p>Lorsque le Jinchûriki a épuisé plus de la moitié de sa jauge de Chakra et lance une technique liée à son démon, il lance un dé de contrôle. Il s’agit tout simplement d’un dé Fudge de l’attribut Esprit ; si le résultat de ce dernier est positif ou égal à zéro, le Jinchûriki garde le contrôle de son démon, dans le cas contraire, les conséquences peuvent être désastreuses pour son équipe !</p>
+
+            <p>Lorsque le Jinchûriki a épuisé les trois quart de sa jauge de Chakra, il aura un malus -1 au lancer de ce dé (qu’il faudra soustraire manuellement).</p>
+
+            <p>Il existe des talents qui diminuent cette probabilité de perdre le contrôle ou qui permettent le contrôle total du démon en toute circonstance ; vous les découvrirez au fil du jeu.</p>
+
+            <h3>Liste des Bijû</h3>
+
+            <p>ICHIBI, RÉSERVÉ PRÉ-LIEN, SUNA, JITON (MAGNÉTISME, sable, fuinjutsu) Un Tanuki immature et alcoolique, prône à des excès de colère et à une certaine haine de l’humanité.</p>
+
+            <p>NIBI, RÉSERVÉ PRÉ-LIEN, KUMO, KATON (flammes bleues supérieures, techniques félines) Un chat enflammé particulièrement poli, qui voue un grand respect à son hôte et à ses confrères.</p>
+
+            <p>SANBI, DISPONIBLE, KIRI, SUITON (+ corail) Une énorme tortue. Sa puissance monstrueuse est seulement limitée par sa timidité et sa passivité.</p>
+
+            <p>YONBI, DISPONIBLE, IWA, YOTON (LAVE, doton, katon) Un grand singe qui n’accorde sa confiance et sa puissance qu’à de rares personnes et qui déteste tous ceux qui ne recueillent pas sa bénédiction.</p>
+
+            <p>GOBI, DISPONIBLE, IWA, FUTTON (VAPEUR, suiton, katon, constitution++) Un cheval à tête de dauphin qui est très poli, mais aussi et surtout sage. Il ne parle que peu, et toujours pour accorder son savoir à son Jinchuriki.</p>
+
+            <p>ROKUBI, INDISPONIBLE, KIRI, SUITON (+ liquide corrosif) Une limace qui est d’une grande gentillesse. Elle ne fera jamais du mal à une autre personne autrement qu’en auto-défense.</p>
+
+            <p>NANABI, DISPONIBLE, SUNA, RAITON (+ techniques inspirées d'insectes + constitution+) Un insecte volant particulièrement insouciant. Il aime bien laisser les choses au hasard, et ne se soucie que rarement des problèmes de son Jinchûriki.</p>
+
+            <p>HACHIBI, INDISPONIBLE, KUMO, SUITON (+ maîtrise de l’encre) Un monstre octopial qui semble détester les humains et prône à s’échapper de ses JInchûriki dès qu’il en a l’occasion pour détruire une grande partie du village. Il semble s’être calmé récemment.</p>
+
+            <p>KYÛBI, INDISPONIBLE, KONOHA, CHAKRA++ (+ kyûbi/kurama chakra mode) Un renard, particulièrement puissant, mais aussi cynique et fier, qui arbore une grande haine pour l’humanité.</p>
+        </div>
+    </div>
+
+    <div class=\"gb_visible\" id=\"a_swordmen\">
+        <div class=\"gb_title\">Épéistes de la brume</div>
+        <div class=\"gb_content\">
+            <h3>Généralités</h3>
+
+            <p>Les sept épéistes de la brume sont un groupe qui s’est réellement unifié et diversifié après la fondation de Kiri. Avant cela, c’était le clan Hôzuki qui possédait les sept armes. La raison à cela était simple : les épées ont été forgées par Hôzuki Anzû, une légende des contrées de la brume, il y a plusieurs centaines d’années. L’art qui permit de les confectionner se perdit, et c’est ainsi qu’elles furent des armes hors du commun, réputées et possédées seulement par Kiri.
+                <br />La vérité, c’est qu’elles ne sont pas les seules armes exceptionnelles, mais clairement les plus légendaires.
+            </p>
+
+            <p>Aujourd’hui, le clan Hôzuki est encore le propriétaire officiel des armes, mais les nouveaux épéistes sont constitués de membres de tous les horizons. C’est un groupe extrêmement apprécié dans le village.</p>
+
+            <h3>Les épées</h3>
+
+            <p><strong>Hiramekarei, Libre :</strong> C’est une grande épée couverte de bandages qui peuvent se déchirer lors de son utilisation. L’épée peut stocker du chakra et l’émettre sur commande. Ainsi, elle peut prendre diverses formes, du marteau à l’épée.</p>
+
+            <p><strong>Kabutowari, Libre :</strong> C’est une grande épée couverte de bandages qui peuvent se déchirer lors de son utilisation. L’épée peut stocker du chakra et l’émettre sur commande. Ainsi, elle peut prendre diverses formes, du marteau à l’épée.</p>
+
+            <p><strong>Kiba, Libre :</strong> Il s’agit d’une paire d’épées au pouvoir foudroyant, les rendant plus tranchantes que n’importe quelle autre épée.</p>
+
+            <p><strong>Kubikiribôchô, Libre :</strong> Il s’agit d’une épée géante ressemblant à un énorme couteau de boucher. Le trou créé dans l’épée permet d’attraper la tête de l’ennemi et de le décapiter, son manche est détachable. Elle possède la propriété d’absorber le sang de ses victimes pour se régénérer.</p>
+
+            <p><strong>Nuibari, Libre :</strong> Il s’agit d’une épée longue avec un long fil relié au manche. Elle peut tout transpercer et coudre les corps ensemble.</p>
+
+            <p><strong>Samehada, Pré-lien :</strong> Cette lame a l’apparence d’une épée géante couverte d’écailles de requin sous ses bandages. Se nourrissant de chakra, elle ne tranche pas contrairement aux autres épées, mais déchire à l’image d’une mâchoire de requin.</p>
+
+            <p><strong>Shibuki, Pré-lien :</strong> Il s’agit d’une épée rendue explosive par les parchemins explosifs qui y sont incorporés.</p>
         </div>
     </div>
 </body>";
