@@ -1,0 +1,154 @@
+@import url("var_root.css");
+
+.subforumGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.subforumGrid > fieldset {
+    height: 250px;
+}
+
+.subforumContent legend {
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.subforumContent legend a {
+    color: var(--main_color_2);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--main_police);
+}
+
+.subforumContent {
+    background-color: var(--main_color_1);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.subforumContent .forumDescr {
+    text-align: justify;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: var(--main_color_2);
+    height: 80px;
+    overflow: auto;
+}
+
+.subforumContent .lastPost {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+    font-size: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+.subforumContent .lastPost, .lastSubject {
+    color: var(--main_color_2) !important;
+    font-weight: bold;
+}
+
+
+.subforumContent .lastPost img {
+    width: 25px;
+    position: absolute;
+    top: 40%;
+    left: -13px;
+}
+
+.subforumName {
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: var(--main_color_2);
+    border-bottom: 2px dotted var(--main_color_2);
+    font-weight: bold;
+}
+
+.subforumName:hover {
+    color: var(--main_color_2);
+}
+
+.subjectsGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    background-color: var(--main_color_1);
+    color: var(--main_color_2);
+    border-radius: 20px;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.subjectsTitle {
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.subjectsTitle img {
+    width: 20px;
+}
+
+.subjectsTopicTitle, .subjectsTopicTitle:hover {
+    color: var(--main_color_2);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.adminExpForum {
+    width: 80%;
+    margin-top: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px dotted var(--main_color_2);
+    background-color: var(--main_color_1);
+    padding: 10px;
+    text-align: center;
+}
+
+.adminExpForum legend {
+    margin: auto;
+    display: block;
+    color: var(--red_button);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.adminExpForum div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.adminExpForum input[type=submit] {
+    all: unset;
+    background-color: var(--green_button);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.adminExpForum input[type=number] {
+    width: 100px;
+    border: 1px dotted var(--main_color_2);
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+}

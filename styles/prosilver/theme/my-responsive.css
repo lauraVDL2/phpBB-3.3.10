@@ -1,0 +1,85 @@
+@media(max-width: 1024px) {
+    body, #wrap {
+        width: 100%;
+    }
+
+    #user_menu {
+        display: none;
+    }
+
+    /*Categories*/
+
+    .category {
+        width: 95%;
+    }
+
+    #firstBlock {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #carte, #imgDeco {
+        display: none;
+    }
+
+    #rowGuide, .row2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .textAlign {
+        text-align: center;
+    }
+
+    .row2 {
+        height: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .row2 .subForumsGrid {
+        display: none;
+    }
+
+    .row2 .forumDescr {
+        margin: 10px;
+    }
+
+    .rowRPG {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .rowRPG .imgRPG {
+        display: none;
+    }
+
+    /*FOOTER*/
+    #flex_footer {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    #lp_case, #f_groups {
+        display: none;
+    }
+
+    .subforumGrid {
+        grid-template-rows: auto;
+        padding: 10px;
+    }
+
+    /* Profile */
+
+    .top_profile, .content_second_col {
+        display: none;
+    }
+
+    .content_second_row {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,76 @@
+@import url("var_root.css");
+
+#talents_title {
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: auto;
+    font-family: var(--main_police_1);
+    color: var(--main_color_3);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--main_color_2);
+}
+
+#talents_content {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin: auto;
+    margin-bottom: 15px;
+    background-color: var(--main_color_1);
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#talents_title, #talents_content {
+    width: 70%;
+}
+
+#talents_content h1 {
+    font-size: 1.4rem;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    color: var(--main_color_2);
+}
+
+#talents_content textarea {
+    all: unset;
+    height: 120px;
+    display: block;
+    margin: 10px auto;
+    width: 70%;
+}
+
+.no_disp {
+    display: none;
+}
+
+.all_talents {
+    width: 90%;
+    margin: auto;
+    text-align: justify;
+    color: var(--main_color_2);
+    font-size: 1rem;
+}
+
+#talents_content input[type=text], #talents_content textarea {
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+    border: 1px dotted var(--main_color_2);
+    font-size: 1rem;
+}
+
+.d_block {
+    display: block;
+    margin: 10px auto;
+}
+
+#talents_content h2 {
+    font-size: 1.2rem;
+    margin: auto;
+    text-align: center;
+    color: var(--red_button);
+    border-bottom: 1px dotted var(--red_button);
+}

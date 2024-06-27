@@ -1,0 +1,386 @@
+<!-- INCLUDE overall_header.html -->
+{% INCLUDEJS 'shop.js' %}
+<div id="wrap" class="wrap">
+<h1 id="shop_h1">Arbre de compétences</h1>
+<div id="shop">
+    <div id="shopInfo">Vous avez {SP_TALENT_POINTS} points de compétence à dépenser !</div>
+
+    <!-- IF CAN_SPE && SP_NINJUTSU >= 4 && (!SP_FIRST_HIDEN || !SP_SECOND_HIDEN) && SP_IS_SUNA && SP_FIRST_HIDEN != "Kugutsu" && SP_SECOND_HIDEN != "Kugutsu" -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_kugutsu_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Kugutsu</h1>
+        Permet de maîtriser l'art des marionnettes <em>(75 points de compétence)</em>.
+            <input type="submit" name="sp_kugutsu" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_SHARINGAN && SP_FIRST_ELITE != "Mangekyô" && SP_NINJUTSU == 8 && SP_GENJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_mangekyo_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Mangekyô</h1>
+        Acheter la spécialisation <strong>élite</strong> vous donnant la forme avancée du Sharingan. <em>(150 points de compétence)</em>.
+            <input type="submit" name="sp_mangekyo" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_MOKUTON && SP_FIRST_ELITE != "Hashirama" && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hashirama_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Hashirama</h1>
+        Acheter la spécialisation <strong>élite</strong> vous donnant la forme avancée du Mokuton. <em>(150 points de compétence)</em>.
+            <input type="submit" name="sp_hashirama" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_KUGUTQU && SP_FIRST_ELITE != "Hitokugutsu" && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hitokugutsu_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Hitokugutsu</h1>
+        Acheter la spécialisation <strong>élite</strong> des marionnettes humaines. <em>(150 points de compétence)</em>.
+            <input type="submit" name="sp_hitokugutsu" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_FUIN_SEAL && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_fuin_seal_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Fuinjutsu (Sceaux)</h1>
+        Permet de maîtriser l'art des sceaux <em>(75 points de compétence)</em>.
+            <input type="submit" name="sp_fuin_seal" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_FUIN_BARRER && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_fuin_barrer_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Fuinjutsu (Barrières)</h1>
+        Permet de maîtriser l'art des barrières <em>(75 points de compétence)</em>.
+            <input type="submit" name="sp_fuin_barrer" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_KUCHIYOSE && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_kuchiyose_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Kuchiyose</h1>
+        Permet de sceller un pacte pour une invocation. Attention, <strong>vous n'aurez le droit qu'à une seule espèce animale !</strong> <em>(75 points de compétence)</em>
+            <input type="submit" name="sp_kuchiyose" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_IROU_HEAL && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_irou_heal_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Irou Jutsu (Soins)</h1>
+        Permet de maîtriser des techniques médicales <em>(75 points de compétence)</em>.
+            <input type="submit" name="sp_irou_heal" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_IROU_POISON && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_irou_poison_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Irou Jutsu (Poisons)</h1>
+        Permet de maîtriser des techniques d'empoisonnement <em>(75 points de compétence)</em>.
+            <input type="submit" name="sp_irou_poison" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && SP_NINJUTSU >= 4 && SP_FIRST_ELEMENT && !SP_IS_SECOND_ELEMENT -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_element_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Deuxième affinité élémentaire</h1>
+        Acheter une deuxième affinité élémentaire. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_second_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && SP_NINJUTSU >= 6 && SP_SECOND_ELEMENT && !SP_IS_THIRD_ELEMENT -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_element_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Spécialisation : Troisième affinité élémentaire</h1>
+        Acheter une troisième affinité élémentaire. <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_third_element" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_GEN1 && SP_NINJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_gen1_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="25">
+        <h1>Talent : Généraliste+</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Ninjutsu de 10%. <em>(25 points de compétence)</em>.
+        <input type="submit" name="sp_gen1" value="Acheter" <!-- IF SP_TALENT_POINTS < 25 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_GEN2 && SP_NINJUTSU >= 6 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_gen2_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Talent : Généraliste++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Ninjutsu de 20%. <em>(50 points de compétence)</em>.
+        <input type="submit" name="sp_gen2" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_GEN3 && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_gen3_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Talent : Généraliste+++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Ninjutsu de 30%. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_gen3" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_MASTER && (SP_FIRST_ELITE == "Manteau de chakra" || SP_SECOND_ELITE == "Manteau de chakra") && SP_IS_JINCHURIKI -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_master_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Talent : Maîtrise totale</h1>
+        Acheter le talent vous permettant de maîtriser parfaitement votre bijû. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_master" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Senjutsu" && SP_KUCHIYOSE && SP_SPIRIT == 8 && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_senjutsu_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Senjutsu</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant d'obtenir l'art de l'ermite. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_senjutsu" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Hiraishin" && SP_SPEED == 8 && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hiraishin_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Hiraishin</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant d'obtenir Hiraishin. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_hiraishin" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Jinton" && SP_CAN_JINTON && SP_IS_IWA && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_jinton_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Jinton</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant la libération de la poussière. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_jinton" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Gyôton" && SP_CAN_GYOTON && SP_IS_KUMO && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_gyoton_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Gyôton</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant la libération des aurores boréales. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_gyoton" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Kyôton" && SP_CAN_KYOTON && SP_IS_KIRI && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_kyoton_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Kyôton</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de manipuler les miroirs. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_kyoton" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Marque maudite" && SP_IS_FUIN_SEAL && SP_CAN_CURSE && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_cursed_seal_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Marque maudite</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de créer des marques maudites. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_cursed_seal" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Manteau de chakra" && SP_IS_JINCHURIKI && SP_SPIRIT == 8 && SP_NINJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chakra_mantle_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Manteau de chakra</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant d'accéder au manteau de chakra de votre démon à queues. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_chakra_mantle" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_IS_SIGHT && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sight_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Genjutsu Vue</h1>
+        Acheter la spécialisation Genjutsu permettant de gérer les contacts visuels. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_sight" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && !SP_IS_SOUND && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_sound_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Genjutsu Son</h1>
+        Acheter la spécialisation Genjutsu permettant de gérer les contacts auditifs. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_sound" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_ILLU1 && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu1_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="25">
+        <h1>Talent : Illusionniste+</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 10%. <em>(25 points de compétence)</em>.
+        <input type="submit" name="sp_illu1" value="Acheter" <!-- IF SP_TALENT_POINTS < 25 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_ILLU2 && SP_GENJUTSU >= 6 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu2_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Talent : Illusionniste++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 20% (évolution d'Illusionniste+). <em>(50 points de compétence)</em>.
+        <input type="submit" name="sp_illu2" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_ILLU3 && SP_GENJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_illu3_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Talent : Illusionniste+++</h1>
+        Acheter le talent réduisant le coût en Chakra des techniques de Genjutsu de 30% (évolution d'Illusionniste++). <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_illu3" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Illusions démoniaques" && SP_SPIRIT == 8 && SP_GENJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demonic_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Illusions démoniaques</h1>
+        Acheter la spécialisation <strong>élite</strong> de Genjutsu vous permettant de créer des illusions démoniaques sans contact visuel ni auditif. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_demonic" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && SP_FIRST_WEAPON && !SP_IS_SECOND_WEAPON && SP_TAIJUTSU >= 3 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_second_weapon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="75">
+        <h1>Spécialisation : Deuxième arme</h1>
+        Acheter la maîtrise d'un deuxième type d'arme. <em>(75 points de compétence)</em>.
+        <input type="submit" name="sp_second_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_SPE && SP_SECOND_WEAPON && !SP_IS_THIRD_WEAPON && SP_TAIJUTSU >= 5 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_third_weapon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Spécialisation : Troisième arme</h1>
+        Acheter la maîtrise d'un troisième type d'arme. <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_third_weapon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_CRIT1 && SP_SPEED >= 4 && SP_TAIJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_crit1_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Talent : Critique+</h1>
+        Acheter le talent vous permettant d'ajouter 5 points de dégâts de plus à vos techniques de Taijutsu si vous attaquez le premier. <em>(50 points de compétence)</em>.
+        <input type="submit" name="sp_crit1" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_CRIT2 && SP_SPEED == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_crit2_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Talent : Critique++</h1>
+        Acheter le talent vous permettant d'ajouter 10 points de dégâts de plus à vos techniques de Taijutsu si vous attaquez le premier (évolution de Critique+). <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_crit2" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF CAN_DEMON_CHAKRA -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_demon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Talent : Chakra du démon</h1>
+        Acheter le talent vous permettant d'ajouter 40 points de Chakra à votre jauge. <em>(100 points de compétence)</em>.
+        <input type="submit" name="sp_demon" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Hachimon" && SP_STRENGTH == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_hachimon_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Hachimon</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant d'ouvrir les huit portes. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_hachimon" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Nintaijutsu" && SP_NINJUTSU == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_nintaijutsu_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Nintaijutsu</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques de Taijutsu avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_nintaijutsu" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF (CAN_FIRST_ELITE || CAN_SECOND_ELITE) && SP_FIRST_ELITE != "Lames de Chakra" && SP_NINJUTSU == 8 && SP_TAIJUTSU == 8 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chakrablade_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Spécialisation élite : Lames de Chakra</h1>
+        Acheter la spécialisation <strong>élite</strong> vous permettant de combiner des techniques liées aux armes avec vos affinités élémentaires. <em>(150 points de compétence)</em>.
+        <input type="submit" name="sp_chakrablade" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_RP_RANK == "Genin" && SP_NINJUTSU >= 3 && SP_TAIJUTSU >= 3 && SP_GENJUTSU >= 3 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_chunin_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="125">
+        <h1>Devenir Chûnin</h1>
+        Félicitations, vous avez suffisamment de points d'attribut pour devenir Chûnin ! <em>(125 points de compétence)</em>
+        <input type="submit" name="sp_chunin" value="Acheter" <!-- IF SP_TALENT_POINTS < 125 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <!-- IF SP_RP_RANK == "Chûnin" && SP_NINJUTSU >= 4 && SP_TAIJUTSU >= 4 && SP_GENJUTSU >= 4 -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_jonin_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Devenir Jônin</h1>
+        Félicitations, vous avez suffisamment de points d'attribut pour devenir Jônin, ninja d'élite ! Vous pourrez prendre des Genin sous votre aile. <em>(150 points de compétence)</em>
+        <input type="submit" name="sp_jonin" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+    <!-- ENDIF -->
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_d_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="25">
+        <h1>Technique de rang D</h1>
+        Gagner une technique de rang D <em>(25 points de compétence)</em>
+        <input type="submit" name="sp_d_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 25 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_c_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="50">
+        <h1>Technique de rang C</h1>
+        Gagner une technique de rang C <em>(50 points de compétence)</em>
+        <input type="submit" name="sp_c_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 50 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_b_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_b_technique" value="75">
+        <h1>Technique de rang B</h1>
+        Gagner une technique de rang B <em>(75 points de compétence)</em>
+        <input type="submit" name="sp_jonin" value="Acheter" <!-- IF SP_TALENT_POINTS < 75 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_a_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="100">
+        <h1>Technique de rang A</h1>
+        Gagner une technique de rang A <em>(100 points de compétence)</em>
+        <input type="submit" name="sp_a_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 100 -->disabled <!-- ENDIF --> >
+    </form>
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="sp_s_technique_callback" data-refresh="true">
+        <input type="hidden" name="sp_price" value="150">
+        <h1>Technique de rang S</h1>
+        Gagner une technique de rang S <em>(150 points de compétence)</em>
+        <input type="submit" name="sp_s_technique" value="Acheter" <!-- IF SP_TALENT_POINTS < 150 -->disabled <!-- ENDIF --> >
+    </form>
+</div>
+</div>
+<!-- INCLUDE overall_footer.html -->

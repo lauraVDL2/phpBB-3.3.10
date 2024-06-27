@@ -1,0 +1,115 @@
+#missions_board_title {
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: var(--main_police_1);
+    color: var(--main_color_3);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--main_color_2);
+}
+
+#missions_board_title, #missions_board_content {
+    width: 70%;
+    margin: auto;
+}
+
+#missions_board_content {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom: 15px;
+    background-color: var(--main_color_1);
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#missions_board_content h1 {
+    color: var(--red_button);
+    margin: 0px auto;
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+    border-bottom: 2px dotted var(--red_button);
+}
+
+#missions_board_content h2 {
+    color: var(--main_color_2);
+    margin: 10px auto;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+#missions_board_content label {
+    color: var(--main_color_2);
+}
+
+#missions_board_content textarea {
+    resize: none;
+    background-color: var(--main_color_3);
+    border-radius: 5px;
+    height: 100px;
+    font-size: 1rem;
+    color: var(--main_color_2);
+    padding: 5px;
+    border: 1px dotted var(--main_color_2);
+    display: block;
+    margin: auto;
+}
+
+#missions_board_content input[type=text], #missions_board_content input[type=number], #missions_board_content select {
+    border: 1px dotted var(--main_color_2);
+    width: 200px;
+    display: block;
+    margin: auto;
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+}
+
+.align_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.button_validate, .button_modify, .button_delete {
+    all: unset;
+    border-radius: 5px;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: white;
+}
+
+.button_validate {
+    background-color: var(--green_button);
+}
+
+.button_delete {
+    background-color: var(--red_button);
+}
+
+.button_modify {
+    background-color: var(--orange_button);
+}
+
+.button_align {
+    display: block;
+    margin: 10px auto;
+}
+
+#disp {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.mission_infos {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: justify;
+    font-size: 1rem;
+}

@@ -1,0 +1,373 @@
+<!-- INCLUDE overall_header.html -->
+
+<div class="wrap" id="wrap">
+	<h2 class="memberlist-title">{PAGE_TITLE}</h2>
+
+	<!-- EVENT memberlist_view_content_prepend -->
+
+	<form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
+	<div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF -->">
+		<div class="inner">
+
+		<!-- IF AVATAR_IMG -->
+			<dl class="left-box">
+				<dt class="profile-avatar">{AVATAR_IMG}</dt>
+				<!-- EVENT memberlist_view_rank_avatar_before -->
+				<!-- IF RANK_TITLE --><dd style="text-align: center;">{RANK_TITLE}</dd><!-- ENDIF -->
+				<!-- IF RANK_IMG --><dd style="text-align: center;">{RANK_IMG}</dd><!-- ENDIF -->
+				<!-- EVENT memberlist_view_rank_avatar_after -->
+			</dl>
+		<!-- ENDIF -->
+
+		<dl class="left-box details profile-details">
+			<dt>{L_USERNAME}{L_COLON}</dt>
+			<dd>
+				<!-- EVENT memberlist_view_username_prepend --><!-- IF USER_COLOR --><span style="color: {USER_COLOR}; font-weight: bold;"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span><!-- EVENT memberlist_view_username_append -->
+				<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
+				<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
+				<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
+				<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
+			</dd>
+			<!-- IF not AVATAR_IMG -->
+				<!-- EVENT memberlist_view_rank_no_avatar_before -->
+				<!-- IF RANK_TITLE --><dt>{L_RANK}{L_COLON}</dt> <dd>{RANK_TITLE}</dd><!-- ENDIF -->
+				<!-- IF RANK_IMG --><dt><!-- IF RANK_TITLE -->&nbsp;<!-- ELSE -->{L_RANK}{L_COLON}<!-- ENDIF --></dt> <dd>{RANK_IMG}</dd><!-- ENDIF -->
+				<!-- EVENT memberlist_view_rank_no_avatar_after -->
+			<!-- ENDIF -->
+			<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
+			<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
+			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
+			<!-- BEGIN custom_fields -->
+				<!-- IF not custom_fields.S_PROFILE_CONTACT -->
+					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt> <dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+				<!-- ENDIF -->
+			<!-- END custom_fields -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
+			<!-- EVENT memberlist_view_zebra_before -->
+			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
+				<!-- IF U_REMOVE_FRIEND -->
+					<dt>&nbsp;</dt> <dd class="zebra"><a href="{U_REMOVE_FRIEND}" data-ajax="zebra"><strong>{L_REMOVE_FRIEND}</strong></a></dd>
+				<!-- ELSEIF U_REMOVE_FOE -->
+					<dt>&nbsp;</dt> <dd class="zebra"><a href="{U_REMOVE_FOE}" data-ajax="zebra"><strong>{L_REMOVE_FOE}</strong></a></dd>
+				<!-- ELSE -->
+					<!-- IF U_ADD_FRIEND -->
+						<dt>&nbsp;</dt> <dd class="zebra"><a href="{U_ADD_FRIEND}" data-ajax="zebra"><strong>{L_ADD_FRIEND}</strong></a></dd>
+					<!-- ENDIF -->
+					<!-- IF U_ADD_FOE -->
+						<dt>&nbsp;</dt> <dd class="zebra"><a href="{U_ADD_FOE}" data-ajax="zebra"><strong>{L_ADD_FOE}</strong></a></dd>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
+			<!-- ENDIF -->
+			<!-- EVENT memberlist_view_zebra_after -->
+		</dl>
+
+		</div>
+	</div>
+
+	<!-- EVENT memberlist_view_contact_before -->
+	<div class="panel bg2">
+		<div class="inner">
+
+		<div class="column1">
+			<h3>{L_CONTACT_USER}</h3>
+
+			<dl class="details">
+			<!-- IF U_EMAIL --><dt>{L_EMAIL_ADDRESS}{L_COLON}</dt> <dd><a href="{U_EMAIL}">{L_SEND_EMAIL_USER}</a></dd><!-- ENDIF -->
+			<!-- IF U_PM --><dt>{L_PM}{L_COLON}</dt> <dd><a href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></dd><!-- ENDIF -->
+			<!-- IF U_JABBER and S_JABBER_ENABLED --><dt>{L_JABBER}{L_COLON}</dt> <dd><a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;">{L_SEND_JABBER_MESSAGE}</a></dd><!-- ELSEIF USER_JABBER --><dt>{L_JABBER}{L_COLON}</dt> <dd>{USER_JABBER}</dd><!-- ENDIF -->
+			<!-- EVENT memberlist_view_contact_custom_fields_before -->
+			<!-- BEGIN custom_fields -->
+				<!-- IF custom_fields.S_PROFILE_CONTACT -->
+					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
+					<!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
+						<dd><a href="{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_DESC}</a></dd>
+					<!-- ELSE -->
+						<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
+			<!-- END custom_fields -->
+			<!-- EVENT memberlist_view_contact_custom_fields_after -->
+			<!-- IF S_PROFILE_FIELD1 -->
+				<!-- NOTE: Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
+				<dt>{PROFILE_FIELD1_NAME}{L_COLON}</dt> <dd>{PROFILE_FIELD1_VALUE}</dd>
+			<!-- ENDIF -->
+			</dl>
+		</div>
+
+		<div class="column2">
+			<h3>{L_USER_FORUM}</h3>
+			<dl class="details">
+				<!-- EVENT memberlist_view_user_statistics_before -->
+				<dt>{L_JOINED}{L_COLON}</dt> <dd>{JOINED}</dd>
+				<dt>{L_LAST_ACTIVE}{L_COLON}</dt> <dd>{LAST_ACTIVE}</dd>
+				<!-- IF S_WARNINGS -->
+				<dt>{L_WARNINGS}{L_COLON} </dt>
+				<dd><strong>{WARNINGS}</strong><!-- IF U_NOTES or U_WARN --> [ <!-- IF U_NOTES --><a href="{U_NOTES}">{L_VIEW_NOTES}</a><!-- ENDIF --> <!-- IF U_WARN --><!-- IF U_NOTES --> | <!-- ENDIF --><a href="{U_WARN}">{L_WARN_USER}</a><!-- ENDIF --> ]<!-- ENDIF --></dd>
+				<!-- ENDIF -->
+				<dt>{L_TOTAL_POSTS}{L_COLON}</dt>
+					<dd>{POSTS} <!-- IF S_DISPLAY_SEARCH -->| <strong><a href="{U_SEARCH_USER}">{L_SEARCH_USER_POSTS}</a></strong><!-- ENDIF -->
+						<!-- IF POSTS_PCT --><br />({POSTS_PCT} / {POSTS_DAY})<!-- ENDIF -->
+						<!-- IF POSTS_IN_QUEUE and U_MCP_QUEUE --><br />(<a href="{U_MCP_QUEUE}">{L_POSTS_IN_QUEUE}</a>)<!-- ELSEIF POSTS_IN_QUEUE --><br />({L_POSTS_IN_QUEUE})<!-- ENDIF -->
+					</dd>
+				<!-- IF S_SHOW_ACTIVITY and POSTS -->
+					<dt>{L_ACTIVE_IN_FORUM}{L_COLON}</dt> <dd><!-- IF ACTIVE_FORUM != '' --><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
+					<dt>{L_ACTIVE_IN_TOPIC}{L_COLON}</dt> <dd><!-- IF ACTIVE_TOPIC != '' --><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
+				<!-- ENDIF -->
+				<!-- EVENT memberlist_view_user_statistics_after -->
+			</dl>
+		</div>
+
+		</div>
+	</div>
+	<!-- EVENT memberlist_view_contact_after -->
+
+	<!-- IF SIGNATURE -->
+	<div class="panel bg1">
+		<div class="inner">
+
+			<h3>{L_SIGNATURE}</h3>
+
+			<div class="postbody"><div class="signature standalone">{SIGNATURE}</div></div>
+
+		</div>
+	</div>
+	<!-- ENDIF -->
+
+	</form>
+
+	<!-- EVENT memberlist_view_content_append -->
+
+	<!-- INCLUDE jumpbox.html -->
+
+	<!-- IF IS_ADMIN -->
+	<!-- INCLUDEJS profile_admin.js -->
+	<div class="pf_title">Administrateur</div>
+	<div class="pf_field">
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_reset_callback" data-refresh="true">
+			<h3>Reset du personnage</h3>
+			<div>Reset entièrement le personnage (cas reroll), <strong>attention irreversible !</strong></div>
+			<input type="submit" value="Reset du personnage" name="pf_reset_button">
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_rank_callback" data-refresh="true">
+			<h3>Changer le rang</h3>
+			<div>Rang actuel : {PF_RP_RANK}</div>
+			<input type="hidden" value="{PF_RP_RANK}" name="pf_current_rank">
+			<!-- IF PF_RP_RANK != "Kage" --><input type="submit" value="Passer au rang suivant" name="pf_gain_rank_button"><!-- ENDIF -->
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_level_callback" data-refresh="true">
+			<h3>Donner des niveaux</h3>
+			<div>Personnage de niveau {PF_LEVEL} pouvant gagner {PF_LEVEL_DIFFERENCE} niveaux.</div>
+			<input type="number" max="{PF_LEVEL_DIFFERENCE}" min="1" name="pf_gain_level" id="pf_gain_level">
+			<input type="submit" value="Valider" name="pf_gain_level_button">
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_gain_exp_callback" data-refresh="true">
+			<h3>Donner de l'expérience</h3>
+			<input type="number" name="pf_gain_exp" min="1" id="pf_gain_exp">
+			<input type="submit" value="Valider" name="pf_gain_exp_button">
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_skillpoints_callback" data-refresh="true">
+			<h3>Donner des points de compétence</h3>
+			<div>Le personnage possède {PF_SKILLPOINTS} points de compétence.</div>
+			<input type="number" name="pf_give_skillpoints" min="1" id="pf_give_skillpoints">
+			<input type="submit" value="Valider" name="pf_give_skillpoints_button">
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_influence_callback" data-refresh="true">
+			<h3>Donner des points d'influence</h3>
+			<div>Le groupe de ce personnage possède {PF_INFLUENCE_POINTS} points d'influence.</div>
+			<input type="number" name="pf_give_influence" min="1" id="pf_give_influence">
+			<input type="submit" value="Valider" name="pf_give_influence_button">
+		</form>
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_technique_callback" data-refresh="true">
+			<h3>Donner une technique</h3>
+			{PF_TECHNIQUES_INFO}
+			<select name="pf_technique_select">
+				<option value="D">D</option>
+				<option value="C">C</option>
+				<option value="B">B</option>
+				<option value="A">A</option>
+				<option value="S">S</option>
+			</select>
+			<input type="submit" value="Valider" name="pf_give_techniques_button">
+		</form>
+		<!-- IF !PF_IS_JINCHURIKI -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_jinchuriki_callback" data-refresh="true">
+			<h3>Donner un démon à queues</h3>
+			<select name="pf_jinchuriki_select">
+				<option value="Shukaku">Shukaku</option>
+				<option value="Matatabi">Matatabi</option>
+				<option value="Isobu">Isobu</option>
+				<option value="Son Gokû">Son Gokû</option>
+				<option value="Kukuô">Kukuô</option>
+				<option value="Saiken">Saiken</option>
+				<option value="Chômei">Chômei</option>
+				<option value="Gyûki">Gyûki</option>
+				<option value="Kurama">Kurama</option>
+			</select>
+			<input type="submit" value="Valider" name="pf_give_jinchuriki_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_jinchuriki_callback" data-refresh="true">
+			<h3>Retirer le démon queues</h3>
+			<div>Le personnage est propriétaire d'un démon à queues, vous pouvez le lui retirer, ce qui débloquera le démon pour un autre joueur.</div>
+			<input type="submit" value="Retirer le démon à queues" name="pf_erase_jinchuriki_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_IS_OVERSPECIALIZED -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_overspecialization_callback" data-refresh="true">
+			<h3>Donner la surspécialisation</h3>
+			<div>Le personnage aura des points de compétence bloqués dans une certaine mesure contre divers avantages.</div>
+			<input type="submit" value="Donner la surspécialisation" name="pf_give_overspecialization_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_overspecialization_callback" data-refresh="true">
+			<h3>Donner la surspécialisation</h3>
+			<div>Le personnage pourra dépenser des points de compétences dans d'autres domaines ; retire la surspécialisation.</div>
+			<input type="submit" value="Retirer la surspécialisation" name="pf_erase_overspecialization_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_FIRST_KG -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_first_kg_callback" data-refresh="true">
+			<h3>Donner un premier Kekkei Genkai</h3>
+			<div>Concerne essentiellement les membres des clans, le Kekkei Genkai sera disponible sur la Fiche Technique.</div>
+			<select name="pf_first_kg_select">
+				<option value="Sharingan">Sharingan</option>
+				<option value="Mokuton">Mokuton</option>
+				<option value="Byakugan">Byakugan</option>
+				<option value="Shikotsumyaku">Shikotsumyaku</option>
+				<option value="Hyôton">Hyôton</option>
+				<option value="Futton">Futton</option>
+				<option value="Jiton">Jiton</option>
+				<option value="Shakuton">Shakuton</option>
+				<option value="Yoton">Yoton</option>
+				<option value="Fuuton">Fuuton</option>
+				<option value="Bakuton">Bakuton</option>
+				<option value="Shôton">Shôton</option>
+				<option value="Shouraigan">Shouraigan</option>
+				<option value="Ketsuryugan">Ketsuryugan</option>
+				<option value="Ranton">Ranton</option>
+				<option value="Shokuton">Shokuton</option>
+				<option value="Kôton">Kôton</option>
+				<option value="Meiton">Meiton</option>
+				<option value="Kikeijutsu">Kikeijutsu</option>
+			</select>
+			<input type="submit" value="Donner le Kekkei Genkai" name="pf_give_first_kg_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_first_kg_callback" data-refresh="true">
+			<h3>Retirer le premier Kekkei Genkai</h3>
+			<div>Le personnage possède le Kekkei Genkai suivant : {PF_FIRST_KG}, vous pouvez le retirer.</div>
+			<input type="submit" value="Retirer le Kekkei Genkai" name="pf_erase_first_kg_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_SECOND_KG -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_second_kg_callback" data-refresh="true">
+			<h3>Donner un second Kekkei Genkai</h3>
+			<div>Prévu pour des cas particuliers, le second Kekkei Genkai sera disponible sur la Fiche Technique.</div>
+			<select name="pf_second_kg_select">
+				<!-- IF PF_FIRST_KG != "Sharingan" --><option value="Sharingan">Sharingan</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Mokuton" --><option value="Mokuton">Mokuton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Byakugan" --><option value="Byakugan">Byakugan</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Shikotsumyaku" --><option value="Shikotsumyaku">Shikotsumyaku</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Hyôton" --><option value="Hyôton">Hyôton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Futton" --><option value="Futton">Futton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Jiton" --><option value="Jiton">Jiton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Shakuton" --><option value="Shakuton">Shakuton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Yoton" --><option value="Yoton">Yoton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Fuuton" --><option value="Fuuton">Fuuton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Bakuton" --><option value="Bakuton">Bakuton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Shôton" --><option value="Shôton">Shôton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Shouraigan" --><option value="Shouraigan">Shouraigan</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Ketsuryugan" --><option value="Ketsuryugan">Ketsuryugan</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Ranton" --><option value="Ranton">Ranton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Shokuton" --><option value="Shokuton">Shokuton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Kôton" --><option value="Kôton">Kôton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Meiton" --><option value="Meiton">Meiton</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_KG != "Kikeijutsu" --><option value="Kikeijutsu">Kikeijutsu</option><!-- ENDIF -->
+			</select>
+			<input type="submit" value="Donner le Kekkei Genkai" name="pf_give_second_kg_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_second_kg_callback" data-refresh="true">
+			<h3>Retirer le second Kekkei Genkai</h3>
+			<div>Le personnage possède le Kekkei Genkai suivant : {PF_SECOND_KG}, vous pouvez le retirer.</div>
+			<input type="submit" value="Retirer le Kekkei Genkai" name="pf_erase_second_kg_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_FIRST_HIDEN -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_first_hiden_callback" data-refresh="true">
+			<h3>Donner un premier Hiden</h3>
+			<div>Concerne essentiellement les membres des clans, le Hiden sera disponible sur la Fiche Technique.</div>
+			<select name="pf_first_hiden_select">
+				<option value="Mental">Mental</option>
+				<option value="Kugutsu">Kugutsu</option>
+				<option value="Contrôle du corps">Contrôle du corps</option>
+				<option value="Ombres">Ombres</option>
+				<option value="Chaînes et soins">Chaînes et soins</option>
+				<option value="Seijutsu">Seijutsu</option>
+				<option value="Torijutsu">Torijutsu</option>
+				<option value="Hachijutsu">Hachijutsu</option>
+				<option value="Modification corporelle">Modification corporelle</option>
+				<option value="Chiens">Chiens</option>
+				<option value="Chats">Chats</option>
+				<option value="Insectes">Insectes</option>
+				<option value="Jûken">Jûken</option>
+				<option value="Liquéfaction">Liquéfaction</option>
+			</select>
+			<input type="submit" value="Donner le Hidden" name="pf_give_first_hiden_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_first_hiden_callback" data-refresh="true">
+			<h3>Retirer le premier Hiden</h3>
+			<div>Le personnage possède le Hiden suivant : {PF_FIRST_HIDEN}, vous pouvez le retirer.</div>
+			<input type="submit" value="Retirer le Hiden" name="pf_erase_first_hiden_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_SECOND_HIDEN -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_second_hiden_callback" data-refresh="true">
+			<h3>Donner un second Hiden</h3>
+			<div>Pour des cas particuliers, le second Hiden sera disponible sur la Fiche Technique.</div>
+			<select name="pf_second_hiden_select">
+				<!-- IF PF_FIRST_HIDEN != "Mental" --><option value="Mental">Mental</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Kugutsu" --><option value="Kugutsu">Kugutsu</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Contrôle du corps" --><option value="Contrôle du corps">Contrôle du corps</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Ombres" --><option value="Ombres">Ombres</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Chaînes et soins" --><option value="Chaînes et soins">Chaînes et soins</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Seijutsu" --><option value="Seijutsu">Seijutsu</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Torijutsu" --><option value="Torijutsu">Torijutsu</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Hachijutsu" --><option value="Hachijutsu">Hachijutsu</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Modification corporelle" --><option value="Modification corporelle">Modification corporelle</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Chiens" --><option value="Chiens">Chiens</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Chats" --><option value="Chats">Chats</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Insectes" --><option value="Insectes">Insectes</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Jûken" --><option value="Jûken">Jûken</option><!-- ENDIF -->
+				<!-- IF PF_FIRST_HIDEN != "Liquéfaction" --><option value="Liquéfaction">Liquéfaction</option><!-- ENDIF -->
+			</select>
+			<input type="submit" value="Donner le Hidden" name="pf_give_second_hiden_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_erase_second_hiden_callback" data-refresh="true">
+			<h3>Retirer le second Hiden</h3>
+			<div>Le personnage possède le Hiden suivant : {PF_SECOND_HIDEN}, vous pouvez le retirer.</div>
+			<input type="submit" value="Retirer le Hiden" name="pf_erase_second_hiden_button">
+		</form>
+		<!-- ENDIF -->
+		<!-- IF !PF_CURSE_SEAL -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_give_curse_callback" data-refresh="true">
+			<h3>Débloquer la marque maudite</h3>
+			<div>Débloque la spé élite marque maudite sur l'arbre de compétences de l'utilisateur.</div>
+			<input type="submit" value="Donner la marque maudite" name="pf_give_curse_button">
+		</form>
+		<!-- ELSE -->
+		<form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="pf_remove_curse_callback" data-refresh="true">
+			<h3>Retirer la marque maudite</h3>
+			<div>Retire la spé élite marque maudite sur l'arbre de compétences de l'utilisateur.</div>
+			<input type="submit" value="Retirer la marque maudite" name="pf_remove_curse_button">
+		</form>
+		<!-- ENDIF -->
+	</div>
+	<!-- ENDIF -->
+
+</div>
+
+<!-- INCLUDE overall_footer.html -->

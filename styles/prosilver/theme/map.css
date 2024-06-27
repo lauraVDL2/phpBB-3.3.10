@@ -1,0 +1,138 @@
+@import url("var_root.css");
+
+#container_map {
+    position: relative;
+    width: 1200px;
+    z-index: 1;
+}
+
+#m_return_forum {
+    background-color: green;
+    margin: 15px auto;
+    color: var(--main_color_1);
+    padding: 8px;
+    border-radius: 10px;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    font-weight: bold;
+    width: 300px;
+}
+
+.map_descr {
+    height: 705px;
+    width: 400px;
+    background-color: var(--main_color_1);
+    color: var(--main_color_2);
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    display: none;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: justify;
+    overflow: auto;
+    font-size: 1rem;
+}
+
+
+#flex_map {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#my_map {
+    width: 1200px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#background_map {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+}
+
+.m1_point {
+    border-radius: 100%;
+    background-color: red;
+    border: 4px solid black;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.m1_2_point {
+    border-radius: 100%;
+    background-color: red;
+    border: 4px solid black;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+#suna_m1 {
+    position: absolute;
+    top: 600px;
+    left: 246px;
+}
+
+#iwa_m1 {
+    position: absolute;
+    left: 300px;
+    top: 225px;
+}
+
+#konoha_m1 {
+    position: absolute;
+    left: 480px;
+    top: 440px;
+}
+
+#kiri_m1 {
+    position: absolute;
+    left: 980px;
+    top: 475px;
+}
+
+#kumo_m1 {
+    position: absolute;
+    left: 850px;
+    top: 160px;
+}
+
+#ame_m1 {
+    position: absolute;
+    left: 280px;
+    top: 400px;
+}
+
+.zone_ap div {
+    margin: auto;
+}
+
+.m1_title {
+    text-align: justify;
+    margin: auto;
+    font-size: 1rem;
+    color: black;
+    font-weight: bold;
+    font-family: var(--main_police);
+    font-weight: 1rem;
+}
+
+.m1_2_title {
+    text-align: justify;
+    margin: auto;
+    font-size: 1rem;
+    color: black;
+    font-weight: bold;
+    font-family: var(--main_police);
+    font-weight: 0.9rem;
+}
+

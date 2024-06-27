@@ -1,0 +1,180 @@
+@import url("var_root.css");
+
+#rs_title {
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: var(--main_police_1);
+    color: var(--main_color_3);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--main_color_2);
+}
+
+#rs_content {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-bottom: 15px;
+    background-color: var(--main_color_1);
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#rs_title, #rs_content {
+    width: 70%;
+    margin: auto;
+}
+
+#rs_content h1 {
+    font-size: 1.4rem;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+#rs_content h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#rs_content select, #rs_content textarea, #rs_content input[type=text] {
+    background-color: var(--main_color_3);
+    color: var(--main_color_2);
+}
+
+#rs_content select {
+    font-size: 1rem;
+    border: 1px dotted var(--main_color_2);
+    margin: auto;
+    display: block;
+    padding: 0.2rem;
+}
+
+#rs_content textarea {
+    resize: none;
+    background-color: var(--main_color_3);
+    border-radius: 5px;
+    height: 100px;
+    font-size: 1rem;
+    color: var(--main_color_2);
+    padding: 5px;
+    border: 1px dotted var(--main_color_2);
+    display: block;
+    margin: auto;
+}
+
+#rs_content input[type=text] {
+    border: 1px dotted var(--main_color_2);
+    display: block;
+    margin: auto;
+    font-size: 1rem;
+}
+
+#rs_kiri {
+    color: var(--kiri);
+    border-bottom: 2px solid var(--kiri);
+}
+
+#rs_iwa {
+    color: var(--iwa);
+    border-bottom: 2px solid var(--iwa);
+}
+
+#rs_suna {
+    color: var(--suna);
+    border-bottom: 2px solid var(--suna);
+}
+
+#rs_kumo {
+    color: var(--kumo);
+    border-bottom: 2px solid var(--kumo);
+}
+
+#rs_konoha {
+    color: var(--konoha);
+    border-bottom: 2px solid var(--konoha);
+}
+
+#rs_nuke {
+    color: var(--nukenin);
+    border-bottom: 2px solid var(--nukenin);
+}
+
+.relation_avatar {
+    width: 133px;
+    height: 213px;
+    border-radius: 5px;
+}
+
+.relation {
+    margin: 15px auto;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--main_color_3);
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.relation_description {
+    color: var(--main_color_2);
+    text-align: justify;
+    font-size: 1rem;
+}
+
+.relation_name {
+    border-bottom: none;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.relation_kiri {
+    color: var(--kiri);
+    border-bottom: 2px dotted var(--kiri);
+}
+
+.relation_iwa {
+    color: var(--iwa);
+    border-bottom: 2px dotted var(--iwa);
+}
+
+.relation_suna {
+    color: var(--suna);
+    border-bottom: 2px dotted var(--suna);
+}
+
+.relation_konoha {
+    color: var(--konoha);
+    border-bottom: 2px dotted var(--konoha);
+}
+
+.relation_kumo {
+    color: var(--kumo);
+    border-bottom: 2px dotted var(--kumo);
+}
+
+.relation_nuke {
+    color: var(--nukenin);
+    border-bottom: 2px dotted var(--nukenin);
+}
+
+.button_align {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.none_button {
+    display: none;
+}
+
+.button_block {
+    display: block;
+    margin: 10px auto;
+}

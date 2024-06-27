@@ -1,0 +1,55 @@
+@import url("var_root.css");
+
+#shop {
+    width: 100%;
+    background-color: var(--main_color_1);
+    padding: 15px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: var(--main_color_2);
+    font-family: var(--main_police_2);
+    font-size: 0.9rem;
+}
+
+#shop_h1 {
+    color: var(--main_color_1);
+    background-color: var(--main_color_2);
+    font-size: 1.4rem;
+    font-family: var(--main_police);
+    font-weight: bold;
+    display: block;
+    margin: auto;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+#shopInfo {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#shop h1 {
+    color: var(--main_color_2);
+    font-size: 1.2rem;
+}
+
+#shop input[type=submit] {
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    color: var(--main_color_1);
+}
+
+#shop input[type=submit] {
+    background-color: green;
+}
+
+#shop input[type=submit]:disabled {
+    background-color: darkred;
+}

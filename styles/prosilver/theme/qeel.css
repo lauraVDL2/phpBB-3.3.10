@@ -1,0 +1,339 @@
+@import url("var_root.css");
+
+#qeel {
+    height: 380px;
+    width: 960px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: var(--main_color_2);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 20px;
+  }
+
+  #qeel progress {
+    width: 200px;
+    height: 20px;
+    background: white;
+    border: none;
+    -webkit-appearance: none; /* Needed for WebKit/Blink */
+    box-shadow: 0 0 3px var(--shadow);
+    border-radius: 20px;
+  }
+
+
+#groups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}  
+
+#kiri_progress {
+    color: var(--kiri);
+    border-radius: 20px;
+    }
+
+#kiri_progress::-moz-progress-bar { 
+    background: var(--kiri);
+    border-radius: 20px;
+}
+
+#kiri_progress::-webkit-progress-value {
+    background: var(--kiri);
+    border-radius: 20px;
+}
+
+#kiri_progress::-webkit-progress-bar {
+    background: white;
+    border-radius: 20px;
+}
+
+#iwa_progress {
+    color: var(--iwa); /* For IE10 */
+    border-radius: 20px;
+}
+
+#iwa_progress::-moz-progress-bar { 
+    background: var(--iwa);
+    border-radius: 20px;
+}
+
+#iwa_progress::-webkit-progress-value {
+    background: var(--iwa);
+    border-radius: 20px;
+}
+
+#iwa_progress::-webkit-progress-bar {
+    background: white;
+    border-radius: 20px;
+}
+
+#suna_progress {
+    color: var(--suna);
+    border-radius: 20px;
+}
+
+#suna_progress::-moz-progress-bar { 
+    background: var(--suna);
+    border-radius: 20px;
+}
+
+#suna_progress::-webkit-progress-value {
+    background: var(--suna);
+    border-radius: 20px;
+}
+
+#suna_progress::-webkit-progress-bar {
+    background: white;
+    border-radius: 20px;
+}
+
+#nukenin_progress {
+    color: var(--nukenin);
+    border-radius: 20px;
+}
+
+#nukenin_progress::-moz-progress-bar { 
+    background: var(--nukenin);
+    border-radius: 20px;
+}
+
+#nukenin_progress::-webkit-progress-value {
+    background: var(--nukenin);
+    border-radius: 20px;
+}
+
+#nukenin_progress::-webkit-progress-bar {
+    background: white;
+    border-radius: 20px;
+}
+
+.kiri, .suna, .iwa, .nukenin {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 3px var(--shadow);
+}
+
+.kiri {
+    color: var(--kiri);
+}
+
+.iwa {
+    color: var(--iwa);
+}
+
+.suna {
+    color: var(--suna);
+}
+
+.nukenin {
+    color: var(--nukenin);
+}
+
+.lKiri, .lIwa, .lSuna, .lNukenin {
+    position: relative;
+}
+
+.lKiri::before, .lIwa::before, .lSuna::before, .lNukenin::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+  }
+
+.lKiri:hover::before, .lIwa:hover::before, .lSuna:hover::before, .lNukenin:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.lKiri::before {
+    background-color: var(--kiri);
+}
+
+.lIwa::before {
+    background-color: var(--iwa);
+}
+
+.lSuna::before {
+    background-color: var(--suna);
+}
+
+.lNukenin::before {
+    background-color: var(--nukenin);
+}
+
+#firstLineQEEL, #secondLineQEEL {
+    display: flex;
+    flex-wrap: wrap;
+    height: 165px;
+    align-items: center;
+  }
+
+#firstLineQEEL {
+    justify-content: space-between;
+}
+  
+  #secondLineQEEL {
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  #onlineTitle {
+    height: 45px;
+    width: 318px;
+    background-color: var(--secondary_color_2);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+  
+  #onlineBlock {
+    height: 100px;
+    overflow: auto;
+    width: 308px;
+    padding: 5px;
+    background-color: var(--body_color);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  #onlineBlock, #onlineTitle {
+    box-shadow: 0 5px 10px var(--shadow);
+  }
+
+  #onlineBlock a {
+    font-weight: normal !important;
+  }
+
+  #avatarQEEL {
+    width: 100px;
+    height: 150px;
+    border-radius: 20px;
+    border: 5px solid var(--body_color);
+    box-shadow: 0 5px 10px var(--shadow);
+  }
+  
+  #welcome {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 5px 10px var(--shadow);
+  }
+  
+  #vavaQEEL {
+    display: flex;
+  }
+  
+  #dernier_membre {
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    background-color: var(--body_color);
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  #membersQEEL, #messagesQEEL, #topicsQEEL {
+    width: 218px;
+    color: white;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  #topicsQEEL {
+    background-color: var(--secondary_color_1);
+  }
+  
+  #membersQEEL {
+    background-color: var(--secondary_color_2);
+  }
+  
+  #messagesQEEL {
+    background-color: var(--secondary_color_3);
+  }
+
+  #hoursTitle {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: white;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary_color_1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-weight: bold;
+  }
+  
+  #hoursBlock {
+    padding: 5px;
+    overflow: auto;
+    width: 390px;
+    height: 105px;
+    background-color: var(--body_color);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  #hoursBlock, #hoursTitle {
+    box-shadow: 0 5px 10px var(--shadow);
+  }
+
+  @media screen and (max-width: 1024px) {
+    #qeel {
+        width: 95%;
+        margin: auto;
+        height: auto;
+        justify-content: center;
+      }
+      
+      #qeel div {
+        width: 100%;
+      }
+      
+      #membersQEEL, #messagesQEEL, #topicsQEEL {
+        margin: 5px auto;
+      }
+
+      #hoursBlock, #onlineBlock {
+        padding: 0;
+      }
+      
+      #firstLineQEEL, #secondLineQEEL {
+        justify-content: center;
+        height: auto;
+        width: 100%;
+      }
+      
+      #vavaQEEL, #groups {
+        display: none;
+      }
+   }

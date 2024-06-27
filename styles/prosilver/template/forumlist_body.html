@@ -1,0 +1,194 @@
+<div id="firstBlock">
+<!-- BEGIN forumrow(1,1) -->
+	<fieldset id="rowGuide">
+		<legend><img src="https://zupimages.net/up/23/13/vjii.png"></legend>
+	<!-- EVENT forumlist_body_category_header_before -->
+	<!-- EVENT forumlist_body_category_header_after -->
+
+	<!-- IF not forumrow.S_IS_CAT -->
+		<!-- EVENT forumlist_body_forum_row_before -->
+
+			<!-- EVENT forumlist_body_forum_row_prepend -->
+
+						<!-- IF S_ENABLE_FEEDS and forumrow.S_FEED_ENABLED -->
+							<!--
+								<a class="feed-icon-forum" title="{L_FEED} - {forumrow.FORUM_NAME}" href="{U_FEED}?f={forumrow.FORUM_ID}">
+									<i class="icon fa-rss-square fa-fw icon-orange" aria-hidden="true"></i><span class="sr-only">{L_FEED} - {forumrow.FORUM_NAME}</span>
+								</a>
+							-->
+						<!-- ENDIF -->
+						<!-- IF forumrow.FORUM_IMAGE -->
+							<!-- EVENT forumlist_body_forum_image_before -->
+							<span class="forum-image"><!-- EVENT forumlist_body_forum_image_prepend -->{forumrow.FORUM_IMAGE}<!-- EVENT forumlist_body_forum_image_append --></span>
+							<!-- EVENT forumlist_body_forum_image_after -->
+						<!-- ENDIF -->
+						<a href="./guidebook.php" class="forumTitle guidebookTitle">{forumrow.FORUM_NAME}</a>
+						<div class="forumDescr">Toutes les <strong>ANNEXES</strong> à portée de kunaï</div>
+					
+			<!-- EVENT forumlist_body_forum_row_append -->
+		<!-- EVENT forumlist_body_forum_row_after -->
+	<!-- ENDIF -->
+	</fieldset>
+<!-- END forumrow -->
+
+	<div id="carte">
+		<a href="./map.php">
+			<img src="https://zupimages.net/up/23/13/wm3r.png">
+		</a>
+		<div>
+			C<br />
+			A<br />
+			R<br />
+			T<br />
+			E
+		</div>
+	</div>
+
+<!-- BEGIN forumrow(2,3) -->
+<div class="row2">
+<!-- EVENT forumlist_body_category_header_before -->
+<!-- EVENT forumlist_body_category_header_after -->
+
+<!-- IF not forumrow.S_IS_CAT -->
+	<!-- EVENT forumlist_body_forum_row_before -->
+
+		<!-- EVENT forumlist_body_forum_row_prepend -->
+
+					<!-- IF S_ENABLE_FEEDS and forumrow.S_FEED_ENABLED -->
+						<!--
+							<a class="feed-icon-forum" title="{L_FEED} - {forumrow.FORUM_NAME}" href="{U_FEED}?f={forumrow.FORUM_ID}">
+								<i class="icon fa-rss-square fa-fw icon-orange" aria-hidden="true"></i><span class="sr-only">{L_FEED} - {forumrow.FORUM_NAME}</span>
+							</a>
+						-->
+					<!-- ENDIF -->
+					<!-- IF forumrow.FORUM_IMAGE -->
+						<!-- EVENT forumlist_body_forum_image_before -->
+						<span class="forum-image"><!-- EVENT forumlist_body_forum_image_prepend -->{forumrow.FORUM_IMAGE}<!-- EVENT forumlist_body_forum_image_append --></span>
+						<!-- EVENT forumlist_body_forum_image_after -->
+					<!-- ENDIF -->
+					<a href="{forumrow.U_VIEWFORUM}" class="forumTitle <!-- IF forumrow.S_ROW_COUNT == 3 -->textAlign<!-- ENDIF -->">{forumrow.FORUM_NAME}</a>
+					<div class="forumDescr <!-- IF forumrow.S_ROW_COUNT == 3 -->textAlign<!-- ENDIF -->">{forumrow.FORUM_DESC}</div>
+					
+					<div class="subForumsGrid">
+					<!-- BEGIN subforum -->
+						<!-- EVENT forumlist_body_subforum_link_prepend -->
+						<a href="{forumrow.subforum.U_SUBFORUM}">
+							{forumrow.subforum.SUBFORUM_NAME}
+						</a>
+						<!-- EVENT forumlist_body_subforum_link_append -->
+					<!-- END subforum -->
+					</div>
+
+					<div class="lastPost">
+						<!-- IF forumrow.LAST_POST_TIME_RFC3339 -->
+						<!-- IF forumrow.S_DISPLAY_SUBJECT -->
+							<!-- EVENT forumlist_body_last_post_title_prepend -->
+							<a href="{forumrow.U_LAST_POST}" title="{forumrow.LAST_POST_SUBJECT}" class="lastSubject">{forumrow.LAST_POST_SUBJECT_TRUNCATED}</a> <br />
+						<!-- ENDIF -->
+						<div><time datetime="{forumrow.LAST_POST_TIME_RFC3339}">{forumrow.LAST_POST_TIME}</time></div>
+							<!-- EVENT forumlist_body_last_poster_username_prepend -->{forumrow.LAST_POSTER_FULL}<!-- EVENT forumlist_body_last_poster_username_append -->
+						<!-- IF not S_IS_BOT -->
+							<a href="{forumrow.U_LAST_POST}" title="{L_VIEW_LATEST_POST}" class="lastPostLink">
+								<!-- IF forumrow.S_UNREAD_FORUM -->
+									<img src="https://zupimages.net/up/23/14/rftn.png">
+								<!-- ELSE -->
+									<img src="https://zupimages.net/up/23/13/vjii.png">
+								<!-- ENDIF -->
+							</a>
+						<!-- ENDIF -->
+					<!-- ELSE -->
+					<div class="noPost">Aucun dernier message !</div>
+					<!-- ENDIF -->
+					</div>
+		<!-- EVENT forumlist_body_forum_row_append -->
+	<!-- EVENT forumlist_body_forum_row_after -->
+<!-- ENDIF -->
+					</div>
+<!-- END forumrow -->
+<img src="https://zupimages.net/up/23/27/6zgz.png" id="imgDeco">
+</div>
+
+<!-- BEGIN forumrow(4) -->
+<div class="rowRPG">
+	<div class="contentRPG">
+		<a href="{forumrow.U_VIEWFORUM}" class="forumTitle">{forumrow.FORUM_NAME}</a>
+		<div class="forumDescr">{forumrow.FORUM_DESC}</div>
+
+		<div class="lastPost">
+			<!-- IF forumrow.LAST_POST_TIME_RFC3339 -->
+			<!-- IF forumrow.S_DISPLAY_SUBJECT -->
+				<!-- EVENT forumlist_body_last_post_title_prepend -->
+				<a href="{forumrow.U_LAST_POST}" title="{forumrow.LAST_POST_SUBJECT}" class="lastSubject">{forumrow.LAST_POST_SUBJECT_TRUNCATED}</a> <br />
+			<!-- ENDIF -->
+			<div><time datetime="{forumrow.LAST_POST_TIME_RFC3339}">{forumrow.LAST_POST_TIME}</time></div>
+				<!-- EVENT forumlist_body_last_poster_username_prepend -->{forumrow.LAST_POSTER_FULL}<!-- EVENT forumlist_body_last_poster_username_append -->
+			<!-- IF not S_IS_BOT -->
+				<a href="{forumrow.U_LAST_POST}" title="{L_VIEW_LATEST_POST}" class="lastPostLink">
+					<!-- IF forumrow.S_UNREAD_FORUM -->
+						<img src="https://zupimages.net/up/23/14/rftn.png">
+					<!-- ELSE -->
+						<img src="https://zupimages.net/up/23/13/vjii.png">
+					<!-- ENDIF -->
+				</a>
+			<!-- ENDIF -->
+		<!-- ELSE -->
+		<div class="noPost">Aucun dernier message !</div>
+		<!-- ENDIF -->
+		</div>
+	</div>
+	<!-- IF forumrow.FORUM_IMAGE -->
+		<div class="imgRPG">
+			{forumrow.FORUM_IMAGE}
+			<div class="subForums">
+				<!-- BEGIN subforum -->
+					<!-- EVENT forumlist_body_subforum_link_prepend -->
+					<a href="{forumrow.subforum.U_SUBFORUM}">
+						{forumrow.subforum.SUBFORUM_NAME}
+					</a>
+					<!-- EVENT forumlist_body_subforum_link_append -->
+				<!-- END subforum -->
+			</div>
+		</div>
+	<!-- ENDIF -->
+</div>
+<!-- END forumrow -->
+
+<fieldset id="partos">
+	<legend>Partenaires</legend>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+	<a href="./index.php">
+		<img src="https://zupimages.net/up/24/14/mq70.png">
+	</a>
+</div>

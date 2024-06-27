@@ -1,0 +1,175 @@
+<!-- INCLUDE overall_header.html -->
+{% INCLUDEJS 'missions_board.js' %}
+<div id="missions_board_title">Tableau des missions</div>
+<div id="missions_board_content">
+    <h1>Missions en cours</h1>
+    <!-- BEGIN ongoing_missions -->
+        <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="ongoing_mission_callback" data-refresh="true">
+            <h2>{ongoing_missions.OM_TITLE}</h2>
+            <input type="hidden" value="{ongoing_missions.OM_ID}" name="mission_id">
+            <input type="hidden" name="mission_title" value="{ongoing_missions.OM_TITLE}">
+            <div class="mission_infos">
+                <strong>Rang de la mission :</strong> {ongoing_missions.OM_RANK}
+            </div>
+            <div class="mission_infos">
+                <strong>Description :</strong> {ongoing_missions.OM_DESCRIPTION}
+            </div>
+            <div class="mission_infos">
+                <strong>Conditions de réussite :</strong> {ongoing_missions.OM_CONDITION}
+            </div>
+            <div class="mission_infos">
+                <strong>Récompenses potentielles :</strong> {ongoing_missions.OM_EARNING}
+            </div>
+            <div class="mission_infos">
+                <strong>Informations complémentaires :</strong> {ongoing_missions.OM_INFOS}
+            </div>
+            <div class="mission_infos">
+                <strong>Nombre de participants maximum :</strong> {ongoing_missions.OM_MAX_USERS}
+            </div>
+            <div class="mission_infos">
+                <strong>Joueurs inscrits :</strong> {ongoing_missions.OM_PLAYERS}
+            </div>
+            <div class="mission_infos">
+                <strong>Groupes concernés :</strong> {ongoing_missions.OM_GROUPS}
+            </div>
+            <div class="align_buttons">
+                <!-- IF MISSION_IS_ADMIN -->
+                    <input type="submit" name="finish_mission_button" class="button_validate" value="Marquer comme terminée">
+                <!-- ENDIF -->
+            </div>
+        </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
+    <!-- END ongoing_missions -->
+    <h1>Missions disponibles</h1>
+    <!-- BEGIN missions_to_subscribe -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="subscribe_mission_callback" data-refresh="true">
+        <h2>{missions_to_subscribe.MS_TITLE}</h2>
+        <input type="hidden" value="{missions_to_subscribe.MS_ID}" name="mission_id">
+        <input type="hidden" name="mission_title" value="{missions_to_subscribe.MS_TITLE}">
+        <div class="mission_infos">
+            <strong>Rang de la mission :</strong> {missions_to_subscribe.MS_RANK}
+        </div>
+        <div class="mission_infos">
+            <strong>Description :</strong> {missions_to_subscribe.MS_DESCRIPTION}
+        </div>
+        <div class="mission_infos">
+            <strong>Conditions de réussite :</strong> {missions_to_subscribe.MS_CONDITION}
+        </div>
+        <div class="mission_infos">
+            <strong>Récompenses potentielles :</strong> {missions_to_subscribe.MS_EARNING}
+        </div>
+        <div class="mission_infos">
+            <strong>Informations complémentaires :</strong> {missions_to_subscribe.MS_INFOS}
+        </div>
+        <div class="mission_infos">
+            <strong>Nombre de participants maximum :</strong> {missions_to_subscribe.MS_MAX_USERS}
+        </div>
+        <div class="mission_infos">
+            <strong>Joueurs inscrits :</strong> {missions_to_subscribe.MS_PLAYERS}
+        </div>
+        <div class="mission_infos">
+            <strong>Groupes concernés :</strong> {missions_to_subscribe.MS_GROUPS}
+        </div>
+        <div class="align_buttons">
+            <!-- IF missions_to_subscribe.MS_CAN_SUBSCRIBE -->
+                <input type="submit" name="subscribe_mission_button" class="button_validate" value="S'inscrire à la mission">
+            <!-- ELSEIF missions_to_subscribe.MS_CAN_UNSUBSCRIBE -->
+                <input type="submit" name="unsubscribe_mission_button" class="button_delete" value="Se désinscrire de la mission">
+            <!-- ENDIF -->
+            <!-- IF MISSION_IS_ADMIN -->
+                <input type="submit" name="ongoing_mission_button" class="button_validate" value="Fermer le inscriptions (passer à En cours)">
+            <!-- ENDIF -->
+        </div>
+    </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
+    <!-- END missions_to_subscribe -->
+
+    <!-- IF MISSION_IS_ADMIN -->
+    <h1>Valider les missions (Administrateur)</h1>
+    <!-- ENDIF -->
+    <!-- BEGIN missions_to_validate -->
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="modify_mission_callback" data-refresh="true">
+        <input type="hidden" value="{missions_to_validate.MV_ID}" name="mission_id">
+        <h2>Titre de la mission</h2>
+        <input type="text" name="mission_title" value="{missions_to_validate.MV_TITLE}" required>
+        <h2>Description de la mission</h2>
+        <textarea name="mission_description" required>{missions_to_validate.MV_DESCRIPTION}</textarea>
+        <h2>Conditions de réussite</h2>
+        <textarea name="mission_conditions" required>{missions_to_validate.MV_CONDITION}</textarea>
+        <h2>Récompenses potentielles</h2>
+        <textarea name="mission_earnings" required>{missions_to_validate.MV_EARNING}</textarea>
+        <h2>Informations complémentaires</h2>
+        <textarea name="mission_infos" required>{missions_to_validate.MV_INFOS}</textarea>
+        <h2>Rang de la mission</h2>
+        <select name="mission_rank">
+            <option value="S" <!-- IF missions_to_validate.MV_RANK == "S" -->selected<!-- ENDIF -->>S</option>
+            <option value="A" <!-- IF missions_to_validate.MV_RANK == "A" -->selected<!-- ENDIF -->>A</option>
+            <option value="B" <!-- IF missions_to_validate.MV_RANK == "B" -->selected<!-- ENDIF -->>B</option>
+            <option value="C" <!-- IF missions_to_validate.MV_RANK == "C" -->selected<!-- ENDIF -->>C</option>
+            <option value="D" <!-- IF missions_to_validate.MV_RANK == "D" -->selected<!-- ENDIF -->>D</option>
+        </select>
+        <h2>Nombre de participants maximum</h2>
+        <input type="number" name="mission_max_users" min="1" value="{missions_to_validate.MV_MAX_USERS}" required>
+        <h2>Groupes concernés</h2>
+        <div style="text-align: center;">{missions_to_validate.MV_GROUPS}</div>
+        <div class="align_buttons">
+            <input type="submit" name="validate_mission_button" class="button_validate" value="Valider la mission">
+            <input type="submit" name="modify_mission_button" class="button_modify" value="Enregistrer les modifications">
+            <input type="submit" name="delete_mission_button" class="button_delete" value="Supprimer la mission">
+        </div>
+    </form>
+    <!-- ELSE -->
+    <div style="text-align: center;">Aucune mission pour le moment !</div>
+    <!-- END missions_to_validate -->
+
+    <form method="post" action="{{ U_ACTION }}" accept-charset="utf-8" data-ajax="create_mission_callback" data-refresh="true">
+        <h1>Créer une mission</h1>
+        <h2>Titre de la mission</h2>
+        <input type="text" name="mission_title" maxlength="255" minlength="5" required>
+        <h2>Description de la mission</h2>
+        <textarea name="mission_description" required></textarea>
+        <h2>Conditions de réussite</h2>
+        <textarea name="mission_conditions" required></textarea>
+        <h2>Récompenses potentielles</h2>
+        <textarea name="mission_earnings" required></textarea>
+        <h2>Informations complémentaires</h2>
+        <div style="text-align: center;">Mettez ici des informations comme le lieu de la mission.</div>
+        <textarea name="mission_infos" required></textarea>
+        <h2>Rang de la mission</h2>
+        <select name="mission_rank">
+            <option value="S">S</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <!-- IF MISSION_IS_ADMIN --><option value="-">-</option><!-- ENDIF -->
+        </select>
+        <h2>Nombre de participants maximum</h2>
+        <input type="number" name="mission_max_users" min="1" required>
+        <h2>Groupes concernés</h2>
+        <div id="disp">
+            <div>
+                <input type="checkbox" name="mission_iwa"> <label>Iwagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_suna"> <label>Sunagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_kiri"> <label>Kirigakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_kumo"> <label>Kumogakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_konoha"> <label>Konohagakure</label>
+            </div>
+            <div>
+                <input type="checkbox" name="mission_nuke"> <label>Nukenin</label>
+            </div>
+        </div>
+        <input type="submit" name="create_mission_button" class="button_validate button_align" value="Créer la mission">
+    </form>
+</div>
+<!-- INCLUDE overall_footer.html -->
