@@ -8,6 +8,7 @@ $dbport = '3306';
 //$dbname = 'jnm_phpbb';
 //$dbuser = 'root';
 //$dbpasswd = 'Griffon123';
+//LOCAL
 $dbname = 'u604880352_jnm_phpbb';
 $dbuser = 'u604880352_root';
 $dbpasswd = 'MonGriffon123*';
