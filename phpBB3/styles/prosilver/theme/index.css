@@ -127,16 +127,24 @@ body {
 	width: 32px;
 	height: 32px;
 	background: white;
+    background-position: center;
+    background-image: url('https://zupimages.net/up/24/23/utkj.png');
 	border-radius: 50%;
 	transform: translateY(-50%);
 	transition: all .5s;
 }
 
 .switch input:checked + span:before {
+    background-image: url('https://zupimages.net/up/24/23/u2mj.png') !important;
+    background-position: center;
 	left: 34px;
 }
 
 #second_infos_col input[type=submit] {
     background-color: green;
     color: white;
+}
+
+a {
+    color: var(--secondary_color_2);
 }

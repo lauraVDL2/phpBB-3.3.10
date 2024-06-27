@@ -31,45 +31,72 @@ if($request->is_ajax()) {
         $story = utf8_normalize_nfc($request->variable('character_story', '', true));
         $player = utf8_normalize_nfc($request->variable('character_player', '', true));
         $future = utf8_normalize_nfc($request->variable('character_future', '', true));
-        $message = '[p_cadre]';
-        $message .= "\n";
+        //$message = '[p_cadre]';
+        //$message .= "\n";
         switch($group) {
             case 'Kiri':
+                $message = '[p_cadre_kiri]';
+                $message .= "\n";
                 $message .= '[p_kiri]Shinobi de Kiri[/p_kiri]';
+                $close = '[/p_cadre_kiri]';
                 break;
             case 'Suna':
+                $message = '[p_cadre_suna]';
+                $message .= "\n";
                 $message .= '[p_suna]Shinobi de Suna[/p_suna]';
+                $close = '[/p_cadre_suna]';
                 break;
             case 'Iwa':
+                $message = '[p_cadre_iwa]';
+                $message .= "\n";
                 $message .= '[p_iwa]Shinobi d\'Iwa[/p_iwa]';
+                $close = '[/p_cadre_iwa]';
                 break;
             case 'Kumo':
+                $message = '[p_cadre_kumo]';
+                $message .= "\n";
                 $message .= '[p_kumo]Shinobi de Kumo[/p_kumo]';
+                $close = '[/p_cadre_kumo]';
                 break;
             case 'Konoha':
+                $message = '[p_cadre_konoha]';
+                $message .= "\n";
                 $message .= '[p_konoha]Shinobi de Konoha[/p_konoha]';
+                $close = '[/p_cadre_konoha]';
                 break;
             default:
+                $message = '[p_cadre_nukenin]';
+                $message .= "\n";
                 $message .= '[p_nukenin]Shinobi Nukenin[/p_nukenin]';
+                $close = '[/p_cadre_nukenin]';
         }
         $message .= "\n\n";
-        $message .= '[b]Nom -[/b] '.$lastname;
-        $message .= "\n";
-        $message .= '[b]Prénom -[/b] '.$firstname;
-        $message .= "\n";
-        $message .= '[b]Genre -[/b] '.$gender;
-        $message .= "\n";
-        $message .= '[b]Âge -[/b] '.$age;
+        $message .= '[hp]Nom[/hp]';
         $message .= "\n\n";
-        $message .= '[b]Description physique & mentale -[/b] '.$description;
+        $message .= '[dp]'.$lastname.'[/dp]';
         $message .= "\n\n";
-        $message .= '[b]Histoire -[/b] '.$story;
+        $message .= '[hp]Prénom[/hp]';
+        $message .= '[dp]'.$firstname.'[/dp]';
         $message .= "\n\n";
-        $message .= '[b]Présentation du joueur -[/b] '.$player;
+        $message .= '[hp]Genre[/hp]';
+        $message .= '[dp]'.$gender.'[/dp]';
         $message .= "\n\n";
-        $message .= '[b]Que ferons-nous de votre personnage en cas de départ -[/b] '.$future;
+        $message .= '[hp]Âge[/hp]';
+        $message .= '[dp]'.$age.'[/dp]';
+        $message .= "\n\n";
+        $message .= '[hp]Description physique & mentale[/hp]';
+        $message .= '[dp]'.$description.'[/dp]';
+        $message .= "\n\n";
+        $message .= '[hp]Histoire[/hp]';
+        $message .= '[dp]'.$story.'[/dp]';
+        $message .= "\n\n";
+        $message .= '[hp]Présentation du joueur[/hp]';
+        $message .= '[dp]'.$player.'[/dp]';
+        $message .= "\n\n";
+        $message .= '[hp]Que ferons-nous de votre personnage en cas de départ[/hp]';
+        $message .= '[dp]'.$future.'[/dp]';
         $message .= "\n";
-        $message .= '[/p_cadre]';
+        $message .= $close;
         $subject = "Présentation de $lastname $firstname";
         generate_text_for_storage($message, $uid, $bitfield, $options, true, true, true);
         $data = array(

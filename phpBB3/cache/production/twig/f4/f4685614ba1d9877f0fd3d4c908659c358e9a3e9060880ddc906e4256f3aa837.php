@@ -778,35 +778,49 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
                         echo "\">Relations</a>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
-\t\t\t\t";
+\t\t\t\t\t";
+                        // line 234
+                        // line 235
+                        echo "\t\t\t\t\t";
+                        if ((twig_get_attribute($this->env, $this->source, $context["postrow"], "RANK_IMG", [], "any", false, false, false, 235) || twig_get_attribute($this->env, $this->source, $context["postrow"], "RANK_TITLE", [], "any", false, false, false, 235))) {
+                            echo "<div class=\"rank_title\" style=\"background-color: #";
+                            echo twig_get_attribute($this->env, $this->source, $context["postrow"], "COLOUR", [], "any", false, false, false, 235);
+                            echo "\">";
+                            echo twig_get_attribute($this->env, $this->source, $context["postrow"], "RANK_TITLE", [], "any", false, false, false, 235);
+                            echo "</div>";
+                        }
+                        // line 236
+                        echo "\t\t\t\t\t";
+                        // line 237
+                        echo "\t\t\t\t";
                     }
-                    // line 235
+                    // line 238
                     echo "\t\t\t\t";
-                    // line 236
+                    // line 239
                     echo "\t\t\t</div>
 \t\t</div>
 \t\t";
                 }
-                // line 239
+                // line 242
                 echo "\t";
             }
-            // line 240
+            // line 243
             echo "
 \t</div>
 \t
 
 \t";
-            // line 244
+            // line 247
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['postrow'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 246
+        // line 249
         echo "
 ";
-        // line 247
+        // line 250
         if (($context["S_QUICK_REPLY"] ?? null)) {
-            // line 248
+            // line 251
             echo "\t";
             $location = "quickreply_editor.html";
             $namespace = false;
@@ -815,25 +829,25 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
                 $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
                 $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
             }
-            $this->loadTemplate("quickreply_editor.html", "viewtopic_body.html", 248)->display($context);
+            $this->loadTemplate("quickreply_editor.html", "viewtopic_body.html", 251)->display($context);
             if ($namespace) {
                 $this->env->setNamespaceLookUpOrder($previous_look_up_order);
             }
         }
-        // line 250
+        // line 253
         echo "
 ";
-        // line 251
-        // line 252
+        // line 254
+        // line 255
         echo "\t<div class=\"action-bar bar-bottom\">
 \t";
-        // line 253
-        // line 254
+        // line 256
+        // line 257
         echo "
 \t";
-        // line 255
+        // line 258
         if (( !($context["S_IS_BOT"] ?? null) && ($context["S_DISPLAY_REPLY_INFO"] ?? null))) {
-            // line 256
+            // line 259
             echo "\t\t<a href=\"";
             echo ($context["U_POST_REPLY_TOPIC"] ?? null);
             echo "\" class=\"button\" title=\"";
@@ -844,30 +858,30 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
             }
             echo "\">
 \t\t\t";
-            // line 257
+            // line 260
             if (($context["S_IS_LOCKED"] ?? null)) {
-                // line 258
+                // line 261
                 echo "\t\t\t\t<span>";
                 echo $this->extensions['phpbb\template\twig\extension']->lang("BUTTON_TOPIC_LOCKED");
                 echo "</span> <i class=\"icon fa-lock fa-fw\" aria-hidden=\"true\"></i>
 \t\t\t";
             } else {
-                // line 260
+                // line 263
                 echo "\t\t\t\t<span>";
                 echo $this->extensions['phpbb\template\twig\extension']->lang("BUTTON_POST_REPLY");
                 echo "</span> <i class=\"icon fa-reply fa-fw\" aria-hidden=\"true\"></i>
 \t\t\t";
             }
-            // line 262
+            // line 265
             echo "\t\t</a>
 \t";
         }
-        // line 264
+        // line 267
         echo "\t";
-        // line 265
+        // line 268
         echo "
 \t";
-        // line 266
+        // line 269
         $location = "viewtopic_topic_tools.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -875,21 +889,21 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("viewtopic_topic_tools.html", "viewtopic_body.html", 266)->display($context);
+        $this->loadTemplate("viewtopic_topic_tools.html", "viewtopic_body.html", 269)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
-        // line 267
+        // line 270
         echo "
 \t";
-        // line 268
-        if ((((($context["S_NUM_POSTS"] ?? null) > 1) || twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 268))) &&  !($context["S_IS_BOT"] ?? null))) {
-            // line 269
+        // line 271
+        if ((((($context["S_NUM_POSTS"] ?? null) > 1) || twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 271))) &&  !($context["S_IS_BOT"] ?? null))) {
+            // line 272
             echo "\t\t<form method=\"post\" action=\"";
             echo ($context["S_TOPIC_ACTION"] ?? null);
             echo "\">
 \t\t";
-            // line 270
+            // line 273
             $location = "display_options.html";
             $namespace = false;
             if (strpos($location, '@') === 0) {
@@ -897,29 +911,29 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
                 $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
                 $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
             }
-            $this->loadTemplate("display_options.html", "viewtopic_body.html", 270)->display($context);
+            $this->loadTemplate("display_options.html", "viewtopic_body.html", 273)->display($context);
             if ($namespace) {
                 $this->env->setNamespaceLookUpOrder($previous_look_up_order);
             }
-            // line 271
+            // line 274
             echo "\t\t</form>
 \t";
         }
-        // line 273
+        // line 276
         echo "
 \t";
-        // line 274
-        if (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "quickmod", [], "any", false, false, false, 274))) {
-            // line 275
+        // line 277
+        if (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "quickmod", [], "any", false, false, false, 277))) {
+            // line 278
             echo "\t<div class=\"quickmod dropdown-container dropdown-container-left dropdown-up dropdown-";
             echo ($context["S_CONTENT_FLOW_END"] ?? null);
             echo " dropdown-button-control\" id=\"quickmod\">
 \t\t<span title=\"";
-            // line 276
+            // line 279
             echo $this->extensions['phpbb\template\twig\extension']->lang("QUICK_MOD");
             echo "\" class=\"button button-secondary dropdown-trigger dropdown-select\">
 \t\t\t<i class=\"icon fa-gavel fa-fw\" aria-hidden=\"true\"></i><span class=\"sr-only\">";
-            // line 277
+            // line 280
             echo $this->extensions['phpbb\template\twig\extension']->lang("QUICK_MOD");
             echo "</span>
 \t\t\t<span class=\"caret\"><i class=\"icon fa-sort-down fa-fw\" aria-hidden=\"true\"></i></span>
@@ -928,54 +942,54 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
 \t\t\t\t<div class=\"pointer\"><div class=\"pointer-inner\"></div></div>
 \t\t\t\t<ul class=\"dropdown-contents\">
 \t\t\t\t";
-            // line 283
+            // line 286
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "quickmod", [], "any", false, false, false, 283));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "quickmod", [], "any", false, false, false, 286));
             foreach ($context['_seq'] as $context["_key"] => $context["quickmod"]) {
-                // line 284
+                // line 287
                 echo "\t\t\t\t\t";
-                $value = twig_in_filter(twig_get_attribute($this->env, $this->source, $context["quickmod"], "VALUE", [], "any", false, false, false, 284), [0 => "lock", 1 => "unlock", 2 => "delete_topic", 3 => "restore_topic", 4 => "make_normal", 5 => "make_sticky", 6 => "make_announce", 7 => "make_global"]);
+                $value = twig_in_filter(twig_get_attribute($this->env, $this->source, $context["quickmod"], "VALUE", [], "any", false, false, false, 287), [0 => "lock", 1 => "unlock", 2 => "delete_topic", 3 => "restore_topic", 4 => "make_normal", 5 => "make_sticky", 6 => "make_announce", 7 => "make_global"]);
                 $context['definition']->set('QUICKMOD_AJAX', $value);
-                // line 285
+                // line 288
                 echo "\t\t\t\t\t<li><a href=\"";
-                echo twig_get_attribute($this->env, $this->source, $context["quickmod"], "LINK", [], "any", false, false, false, 285);
+                echo twig_get_attribute($this->env, $this->source, $context["quickmod"], "LINK", [], "any", false, false, false, 288);
                 echo "\"";
-                if (twig_get_attribute($this->env, $this->source, ($context["definition"] ?? null), "QUICKMOD_AJAX", [], "any", false, false, false, 285)) {
+                if (twig_get_attribute($this->env, $this->source, ($context["definition"] ?? null), "QUICKMOD_AJAX", [], "any", false, false, false, 288)) {
                     echo " data-ajax=\"true\" data-refresh=\"true\"";
                 }
                 echo ">";
-                echo twig_get_attribute($this->env, $this->source, $context["quickmod"], "TITLE", [], "any", false, false, false, 285);
+                echo twig_get_attribute($this->env, $this->source, $context["quickmod"], "TITLE", [], "any", false, false, false, 288);
                 echo "</a></li>
 \t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['quickmod'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 287
+            // line 290
             echo "\t\t\t\t</ul>
 \t\t\t</div>
 \t\t</div>
 \t";
         }
-        // line 291
-        echo "
-\t";
-        // line 292
-        // line 293
-        echo "
-\t";
         // line 294
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 294)) || ($context["TOTAL_POSTS"] ?? null))) {
-            // line 295
+        echo "
+\t";
+        // line 295
+        // line 296
+        echo "
+\t";
+        // line 297
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 297)) || ($context["TOTAL_POSTS"] ?? null))) {
+            // line 298
             echo "\t\t<div class=\"pagination\">
 \t\t\t";
-            // line 296
+            // line 299
             echo ($context["TOTAL_POSTS"] ?? null);
             echo "
 \t\t\t";
-            // line 297
-            if (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 297))) {
-                // line 298
+            // line 300
+            if (twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["loops"] ?? null), "pagination", [], "any", false, false, false, 300))) {
+                // line 301
                 echo "\t\t\t\t";
                 $location = "pagination.html";
                 $namespace = false;
@@ -984,29 +998,29 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
                     $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
                     $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
                 }
-                $this->loadTemplate("pagination.html", "viewtopic_body.html", 298)->display($context);
+                $this->loadTemplate("pagination.html", "viewtopic_body.html", 301)->display($context);
                 if ($namespace) {
                     $this->env->setNamespaceLookUpOrder($previous_look_up_order);
                 }
-                // line 299
+                // line 302
                 echo "\t\t\t";
             } else {
-                // line 300
+                // line 303
                 echo "\t\t\t\t&bull; ";
                 echo ($context["PAGE_NUMBER"] ?? null);
                 echo "
 \t\t\t";
             }
-            // line 302
+            // line 305
             echo "\t\t</div>
 \t";
         }
-        // line 304
+        // line 307
         echo "</div>
 
 ";
-        // line 306
-        // line 307
+        // line 309
+        // line 310
         $location = "jumpbox.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -1014,38 +1028,38 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("jumpbox.html", "viewtopic_body.html", 307)->display($context);
+        $this->loadTemplate("jumpbox.html", "viewtopic_body.html", 310)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
-        // line 308
-        echo "
-";
-        // line 309
-        // line 310
-        echo "
-";
         // line 311
+        echo "
+";
+        // line 312
+        // line 313
+        echo "
+";
+        // line 314
         if ((($context["S_DISPLAY_ONLINE_LIST"] ?? null) && ($context["U_VIEWONLINE"] ?? null))) {
-            // line 312
+            // line 315
             echo "\t<div class=\"stat-block online-list\">
 \t\t<h3><a href=\"";
-            // line 313
+            // line 316
             echo ($context["U_VIEWONLINE"] ?? null);
             echo "\">";
             echo $this->extensions['phpbb\template\twig\extension']->lang("WHO_IS_ONLINE");
             echo "</a></h3>
 \t\t<p>";
-            // line 314
+            // line 317
             echo ($context["LOGGED_IN_USER_LIST"] ?? null);
             echo "</p>
 \t</div>
 ";
         }
-        // line 317
+        // line 320
         echo "
 ";
-        // line 318
+        // line 321
         $location = "overall_footer.html";
         $namespace = false;
         if (strpos($location, '@') === 0) {
@@ -1053,7 +1067,7 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
             $previous_look_up_order = $this->env->getNamespaceLookUpOrder();
             $this->env->setNamespaceLookUpOrder(array($namespace, '__main__'));
         }
-        $this->loadTemplate("overall_footer.html", "viewtopic_body.html", 318)->display($context);
+        $this->loadTemplate("overall_footer.html", "viewtopic_body.html", 321)->display($context);
         if ($namespace) {
             $this->env->setNamespaceLookUpOrder($previous_look_up_order);
         }
@@ -1071,7 +1085,7 @@ class __TwigTemplate_68fa7d3ae86014ef5fd69f5bb96f45ab11a11218094b784beb125d932de
 
     public function getDebugInfo()
     {
-        return array (  1049 => 318,  1046 => 317,  1040 => 314,  1034 => 313,  1031 => 312,  1029 => 311,  1026 => 310,  1025 => 309,  1022 => 308,  1010 => 307,  1009 => 306,  1005 => 304,  1001 => 302,  995 => 300,  992 => 299,  979 => 298,  977 => 297,  973 => 296,  970 => 295,  968 => 294,  965 => 293,  964 => 292,  961 => 291,  955 => 287,  940 => 285,  936 => 284,  932 => 283,  923 => 277,  919 => 276,  914 => 275,  912 => 274,  909 => 273,  905 => 271,  893 => 270,  888 => 269,  886 => 268,  883 => 267,  871 => 266,  868 => 265,  866 => 264,  862 => 262,  856 => 260,  850 => 258,  848 => 257,  837 => 256,  835 => 255,  832 => 254,  831 => 253,  828 => 252,  827 => 251,  824 => 250,  810 => 248,  808 => 247,  805 => 246,  800 => 244,  794 => 240,  791 => 239,  786 => 236,  784 => 235,  777 => 231,  773 => 230,  768 => 228,  762 => 225,  759 => 224,  756 => 223,  755 => 222,  749 => 221,  743 => 218,  737 => 214,  735 => 213,  728 => 209,  722 => 208,  719 => 207,  716 => 206,  709 => 202,  703 => 201,  700 => 200,  697 => 199,  690 => 195,  684 => 194,  681 => 193,  678 => 192,  671 => 188,  665 => 187,  662 => 186,  659 => 185,  652 => 181,  646 => 180,  643 => 179,  640 => 178,  633 => 174,  627 => 173,  624 => 172,  621 => 171,  620 => 170,  617 => 169,  614 => 168,  611 => 167,  609 => 166,  606 => 165,  598 => 164,  594 => 162,  582 => 159,  576 => 158,  572 => 157,  567 => 155,  563 => 154,  559 => 153,  555 => 152,  551 => 151,  547 => 150,  543 => 149,  530 => 140,  527 => 139,  517 => 137,  514 => 136,  512 => 135,  508 => 134,  505 => 133,  504 => 132,  501 => 131,  492 => 125,  488 => 124,  481 => 120,  478 => 119,  470 => 116,  466 => 114,  464 => 113,  461 => 112,  455 => 109,  451 => 107,  449 => 106,  440 => 103,  433 => 101,  430 => 100,  424 => 99,  423 => 98,  410 => 96,  387 => 95,  361 => 94,  349 => 93,  329 => 92,  327 => 91,  323 => 90,  309 => 87,  305 => 86,  295 => 80,  293 => 79,  290 => 78,  289 => 77,  285 => 75,  283 => 74,  279 => 72,  273 => 70,  270 => 69,  257 => 68,  255 => 67,  244 => 66,  241 => 65,  239 => 64,  236 => 63,  228 => 58,  223 => 56,  217 => 55,  212 => 53,  208 => 52,  204 => 51,  199 => 49,  196 => 48,  194 => 47,  191 => 46,  189 => 45,  176 => 44,  175 => 43,  172 => 42,  168 => 40,  162 => 38,  156 => 36,  154 => 35,  143 => 34,  141 => 33,  138 => 32,  137 => 31,  133 => 29,  127 => 25,  122 => 23,  117 => 22,  109 => 20,  107 => 19,  98 => 16,  96 => 15,  93 => 14,  80 => 11,  77 => 10,  75 => 9,  72 => 8,  66 => 7,  63 => 6,  62 => 5,  53 => 4,  52 => 3,  49 => 2,  37 => 1,);
+        return array (  1063 => 321,  1060 => 320,  1054 => 317,  1048 => 316,  1045 => 315,  1043 => 314,  1040 => 313,  1039 => 312,  1036 => 311,  1024 => 310,  1023 => 309,  1019 => 307,  1015 => 305,  1009 => 303,  1006 => 302,  993 => 301,  991 => 300,  987 => 299,  984 => 298,  982 => 297,  979 => 296,  978 => 295,  975 => 294,  969 => 290,  954 => 288,  950 => 287,  946 => 286,  937 => 280,  933 => 279,  928 => 278,  926 => 277,  923 => 276,  919 => 274,  907 => 273,  902 => 272,  900 => 271,  897 => 270,  885 => 269,  882 => 268,  880 => 267,  876 => 265,  870 => 263,  864 => 261,  862 => 260,  851 => 259,  849 => 258,  846 => 257,  845 => 256,  842 => 255,  841 => 254,  838 => 253,  824 => 251,  822 => 250,  819 => 249,  814 => 247,  808 => 243,  805 => 242,  800 => 239,  798 => 238,  795 => 237,  793 => 236,  784 => 235,  783 => 234,  777 => 231,  773 => 230,  768 => 228,  762 => 225,  759 => 224,  756 => 223,  755 => 222,  749 => 221,  743 => 218,  737 => 214,  735 => 213,  728 => 209,  722 => 208,  719 => 207,  716 => 206,  709 => 202,  703 => 201,  700 => 200,  697 => 199,  690 => 195,  684 => 194,  681 => 193,  678 => 192,  671 => 188,  665 => 187,  662 => 186,  659 => 185,  652 => 181,  646 => 180,  643 => 179,  640 => 178,  633 => 174,  627 => 173,  624 => 172,  621 => 171,  620 => 170,  617 => 169,  614 => 168,  611 => 167,  609 => 166,  606 => 165,  598 => 164,  594 => 162,  582 => 159,  576 => 158,  572 => 157,  567 => 155,  563 => 154,  559 => 153,  555 => 152,  551 => 151,  547 => 150,  543 => 149,  530 => 140,  527 => 139,  517 => 137,  514 => 136,  512 => 135,  508 => 134,  505 => 133,  504 => 132,  501 => 131,  492 => 125,  488 => 124,  481 => 120,  478 => 119,  470 => 116,  466 => 114,  464 => 113,  461 => 112,  455 => 109,  451 => 107,  449 => 106,  440 => 103,  433 => 101,  430 => 100,  424 => 99,  423 => 98,  410 => 96,  387 => 95,  361 => 94,  349 => 93,  329 => 92,  327 => 91,  323 => 90,  309 => 87,  305 => 86,  295 => 80,  293 => 79,  290 => 78,  289 => 77,  285 => 75,  283 => 74,  279 => 72,  273 => 70,  270 => 69,  257 => 68,  255 => 67,  244 => 66,  241 => 65,  239 => 64,  236 => 63,  228 => 58,  223 => 56,  217 => 55,  212 => 53,  208 => 52,  204 => 51,  199 => 49,  196 => 48,  194 => 47,  191 => 46,  189 => 45,  176 => 44,  175 => 43,  172 => 42,  168 => 40,  162 => 38,  156 => 36,  154 => 35,  143 => 34,  141 => 33,  138 => 32,  137 => 31,  133 => 29,  127 => 25,  122 => 23,  117 => 22,  109 => 20,  107 => 19,  98 => 16,  96 => 15,  93 => 14,  80 => 11,  77 => 10,  75 => 9,  72 => 8,  66 => 7,  63 => 6,  62 => 5,  53 => 4,  52 => 3,  49 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

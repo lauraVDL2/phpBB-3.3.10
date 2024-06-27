@@ -210,6 +210,16 @@
     color: var(--main_color_2) !important;
 }
 
+.rank_title {
+    margin: 8px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 80%;
+    border-radius: 15px;
+}
+
 .p_kiri, .p_iwa, .p_suna, .p_kumo, .p_konoha, .p_nukenin, .p_predef {
     font-weight: bold;
     text-align: center;
@@ -222,11 +232,52 @@
     border-radius: 10px;
 }
 
-.p_cadre {
+.p_cadre, .p_cadre_kiri, .p_cadre_iwa, .p_cadre_suna, .p_cadra_konoha, .p_cadre_kumo, .p_cadre_nukenin {
     background-color: var(--main_color_3);
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
+}
+
+.dp {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--main_color_1);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.p_cadre .hp, .p_predef .hp {
+    color: var(--main_color_2);
+}
+
+.hp {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.p_cadre_kiri .hp {
+    color: var(--kiri);
+}
+
+.p_cadre_kumo .hp {
+    color: var(--kumo);
+}
+
+.p_cadre_konoha .hp {
+    color: var(--konoha);
+}
+
+.p_cadre_iwa .hp {
+    color: var(--iwa);
+}
+
+.p_cadre_suna .hp {
+    color: var(--suna);
+}
+
+.p_cadre_nukenin .hp {
+    color: var(--nukenin);
 }
 
 .p_kiri {

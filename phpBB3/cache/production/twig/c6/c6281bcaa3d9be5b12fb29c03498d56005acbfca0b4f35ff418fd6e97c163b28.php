@@ -448,7 +448,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 170
-        if ((((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Gyôton")) && ($context["SP_CAN_GYOTON"] ?? null)) && ($context["SP_IS_KIRI"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) == 8))) {
+        if ((((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Gyôton")) && ($context["SP_CAN_GYOTON"] ?? null)) && ($context["SP_IS_KUMO"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) == 8))) {
             // line 171
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);
@@ -469,7 +469,7 @@ class __TwigTemplate_00b75893985eee2ef5c6229529616b725cd57173073d66ca47ddcbf209f
         echo "
     ";
         // line 179
-        if ((((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Kyôton")) && ($context["SP_CAN_KYOTON"] ?? null)) && ($context["SP_IS_KUMO"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) == 8))) {
+        if ((((((($context["CAN_FIRST_ELITE"] ?? null) || ($context["CAN_SECOND_ELITE"] ?? null)) && (($context["SP_FIRST_ELITE"] ?? null) != "Kyôton")) && ($context["SP_CAN_KYOTON"] ?? null)) && ($context["SP_IS_KIRI"] ?? null)) && (($context["SP_NINJUTSU"] ?? null) == 8))) {
             // line 180
             echo "    <form method=\"post\" action=\"";
             echo ($context["U_ACTION"] ?? null);

@@ -231,6 +231,9 @@
 							<a class="info_link" href="./relationships.php?uid={postrow.POSTER_ID}">Relations</a>
 						</div>
 					</div>
+					<!-- EVENT viewtopic_body_postrow_rank_before -->
+					{% if postrow.RANK_IMG or postrow.RANK_TITLE %}<div class="rank_title" style="background-color: #{postrow.COLOUR}">{{ postrow.RANK_TITLE }}</div>{% endif %}
+					<!-- EVENT viewtopic_body_postrow_rank_after -->
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_avatar_after -->
 			</div>
