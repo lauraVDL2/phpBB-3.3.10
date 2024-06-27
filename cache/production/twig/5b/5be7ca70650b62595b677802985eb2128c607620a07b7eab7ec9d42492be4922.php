@@ -379,23 +379,29 @@ class __TwigTemplate_74547b2f2045a737b611bec27a1bd42234f8a26c0ba3fa8694c64459edf
 \t\t\t\t\t<div class=\"content_news\">Un exemple de news ici !</div>
 \t\t\t\t</div>
 \t\t\t</fieldset>
+\t\t\t<fieldset id=\"topsites\">
+\t\t\t\t<legend>Topsites</legend>
+\t\t\t\t<a href=\"http://www.root-top.com/topsite/nacimem/in.php?ID=5320\" target=\"_blank\"><img src=\"https://zupimages.net/up/23/13/vjii.png\"></a>
+\t\t\t\t<a href=\"http://www.root-top.com/topsite/gilgamesh/in.php?ID=8627\" target=\"_blank\"><img src=\"https://zupimages.net/up/23/13/vjii.png\"></a>
+\t\t\t\t<a href=\"http://www.root-top.com/topsite/virtu4ldreaiviz/in.php?ID=5834\" target=\"_blank\"><img src=\"https://zupimages.net/up/23/13/vjii.png\"></a>
+\t\t\t</fieldset>
 \t\t</div>
 \t</div>
 
 \t";
-        // line 131
-        // line 132
+        // line 137
+        // line 138
         echo "
 \t<a id=\"start_here\" class=\"anchor\"></a>
 \t<div id=\"page-body\" class=\"page-body\" role=\"main\">
 \t\t";
-        // line 135
+        // line 141
         if (((($context["S_BOARD_DISABLED"] ?? null) && ($context["S_USER_LOGGED_IN"] ?? null)) && (($context["U_MCP"] ?? null) || ($context["U_ACP"] ?? null)))) {
-            // line 136
+            // line 142
             echo "\t\t<div id=\"information\" class=\"rules\">
 \t\t\t<div class=\"inner\">
 \t\t\t\t<strong>";
-            // line 138
+            // line 144
             echo $this->extensions['phpbb\template\twig\extension']->lang("INFORMATION");
             echo $this->extensions['phpbb\template\twig\extension']->lang("COLON");
             echo "</strong> ";
@@ -405,10 +411,10 @@ class __TwigTemplate_74547b2f2045a737b611bec27a1bd42234f8a26c0ba3fa8694c64459edf
 \t\t</div>
 \t\t";
         }
-        // line 142
+        // line 148
         echo "
 \t\t";
-        // line 143
+        // line 149
     }
 
     public function getTemplateName()
@@ -423,7 +429,7 @@ class __TwigTemplate_74547b2f2045a737b611bec27a1bd42234f8a26c0ba3fa8694c64459edf
 
     public function getDebugInfo()
     {
-        return array (  412 => 143,  409 => 142,  399 => 138,  395 => 136,  393 => 135,  388 => 132,  387 => 131,  364 => 111,  360 => 110,  354 => 106,  349 => 104,  344 => 103,  339 => 101,  336 => 100,  334 => 99,  331 => 98,  327 => 97,  309 => 81,  295 => 80,  292 => 79,  291 => 78,  282 => 76,  278 => 74,  277 => 73,  272 => 71,  269 => 70,  268 => 69,  260 => 66,  256 => 64,  248 => 62,  246 => 61,  243 => 60,  235 => 58,  233 => 57,  230 => 56,  222 => 54,  220 => 53,  215 => 51,  211 => 50,  206 => 49,  189 => 34,  187 => 33,  177 => 25,  171 => 23,  169 => 22,  166 => 21,  163 => 19,  150 => 18,  137 => 17,  126 => 16,  115 => 15,  104 => 14,  93 => 13,  82 => 12,  80 => 11,  55 => 9,  51 => 8,  40 => 2,  37 => 1,);
+        return array (  418 => 149,  415 => 148,  405 => 144,  401 => 142,  399 => 141,  394 => 138,  393 => 137,  364 => 111,  360 => 110,  354 => 106,  349 => 104,  344 => 103,  339 => 101,  336 => 100,  334 => 99,  331 => 98,  327 => 97,  309 => 81,  295 => 80,  292 => 79,  291 => 78,  282 => 76,  278 => 74,  277 => 73,  272 => 71,  269 => 70,  268 => 69,  260 => 66,  256 => 64,  248 => 62,  246 => 61,  243 => 60,  235 => 58,  233 => 57,  230 => 56,  222 => 54,  220 => 53,  215 => 51,  211 => 50,  206 => 49,  189 => 34,  187 => 33,  177 => 25,  171 => 23,  169 => 22,  166 => 21,  163 => 19,  150 => 18,  137 => 17,  126 => 16,  115 => 15,  104 => 14,  93 => 13,  82 => 12,  80 => 11,  55 => 9,  51 => 8,  40 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

@@ -45,7 +45,7 @@
     box-sizing: border-box;
 }
 
-#contexte, #news_pa {
+#contexte, #news_pa, #topsites {
     border: none;
     background-color: var(--main_color_2);
     border-radius: 30px;
@@ -68,7 +68,19 @@
     height: 130px;
 }
 
-#contexte legend, #news_pa legend {
+#topsites {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+#topsites img {
+    width: 50px;
+}
+
+#contexte legend, #news_pa legend, #topsites legend {
     font-size: 1.4rem;
     text-transform: uppercase;
     font-weight: bold;
