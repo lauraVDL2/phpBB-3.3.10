@@ -2,11 +2,15 @@
 // phpBB 3.3.x auto-generated configuration file
 // Do not change anything in this file!
 $dbms = 'phpbb\\db\\driver\\mysqli';
-$dbhost = 'localhost';
+//$dbhost = 'localhost';
+$dbhost = '193.203.168.87';
 $dbport = '3306';
-$dbname = 'jnm_phpbb';
-$dbuser = 'root';
-$dbpasswd = 'Griffon123';
+//$dbname = 'jnm_phpbb';
+//$dbuser = 'root';
+//$dbpasswd = 'Griffon123';
+$dbname = 'u604880352_jnm_phpbb';
+$dbuser = 'u604880352_root';
+$dbpasswd = 'MonGriffon123*';
 $table_prefix = 'phpbb_';
 $phpbb_adm_relative_path = 'adm/';
 $acm_type = 'phpbb\\cache\\driver\\file';
