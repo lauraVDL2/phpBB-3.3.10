@@ -485,7 +485,7 @@ function last_hours($timestamp) {
 	$query = $db->sql_query($sql);
 	$str = '';
 	while($column = $db->sql_fetchrow($query)) {
-		$str .= '<a style="color:#'.$column['user_colour'].';" href="/memberlist.php?mode=viewprofile&u='.$column['user_id'].'">'.$column['username'].'</a> ';
+		$str .= '<a style="color:#'.$column['user_colour'].';" href="/forum/memberlist.php?mode=viewprofile&u='.$column['user_id'].'">'.$column['username'].'</a> ';
 	}
 	return $str;
 }
