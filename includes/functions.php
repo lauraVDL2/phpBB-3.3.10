@@ -398,6 +398,7 @@ function last_posts() {
 				'ON' => 'pt.poster_id = ut.user_id',
 			],
 		],
+		'WHERE' => 'pt.post_visibility != 2',
 		'ORDER_BY' => 'pt.post_time DESC'
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
