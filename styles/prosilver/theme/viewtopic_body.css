@@ -232,11 +232,12 @@
     border-radius: 10px;
 }
 
-.p_cadre, .p_cadre_kiri, .p_cadre_iwa, .p_cadre_suna, .p_cadra_konoha, .p_cadre_kumo, .p_cadre_nukenin {
+.p_cadre, .p_cadre_kiri, .p_cadre_iwa, .p_cadre_suna, .p_cadre_konoha, .p_cadre_kumo, .p_cadre_nukenin {
     background-color: var(--main_color_3);
     box-sizing: border-box;
     padding: 10px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 .dp {
