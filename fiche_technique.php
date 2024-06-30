@@ -325,6 +325,11 @@ function get_techniques($type, $block_name) {
                         $chakra -= round($chakra*0.30);
                     }
                 }
+                if($row['technique_subtype'] == 'Kuchiyose') {
+                    if($talent_title == 'Maître invocateur') {
+                        $chakra -= round($chakra*0.25);
+                    }
+                }
             }
             //SPECIFIC CASES
             if($offensive) {
