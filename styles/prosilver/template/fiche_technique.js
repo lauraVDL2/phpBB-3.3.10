@@ -263,6 +263,12 @@ jQuery(function($) {
         }
     });
 
+    phpbb.addAjaxCallback('update_inventory_callback', function(re) {
+        if(re.action === "INVENTORY_UPDATED") {
+            window.confirm("L'inventaire a été mis à jour !");
+            window.location.reload(true);
+        }
+    });
 })
 
 function copyNinjutsu(t) {

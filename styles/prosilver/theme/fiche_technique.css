@@ -116,7 +116,13 @@
     width: 70%;
 }
 
-.modify_ft_desc, #new_ft_technique, .new_ft_technique {
+#inventory {
+    all: unset;
+    height: 90px;
+    width: 80%;
+}
+
+.modify_ft_desc, #new_ft_technique, .new_ft_technique, #inventory {
     resize: none;
     background-color: var(--main_color_3);
     display: block;

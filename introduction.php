@@ -18,6 +18,11 @@ extract($phpbb_dispatcher->trigger_event('core.index_modify_page_title', compact
 
 $json_response = new \phpbb\json_response;
 
+if(!$user->data['is_registered']) {
+    echo "Vous devez être connecté pour vous présenter !";
+    die();
+}
+
 if($request->is_ajax()) {
     $introduction_validate_button = $request->variable('introduction_validate_button', '');
     if($introduction_validate_button) {

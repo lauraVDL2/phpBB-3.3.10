@@ -27,6 +27,20 @@ if(!$is_user && ! $is_admin) {
     die();
 }
 
+//INVENTORY
+if($request->is_ajax()) {
+    $inventory_button = $request->variable('update_inventory', '');
+    if($inventory_button) {
+        $inventory = utf8_normalize_nfc($request->variable('inventory', '', true));
+        $sql = 'UPDATE '.GAINED_TECHNIQUES_TABLE.' SET gt_inventory = "'.$inventory.'" WHERE user_id = '.$ft_user_id;
+        $db->sql_query($sql);
+            return $json_response->send([
+                'action'	=> 'INVENTORY_UPDATED',
+                ],
+            );
+    }
+}
+
 //TALENTS
 if($request->is_ajax()) {
     $add_ft_talent_button = $request->variable('add_ft_talent_button', '');
@@ -339,7 +353,8 @@ function get_techniques($type, $block_name) {
             'FT_TECHNIQUE_NAME' => $row['technique_name'],
             'FT_TECHNIQUE_DESCRIPTION' => $row['technique_description'],
             'FT_TECHNIQUE_DAMAGE' => $damage,
-            'FT_TECHNIQUE_CHAKRA' => $chakra
+            'FT_TECHNIQUE_CHAKRA' => $chakra,
+            'FT_TECHNIQUE_COST' => $row['technique_cost']
         ]);
     }
 }
@@ -507,6 +522,7 @@ $template->assign_vars(array(
     'FT_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
     'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
     'FT_IS_JINCHURIKI' => is_jinchuriki($ft_user_id),
+    'FT_INVENTORY' => get_inventory($ft_user_id),
 ));
 
 // Output page

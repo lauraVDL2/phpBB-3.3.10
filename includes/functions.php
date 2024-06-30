@@ -662,6 +662,20 @@ function character_attributes() {
 	return $column;
 }
 
+function get_inventory($user_id) {
+	global $db, $user;
+	$req = [
+		'SELECT' => 'gt.gt_inventory AS inventory',
+		'FROM' => [
+			GAINED_TECHNIQUES_TABLE => 'gt'
+		],
+		'WHERE' => "gt.user_id = $user_id"
+	];
+	$sql = $db->sql_build_query('SELECT', $req);
+	$query = $db->sql_query($sql);
+	return $db->sql_fetchrow($query)['inventory'];
+}
+
 /**
  * Find the effectives of each group
  * @return int
