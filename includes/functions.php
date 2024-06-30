@@ -480,6 +480,7 @@ function last_hours($timestamp) {
 			]
 		],
 		'WHERE' => 'UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - '.$timestamp. ' <= ut.user_lastvisit OR s.session_user_id <> '.ANONYMOUS,
+		'ORDER_BY' => 'ut.username ASC'
 		//'GROUP_BY' => 'ut.user_id'
 	];
 	$sql = $db->sql_build_query('SELECT_DISTINCT', $req);
@@ -611,11 +612,11 @@ function is_jinchuriki($user_id) {
 		'FROM' => [
 			GAINED_TECHNIQUES_TABLE => 'gt'
 		],
-		'WHERE gt.user_id = '.$user_id
+		'WHERE' => 'gt.user_id = '.$user_id
 	];
 	$sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
-	return $db->sql_fetchrow($query)['demon'] ?? null;
+	return $db->sql_fetchrow($query)['demon'];
 }
 
 /**

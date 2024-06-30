@@ -506,6 +506,7 @@ $template->assign_vars(array(
     'FT_IS_IWA' => my_group(get_group_by_name('Iwagakure'), $user->data['user_id']),
     'FT_IS_SUNA' => my_group(get_group_by_name('Sunagakure'), $user->data['user_id']),
     'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
+    'FT_IS_JINCHURIKI' => is_jinchuriki($ft_user_id),
 ));
 
 // Output page
