@@ -302,6 +302,7 @@ function user_add($user_row, $cp_data = false, $notifications_data = null)
 
 	$sql = 'INSERT INTO '.GAINED_TECHNIQUES_TABLE.' '.$db->sql_build_array('INSERT', [
 		'user_id' => $user_id,
+		'gt_inventory' => '',
 	]);
 	$db->sql_query($sql);
 
