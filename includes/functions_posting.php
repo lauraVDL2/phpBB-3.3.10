@@ -1775,6 +1775,29 @@ function submit_post($mode, $subject, $username, $topic_type, &$poll_ary, &$data
 				}
 			}
 
+			$sql_data[POSTS_TABLE]['sql'] = array(
+				'forum_id'			=> $data_ary['forum_id'],
+				'poster_id'			=> (int) $user->data['user_id'],
+				'icon_id'			=> $data_ary['icon_id'],
+				'poster_ip'			=> $user->ip,
+				'post_time'			=> $current_time,
+				'post_visibility'	=> $post_visibility,
+				'enable_bbcode'		=> $data_ary['enable_bbcode'],
+				'enable_smilies'	=> $data_ary['enable_smilies'],
+				'enable_magic_url'	=> $data_ary['enable_urls'],
+				'enable_sig'		=> $data_ary['enable_sig'],
+				'post_username'		=> (!$user->data['is_registered']) ? $username : '',
+				'post_subject'		=> $subject,
+				'post_text'			=> $data_ary['message'],
+				'post_checksum'		=> $data_ary['message_md5'],
+				'post_attachment'	=> (!empty($data_ary['attachment_data'])) ? 1 : 0,
+				'bbcode_bitfield'	=> $data_ary['bbcode_bitfield'],
+				'bbcode_uid'		=> $data_ary['bbcode_uid'],
+				'post_postcount'	=> ($auth->acl_get('f_postcount', $data_ary['forum_id'])) ? 1 : 0,
+				'post_edit_locked'	=> $data_ary['post_edit_locked']
+			);
+		break;
+		
 		case 'reply':
 			$level = character_informations()['level'];
 			//Gain exp only if the max level isn't reached
