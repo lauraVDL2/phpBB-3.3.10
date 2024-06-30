@@ -125,7 +125,7 @@ if($request->is_ajax()) {
 	$my_strength = $request->variable('my_strength_button', '');
 	$my_sensoriality = $request->variable('my_sensoriality_button', '');
 	$my_stealth = $request->variable('my_stealth_button', '');
-	$my_swiftness = $request->variable('my_swifness_button', '');
+	$my_swiftness = $request->variable('my_swiftness_button', '');
 	$my_ninjutsu = $request->variable('my_ninjutsu_button', '');
 	$my_taijutsu = $request->variable('my_taijutsu_button', '');
 	$my_genjutsu = $request->variable('my_genjutsu_button', '');
