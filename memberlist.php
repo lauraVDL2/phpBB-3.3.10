@@ -947,7 +947,8 @@ switch ($mode)
 				$sql = 'DELETE FROM '.GAINED_TECHNIQUES_TABLE." WHERE user_id = $user_id";
 				$db->sql_query($sql);
 				$sql = 'INSERT INTO '.GAINED_TECHNIQUES_TABLE.' '.$db->sql_build_array('INSERT', [
-					'user_id' => $user_id
+					'user_id' => $user_id,
+					'gt_inventory' => '',
 				]);
 				$db->sql_query($sql);
 				$sql = 'DELETE FROM '.ATTRIBUTES_TABLE." WHERE user_id = $user_id";
