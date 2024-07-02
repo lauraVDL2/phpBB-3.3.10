@@ -331,6 +331,21 @@ function get_techniques($type, $block_name) {
                         $chakra -= round($chakra*0.25);
                     }
                 }
+                else if($row['technique_type'] == 'Hiden') {
+                    $chakra -= round($chakra*0.30);
+                    if($row['technique_subtype'] == 'Kugutsu') {
+                        if($talent_title == 'Maître marionnettiste') {
+                            $chakra -= round($chakra*0.10);
+                        }
+                    }
+                }
+                if($offensive) {
+                    if($row['technique_spe'] == 'Kenjutsu') {
+                        if($talent_title == 'Maître épéiste') {
+                            $damage += round($damage*0.8);
+                        }
+                    }
+                }
             }
             //SPECIFIC CASES
             if($offensive) {
@@ -345,9 +360,6 @@ function get_techniques($type, $block_name) {
                 }
                 else if($row['technique_type'] == 'Kekkei Genkai') {
                     $damage += round($damage*0.05);
-                }
-                else if($row['technique_type'] == 'Hiden') {
-                    $chakra -= round($chakra*0.30);
                 }
             }
         }
@@ -403,7 +415,8 @@ function get_talents_display_ft($user_id) {
                 'ON' => 'tt.talent_id = utt.talent_id'
             ]
         ],
-        'WHERE' => "utt.user_id = $user_id"
+        'WHERE' => "utt.user_id = $user_id",
+        'ORDER_BY' => 'tt.talent_title ASC'
     ];
     $sql = $db->sql_build_query('SELECT', $req);
 	$query = $db->sql_query($sql);
@@ -456,7 +469,8 @@ function get_talents_ft($user_id) {
             'FROM' => [
                 TALENTS_TABLE => 'tt'
             ],
-            'WHERE' => "tt.talent_id NOT IN($param)"
+            'WHERE' => "tt.talent_id NOT IN($param)",
+            'ORDER_BY' => 'tt.talent_title ASC'
         ];
     }
     else {
@@ -465,6 +479,7 @@ function get_talents_ft($user_id) {
             'FROM' => [
                 TALENTS_TABLE => 'tt'
             ],
+            'ORDER_BY' => 'tt.talent_title ASC'
         ];
     }
     $sql = $db->sql_build_query('SELECT', $req);
