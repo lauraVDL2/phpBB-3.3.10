@@ -4729,7 +4729,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'NUKENIN_TOTAL' => $nukenin,
 		'TOTAL_FINAL' => $total_final,
 		'SESSION_ID' => $user->session_id,
-		'LAST_HOURS_USERS' => last_hours(345600),
+		'LAST_HOURS_USERS' => last_hours(172800),
 		'LAST_USER_AVATAR' => last_user($db)['avatar'],
 		'LAST_USER_NAME' => last_user($db)['username'],
 		'USER_ID' => $user->data['user_id'],
