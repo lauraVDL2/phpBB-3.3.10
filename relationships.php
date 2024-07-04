@@ -197,6 +197,12 @@ function get_relations($block_name, $user_id, $group_id) {
 	$query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
         $username = get_rs_infos($row['relation_id'])['username'];
+        if(str_contains($row['relation_avatar'], 'http')) {
+            $img = $row['relation_avatar'];
+        }
+        else {
+            $img = './download/file.php?avatar='.$row['relation_avatar'];
+        }
         $template->assign_block_vars($block_name, [
             'RELATIONSHIP_ID' => $row['relationship_id'],
             'RELATION_USERNAME' => $username,
