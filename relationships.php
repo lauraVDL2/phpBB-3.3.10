@@ -208,7 +208,7 @@ function get_relations($block_name, $user_id, $group_id) {
             'RELATION_USERNAME' => $username,
             'RELATION_TITLE' => $row['relation_title'],
             'RELATION_DESCRIPTION' => $row['relation_description'],
-            'RELATION_AVATAR' => $row['relation_avatar']
+            'RELATION_AVATAR' => $img
         ]);
     }
 }
