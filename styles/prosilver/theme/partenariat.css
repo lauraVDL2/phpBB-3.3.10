@@ -1,0 +1,78 @@
+#ficheParto {
+    width: 500px;
+    height: 800px;
+    background-color: var(--main_color_1);
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#bannerParto {
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#contexteParto {
+    width: 95%;
+    margin: 10px auto;
+    display: block;
+    height: 250px;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: var(--main_color_3);
+    text-align: justify;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#contexteParto legend, #joinParto {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--main_color_2);
+    text-align: center;
+    margin: auto;
+    display: block;
+    font-weight: bold;
+}
+
+#firstPhrase {
+    font-size: 1.4rem;
+    color: var(--secondary_color_2);
+    font-weight: bold;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.stParto {
+    font-size: 1.2rem;
+    color: var(--main_color_2);
+    text-align: center;
+}
+
+#joinParto {
+    margin: 10px auto;
+}
+
+#lienParto {
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+#lienParto:hover {
+    color: var(--secondary_color_2);
+}
+
+#imgParto {
+    display: block;
+    margin: auto;
+}
+
+#imgParto img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 5px solid var(--main_color_3);
+}
