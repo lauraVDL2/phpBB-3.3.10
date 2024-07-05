@@ -148,3 +148,8 @@ body {
 a {
     color: var(--secondary_color_2);
 }
+
+.uncited {
+    background-color: var(--main_color_3);
+    color: var(--main_color_2)
+}

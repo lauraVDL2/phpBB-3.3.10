@@ -25,7 +25,7 @@ $nukenin = total_groups($db, get_group_by_name('Nukenin')) - 1;
 $kumo = total_groups($db, get_group_by_name('Kumogakure')) - 1;
 $konoha = total_groups($db, get_group_by_name('Konohagakure')) - 1;
 
-$total = $iwa + $kiri + $suna + $nukenin + $kumo + $kunoha;
+$total = $iwa + $kiri + $suna + $nukenin + $kumo + $konoha;
 
 function get_posts() {
     global $db;
