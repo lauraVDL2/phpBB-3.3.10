@@ -197,7 +197,7 @@ function get_relations($block_name, $user_id, $group_id) {
 	$query = $db->sql_query($sql);
     while ($row = $db->sql_fetchrow($query)) {
         $username = get_rs_infos($row['relation_id'])['username'];
-        if(str_contains($row['relation_avatar'], 'http')) {
+        if(str_contains($row['relation_avatar'], 'http://') || str_contains($row['relation_avatar'], 'https://')) {
             $img = $row['relation_avatar'];
         }
         else {

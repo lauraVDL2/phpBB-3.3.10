@@ -4717,6 +4717,13 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 	}
 	last_posts();
 
+	if(str_contains($character_infos['avatar'], 'http://') || str_contains($character_infos['avatar'], 'https://')) {
+		$img = $character_infos['avatar'];
+	}
+	else {
+		$img = './download/file.php?avatar='.$character_infos['avatar'];
+	}
+
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
 		'LAST_USERNAME' => get_last_username(),
@@ -4743,7 +4750,7 @@ function page_header($page_title = '', $display_online_list = false, $item_id = 
 		'MY_TAIJUTSU' => character_attributes()['taijutsu'],
 		'MY_GENJUTSU' => character_attributes()['genjutsu'],
 		'ATTRIBUTES_TO_USE' => $character_infos['attributes_to_use'],
-		'MY_AVATAR' => $character_infos['avatar'],
+		'MY_AVATAR' => $img,
 		'USERNAME' => $character_infos['username'],
 		'EXP_BAR' => $exp_bar,
 		'FIRST_GENJUTSU' => $first_genjutsu,
