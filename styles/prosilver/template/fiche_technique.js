@@ -228,6 +228,7 @@ jQuery(function($) {
         //MODIFY TECHNIQUE TO BE VALIDATED
         if(re.my_action === "MODIFY") {
             window.confirm("Votre technique a bien été mise à jour !");
+            window.location.reload(true);
         }
         //ADMINISTRATOR : VALIDATE TECHNIQUE
         else if(re.my_action === "VALIDATE") {
