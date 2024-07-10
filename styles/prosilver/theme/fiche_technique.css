@@ -118,6 +118,7 @@
 
 #inventory {
     all: unset;
+    white-space: pre-wrap;
     height: 90px;
     width: 80%;
 }
