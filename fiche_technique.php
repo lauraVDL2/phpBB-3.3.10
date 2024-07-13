@@ -544,6 +544,7 @@ $template->assign_vars(array(
     'FT_IS_ADMIN' => my_group(ADMINISTRATOR_ID, $user->data['user_id']),
     'FT_IS_JINCHURIKI' => is_jinchuriki($ft_user_id),
     'FT_INVENTORY' => get_inventory($ft_user_id),
+    'FT_IS_OVERSPECIALIZED' => is_overspecialized($ft_user_id)
 ));
 
 // Output page

@@ -1,6 +1,6 @@
 <!-- INCLUDE overall_header.html -->
 {% INCLUDEJS 'fiche_technique.js' %}
-<div id="ft_name" style="background-color: #{FT_COLOUR}">Fiche technique de {FT_USERNAME}</div>
+<div id="ft_name" style="background-color: #{FT_COLOUR}">Fiche technique de {FT_USERNAME}<!-- IF FT_IS_OVERSPECIALIZED --> (Personnage surspécialisé)<!-- ENDIF --></div>
 <div id="ft_user">
         <div id="um_links">
             <!-- IF FT_KUCHIYOSE --><a href="./kuchiyose_techniques.php?uid={FT_USER_ID}">Invocations</a><!-- ENDIF -->
